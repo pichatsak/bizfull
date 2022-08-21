@@ -17,9 +17,9 @@ class _NavmainState extends State<Navmain> {
         // ignore: prefer_const_constructors
         return NavDeskTop();
       } else if (constraints.maxWidth >= 768 && constraints.maxWidth <= 991) {
-        return mobileView(context);
+        return NavMobiles();
       } else {
-        return mobileView(context);
+        return NavMobiles();
       }
     });
   }
