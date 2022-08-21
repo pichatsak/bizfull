@@ -1,5 +1,3 @@
-
-
 import 'package:bizfull/nav/widget_desktopview.dart';
 import 'package:bizfull/nav/widget_mobileview.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +14,8 @@ class _NavmainState extends State<Navmain> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 991) {
-        return desktopView(context);
+        // ignore: prefer_const_constructors
+        return NavDeskTop();
       } else if (constraints.maxWidth >= 768 && constraints.maxWidth <= 991) {
         return mobileView(context);
       } else {

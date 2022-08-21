@@ -1,9 +1,15 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/nav/box_shap_menu.dart';
+import 'package:bizfull/nav/hover_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:joy_dropdowns/joy_dropdowns.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import 'package:shimmer_animation/shimmer_animation.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 
 Widget desktopView(BuildContext context) {
   bootstrapGridParameters(gutterSize: 0);
@@ -71,71 +77,58 @@ Widget desktopView(BuildContext context) {
                                         ],
                                       ),
                                       Row(
-                                        children: [
-                                          const Icon(
+                                        children: const [
+                                          Icon(
                                             FontAwesomeIcons.bagShopping,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          const SizedBox(width: 5),
-                                          const Text(
-                                              "สินค้าน่าชิป สินค้าน่าช้อป",
+                                          SizedBox(width: 5),
+                                          Text("สินค้าน่าชิป สินค้าน่าช้อป",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 13)),
-                                          const SizedBox(width: 35),
-                                          const Icon(
+                                          SizedBox(width: 35),
+                                          Icon(
                                             FontAwesomeIcons.solidBell,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             width: 5,
                                           ),
-                                          const Text(
+                                          Text(
                                             "การแจ้งเตือน",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 13),
                                           ),
-                                          const SizedBox(width: 35),
-                                          const Icon(
+                                          SizedBox(width: 35),
+                                          Icon(
                                             FontAwesomeIcons.solidCircleUser,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          const SizedBox(
+                                          SizedBox(
                                             width: 5,
                                           ),
-                                          InkWell(
-                                            onTap: () {
-                                              Navigator.of(context)
-                                                  .pushNamed("/login");
-                                            },
-                                            child: const Text(
-                                              "เข้าสู่ระบบ",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 13),
-                                            ),
+                                          Text(
+                                            "เข้าสู่ระบบ",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13),
                                           ),
-                                          const Text(
+                                          Text(
                                             " / ",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 15),
                                           ),
-                                          InkWell(
-                                            onTap: () {
-                                              Navigator.of(context)
-                                                  .pushNamed("/registor");
-                                            },
-                                            child: const Text(
-                                              "สมัครสมาชิก",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 13),
-                                            ),
+                                          Text(
+                                            "สมัครสมาชิก",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13),
                                           ),
                                         ],
                                       )
