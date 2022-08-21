@@ -4,7 +4,7 @@ import 'package:bizfull/showproduct/widget_picture.dart';
 
 import 'package:flutter/material.dart';
 
-Widget showproduct() {
+Widget showproduct(context) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
         sizes: 'col-12',
@@ -17,40 +17,64 @@ Widget showproduct() {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     child: Row(
-                      children: const [
-                        Text(
-                          "หน้าแรก",
-                          style: TextStyle(fontSize: 13, color:  Color(0xffed3023)),
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/");
+                          },
+                          child: const Text(
+                            "หน้าแรก",
+                            style: TextStyle(
+                                fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                           size: 13,
                           color: Colors.black54,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
                           "สินค้าน่าชิป",
-                          style: TextStyle(fontSize: 13, color:  Color(0xffed3023)),
+                          style:
+                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward_ios,
                           size: 13,
                           color: Colors.black54,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
+                          "รองเท้า",
+                          style:
+                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 13,
+                          color: Colors.black54,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
                           "รองเท้าสไตล์มินิ",
-                          style: TextStyle(fontSize: 13, color: Colors.black87),
+                          style: const TextStyle(
+                              fontSize: 13, color: Colors.black87),
                         ),
                       ],
                     ),
@@ -80,7 +104,10 @@ Widget datashowproduct(context) {
                   BootstrapCol(
                       sizes: 'col-md-12 col-12 col-lg-7',
                       child: BootstrapContainer(fluid: true, children: <Widget>[
-                        dataright1(context),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: dataright1(context),
+                        ),
                       ])),
                 ],
               ),

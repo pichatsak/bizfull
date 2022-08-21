@@ -15,6 +15,7 @@ import 'package:bizfull/homepage/widget_slidershow.dart';
 import 'package:bizfull/nav/mainnav.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -29,10 +30,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     bootstrapGridParameters(gutterSize: 0);
     double hbar;
+    String typeSc;
     if (Device.width > 991) {
       hbar = 179;
+      typeSc = "pc";
     } else {
       hbar = 70;
+      typeSc = "mobile";
     }
     return Scaffold(
         body: Stack(
@@ -74,6 +78,21 @@ class _MyHomePageState extends State<MyHomePage> {
             const Navmain(),
           ],
         ),
+        floatingActionButton: typeSc == "pc"
+            ? FloatingActionButton(
+                tooltip: 'Live Chat',
+                hoverColor: const Color(0xffef4137),
+                elevation: 12,
+                onPressed: () {},
+                backgroundColor: const Color(0xffad2332),
+                child: const Icon(
+                  FontAwesomeIcons.solidCommentDots,
+                  size: 24,
+                ),
+              )
+            : const SizedBox(
+                height: 0,
+              ),
         bottomNavigationBar: Device.width <= 991
             ? bottom()
             : const SizedBox(

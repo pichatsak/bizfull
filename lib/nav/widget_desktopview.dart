@@ -2,7 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/nav/box_shap_menu.dart';
 import 'package:bizfull/nav/hover_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:joy_dropdowns/joy_dropdowns.dart';
@@ -105,48 +105,66 @@ class _NavDeskTopState extends State<NavDeskTop> {
             ],
           ),
           Row(
-            children: const [
-              Icon(
-                FontAwesomeIcons.bagShopping,
-                size: 20,
-                color: Colors.white,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 5.5),
+                child: const Icon(
+                  FontAwesomeIcons.bagShopping,
+                  size: 20,
+                  color: Colors.white,
+                ),
               ),
-              SizedBox(width: 5),
-              Text("สินค้าน่าชิป สินค้าน่าช้อป",
-                  style: TextStyle(color: Colors.white, fontSize: 13)),
-              SizedBox(width: 35),
-              Icon(
+              const SizedBox(width: 5),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/shopcart");
+                },
+                child: const Text("สินค้าน่าชิป สินค้าน่าช้อป",
+                    style: TextStyle(color: Colors.white, fontSize: 13)),
+              ),
+              const SizedBox(width: 35),
+              const Icon(
                 FontAwesomeIcons.solidBell,
                 size: 20,
                 color: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              Text(
+              const Text(
                 "การแจ้งเตือน",
                 style: TextStyle(color: Colors.white, fontSize: 13),
               ),
-              SizedBox(width: 35),
-              Icon(
+              const SizedBox(width: 35),
+              const Icon(
                 FontAwesomeIcons.solidCircleUser,
                 size: 20,
                 color: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              Text(
-                "เข้าสู่ระบบ",
-                style: TextStyle(color: Colors.white, fontSize: 13),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/login");
+                },
+                child: const Text(
+                  "เข้าสู่ระบบ",
+                  style: TextStyle(color: Colors.white, fontSize: 13),
+                ),
               ),
-              Text(
+              const Text(
                 " / ",
                 style: TextStyle(color: Colors.white, fontSize: 15),
               ),
-              Text(
-                "สมัครสมาชิก",
-                style: TextStyle(color: Colors.white, fontSize: 13),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/registor");
+                },
+                child: const Text(
+                  "สมัครสมาชิก",
+                  style: TextStyle(color: Colors.white, fontSize: 13),
+                ),
               ),
             ],
           )

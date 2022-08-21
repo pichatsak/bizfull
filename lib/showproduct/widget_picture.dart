@@ -20,8 +20,8 @@ Widget picture() {
     n = 100;
   } else {
     typeSc = "mobile";
-    w = 350;
-    h = 350;
+    w = 360;
+    h = 360;
     n = 100;
   }
 
@@ -29,11 +29,9 @@ Widget picture() {
     BootstrapCol(
       sizes: 'col-12',
       child: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 0, left: 10, right: 10),
         child: Center(
           child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xffed3023), width: 2)),
             child: typeSc == "pc"
                 ? Image.asset(
                     "images/a6.jpg",
@@ -62,7 +60,7 @@ Widget smallunderpicture() {
     n = 80;
   }
   return Padding(
-    padding: const EdgeInsets.all(5.0),
+    padding: const EdgeInsets.only(left: 5,right: 5,bottom: 5),
     child: Container(
       height: n,
       decoration: const BoxDecoration(color: Colors.white),
@@ -80,12 +78,12 @@ Widget smallunderpicture() {
                           left: 0, top: 5, right: 5, bottom: 5)
                       : const EdgeInsets.all(5),
                   child: Center(
-                    child: Container(
+                    child: SizedBox(
                       width: n,
                       height: n,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color(0xffed3023), width: 2)),
+                      // decoration: BoxDecoration(
+                      //     border: Border.all(
+                      //         color: const Color(0xffed3023), width: 2)),
                       child: Image.asset(
                         "images/a2.jpg",
                         fit: BoxFit.cover,

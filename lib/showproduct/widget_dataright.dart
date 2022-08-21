@@ -1,9 +1,54 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/showproduct/opt_choose.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 Widget dataright1(context) {
+  double fontlist;
+  double nV;
+  double sizestar;
+  double hSp;
+  double wSp;
+  double pad;
+  int f;
+  String typeDv = "";
+
+  EdgeInsets pad1 = const EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0);
+  if (Device.width > 991) {
+    fontlist = 18;
+    nV = 15;
+    sizestar = 14;
+    hSp = 20;
+    wSp = 5;
+    pad = 15;
+    pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20);
+    typeDv = "pc";
+    f = 4;
+  } else if (Device.width >= 768 && Device.width <= 991) {
+    fontlist = 18;
+    nV = 15;
+    sizestar = 14;
+    hSp = 20;
+    wSp = 5;
+    pad = 15;
+    pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20);
+
+    typeDv = "pc";
+    f = 6;
+  } else {
+    fontlist = 15;
+    nV = 13;
+    sizestar = 14;
+    hSp = 5;
+    wSp = 3;
+    pad = 7;
+    pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 0, right: 0);
+
+    typeDv = "mobile";
+    f = 2;
+  }
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
       sizes: 'col-12',
@@ -17,11 +62,12 @@ Widget dataright1(context) {
             ),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: double.infinity,
                   child: Text(
                     "🔥พร้อมส่งด่วน ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม หนานุ่ม ซับน้ำไว(สีเหลืองเทา) ผ้าเช็ดรถ ผ้าไมโครไฟเบ  ผ้าเช็ดรถ ผ้าเอนกประสงค์ ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม",
-                    style: TextStyle(fontSize: 18, fontFamily: "Prompt-Medium"),
+                    style: TextStyle(
+                        fontSize: fontlist, fontFamily: "Prompt-Medium"),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -43,39 +89,38 @@ Widget dataright1(context) {
                             color: Color(0xffed3023),
                             width: 1.0,
                           ))),
-                          child: const Text(
+                          child: Text(
                             "4.9",
                             style: TextStyle(
-                              color: Color(0xffed3023),
-                            ),
+                                color: const Color(0xffed3023), fontSize: nV),
                           ),
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        const Icon(Icons.star,
-                            size: 16, color: Color(0xffed3023)),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 1, right: 1),
+                        Icon(Icons.star,
+                            size: sizestar, color: const Color(0xffed3023)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 1, right: 1),
                           child: Icon(Icons.star,
-                              size: 16, color: Color(0xffed3023)),
+                              size: sizestar, color: const Color(0xffed3023)),
                         ),
-                        const Icon(Icons.star,
-                            size: 16, color: Color(0xffed3023)),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 1, right: 1),
+                        Icon(Icons.star,
+                            size: sizestar, color: const Color(0xffed3023)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 1, right: 1),
                           child: Icon(Icons.star,
-                              size: 16, color: Color(0xffed3023)),
+                              size: sizestar, color: const Color(0xffed3023)),
                         ),
-                        const Icon(
+                        Icon(
                           Icons.star,
-                          size: 16,
-                          color: Color(0xff777777),
+                          size: sizestar,
+                          color: const Color(0xff777777),
                         )
                       ],
                     ),
-                    const SizedBox(
-                      width: 20,
+                    SizedBox(
+                      width: hSp,
                     ),
                     Container(
                       decoration: const BoxDecoration(
@@ -90,7 +135,7 @@ Widget dataright1(context) {
                         ),
                       )),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        padding: EdgeInsets.only(left: pad, right: pad),
                         child: Row(
                           children: [
                             Container(
@@ -102,29 +147,32 @@ Widget dataright1(context) {
                                       bottom: BorderSide(
                                 width: 1.0,
                               ))),
-                              child: const Text(
+                              child: Text(
                                 "6.5พัน",
+                                style: TextStyle(fontSize: nV),
                               ),
                             ),
                             const SizedBox(
                               width: 5,
                             ),
-                            const Text(
+                            Text(
                               "Ratings",
-                              style: TextStyle(color: Colors.black54),
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: nV),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
+                    SizedBox(
+                      width: hSp,
                     ),
-                    const Text(
+                    Text(
                       "17.4พัน",
+                      style: TextStyle(color: Colors.black, fontSize: nV),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: wSp,
                     ),
                     Row(
                       children: [
@@ -136,8 +184,8 @@ Widget dataright1(context) {
                                 TextStyle(color: Colors.black54, fontSize: 12),
                           ),
                         ),
-                        const SizedBox(
-                          width: 5,
+                        SizedBox(
+                          width: wSp,
                         ),
                         const Icon(
                           Icons.help_outline_outlined,
@@ -149,7 +197,7 @@ Widget dataright1(context) {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: pad1,
                   child: Column(
                     children: [
                       Row(
@@ -372,214 +420,84 @@ Widget dataright1(context) {
                       // const SizedBox(
                       //   height: 20,
                       // ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            width: 110,
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Text(
-                                "GlassyX",
-                                style: TextStyle(
-                                  color: Color.fromARGB(186, 0, 0, 0),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Flexible(
-                            child: Wrap(
+                      typeDv == "pc"
+                          ? Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border: Border.all(
-                                            color: const Color(0xffed3023))),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
+                                const SizedBox(
+                                  width: 110,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      "GlassyX",
+                                      style: TextStyle(
+                                        color: Color.fromARGB(186, 0, 0, 0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                optChoose()
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    SizedBox(
+                                      width: 110,
                                       child: Text(
                                         "GlassyX",
-                                        style:
-                                            TextStyle(color: Color(0xffed3023)),
+                                        style: TextStyle(
+                                          color: Color.fromARGB(186, 0, 0, 0),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border:
-                                            Border.all(color: Colors.black26)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
-                                      child: Text(
-                                        "GlassyX500",
-                                        style: TextStyle(color: Colors.black54),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: optChoose2(),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border:
-                                            Border.all(color: Colors.black26)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
-                                      child: Text(
-                                        "GlassyX500",
-                                        style: TextStyle(color: Colors.black54),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border:
-                                            Border.all(color: Colors.black26)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
-                                      child: Text(
-                                        "GlassyX500",
-                                        style: TextStyle(color: Colors.black54),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border:
-                                            Border.all(color: Colors.black26)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
-                                      child: Text(
-                                        "GlassyX500",
-                                        style: TextStyle(color: Colors.black54),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        border:
-                                            Border.all(color: Colors.black26)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 5,
-                                          bottom: 5),
-                                      child: Text(
-                                        "GlassyX500",
-                                        style: TextStyle(color: Colors.black54),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                  ],
+                                )
                               ],
                             ),
-                          )
-                        ],
-                      ),
+
                       const SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 110,
-                            child: Text(
-                              "จำนวน",
-                              style: TextStyle(
-                                  color: Colors.black87, fontSize: 12),
-                              textAlign: TextAlign.start,
+                      if (typeDv == "pc")
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 110,
+                              child: Text(
+                                "จำนวน",
+                                style: TextStyle(
+                                    color: Colors.black87, fontSize: 12),
+                                textAlign: TextAlign.start,
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Flexible(
-                            child: Row(
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      border: Border(
-                                          left:
-                                              BorderSide(color: Colors.black26),
-                                          top:
-                                              BorderSide(color: Colors.black26),
-                                          bottom: BorderSide(
-                                              color: Colors.black26))),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(3.0),
-                                    child: Icon(
-                                      Icons.remove,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: TextFormField(
-                                    cursorColor: Colors.black,
-                                    cursorWidth: 1,
-                                    textAlign: TextAlign.center,
-                                    initialValue: '1',
-                                    style: const TextStyle(color: Colors.black),
-                                    decoration: const InputDecoration(
-                                      isDense: true,
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(12, 12, 12, 0),
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(0.0))),
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 6,
-                                  child: Container(
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Flexible(
+                              child: Row(
+                                children: [
+                                  Container(
                                     decoration: const BoxDecoration(
                                         border: Border(
-                                            right: BorderSide(
+                                            left: BorderSide(
                                                 color: Colors.black26),
                                             top: BorderSide(
                                                 color: Colors.black26),
@@ -588,41 +506,194 @@ Widget dataright1(context) {
                                     child: const Padding(
                                       padding: EdgeInsets.all(3.0),
                                       child: Icon(
-                                        Icons.add_rounded,
+                                        Icons.remove,
                                         size: 20,
                                         color: Colors.black,
                                       ),
                                     ),
                                   ),
+                                  Flexible(
+                                    child: Theme(
+                                      data: ThemeData(
+                                          primarySwatch: Colors.red,
+                                          fontFamily: "Prompt"),
+                                      child: TextFormField(
+                                        cursorColor: Colors.black,
+                                        cursorWidth: 1,
+                                        textAlign: TextAlign.center,
+                                        initialValue: '1',
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                        decoration: const InputDecoration(
+                                          isDense: true,
+                                          contentPadding:
+                                              EdgeInsets.fromLTRB(4, 12, 4, 0),
+                                          border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(0.0))),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: f,
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                              right: BorderSide(
+                                                  color: Colors.black26),
+                                              top: BorderSide(
+                                                  color: Colors.black26),
+                                              bottom: BorderSide(
+                                                  color: Colors.black26))),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(3.0),
+                                        child: Icon(
+                                          Icons.add_rounded,
+                                          size: 20,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 15,
+                                  ),
+                                  const Text(
+                                    "มีสินค้าทั้งหมด 2835 ชิ้น",
+                                    style: TextStyle(
+                                        color: Colors.black87, fontSize: 12),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      else
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                const SizedBox(
+                                  width: 110,
+                                  child: Text(
+                                    "จำนวน",
+                                    style: TextStyle(
+                                        color: Colors.black87, fontSize: 12),
+                                    textAlign: TextAlign.start,
+                                  ),
                                 ),
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                const Text(
-                                  "มีสินค้าทั้งหมด 2835 ชิ้น",
-                                  style: TextStyle(
-                                      color: Colors.black87, fontSize: 12),
-                                  textAlign: TextAlign.start,
+                                Flexible(
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                            border: Border(
+                                                left: BorderSide(
+                                                    color: Colors.black26),
+                                                top: BorderSide(
+                                                    color: Colors.black26),
+                                                bottom: BorderSide(
+                                                    color: Colors.black26))),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(3.0),
+                                          child: Icon(
+                                            Icons.remove,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Theme(
+                                          data: ThemeData(
+                                              primarySwatch: Colors.red,
+                                              fontFamily: "Prompt"),
+                                          child: TextFormField(
+                                            cursorColor: Colors.black,
+                                            cursorWidth: 1,
+                                            textAlign: TextAlign.center,
+                                            initialValue: '1',
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            decoration: const InputDecoration(
+                                              isDense: true,
+                                              contentPadding:
+                                                  EdgeInsets.fromLTRB(
+                                                      4, 12, 4, 0),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              0.0))),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        flex: f,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                              border: Border(
+                                                  right: BorderSide(
+                                                      color: Colors.black26),
+                                                  top: BorderSide(
+                                                      color: Colors.black26),
+                                                  bottom: BorderSide(
+                                                      color: Colors.black26))),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(3.0),
+                                            child: Icon(
+                                              Icons.add_rounded,
+                                              size: 20,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Row(
+                                children: const [
+                                  SizedBox(
+                                    width: 125,
+                                  ),
+                                  Text(
+                                    "มีสินค้าทั้งหมด 2835 ชิ้น",
+                                    style: TextStyle(
+                                        color: Colors.black87, fontSize: 12),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       const SizedBox(
                         height: 30,
                       ),
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: InkWell(onTap: () {
-                              Navigator.of(context).pushNamed("/shopcart");
-                            },
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, right: 5),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/shopcart");
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color:
-                                        const Color.fromARGB(255, 240, 213, 215),
+                                    color: const Color.fromARGB(
+                                        255, 240, 213, 215),
                                     borderRadius: BorderRadius.circular(2),
                                     border: Border.all(
                                         color: const Color(0xffed3023))),
