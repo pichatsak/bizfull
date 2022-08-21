@@ -64,7 +64,7 @@ Widget showdesktopshippingNew() {
     fSd = 14;
     hSp3 = 10;
     fSm = 18;
-    a = 198;
+    a = 198.4;
     b = 188;
     d = 110;
     T = 5;
@@ -94,7 +94,7 @@ Widget showdesktopshippingNew() {
     allP = 5;
     hSP1 = 15;
     hSp2 = 0;
-    fSd = 0;
+    fSd = 12;
     hSp3 = 5;
     fSm = 15;
     a = 130;

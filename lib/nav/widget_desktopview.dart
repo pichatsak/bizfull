@@ -71,58 +71,71 @@ Widget desktopView(BuildContext context) {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
-                                          Icon(
+                                        children: [
+                                          const Icon(
                                             FontAwesomeIcons.bagShopping,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          SizedBox(width: 5),
-                                          Text("สินค้าน่าชิป สินค้าน่าช้อป",
+                                          const SizedBox(width: 5),
+                                          const Text(
+                                              "สินค้าน่าชิป สินค้าน่าช้อป",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 13)),
-                                          SizedBox(width: 35),
-                                          Icon(
+                                          const SizedBox(width: 35),
+                                          const Icon(
                                             FontAwesomeIcons.solidBell,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 5,
                                           ),
-                                          Text(
+                                          const Text(
                                             "การแจ้งเตือน",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 13),
                                           ),
-                                          SizedBox(width: 35),
-                                          Icon(
+                                          const SizedBox(width: 35),
+                                          const Icon(
                                             FontAwesomeIcons.solidCircleUser,
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 5,
                                           ),
-                                          Text(
-                                            "เข้าสู่ระบบ",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 13),
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .pushNamed("/login");
+                                            },
+                                            child: const Text(
+                                              "เข้าสู่ระบบ",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 13),
+                                            ),
                                           ),
-                                          Text(
+                                          const Text(
                                             " / ",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 15),
                                           ),
-                                          Text(
-                                            "สมัครสมาชิก",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 13),
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .pushNamed("/registor");
+                                            },
+                                            child: const Text(
+                                              "สมัครสมาชิก",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 13),
+                                            ),
                                           ),
                                         ],
                                       )

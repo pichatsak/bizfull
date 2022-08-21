@@ -2,9 +2,9 @@ import 'package:bizfull/other/hover.dart';
 import 'package:bizfull/other/hoverm.dart';
 import 'package:flutter/material.dart';
 
-Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm) {
+Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm,context) {
   return InkWell(
-    onTap: () {},
+    onTap: () {Navigator.of(context).pushNamed("/showproduct");},
     focusColor: color,
     hoverColor: color,
     highlightColor: color,
@@ -38,7 +38,7 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm) {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             image: const DecorationImage(
-                              image: AssetImage("images/5.jpg"),
+                              image: AssetImage("images/menutest.jpg"),
                               filterQuality: FilterQuality.high,
                               fit: BoxFit.cover,
                             )),

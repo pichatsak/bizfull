@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 Widget showproductshipping(BuildContext context) {
-  return showdesktopshippingNew();
+  return showdesktopshippingNew(context);
 }
 
-Widget showdesktopshippingNew() {
+Widget showdesktopshippingNew(context) {
   double a;
   double b;
   double h;
@@ -220,7 +220,7 @@ Widget showdesktopshippingNew() {
                               return SizedBox(
                                   width: a,
                                   child: productOld(
-                                      b, T, R, L, hSp2, fSd, hSp3, fSm));
+                                      b, T, R, L, hSp2, fSd, hSp3, fSm,context));
                             })
                           ],
                         ),

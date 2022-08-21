@@ -1,4 +1,10 @@
 import 'package:bizfull/homepage/mainhome.dart';
+import 'package:bizfull/login_and_registor/mainMasterLogin.dart';
+import 'package:bizfull/login_and_registor/mainmasterregistor.dart';
+import 'package:bizfull/login_and_registor/mainregistor.dart';
+import 'package:bizfull/shopcart/main_shopcart.dart';
+import 'package:bizfull/showproduct/main_showproduct.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -35,6 +41,10 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             "/": (context) => const MyHomePage(),
+            "/login": (context) => const MainLogin(),
+            "/registor": (context) => const MainRegistor(),
+            "/showproduct": (context) => const ShowProduct(),
+            "/shopcart": (context) => const ShopCart(),
           },
         );
       },
