@@ -1,3 +1,5 @@
+// ignore_for_file: must_call_super
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class _SliderState extends State<SliderTop> {
       autoPlay: false,
     ),
   );
-  
+
   @override
   void initState() {
     _controllerVdo.onInit = () {
@@ -42,7 +44,6 @@ class _SliderState extends State<SliderTop> {
         _controllerVdo.cueVideoById(videoId: 'S-_sNpM9XOY', startSeconds: 30);
       }
     };
-    
   }
 
   @override

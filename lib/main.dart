@@ -1,10 +1,11 @@
 import 'package:bizfull/homepage/mainhome.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
-  // setUrlStrategy(PathUrlStrategy());
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
 }
 
