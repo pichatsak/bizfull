@@ -1,7 +1,6 @@
 // ignore_for_file: must_call_super
 
 import 'package:bizfull/boostrap/boostrap_tool.dart';
-import 'package:bizfull/tools/hex_color.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';

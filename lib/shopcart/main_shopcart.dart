@@ -26,11 +26,12 @@ class _ShopCartState extends State<ShopCart> {
   final SingingCharacter3 character3 = SingingCharacter3.lafayette;
 
   final box = GetStorage();
-   @override
+  @override
   void initState() {
     box.write("curpage", "product");
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     String typeSc;
@@ -60,38 +61,40 @@ class _ShopCartState extends State<ShopCart> {
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-              child: Column(
-            children: [
-              SizedBox(height: hbar),
-              BootstrapContainer(
-                  fluid: true,
-                  decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
-                  children: [showtopbar(context)]),
-              BootstrapContainer(fluid: false, children: [
-                datashopcart(character, setState),
-                datashopcart1(character1, setState),
-                datashopcart(character, setState),
-                typeSc == "pc"
-                    ? enddesktop(character2, setState)
-                    : endmobile(character3, setState)
-              ]),
-              SizedBox(height: h),
-              typeSc1 == "pc"
-                  ? BootstrapContainer(
-                      fluid: true,
-                      decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
-                      children: <Widget>[barfootterlogin()])
-                  : Container()
-            ],
-          )),
-          Navmain(),
-        ],
-      ),
-    bottomNavigationBar: Device.width <= 991
-            ? bottom(1,context)
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+                child: Column(
+              children: [
+                SizedBox(height: hbar),
+                BootstrapContainer(
+                    fluid: true,
+                    decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
+                    children: [showtopbar(context)]),
+                BootstrapContainer(fluid: false, children: [
+                  datashopcart(character, setState),
+                  datashopcart1(character1, setState),
+                  datashopcart(character, setState),
+                  typeSc == "pc"
+                      ? enddesktop(character2, setState)
+                      : endmobile(character3, setState)
+                ]),
+                SizedBox(height: h),
+                typeSc1 == "pc"
+                    ? BootstrapContainer(
+                        fluid: true,
+                        decoration:
+                            const BoxDecoration(color: Color(0xfff3f3f3)),
+                        children: <Widget>[barfootterlogin()])
+                    : Container()
+              ],
+            )),
+            // ignore: prefer_const_constructors
+            Navmain(),
+          ],
+        ),
+        bottomNavigationBar: Device.width <= 991
+            ? bottom(1, context)
             : const SizedBox(
                 height: 0,
               ));

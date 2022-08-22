@@ -315,13 +315,11 @@ class _NavDeskTopState extends State<NavDeskTop> {
               onExit: (event) => setState(() {
                 isHoverMenu1 = true;
               }),
-              child: GestureDetector(
-                child: const Text(
-                  "ติดต่อสอบถาม",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                  ),
+              child: const Text(
+                "ติดต่อสอบถาม",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
                 ),
               ),
             ),

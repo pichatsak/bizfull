@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 
 class NavMobiles extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   NavMobiles({Key? key}) : super(key: key);
 
   @override

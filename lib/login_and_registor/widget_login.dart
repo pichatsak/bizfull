@@ -69,7 +69,7 @@ Widget login(setState) {
                               ),
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                     const Padding(
