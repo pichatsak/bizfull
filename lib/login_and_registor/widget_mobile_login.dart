@@ -35,7 +35,7 @@ class _LoginmobileState extends State<Loginmobile> {
           ],
         )),
         bottomNavigationBar: Device.width <= 991
-            ? bottom()
+            ? bottom(4,context)
             : const SizedBox(
                 height: 0,
               ));

@@ -41,11 +41,11 @@ class _SliderState extends State<SliderTop> {
 
   int _current = 0;
   final CarouselController _controller = CarouselController();
-  bool autoPlaySet = false;
+  bool autoPlaySet = true;
   final _controllerVdo = YoutubePlayerController(
     params: const YoutubePlayerParams(
       startAt: Duration(seconds: 30),
-      autoPlay: false,
+      autoPlay: true,
     ),
   );
 

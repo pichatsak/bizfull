@@ -5,7 +5,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget bottom() {
+Widget bottom(int page,BuildContext context) {
   return StyleProvider(
     style: Style(),
     child: ConvexAppBar(
@@ -43,10 +43,24 @@ Widget bottom() {
         TabItem(icon: FontAwesomeIcons.solidBell, title: "แจ้งเตือน"),
         TabItem(icon: FontAwesomeIcons.solidCircleUser, title: "เข้าสู่ระบบ"),
       ],
-      initialActiveIndex: 1,
-      onTap: (int i) => print('click index=$i'),
+      initialActiveIndex: page<5?page:0,
+      onTap: (int i) => setGoPage(i,context),
     ),
   );
+}
+
+setGoPage(int i,context) {
+  if(i==0){
+    Navigator.of(context).pushNamed("/");
+  }else if(i==1){
+    Navigator.of(context).pushNamed("/shopcart");
+  }else if(i==2){
+    
+  }else if(i==3){
+    
+  }else if(i==4){
+    Navigator.of(context).pushNamed("/login");
+  }
 }
 
 class Style extends StyleHook {

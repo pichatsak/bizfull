@@ -4,6 +4,7 @@ import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/showproduct/widget_showproduct.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ShowProduct extends StatefulWidget {
@@ -14,6 +15,14 @@ class ShowProduct extends StatefulWidget {
 }
 
 class _ShowProductState extends State<ShowProduct> {
+  final box = GetStorage();
+
+  @override
+  void initState() {
+    box.write("curpage", "product");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     String typeSc1;
@@ -56,11 +65,11 @@ class _ShowProductState extends State<ShowProduct> {
                 ],
               ),
             ),
-            const Navmain(),
+            Navmain(),
           ],
         ),
         bottomNavigationBar: Device.width <= 991
-            ? bottom()
+            ? bottom(5,context)
             : const SizedBox(
                 height: 0,
               ));

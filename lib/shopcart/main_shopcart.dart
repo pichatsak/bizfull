@@ -1,4 +1,5 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/shopcart/widget_data_shopcart.dart';
@@ -8,6 +9,7 @@ import 'package:bizfull/shopcart/widget_endmobile.dart';
 import 'package:bizfull/shopcart/widget_showtopbar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ShopCart extends StatefulWidget {
@@ -23,6 +25,12 @@ class _ShopCartState extends State<ShopCart> {
   final SingingCharacter2 character2 = SingingCharacter2.lafayette;
   final SingingCharacter3 character3 = SingingCharacter3.lafayette;
 
+  final box = GetStorage();
+   @override
+  void initState() {
+    box.write("curpage", "product");
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     String typeSc;
@@ -79,9 +87,13 @@ class _ShopCartState extends State<ShopCart> {
                   : Container()
             ],
           )),
-          const Navmain(),
+          Navmain(),
         ],
       ),
-    );
+    bottomNavigationBar: Device.width <= 991
+            ? bottom(1,context)
+            : const SizedBox(
+                height: 0,
+              ));
   }
 }

@@ -32,10 +32,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final scrollController = ScrollController();
   final box = GetStorage();
+  int page =0;
   void scrollListener() {
     if (scrollController.offset > 125) {
       if (!box.read("isShowNav")) {
         box.write("isShowNav", true);
+        box.write("colorCur",box.read("colorNav"));
         setState(() {});
       }
     } else {
@@ -48,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    box.write("curpage", "home");
     box.write("isShowNav", false);
     scrollController.addListener(scrollListener);
     super.initState();
@@ -132,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 0,
               ),
         bottomNavigationBar: Device.width <= 991
-            ? bottom()
+            ? bottom(page,context)
             : const SizedBox(
                 height: 0,
               ));

@@ -26,7 +26,7 @@ class _RegistormobileState extends State<Registormobile> {
     } else if (Device.width >= 450 && Device.width <= 767) {
       h5 = 0;
     } else {
-      h5 = 130;
+      h5 = 154;
     }
     return Scaffold(
         body: SingleChildScrollView(
@@ -44,7 +44,7 @@ class _RegistormobileState extends State<Registormobile> {
           ],
         )),
         bottomNavigationBar: Device.width <= 991
-            ? bottom()
+            ? bottom(4,context)
             : const SizedBox(
                 height: 0,
               ));

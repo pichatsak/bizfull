@@ -17,9 +17,12 @@ class _NavMobilesState extends State<NavMobiles> {
   late Color curColor = const Color.fromARGB(0, 0, 0, 0);
   @override
   void initState() {
-    // setState(() {
-    //   curColor = HexColor.fromHex(box.read("colorNav"));
-    // });
+    if (box.read("curpage") == "home") {
+    } else {
+      setState(() {
+        curColor = HexColor.fromHex(box.read("colorCur"));
+      });
+    }
     super.initState();
   }
 
@@ -58,7 +61,7 @@ class _NavMobilesState extends State<NavMobiles> {
                               sizes: 'col-12',
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
+                                    const EdgeInsets.only(left: 10, right: 5),
                                 child: SizedBox(
                                   height: 40,
                                   child: TextFormField(
@@ -69,7 +72,7 @@ class _NavMobilesState extends State<NavMobiles> {
                                     decoration: InputDecoration(
                                         contentPadding: const EdgeInsets.only(
                                             left: 15,
-                                            top: 10,
+                                            top: 7,
                                             bottom: 10,
                                             right: 15),
                                         hintText:
@@ -85,12 +88,12 @@ class _NavMobilesState extends State<NavMobiles> {
                                         filled: true,
                                         fillColor: Colors.white,
                                         suffixIcon: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 10),
+                                          padding: const EdgeInsets.only(
+                                              right: 10, top: 5, bottom: 5),
                                           child: Container(
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
-                                              color: Color(0xfff499b5),
+                                              color: Color(0xffa91f2e),
                                             ),
                                             child: const Padding(
                                               padding: EdgeInsets.all(1.0),
