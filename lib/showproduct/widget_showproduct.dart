@@ -73,7 +73,7 @@ Widget showproduct(context) {
                         ),
                         const Text(
                           "รองเท้าสไตล์มินิ",
-                          style: const TextStyle(
+                          style:  TextStyle(
                               fontSize: 13, color: Colors.black87),
                         ),
                       ],

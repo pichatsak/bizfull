@@ -52,12 +52,15 @@ class _NavDeskTopState extends State<NavDeskTop> {
                           children: <BootstrapCol>[
                             BootstrapCol(
                               sizes: 'col-12',
-                              child: Column(
-                                children: [
-                                  getMenuTop(),
-                                  getMenuMiddle(),
-                                  getMenuBottom()
-                                ],
+                              child: SizedBox(
+                                height: 119,
+                                child: Column(
+                                  children: [
+                                    getMenuTop(),
+                                    getMenuMiddle(),
+                                    getMenuBottom()
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -72,45 +75,49 @@ class _NavDeskTopState extends State<NavDeskTop> {
 
   Widget getMenuTop() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: const [
-              Icon(FontAwesomeIcons.circleQuestion,
-                  size: 20, color: Colors.white),
-              SizedBox(width: 5),
-              Text("ช่วยเหลือ",
-                  style: TextStyle(color: Colors.white, fontSize: 13)),
-              SizedBox(width: 35),
-              // SvgPicture.asset(
-              //   "images/car.svg",
-              //   color: Colors.white,
-              //   width: 20,
-              // ),
-              Icon(
-                // LineIcons.shipping_fast,
-                FontAwesomeIcons.truckFast,
-                size: 16,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "ติดตามสถานะ",
-                style: TextStyle(color: Colors.white, fontSize: 13),
-              ),
-            ],
+          InkWell(onTap: () {
+            Navigator.of(context).pushNamed("/delively");
+          },
+            child: Row(
+              children:  const [
+                // Icon(FontAwesomeIcons.circleQuestion,
+                //     size: 20, color: Colors.white),
+                // SizedBox(width: 5),
+                // Text("ช่วยเหลือ",
+                //     style: TextStyle(color: Colors.white, fontSize: 13)),
+                // SizedBox(width: 35),
+                // SvgPicture.asset(
+                //   "images/car.svg",
+                //   color: Colors.white,
+                //   width: 20,
+                // ),
+                Icon(
+                  // LineIcons.shipping_fast,
+                  FontAwesomeIcons.truckFast,
+                  size: 14,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "ติดตามสถานะ",
+                  style: TextStyle(color: Colors.white, fontSize: 13),
+                ),
+              ],
+            ),
           ),
           Row(
             children: [
               Container(
-                margin: const EdgeInsets.only(bottom: 5.5),
+                margin: const EdgeInsets.only(bottom: 3.5),
                 child: const Icon(
                   FontAwesomeIcons.bagShopping,
-                  size: 20,
+                  size: 14,
                   color: Colors.white,
                 ),
               ),
@@ -125,7 +132,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
               const SizedBox(width: 35),
               const Icon(
                 FontAwesomeIcons.solidBell,
-                size: 20,
+                size: 14,
                 color: Colors.white,
               ),
               const SizedBox(
@@ -138,7 +145,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
               const SizedBox(width: 35),
               const Icon(
                 FontAwesomeIcons.solidCircleUser,
-                size: 20,
+                size: 14,
                 color: Colors.white,
               ),
               const SizedBox(
@@ -179,26 +186,25 @@ class _NavDeskTopState extends State<NavDeskTop> {
       child: Row(
         children: [
           SizedBox(
-            width: 140,
+            width: 146.15,
+            height: 46.73,
             child: Image.asset("images/loconew.png",
                 filterQuality: FilterQuality.high),
           ),
-          const SizedBox(
-            width: 40,
-          ),
+          const SizedBox(width: 40),
           Flexible(
             child: Container(
-              margin: const EdgeInsets.only(top: 15),
+              margin: const EdgeInsets.only(top: 10),
               child: TextFormField(
                 cursorColor: Colors.black,
                 textAlign: TextAlign.start,
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.only(
-                        left: 40, top: 15, bottom: 15, right: 20),
+                        left: 20, top: 10, bottom: 10, right: 20),
                     hintText:
                         'ค้นหา สินค้าและบริการ รวมถึงข้อมูลต่างๆของบิซฟูล ที่นี่',
-                    hintStyle: const TextStyle(color: Colors.black54),
+                    hintStyle: const TextStyle(color: Colors.black54,fontSize: 15),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(15),
@@ -231,7 +237,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
   Widget getMenuBottom() {
     return Padding(
       // padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 6, bottom: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -288,6 +294,9 @@ class _NavDeskTopState extends State<NavDeskTop> {
                                 ? const Color(0xffa91f2e)
                                 : const Color.fromARGB(255, 90, 90, 90);
                             return ListTile(
+                              onTap: () {
+                                 Navigator.of(context).pushNamed("/contack");
+                              },
                               mouseCursor: SystemMouseCursors.click,
                               hoverColor:
                                   const Color.fromARGB(255, 109, 109, 109),
@@ -320,7 +329,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                   "ติดต่อสอบถาม",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -411,7 +420,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                   "บริการ",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -502,7 +511,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                   "อัตราเเลกเปลี่ยน",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -593,7 +602,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                   "สาระน่ารู้",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -632,6 +641,9 @@ class _NavDeskTopState extends State<NavDeskTop> {
                                 : const Color.fromARGB(255, 90, 90, 90);
                             return ListTile(
                               mouseCursor: SystemMouseCursors.click,
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/help");
+                              },
                               hoverColor:
                                   const Color.fromARGB(255, 109, 109, 109),
                               leading: Icon(
@@ -684,7 +696,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                   "ช่วยเหลือ",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ),

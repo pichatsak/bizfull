@@ -28,7 +28,7 @@ class _ShopCartState extends State<ShopCart> {
   final box = GetStorage();
    @override
   void initState() {
-    box.write("curpage", "product");
+    box.write("curpage", "shopcart");
     super.initState();
   }
   @override
@@ -75,8 +75,8 @@ class _ShopCartState extends State<ShopCart> {
                 datashopcart1(character1, setState),
                 datashopcart(character, setState),
                 typeSc == "pc"
-                    ? enddesktop(character2, setState)
-                    : endmobile(character3, setState)
+                    ? enddesktop(character2, setState,context)
+                    : endmobile(character3, setState,context)
               ]),
               SizedBox(height: h),
               typeSc1 == "pc"
@@ -87,7 +87,7 @@ class _ShopCartState extends State<ShopCart> {
                   : Container()
             ],
           )),
-          Navmain(),
+          const Navmain(),
         ],
       ),
     bottomNavigationBar: Device.width <= 991

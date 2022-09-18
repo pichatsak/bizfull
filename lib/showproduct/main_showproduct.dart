@@ -19,7 +19,7 @@ class _ShowProductState extends State<ShowProduct> {
 
   @override
   void initState() {
-    box.write("curpage", "product");
+    box.write("curpage", "showproduct");
     super.initState();
   }
 
@@ -65,7 +65,7 @@ class _ShowProductState extends State<ShowProduct> {
                 ],
               ),
             ),
-            Navmain(),
+            const Navmain(),
           ],
         ),
         bottomNavigationBar: Device.width <= 991

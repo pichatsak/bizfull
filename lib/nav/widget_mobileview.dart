@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 
 class NavMobiles extends StatefulWidget {
-  NavMobiles({Key? key}) : super(key: key);
+  const NavMobiles({Key? key}) : super(key: key);
 
   @override
   State<NavMobiles> createState() => _NavMobilesState();

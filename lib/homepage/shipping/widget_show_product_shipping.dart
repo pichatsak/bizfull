@@ -81,9 +81,9 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm,context) {
 }
 
 var color = Colors.transparent;
-Widget product22(d, hM, hM1, fM, int index) {
+Widget product22(d, hM, hM1, fM, int index,context) {
   return InkWell(
-    onTap: () {},
+    onTap: () {Navigator.of(context).pushNamed("/profile");},
     focusColor: color,
     hoverColor: color,
     highlightColor: color,

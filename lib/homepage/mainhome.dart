@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/homepage/shopping/main_show_shopping1.dart';
@@ -17,7 +15,7 @@ import 'package:bizfull/homepage/widget_slidershow.dart';
 import 'package:bizfull/nav/mainnav.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -32,12 +30,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final scrollController = ScrollController();
   final box = GetStorage();
-  int page =0;
+  int page = 0;
   void scrollListener() {
     if (scrollController.offset > 125) {
       if (!box.read("isShowNav")) {
         box.write("isShowNav", true);
-        box.write("colorCur",box.read("colorNav"));
+        box.write("colorCur", box.read("colorNav"));
         setState(() {});
       }
     } else {
@@ -63,14 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
     double toppd = 5;
     String typeSc;
     if (Device.width > 991) {
-      hbar = 179;
+      hbar = 134;
       typeSc = "pc";
       toppd = 5;
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 0;
       toppd = 0;
       // hbar = 70;
-      typeSc = "pc";
+      typeSc = "mobile";
     } else {
       toppd = 0;
       hbar = 0;
@@ -89,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fluid: false,
                         padding: EdgeInsets.only(top: toppd),
                         children: <Widget>[
-                          SliderTop(),
+                          const SliderTop(),
                           nameshipping(),
                           showproductshipping(
                             context,
@@ -116,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: <Widget>[barfootter()]),
                   ],
                 )),
-            Navmain(),
+            const Navmain(),
           ],
         ),
         floatingActionButton: typeSc == "pc"
@@ -135,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 0,
               ),
         bottomNavigationBar: Device.width <= 991
-            ? bottom(page,context)
+            ? bottom(page, context)
             : const SizedBox(
                 height: 0,
               ));

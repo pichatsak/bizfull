@@ -7,22 +7,18 @@ Widget picture() {
   String typeSc;
   double w;
   double h;
-  double n;
   if (Device.width > 991) {
     typeSc = "pc";
     w = 0;
     h = 0;
-    n = 100;
   } else if (Device.width >= 768 && Device.width <= 991) {
     typeSc = "md";
     w = 450;
     h = 450;
-    n = 100;
   } else {
     typeSc = "mobile";
     w = 360;
     h = 360;
-    n = 100;
   }
 
   return BootstrapRow(children: <BootstrapCol>[

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 enum SingingCharacter3 { lafayette, jefferson }
 
-Widget endmobile(character3, setState) {
+Widget endmobile(character3, setState, context) {
   return Padding(
     padding: const EdgeInsets.only(top: 20),
     child: BootstrapRow(children: <BootstrapCol>[
@@ -42,21 +42,26 @@ Widget endmobile(character3, setState) {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 25, right: 25, top: 8, bottom: 8),
-                                child: Row(
-                                  children: const [
-                                    Text(
-                                      "ชำระเงิน(0)",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ],
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/checkout");
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffed3023),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 25, right: 25, top: 8, bottom: 8),
+                                  child: Row(
+                                    children: const [
+                                      Text(
+                                        "ชำระเงิน(0)",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
