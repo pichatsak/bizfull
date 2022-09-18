@@ -26,11 +26,12 @@ class _ShopCartState extends State<ShopCart> {
   final SingingCharacter3 character3 = SingingCharacter3.lafayette;
 
   final box = GetStorage();
-   @override
+  @override
   void initState() {
     box.write("curpage", "shopcart");
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     String typeSc;

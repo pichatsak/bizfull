@@ -65,11 +65,12 @@ class _ShowProductState extends State<ShowProduct> {
                 ],
               ),
             ),
-            const Navmain(),
+            // ignore: prefer_const_constructors
+            Navmain(),
           ],
         ),
         bottomNavigationBar: Device.width <= 991
-            ? bottom(5,context)
+            ? bottom(5, context)
             : const SizedBox(
                 height: 0,
               ));

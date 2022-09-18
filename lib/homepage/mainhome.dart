@@ -15,7 +15,10 @@ import 'package:bizfull/homepage/widget_slidershow.dart';
 import 'package:bizfull/nav/mainnav.dart';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26384189fe0f6fa471d556e9977f4f8984c12d4d
 import 'package:get_storage/get_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -87,7 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         fluid: false,
                         padding: EdgeInsets.only(top: toppd),
                         children: <Widget>[
-                          const SliderTop(),
+                          // ignore: prefer_const_constructors
+                          SliderTop(),
                           nameshipping(),
                           showproductshipping(
                             context,
@@ -114,7 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: <Widget>[barfootter()]),
                   ],
                 )),
-            const Navmain(),
+            // ignore: prefer_const_constructors
+            Navmain(),
           ],
         ),
         floatingActionButton: typeSc == "pc"

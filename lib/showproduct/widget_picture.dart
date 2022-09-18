@@ -56,7 +56,7 @@ Widget smallunderpicture() {
     n = 80;
   }
   return Padding(
-    padding: const EdgeInsets.only(left: 5,right: 5,bottom: 5),
+    padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
     child: Container(
       height: n,
       decoration: const BoxDecoration(color: Colors.white),
