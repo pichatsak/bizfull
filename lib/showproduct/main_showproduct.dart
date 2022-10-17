@@ -5,6 +5,7 @@ import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_dataproduct.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_datasmallright.dart';
+import 'package:bizfull/showproduct/dataproduct/widget_product_other.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_showlist_mobile.dart';
 import 'package:bizfull/showproduct/widget_bar_showproduct_mobile.dart';
 import 'package:bizfull/showproduct/widget_showproduct.dart';
@@ -123,7 +124,7 @@ class _ShowProductState extends State<ShowProduct> {
                                           width: double.infinity,
                                           child: Row(
                                             children: [
-                                              const SizedBox(width: 15),
+                                              const SizedBox(width: 10),
                                               Container(
                                                 margin: const EdgeInsets.only(
                                                     top: 7),
@@ -158,7 +159,7 @@ class _ShowProductState extends State<ShowProduct> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: dataproduct(setState),
                                         )),
-                                     SizedBox(height: tP),
+                                    SizedBox(height: tP),
                                     Container(
                                         decoration: BoxDecoration(
                                             color: Colors.white,
@@ -168,6 +169,8 @@ class _ShowProductState extends State<ShowProduct> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: comment(context),
                                         )),
+                                    const SizedBox(height: 30),
+                                    productother()
                                   ],
                                 ),
                               ),
@@ -208,12 +211,11 @@ class _ShowProductState extends State<ShowProduct> {
                                             color: Colors.black12,
                                           ),
                                           datasmallright(),
-                                           Container(
+                                          Container(
                                             height: 1,
                                             color: Colors.black12,
                                           ),
                                           datasmallright(),
-                                          
                                         ],
                                       ),
                                     ))

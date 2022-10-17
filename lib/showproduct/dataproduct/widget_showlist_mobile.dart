@@ -53,12 +53,12 @@ Widget showlistmobile(context) {
   }
   return Container(color: Colors.white,
     child: Padding(
-      padding: const EdgeInsets.only(bottom: 0),
+      padding: const EdgeInsets.only(bottom: 4),
       child: Container(
         decoration: const BoxDecoration(color: Colors.white),
         height: h,
         child: Padding(
-          padding: const EdgeInsets.only(left: 5),
+          padding: const EdgeInsets.only(left: 2),
           child: Padding(
             padding: EdgeInsets.only(top: allP, left: allP, bottom: allP, right: 0),
             child: ListView(
@@ -67,10 +67,10 @@ Widget showlistmobile(context) {
                 ...List.generate(10, (index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 7),
-                    child: SizedBox(
-                        // decoration: BoxDecoration(
-                        //     border: Border.all(color: Colors.black12),
-                        //     borderRadius: BorderRadius.circular(5)),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(5)),
                         width: a,
                         child: productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context)),
                   );

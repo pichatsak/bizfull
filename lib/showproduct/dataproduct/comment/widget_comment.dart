@@ -266,7 +266,9 @@ Widget comment(context) {
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: commentbyone(),
       ),
-      Container(height: 1, color: Colors.black12),
+      typeSc1 == "pc"
+          ? Container(height: 1, color: Colors.black12)
+          : Container(),
       typeSc1 == "pc"
           ? Container(
               margin: const EdgeInsets.fromLTRB(0, 20, 0, 10),
