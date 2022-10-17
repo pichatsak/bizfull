@@ -41,9 +41,15 @@ Widget menushowhissuc() {
     hight1 = 10;
   }
   return Padding(
-    padding: const EdgeInsets.only(top: 10, left: 0, right: 0), //rdShow1
+    padding: const EdgeInsets.only(top: 15, left: 0, right: 0), //rdShow1
     child: Container(
-      color: const Color(0xfff3f3f3),
+      decoration: const BoxDecoration(
+          color: Color(0xfff3f3f3),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(7),
+              topRight: Radius.circular(7),
+              bottomLeft: Radius.circular(7),
+              bottomRight: Radius.circular(7))),
       child: Column(
         children: <Widget>[
           const SizedBox(height: 10),
@@ -67,8 +73,10 @@ Widget menushowhissuc() {
                 child: SizedBox(
                     width: sizepicture,
                     height: sizepicture,
-                    child: Image.asset("images/1b.jpg",
-                        fit: BoxFit.cover, filterQuality: FilterQuality.high))),
+                    child: ClipRRect( borderRadius: BorderRadius.circular(7.0),
+                      child: Image.asset("images/1b.jpg",
+                          fit: BoxFit.cover, filterQuality: FilterQuality.high),
+                    ))),
           ]),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -121,7 +129,11 @@ Widget menushowhissuc() {
           ),
           Container(
               height: 50,
-              color: const Color.fromARGB(31, 168, 168, 168),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(31, 168, 168, 168),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(7),
+                      bottomRight: Radius.circular(7))),
               child: Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Row(

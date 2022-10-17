@@ -2,7 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 
 import 'package:flutter/material.dart';
 
-Widget barprofile(context) {
+Widget baradd(context) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
         sizes: 'col-12',
@@ -38,7 +38,22 @@ Widget barprofile(context) {
                           width: 5,
                         ),
                         const Text(
-                          "สินค้าน่าชิป สินค้าน่าช้อป",
+                          "ประวัติการซื้อ",
+                          style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        ),
+                         const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 13,
+                          color: Colors.black54,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          "ที่ต้องจัดส่ง",
                           style: TextStyle(fontSize: 13, color: Colors.black87),
                         ),
                       ],

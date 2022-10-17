@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/checkout/widget_adddress.dart';
+import 'package:bizfull/checkout/widget_bar_mobile.dart';
 import 'package:bizfull/checkout/widget_barcheckout.dart';
 import 'package:bizfull/checkout/widget_bin.dart';
 
@@ -29,6 +30,7 @@ class _CheckOutState extends State<CheckOut> {
     super.initState();
   }
 
+  final Addressradio addressradio = Addressradio.lafayette;
   @override
   Widget build(BuildContext context) {
     double hbar;
@@ -37,14 +39,16 @@ class _CheckOutState extends State<CheckOut> {
     String typeSc;
     EdgeInsets rdShow;
     EdgeInsets rdShow2;
+    double hP;
 
     if (Device.width > 991) {
-      hbar = 179;
+      hbar = 119;
       h = 30;
       typeSc1 = "pc";
       typeSc = "pc";
       rdShow = const EdgeInsets.only(top: 20, left: 20, right: 10);
       rdShow2 = const EdgeInsets.only(top: 20, left: 10, right: 20);
+      hP = 20;
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 70;
       h = 30;
@@ -52,6 +56,7 @@ class _CheckOutState extends State<CheckOut> {
       typeSc = "mobile";
       rdShow = const EdgeInsets.only(top: 20, left: 20, right: 10);
       rdShow2 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+      hP = 0;
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
       h = 30;
@@ -59,13 +64,15 @@ class _CheckOutState extends State<CheckOut> {
       typeSc = "mobile";
       rdShow = const EdgeInsets.only(top: 20, left: 20, right: 10);
       rdShow2 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+      hP = 0;
     } else {
       hbar = 70;
       h = 30;
       typeSc1 = "xs";
       typeSc = "mobile";
-      rdShow = const EdgeInsets.only(top: 10, left: 10, right: 10);
-      rdShow2 = const EdgeInsets.only(top: 20, left: 10, right: 10);
+      rdShow = const EdgeInsets.only(top: 15, left: 20, right: 10);
+      rdShow2 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+      hP = 0;
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
@@ -79,34 +86,43 @@ class _CheckOutState extends State<CheckOut> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barcheckout(context),
+                        typeSc == "pc"
+                            ? barcheckout(context)
+                            : barmobile(context)
                       ]),
-                  BootstrapContainer(fluid: false, children: [
-                    BootstrapRow(children: <BootstrapCol>[
-                      BootstrapCol(
-                        sizes: 'col-lg-8 col-12 col-sm-12 col-md-12',
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: rdShow,
-                              child: Container(
-                                  color: const Color(0xfff3f3f3),
-                                  child: adddress()),
+                  BootstrapContainer(
+                      fluid: typeSc == "pc" ? false : true,
+                      padding: EdgeInsets.only(top: hP),
+                      children: [
+                        BootstrapRow(children: <BootstrapCol>[
+                          BootstrapCol(
+                            sizes: 'col-lg-8 col-12 col-sm-12 col-md-12',
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: rdShow,
+                                  child: Container(
+                                      //  color: const Color(0xfff3f3f3),
+                                      child: adddress(
+                                          context, addressradio, setState)),
+                                ),
+                                menuproduct(),
+                                menuproduct(),
+                              ],
                             ),
-                            menuproduct(),
-                            menuproduct(),
-                          ],
-                        ),
-                      ),
-                      BootstrapCol(
-                          sizes: 'col-lg-4 col-12 col-sm-12 col-md-12',
-                          child: Padding(
-                              padding: rdShow2,
-                              child: Container(
-                                  color: const Color(0xfff3f3f3),
-                                  child: bin(character1, setState))))
-                    ])
-                  ]),
+                          ),
+                          BootstrapCol(
+                              sizes: 'col-lg-4 col-12 col-sm-12 col-md-12',
+                              child: Padding(
+                                  padding: rdShow2,
+                                  child: Container(
+                                      // color: const Color(0xfff3f3f3),
+                                      // decoration: BoxDecoration(
+                                      //     border: Border.all(color: Colors.black12),
+                                      //     borderRadius: BorderRadius.circular(7)),
+                                      child: bin(character1, setState))))
+                        ])
+                      ]),
                   SizedBox(height: h),
                   typeSc1 == "pc"
                       ? BootstrapContainer(

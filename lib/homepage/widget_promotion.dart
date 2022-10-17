@@ -54,7 +54,11 @@ class _SliderBannerState extends State<SliderBanner> {
     double bSl2;
     double sSl2;
     double hSl2;
-    if (Device.width > 991) {
+    double aR;
+    double aRM;
+    double mT;
+    double pT;
+    if (Device.width > 1240) {
       rdShow = const EdgeInsets.only(left: 5, bottom: 5, right: 5, top: 12.4);
       rdShow1 = const EdgeInsets.only(left: 5, bottom: 0, right: 0, top: 0);
       bSl = 15;
@@ -66,6 +70,26 @@ class _SliderBannerState extends State<SliderBanner> {
       bSl2 = 3;
       sSl2 = 10;
       hSl2 = 4;
+      aR = 5 / 1.53;
+      aRM = 10 / 3.3;
+      mT = 0;
+      pT = 20;
+    } else if (Device.width >= 992 && Device.width <= 1240) {
+      rdShow = const EdgeInsets.only(left: 5, bottom: 5, right: 5, top: 12.4);
+      rdShow1 = const EdgeInsets.only(left: 5, bottom: 0, right: 0, top: 0);
+      bSl = 15;
+      sSl = 12;
+      hSl = 4;
+      bSl1 = 3;
+      sSl1 = 10;
+      hSl1 = 4;
+      bSl2 = 3;
+      sSl2 = 10;
+      hSl2 = 4;
+      aR = 5 / 1.53;
+      aRM = 10 / 3.3;
+      mT = 0;
+      pT = 20;
     } else if (Device.width >= 768 && Device.width <= 991) {
       rdShow = const EdgeInsets.only(left: 5, bottom: 5, right: 5, top: 5);
       rdShow1 = const EdgeInsets.only(left: 5, bottom: 5, right: 0, top: 0);
@@ -78,6 +102,10 @@ class _SliderBannerState extends State<SliderBanner> {
       bSl2 = 1;
       sSl2 = 7;
       hSl2 = 3;
+      aR = 5 / 1.53;
+      aRM = 10 / 3.3;
+      mT = 0;
+      pT = 10;
     } else {
       rdShow = const EdgeInsets.only(left: 5, bottom: 5, right: 5, top: 0);
       rdShow1 = const EdgeInsets.only(left: 5, bottom: 0, right: 5, top: 0);
@@ -90,9 +118,13 @@ class _SliderBannerState extends State<SliderBanner> {
       bSl2 = 3;
       sSl2 = 8;
       hSl2 = 3;
+      aR = 5 / 1.53;
+      aRM = 10 / 3.3;
+      mT = 0;
+      pT = 10;
     }
     return Padding(
-      padding: const EdgeInsets.only(left: 5, right: 5, top: 20),
+      padding: EdgeInsets.only(left: 5, right: 5, top: pT),
       child: BootstrapRow(
         children: <BootstrapCol>[
           BootstrapCol(
@@ -102,7 +134,7 @@ class _SliderBannerState extends State<SliderBanner> {
                   CarouselSlider(
                       carouselController: _controller,
                       options: CarouselOptions(
-                          aspectRatio: 10 / 3.3,
+                          aspectRatio: aRM,
                           autoPlay: true,
                           enlargeCenterPage: true,
                           viewportFraction: 1,
@@ -191,69 +223,76 @@ class _SliderBannerState extends State<SliderBanner> {
                   child: BootstrapRow(
                     children: <BootstrapCol>[
                       BootstrapCol(
-                          child: Stack(
-                        children: [
-                          CarouselSlider(
-                              carouselController: _controller2,
-                              options: CarouselOptions(
-                                  aspectRatio: 5 / 1.53,
-                                  autoPlay: true,
-                                  enlargeCenterPage: true,
-                                  viewportFraction: 1,
-                                  enlargeStrategy:
-                                      CenterPageEnlargeStrategy.height,
-                                  autoPlayInterval: const Duration(seconds: 7),
-                                  onPageChanged: (index, reason) {
-                                    setState(() {
-                                      _current2 = index;
-                                    });
-                                  }),
-                              items: imgList1
-                                  .map(
-                                    (item) => Padding(
-                                      padding: const EdgeInsets.only(bottom: 2),
-                                      child: SizedBox(
-                                        //        height: 115,
-                                        width: double.infinity,
-                                        child: Image.asset(
-                                          item,
-                                          filterQuality: FilterQuality.high,
-                                          fit: BoxFit.contain,
+                          child: Container(
+                        margin: EdgeInsets.only(top: mT),
+                        child: Stack(
+                          children: [
+                            CarouselSlider(
+                                carouselController: _controller2,
+                                options: CarouselOptions(
+                                    aspectRatio: aR,
+                                    autoPlay: true,
+                                    enlargeCenterPage: true,
+                                    viewportFraction: 1,
+                                    enlargeStrategy:
+                                        CenterPageEnlargeStrategy.height,
+                                    autoPlayInterval:
+                                        const Duration(seconds: 7),
+                                    onPageChanged: (index, reason) {
+                                      setState(() {
+                                        _current2 = index;
+                                      });
+                                    }),
+                                items: imgList1
+                                    .map(
+                                      (item) => Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 2),
+                                        child: SizedBox(
+                                          //        height: 115,
+                                          width: double.infinity,
+                                          child: Image.asset(
+                                            item,
+                                            filterQuality: FilterQuality.high,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
+                                    )
+                                    .toList()),
+                            Positioned(
+                              bottom: bSl1,
+                              left: 0.0,
+                              right: 0.0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: imgList1.asMap().entries.map((entry) {
+                                  return GestureDetector(
+                                    onTap: () =>
+                                        _controller2.animateToPage(entry.key),
+                                    child: Container(
+                                      width: sSl1,
+                                      height: sSl1,
+                                      margin: EdgeInsets.symmetric(
+                                          vertical: 8.0, horizontal: hSl1),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color:
+                                              (Theme.of(context).brightness ==
+                                                          Brightness.dark
+                                                      ? Colors.white
+                                                      : Colors.black)
+                                                  .withOpacity(
+                                                      _current2 == entry.key
+                                                          ? 0.9
+                                                          : 0.4)),
                                     ),
-                                  )
-                                  .toList()),
-                          Positioned(
-                            bottom: bSl1,
-                            left: 0.0,
-                            right: 0.0,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: imgList1.asMap().entries.map((entry) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _controller2.animateToPage(entry.key),
-                                  child: Container(
-                                    width: sSl1,
-                                    height: sSl1,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 8.0, horizontal: hSl1),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: (Theme.of(context).brightness ==
-                                                    Brightness.dark
-                                                ? Colors.white
-                                                : Colors.black)
-                                            .withOpacity(_current2 == entry.key
-                                                ? 0.9
-                                                : 0.4)),
-                                  ),
-                                );
-                              }).toList(),
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       )),
                       BootstrapCol(
                           child: Stack(

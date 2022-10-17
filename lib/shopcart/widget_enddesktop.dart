@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 
 enum SingingCharacter2 { lafayette, jefferson }
 
-Widget enddesktop(character2, setState,context) {
+Widget enddesktop(character2, setState, context) {
   return Padding(
-    padding: const EdgeInsets.only(top: 20),
+    padding: const EdgeInsets.only(top: 10),
     child: BootstrapRow(children: <BootstrapCol>[
       BootstrapCol(
           sizes: 'col-12',
           child: Center(
             child: Container(
               width: 800,
-              color: const Color(0xfff3f3f3),
+              decoration: BoxDecoration(
+                  //  color: const Color(0xfff3f3f3),
+                  borderRadius: BorderRadius.circular(7)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -29,18 +31,19 @@ Widget enddesktop(character2, setState,context) {
                               Text("ยอดรวม: ", style: TextStyle(fontSize: 14)),
                               Text("฿0.00",
                                   style: TextStyle(color: Color(0xffed3023))),
-                              SizedBox(width: 2),
-                              Icon(Icons.keyboard_arrow_up,
-                                  size: 18, color: Color(0xffed3023)),
-                              SizedBox(width: 10),
+                              // SizedBox(width: 2),
+                              // Icon(Icons.keyboard_arrow_up,
+                              //     size: 18, color: Color(0xffed3023)),
+                              SizedBox(width: 15),
                             ]),
-                            InkWell(onTap: () {
-                              Navigator.of(context).pushNamed("/checkout");
-                            },
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushNamed("/checkout");
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: const Color(0xffed3023),
-                                  borderRadius: BorderRadius.circular(2),
+                                  borderRadius: BorderRadius.circular(7),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
@@ -48,7 +51,7 @@ Widget enddesktop(character2, setState,context) {
                                   child: Row(
                                     children: const [
                                       Text(
-                                        "ชำระเงิน(0)",
+                                        "ชำระเงิน",
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ],

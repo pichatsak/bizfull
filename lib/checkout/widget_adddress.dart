@@ -1,23 +1,39 @@
+import 'package:bizfull/checkout/widget_dialog_address1.dart';
+import 'package:bizfull/checkout/widget_dialog_address1_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget adddress() {
+enum Addressradio { lafayette, rediotwo }
+
+Widget adddress(context, addressradio, setState) {
   double f;
   double ff;
+  double lP;
+  double rP;
+  String tYP;
 
   if (Device.width > 991) {
     f = 14;
     ff = 12;
+    lP = 0;
+    rP = 15;
+    tYP = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     f = 14;
     ff = 12;
+    lP = 0;
+    rP = 10;
+    tYP = "mobile";
   } else {
     f = 13;
     ff = 11;
+    lP = 0;
+    rP = 10;
+    tYP = "mobile";
   }
   return Padding(
-    padding: const EdgeInsets.all(15.0),
+    padding: EdgeInsets.only(right: rP, bottom: 25, left: lP),
     child: Column(
       children: [
         Row(
@@ -41,9 +57,32 @@ Widget adddress() {
                 ),
               ],
             ),
-            const Text(
-              "แก้ไข",
-              style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+            InkWell(
+              highlightColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              onTap: () => showDialog<String>(
+                barrierDismissible: false,
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  insetPadding: tYP == "pc"
+                      ? const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 24.0)
+                      : const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 24.0),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  contentPadding: const EdgeInsets.only(top: 0.0),
+                  content: tYP == "pc"
+                      ? dialog1(context, addressradio, setState)
+                      : dialog1mobile(context),
+                ),
+              ),
+              child: const Text(
+                "แก้ไข",
+                style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+              ),
             ),
           ],
         ),

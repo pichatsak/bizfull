@@ -44,7 +44,6 @@ class _SliderState extends State<SliderTop> {
   final _controllerVdo = YoutubePlayerController(
     params: const YoutubePlayerParams(
       startAt: Duration(seconds: 30),
-      
     ),
   );
 

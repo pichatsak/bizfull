@@ -3,6 +3,7 @@ import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/product/widget_bar.dart';
+import 'package:bizfull/product/widget_bar_product_mobile.dart';
 import 'package:bizfull/product/widget_data_left.dart';
 import 'package:bizfull/product/widget_data_right.dart';
 import 'package:bizfull/product/drawer/widget_dawer_m.dart';
@@ -27,13 +28,15 @@ class _ProductState extends State<Product> {
     box.write("curpage", "product");
     super.initState();
   }
-final GlobalKey<ScaffoldState> key = GlobalKey();
+
+  final GlobalKey<ScaffoldState> key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     double hbar;
     double pad;
     String typeSc1;
     double h;
+    
     String typeSc;
     if (Device.width > 991) {
       hbar = 119;
@@ -62,7 +65,7 @@ final GlobalKey<ScaffoldState> key = GlobalKey();
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
-      key: key,
+        key: key,
         endDrawer: const Drawerproduct(),
         drawerEdgeDragWidth: 0,
         drawer: Container(width: 100),
@@ -76,10 +79,12 @@ final GlobalKey<ScaffoldState> key = GlobalKey();
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barproduct(context),
+                        typeSc == "pc"
+                            ? barproduct(context)
+                            : barproductmobile(context)
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [
                       BootstrapRow(children: <BootstrapCol>[
@@ -91,7 +96,7 @@ final GlobalKey<ScaffoldState> key = GlobalKey();
                             sizes: 'col-lg-10 col-12 col-sm-12 col-md-12',
                             child: Column(
                               children: [
-                                dararight(setState,key),
+                                dararight(setState, key),
                                 Container(
                                   margin:
                                       const EdgeInsets.fromLTRB(0, 30, 0, 20),

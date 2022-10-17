@@ -8,19 +8,31 @@ enum SingingCharacter1 { lafayette, jefferson }
 Widget bin(character1, setState) {
   String typbin;
   double hy;
+  double rP;
+  double tP;
+  double bP;
 
   if (Device.width > 1240) {
     typbin = "pc";
     hy = 20;
+    rP = 0;
+    tP = 0;
+    bP = 0;
   } else if (Device.width >= 992 && Device.width <= 1240) {
     typbin = "lg";
     hy = 10;
+    rP = 0;
+    tP = 0;
+    bP = 0;
   } else {
     typbin = "pc";
     hy = 20;
+    rP = 10;
+    tP = 20;
+    bP = 20;
   }
   return Padding(
-    padding: const EdgeInsets.all(15.0),
+    padding: EdgeInsets.only(right: rP, top: tP, bottom: bP), //15
     child: Column(
       children: [
         typbin == "pc"
@@ -151,7 +163,7 @@ Widget bin(character1, setState) {
         Container(
           decoration: BoxDecoration(
               border: Border.all(color: const Color(0xffa91f2e)),
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(7),
               color: const Color.fromARGB(19, 241, 167, 160)),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 8, top: 8),
@@ -186,7 +198,7 @@ Widget bin(character1, setState) {
         Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black12),
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(7),
             // gradient: const LinearGradient(
             //   begin: Alignment.topLeft,
             //   end: Alignment.bottomLeft,
@@ -290,21 +302,26 @@ Widget bin(character1, setState) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
-              child: Theme(
-                data:
-                    ThemeData(primarySwatch: Colors.red, fontFamily: "Prompt"),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "กรุณาระบุคูปองส่วนลด",
-                      hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
-                      isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(3)),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Colors.white),
-                ),
+              child: TextFormField(
+                cursorColor: Colors.red,
+                decoration: const InputDecoration(
+                    hintText: "กรุณาระบุคูปองส่วนลด",
+                    hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
+                    isDense: true,
+                    contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                    // border: OutlineInputBorder(
+                    //     borderRadius: BorderRadius.all(Radius.circular(7)),
+                    //     borderSide: BorderSide.none),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                      borderSide: BorderSide(color: Colors.black12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                      borderSide: BorderSide(color: Colors.black12),
+                    ),
+                    filled: true,
+                    fillColor: Color(0xfff3f3f3)),
               ),
             ),
             const SizedBox(width: 8),
@@ -312,7 +329,7 @@ Widget bin(character1, setState) {
               height: 46.5,
               width: 100,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(7),
                 color: const Color(0xff2e3192),
               ),
               child: const Center(
@@ -391,7 +408,7 @@ Widget bin(character1, setState) {
             height: 45,
             decoration: BoxDecoration(
                 color: const Color(0xffed3023),
-                borderRadius: BorderRadius.circular(3)),
+                borderRadius: BorderRadius.circular(7)),
             child: const Center(
                 child: Text(
               "สั่งซื้อ",

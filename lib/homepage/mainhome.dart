@@ -15,10 +15,6 @@ import 'package:bizfull/homepage/widget_slidershow.dart';
 import 'package:bizfull/nav/mainnav.dart';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> 26384189fe0f6fa471d556e9977f4f8984c12d4d
 import 'package:get_storage/get_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -63,19 +59,23 @@ class _MyHomePageState extends State<MyHomePage> {
     double hbar;
     double toppd = 5;
     String typeSc;
+    String typM;
     if (Device.width > 991) {
-      hbar = 134;
+      hbar = 116; //134
       typeSc = "pc";
       toppd = 5;
+      typM = "pc";
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 0;
       toppd = 0;
       // hbar = 70;
       typeSc = "mobile";
+      typM = "mobile";
     } else {
       toppd = 0;
       hbar = 0;
       typeSc = "mobile";
+      typM = "mobile";
     }
 
     return Scaffold(
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     SizedBox(height: hbar),
                     BootstrapContainer(
-                        fluid: false,
+                        fluid: typM == "pc" ? false : true,
                         padding: EdgeInsets.only(top: toppd),
                         children: <Widget>[
                           // ignore: prefer_const_constructors
@@ -108,14 +108,21 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.only(top: 20),
                             child: showproductshopping3(context),
                           ),
-                          footter()
+                          typM == "pc" ? footter() : Container()
                         ]),
                     BootstrapContainer(
                         fluid: true,
-                        decoration:
-                            const BoxDecoration(color: Color(0xfff3f3f3)),
+                        decoration: BoxDecoration(
+                            color:
+                                typM == "pc" ? const Color(0xfff3f3f3) : null),
                         padding: const EdgeInsets.only(top: 10),
-                        children: <Widget>[barfootter()]),
+                        children: <Widget>[
+                          typM == "pc"
+                              ? barfootter()
+                              : const SizedBox(
+                                  height: 20,
+                                )
+                        ]),
                   ],
                 )),
             // ignore: prefer_const_constructors

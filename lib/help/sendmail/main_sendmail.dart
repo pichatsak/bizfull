@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/help/sendmail/widget_bar_sendmail.dart';
+import 'package:bizfull/help/sendmail/widget_bar_sendmail_mobile.dart';
 import 'package:bizfull/help/sendmail/widget_sendmail.dart';
 
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
@@ -41,19 +42,19 @@ class _SendmailState extends State<Sendmail> {
       h = 25;
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 70;
-      pad = 10;
+      pad = 5;
       typeSc1 = "md";
       typeSc = "mobile";
       h = 30;
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
-      pad = 10;
+      pad = 0;
       typeSc1 = "xm";
       typeSc = "mobile";
       h = 30;
     } else {
       hbar = 70;
-      pad = 7;
+      pad = 0;
       typeSc1 = "xs";
       typeSc = "mobile";
       h = 0;
@@ -73,10 +74,12 @@ class _SendmailState extends State<Sendmail> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barsendmail(context),
+                        typeSc == "pc"
+                            ? barsendmail(context)
+                            : barsendmailmobile(context)
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [gsendmail()],
                   ),

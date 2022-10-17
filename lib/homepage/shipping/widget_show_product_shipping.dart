@@ -1,10 +1,13 @@
 import 'package:bizfull/other/hover.dart';
 import 'package:bizfull/other/hoverm.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm,context) {
+Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context) {
   return InkWell(
-    onTap: () {Navigator.of(context).pushNamed("/showproduct");},
+    onTap: () {
+      Navigator.of(context).pushNamed("/showproduct");
+    },
     focusColor: color,
     hoverColor: color,
     highlightColor: color,
@@ -81,9 +84,17 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm,context) {
 }
 
 var color = Colors.transparent;
-Widget product22(d, hM, hM1, fM, int index,context) {
+Widget product22(d, hM, hM1, fM, int index, context) {
+  String typeSc;
+  if (Device.width > 991) {
+    typeSc = "profile";
+  } else {
+    typeSc = "profile_mobile";
+  }
   return InkWell(
-    onTap: () {Navigator.of(context).pushNamed("/profile");},
+    onTap: () {
+      Navigator.of(context).pushNamed("/$typeSc");
+    },
     focusColor: color,
     hoverColor: color,
     highlightColor: color,

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 bool _isObscure = true;
 
 var color = Colors.transparent;
-Widget login(setState) {
+Widget login(setState,context) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
       sizes: 'col-6',
@@ -54,13 +54,21 @@ Widget login(setState) {
                         const SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: const Color(0xffaa1f2e),
-                              borderRadius: BorderRadius.circular(15)),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                const Color(0xffaa1f2e),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                                // side: BorderSide(color: Colors.white)
+                              ))),
+                          onPressed: () {Navigator.of(context).pushNamed("/registor");},
                           child: const Padding(
                             padding: EdgeInsets.only(
-                                top: 8, bottom: 8, left: 40, right: 40),
+                                top: 8, bottom: 8, left: 35, right: 35),
                             child: Text(
                               "สมัครสมาชิก",
                               style: TextStyle(
@@ -69,7 +77,23 @@ Widget login(setState) {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //       color: const Color(0xffaa1f2e),
+                        //       borderRadius: BorderRadius.circular(15)),
+                        //   child: const Padding(
+                        //     padding: EdgeInsets.only(
+                        //         top: 8, bottom: 8, left: 40, right: 40),
+                        //     child: Text(
+                        //       "สมัครสมาชิก",
+                        //       style: TextStyle(
+                        //         fontSize: 18,
+                        //         color: Colors.white,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // )
                       ],
                     ),
                     const Padding(
@@ -164,7 +188,7 @@ Widget login(setState) {
                 ),
                 const SizedBox(height: 40),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {Navigator.of(context).pushNamed("/forgetpassword");},
                   highlightColor: color,
                   splashColor: color,
                   hoverColor: color,
@@ -186,13 +210,20 @@ Widget login(setState) {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                      color: const Color(0xffaa1f2e),
-                      borderRadius: BorderRadius.circular(15)),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color(0xffaa1f2e),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        // side: BorderSide(color: Colors.white)
+                      ))),
+                  onPressed: () {},
                   child: const Padding(
                     padding:
-                        EdgeInsets.only(top: 8, bottom: 8, left: 53, right: 53),
+                        EdgeInsets.only(top: 8, bottom: 8, left: 48, right: 48),
                     child: Text(
                       "เข้าสู่ระบบ",
                       style: TextStyle(
@@ -201,6 +232,22 @@ Widget login(setState) {
                       ),
                     ),
                   ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //       color: const Color(0xffaa1f2e),
+                  //       borderRadius: BorderRadius.circular(15)),
+                  //   child: const Padding(
+                  //     padding:
+                  //         EdgeInsets.only(top: 8, bottom: 8, left: 53, right: 53),
+                  //     child: Text(
+                  //       "เข้าสู่ระบบ",
+                  //       style: TextStyle(
+                  //         fontSize: 18,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ],
             ),

@@ -8,7 +8,7 @@ Widget optChoose() {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: const Color(0xffed3023))),
             child: const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -23,7 +23,7 @@ Widget optChoose() {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.black26)),
             child: const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -38,7 +38,7 @@ Widget optChoose() {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.black26)),
             child: const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -53,7 +53,7 @@ Widget optChoose() {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.black26)),
             child: const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -68,7 +68,7 @@ Widget optChoose() {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(7),
                 border: Border.all(color: Colors.black26)),
             child: const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -91,7 +91,7 @@ Widget optChoose2() {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(7),
               border: Border.all(color: const Color(0xffed3023))),
           child: const Padding(
             padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -106,7 +106,7 @@ Widget optChoose2() {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(7),
               border: Border.all(color: Colors.black26)),
           child: const Padding(
             padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -121,7 +121,7 @@ Widget optChoose2() {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(7),
               border: Border.all(color: Colors.black26)),
           child: const Padding(
             padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -136,7 +136,7 @@ Widget optChoose2() {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(7),
               border: Border.all(color: Colors.black26)),
           child: const Padding(
             padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
@@ -151,7 +151,7 @@ Widget optChoose2() {
         padding: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(7),
               border: Border.all(color: Colors.black26)),
           child: const Padding(
             padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),

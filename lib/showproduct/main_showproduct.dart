@@ -2,6 +2,11 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/showproduct/dataproduct/comment/widget_comment.dart';
+import 'package:bizfull/showproduct/dataproduct/widget_dataproduct.dart';
+import 'package:bizfull/showproduct/dataproduct/widget_datasmallright.dart';
+import 'package:bizfull/showproduct/dataproduct/widget_showlist_mobile.dart';
+import 'package:bizfull/showproduct/widget_bar_showproduct_mobile.dart';
 import 'package:bizfull/showproduct/widget_showproduct.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,22 +32,57 @@ class _ShowProductState extends State<ShowProduct> {
   Widget build(BuildContext context) {
     String typeSc1;
     double hbar;
-
+    String uNIT;
+    double hfoot;
+    String typpro;
+    String tyecrop;
+    double lP;
+    double rP;
+    double tP;
     if (Device.width > 991) {
       typeSc1 = "pc";
-      hbar = 179;
+      hbar = 119;
+      uNIT = "pc";
+      hfoot = 60;
+      typpro = "pc";
+      tyecrop = "pc";
+      lP = 20;
+      rP = 15;
+      tP = 15;
     } else if (Device.width >= 768 && Device.width <= 991) {
       typeSc1 = "md";
       hbar = 70;
+      uNIT = "mobile";
+      hfoot = 0;
+      typpro = "mobile";
+      tyecrop = "mobile";
+      lP = 0;
+      rP = 0;
+      tP = 10;
     } else if (Device.width >= 576 && Device.width <= 767) {
       typeSc1 = "xm";
       hbar = 70;
+      uNIT = "mobile";
+      hfoot = 0;
+      typpro = "mobile";
+      tyecrop = "mobile";
+      lP = 0;
+      rP = 0;
+      tP = 10;
     } else {
       typeSc1 = "xs";
       hbar = 70;
+      uNIT = "mobile";
+      hfoot = 0;
+      typpro = "mobile";
+      tyecrop = "mobile";
+      lP = 0;
+      rP = 0;
+      tP = 10;
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
+        backgroundColor: const Color(0xfff3f3f3),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -52,21 +92,149 @@ class _ShowProductState extends State<ShowProduct> {
                   BootstrapContainer(
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
-                      children: [showproduct(context)]),
+                      children: [
+                        uNIT == "pc"
+                            ? showproduct(context)
+                            : barshowproductmobile(context)
+                      ]),
                   BootstrapContainer(
-                      fluid: true, children: [datashowproduct(context)]),
+                      fluid: uNIT == "pc" ? false : true,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: datashowproduct(context, setState),
+                        )
+                      ]),
+                  BootstrapContainer(
+                      fluid: uNIT == "pc" ? false : true,
+                      padding: EdgeInsets.only(top: tP),
+                      children: [
+                        BootstrapRow(
+                          children: <BootstrapCol>[
+                            uNIT == "mobile"
+                                ? BootstrapCol(
+                                    child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          color: Colors.white,
+                                          height: 40,
+                                          width: double.infinity,
+                                          child: Row(
+                                            children: [
+                                              const SizedBox(width: 15),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 7),
+                                                child: const Text(
+                                                  "สินค้าที่เกี่ยวข้อง",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        showlistmobile(context),
+                                      ],
+                                    ),
+                                  ))
+                                : BootstrapCol(child: Container()),
+                            BootstrapCol(
+                              sizes:
+                                  'col-xl-10 col-lg-9 col-sm-12 col-xs-12 col-md-12',
+                              child: Padding(
+                                padding: EdgeInsets.only(left: lP, right: rP),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(
+                                                tyecrop == "pc" ? 7 : 0)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: dataproduct(setState),
+                                        )),
+                                     SizedBox(height: tP),
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(
+                                                tyecrop == "pc" ? 7 : 0)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: comment(context),
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            typpro == "pc"
+                                ? BootstrapCol(
+                                    sizes:
+                                        'col-xl-2 col-lg-3 col-md-12 col-sm-12 col-xs-12',
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 20),
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(7),
+                                                    topRight:
+                                                        Radius.circular(7))),
+                                            height: 50,
+                                            width: double.infinity,
+                                            child: const Center(
+                                                child: Text(
+                                              "สินค้าที่เกี่ยวข้อง",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: "Prompt-Medium"),
+                                            )),
+                                          ),
+                                          datasmallright(),
+                                          Container(
+                                            height: 1,
+                                            color: Colors.black12,
+                                          ),
+                                          datasmallright(),
+                                          Container(
+                                            height: 1,
+                                            color: Colors.black12,
+                                          ),
+                                          datasmallright(),
+                                           Container(
+                                            height: 1,
+                                            color: Colors.black12,
+                                          ),
+                                          datasmallright(),
+                                          
+                                        ],
+                                      ),
+                                    ))
+                                : BootstrapCol(child: Container()),
+                          ],
+                        )
+                      ]),
+                  SizedBox(
+                    height: hfoot,
+                  ),
                   typeSc1 == "pc"
                       ? BootstrapContainer(
                           fluid: true,
-                          decoration:
-                              const BoxDecoration(color: Color(0xfff3f3f3)),
+                          decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 231, 231, 231)),
                           children: <Widget>[barfootterlogin()])
                       : Container()
                 ],
               ),
             ),
-            // ignore: prefer_const_constructors
-            Navmain(),
+            const Navmain(),
           ],
         ),
         bottomNavigationBar: Device.width <= 991

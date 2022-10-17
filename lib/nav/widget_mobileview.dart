@@ -54,61 +54,78 @@ class _NavMobilesState extends State<NavMobiles> {
                     // color: Colors.pink,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 15, bottom: 15),
-                      child:
-                          BootstrapContainer(fluid: false, children: <Widget>[
+                      child: BootstrapContainer(fluid: true, children: <Widget>[
                         BootstrapRow(
                           children: <BootstrapCol>[
                             BootstrapCol(
                               sizes: 'col-12',
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 5),
-                                child: SizedBox(
-                                  height: 40,
-                                  child: TextFormField(
-                                    cursorColor: Colors.black,
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 12),
-                                    decoration: InputDecoration(
-                                        contentPadding: const EdgeInsets.only(
-                                            left: 15,
-                                            top: 7,
-                                            bottom: 10,
-                                            right: 15),
-                                        hintText:
-                                            'ค้นหา สินค้าและบริการ รวมถึงข้อมูลต่างๆของบิซฟูล ที่นี่',
-                                        hintStyle: const TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 12),
-                                        border: UnderlineInputBorder(
-                                          borderSide: BorderSide.none,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        suffixIcon: Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 10, top: 5, bottom: 5),
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xffa91f2e),
-                                            ),
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(1.0),
-                                              child: Icon(
-                                                FontAwesomeIcons
-                                                    .magnifyingGlass,
-                                                color: Colors.white,
-                                                size: 12,
+                              child: Row(
+                                children: [
+                                  const SizedBox(width: 15),
+                                  InkWell(
+                                      onTap: () {},
+                                      child: const Icon(Icons.menu,
+                                          size: 24, color: Colors.white)),
+                                  const SizedBox(width: 5),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      child: SizedBox(
+                                        height: 40,
+                                        child: TextFormField(
+                                          cursorColor: Colors.black,
+                                          textAlign: TextAlign.start,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 12),
+                                          decoration: InputDecoration(
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 15,
+                                                      top: 7,
+                                                      bottom: 10,
+                                                      right: 15),
+                                              hintText:
+                                                  'ค้นหา สินค้าและบริการ รวมถึงข้อมูลต่างๆของบิซฟูล ที่นี่',
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 12),
+                                              border: UnderlineInputBorder(
+                                                borderSide: BorderSide.none,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
                                               ),
-                                            ),
-                                          ),
-                                        )),
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              suffixIcon: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 10,
+                                                    top: 5,
+                                                    bottom: 5),
+                                                child: Container(
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Color(0xffa91f2e),
+                                                  ),
+                                                  child: const Padding(
+                                                    padding:
+                                                        EdgeInsets.all(1.0),
+                                                    child: Icon(
+                                                      FontAwesomeIcons
+                                                          .magnifyingGlass,
+                                                      color: Colors.white,
+                                                      size: 12,
+                                                    ),
+                                                  ),
+                                                ),
+                                              )),
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                           ],

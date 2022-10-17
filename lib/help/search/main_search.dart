@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 
 import 'package:bizfull/help/search/widget_bar_clicksearch.dart';
+import 'package:bizfull/help/search/widget_bar_search_mobile.dart';
 import 'package:bizfull/help/search/widget_search_left.dart';
 import 'package:bizfull/help/search/widget_search_right.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
@@ -51,14 +52,14 @@ class _ClicksearchState extends State<Clicksearch> {
       h = 30;
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
-      pad = 10;
+      pad = 5;
       typeSc1 = "xm";
       typeSc = "mobile";
       typeSc2 = "mobile";
       h = 30;
     } else {
       hbar = 70;
-      pad = 10;
+      pad = 5;
       typeSc1 = "xs";
       typeSc = "mobile";
       typeSc2 = "mobile";
@@ -79,10 +80,12 @@ class _ClicksearchState extends State<Clicksearch> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barclicksearch(context),
+                        typeSc == "pc"
+                            ? barclicksearch(context)
+                            : barsearchmobile(context)
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [
                       BootstrapRow(children: <BootstrapCol>[

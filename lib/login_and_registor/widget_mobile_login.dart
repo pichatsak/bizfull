@@ -1,6 +1,8 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/nav/mainnav.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class Loginmobile extends StatefulWidget {
@@ -16,26 +18,61 @@ var color = Colors.transparent;
 String curpagemobile = "login";
 
 class _LoginmobileState extends State<Loginmobile> {
+  final box = GetStorage();
+  @override
+  void initState() {
+    box.write("curpage", "login");
+    super.initState();
+  }
+
   final username = TextEditingController(text: "sssss");
   final usernameRegis = TextEditingController(text: "123456");
   @override
   Widget build(BuildContext context) {
+    double hbar;
+
+    if (Device.width > 991) {
+      hbar = 119;
+    } else if (Device.width >= 768 && Device.width <= 991) {
+      hbar = 70;
+    } else if (Device.width >= 576 && Device.width <= 767) {
+      hbar = 70;
+    } else {
+      hbar = 70;
+    }
     return Scaffold(
-        body: SingleChildScrollView(
-            child: BootstrapContainer(
-          fluid: false,
-          children: [
-            BootstrapRow(children: <BootstrapCol>[
-              BootstrapCol(
-                  sizes: 'col-12',
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                      color: const Color(0xfff3f3f3), child: login1()))
-            ])
-          ],
-        )),
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    SizedBox(height: hbar),
+                    BootstrapContainer(
+                      fluid: true,
+                      children: [
+                        BootstrapRow(children: <BootstrapCol>[
+                          BootstrapCol(
+                              sizes: 'col-12',
+                              child: SizedBox(
+
+                                  //   color: const Color(0xfff3f3f3)
+                                  child: login1()))
+                        ])
+                      ],
+                    ),
+                  ],
+                )),
+              ),
+              const Navmain(),
+            ],
+          ),
+        ),
         bottomNavigationBar: Device.width <= 991
-            ? bottom(4,context)
+            ? bottom(4, context)
             : const SizedBox(
                 height: 0,
               ));
@@ -130,9 +167,9 @@ class _LoginmobileState extends State<Loginmobile> {
               ),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 20),
           InkWell(
-            onTap: () {},
+            onTap: () {Navigator.of(context).pushNamed("/forgetpassword");},
             highlightColor: color,
             splashColor: color,
             hoverColor: color,
@@ -154,12 +191,19 @@ class _LoginmobileState extends State<Loginmobile> {
             ),
           ),
           const SizedBox(height: 20),
-          Container(
-            decoration: BoxDecoration(
-                color: const Color(0xffaa1f2e),
-                borderRadius: BorderRadius.circular(15)),
+          ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  const Color(0xffaa1f2e),
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                  // side: BorderSide(color: Colors.white)
+                ))),
+            onPressed: () {},
             child: const Padding(
-              padding: EdgeInsets.only(top: 8, bottom: 8, left: 53, right: 53),
+              padding: EdgeInsets.only(top: 8, bottom: 8, left: 35, right: 35),
               child: Text(
                 "เข้าสู่ระบบ",
                 style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/help/clickmm/widget_bar_clickmm.dart';
+import 'package:bizfull/help/clickmm/widget_bar_clickmm_mobile.dart';
 import 'package:bizfull/help/clickmm/widget_mmright.dart';
 import 'package:bizfull/help/clickmm/widget_mmleft.dart';
 
@@ -79,15 +80,19 @@ class _ClickmmState extends State<Clickmm> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barclickmm(context),
+                        typeSc == "pc"
+                            ? barclickmm(context)
+                            : barclickmmmobile(context)
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [
                       BootstrapRow(children: <BootstrapCol>[
                         BootstrapCol(
-                            sizes: 'col-xl-9 col-12 col-sm-12 col-md-12 col-lg-8', child: mmleft(context)),
+                            sizes:
+                                'col-xl-9 col-12 col-sm-12 col-md-12 col-lg-8',
+                            child: mmleft(context)),
                         BootstrapCol(
                             sizes: 'col-xl-3  col-12 col-lg-4',
                             child: typeSc2 == "pc" ? mmright() : Container()),

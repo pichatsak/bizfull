@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_unnecessary_containers
 
-import 'package:bizfull/delively/main_delively.dart';
 import 'package:bizfull/profile/historysuc/widget_menushow.dart';
 import 'package:flutter/material.dart';
 
@@ -12,117 +11,223 @@ class NavDrawer extends StatefulWidget {
 }
 
 class _NavDrawerState extends State<NavDrawer> {
-  final padding = const EdgeInsets.symmetric(horizontal: 20);
+  final padding = const EdgeInsets.symmetric(horizontal: 0);
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: Material(
-        color: const Color(0xfffafafa),
-        child: ListView(
-          children: <Widget>[
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 30),
-            //   child: Container(
-            //       child: Image.asset(
-            //     "images/logo1.png",
-            //     width: 80,
-            //     height: 60,
-            //   )),
-            // ),
-            Container(
-              padding: padding,
-              child: Column(
-                children: [
-                  const SizedBox(height: 12),
-                  Row(children: const [
-                    Text("รายละเอียดสินค้า",
-                        style: TextStyle(
-                            fontSize: 15, fontFamily: "Prompt-Medium"))
-                  ]),
-                  Row(children: const [
-                    Text("หมายเลขสั่งซื้อ : ", style: TextStyle(fontSize: 13)),
-                    Text("000001",
-                        style: TextStyle(
-                            fontSize: 13, color: Color.fromARGB(165, 0, 0, 0)))
-                  ]),
-                  Row(children: const [
-                    Text("เมื่อ : ", style: TextStyle(fontSize: 13)),
-                    Text("30/8/2565 เวลา 19.42 น.",
-                        style: TextStyle(
-                            fontSize: 13, color: Color.fromARGB(165, 0, 0, 0)))
-                  ]),
-                  Row(children: const [
-                    Text("ทั้งหมด : ", style: TextStyle(fontSize: 13)),
-                    Text("2 รายการ",
-                        style: TextStyle(
-                            fontSize: 13, color: Color.fromARGB(165, 0, 0, 0)))
-                  ]),
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("ที่อยู่จัดส่ง : ",
-                            style: TextStyle(fontSize: 13)),
-                        Flexible(
-                          child: Text(
-                              "193 หมู่ 6 ตำบล ดงเจน อำเภอ ภูกามยาว จังหวัด พะยา 56000 อำเภอภูกามยาว, จังหวัดพะเยา, 56000",
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Color.fromARGB(165, 0, 0, 0))),
-                        )
-                      ]),
-                  Row(children: const [
-                    Text("ยอดรวม : ", style: TextStyle(fontSize: 13)),
-                    Text("฿3,900.00",
-                        style:
-                            TextStyle(fontSize: 13, color: Color(0xffed3023)))
-                  ]),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: const [
-                      Text(
-                        "ได้รับสินค้าแล้ว",
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: Color(0xff18baa5),
-                            fontFamily: "Prompt-Medium"),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
+    return Padding(
+      padding: const EdgeInsets.only(top: 0, bottom: 0),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(0),
+          topLeft: Radius.circular(0),
+          // topRight: Radius.circular(10),
+          // bottomRight: Radius.circular(10),
+        ),
+        child: Drawer(
+          child: Material(
+            //   color: const Color(0xfffafafa),
+
+            child: ListView(
+              children: <Widget>[
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 30),
+                //   child: Container(
+                //       child: Image.asset(
+                //     "images/logo1.png",
+                //     width: 80,
+                //     height: 60,
+                //   )),
+                // ),
+                Container(
+                  padding: padding,
+                  child: Column(
                     children: [
-                      InkWell(
-                        onTap: () {
-                         Navigator.of(context).pushNamed("/delively");
-                        },
+                      Card(
+                        // shape: const RoundedRectangleBorder(
+                        //   borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        // ),
+                        margin:
+                            const EdgeInsets.only(left: 0, right: 0, top: 0),
+                        elevation: 4,
                         child: Container(
-                          decoration: BoxDecoration(
-                              color: const Color(0xff2e3192),
-                              borderRadius: BorderRadius.circular(3)),
-                          child: const Padding(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 5, bottom: 5),
-                            child: Text(
-                              "รายละเอียดการจัดส่ง",
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.white),
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage("images/b_nav.png"),
+                                  fit: BoxFit.cover,
+                                  filterQuality: FilterQuality.high)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: Column(
+                              children: [
+                                const SizedBox(height: 12),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text("รายละเอียดสินค้า",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: "Prompt-Medium",
+                                              color: Colors.white))
+                                    ]),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(7)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: Column(
+                                        children: [
+                                          Row(children: const [
+                                            Text("หมายเลขสั่งซื้อ : ",
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.black,
+                                                )),
+                                            Text("000001",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    //  color: Color.fromARGB(165, 0, 0, 0)
+                                                    color: Color.fromARGB(
+                                                        165, 0, 0, 0)))
+                                          ]),
+                                          Row(children: const [
+                                            Text("เมื่อ : ",
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.black,
+                                                )),
+                                            Text("30/8/2565 เวลา 19.42 น.",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Color.fromARGB(
+                                                        165, 0, 0, 0)))
+                                          ]),
+                                          Row(children: const [
+                                            Text("ทั้งหมด : ",
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.black,
+                                                )),
+                                            Text("2 รายการ",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Color.fromARGB(
+                                                        165, 0, 0, 0)))
+                                          ]),
+                                          Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: const [
+                                                Text("ที่อยู่จัดส่ง : ",
+                                                    style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: Colors.black,
+                                                    )),
+                                                Flexible(
+                                                  child: Text(
+                                                      "193 หมู่ 6 ตำบล ดงเจน อำเภอ ภูกามยาว จังหวัด พะยา 56000 อำเภอภูกามยาว, จังหวัดพะเยา, 56000",
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          color: Color.fromARGB(
+                                                              165, 0, 0, 0))),
+                                                )
+                                              ]),
+                                          Row(children: const [
+                                            Text("ยอดรวม : ",
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Colors.black,
+                                                )),
+                                            Text("฿3,900.00",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Color(0xffed3023)))
+                                          ]),
+                                          const SizedBox(height: 0),
+                                          Row(
+                                            children: const [
+                                              Text("สถานะสั่งซื้อ : ",
+                                                  style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.black,
+                                                  )),
+                                              Text(
+                                                "ได้รับสินค้าแล้ว",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Color(0xff18baa5),
+                                                    // color: Colors.black,
+                                                    fontFamily:
+                                                        "Prompt-Medium"),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 20),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pushNamed("/delively");
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: const Color(
+                                                          0xff2e3192),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                  child: const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 10,
+                                                        right: 10,
+                                                        top: 8,
+                                                        bottom: 8),
+                                                    child: Text(
+                                                      "รายละเอียดการจัดส่ง",
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                const SizedBox(height: 15),
+                                //     Container(height: 1, color: Colors.black12),
+                              ],
                             ),
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Column(
+                          children: [
+                            menushowhissuc(),
+                            menushowhissuc(),
+                            menushowhissuc(),
+                            const SizedBox(height: 15),
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                  const SizedBox(height: 15),
-                  Container(height: 1, color: Colors.black12),
-                  const SizedBox(height: 10),
-                  menushowhissuc(),
-                  menushowhissuc(),
-                  menushowhissuc(),
-                  const SizedBox(height: 30),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

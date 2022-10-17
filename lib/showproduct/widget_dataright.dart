@@ -14,10 +14,14 @@ Widget dataright1(context) {
   double pad;
   int f;
   String typeDv = "";
-
+  String cTUM;
+  double numtop;
+  String button;
+  double rbut;
+  double lbut;
   EdgeInsets pad1 = const EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0);
-  if (Device.width > 991) {
-    fontlist = 18;
+  if (Device.width > 1240) {
+    fontlist = 18; //xl
     nV = 15;
     sizestar = 14;
     hSp = 20;
@@ -26,39 +30,81 @@ Widget dataright1(context) {
     pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20);
     typeDv = "pc";
     f = 4;
-  } else if (Device.width >= 768 && Device.width <= 991) {
-    fontlist = 18;
+    cTUM = "pc";
+    numtop = 20;
+    button = "pc";
+    rbut = 10;
+    lbut = 10;
+  } else if (Device.width >= 992 && Device.width <= 1240) {
+    fontlist = 18; //lg
     nV = 15;
     sizestar = 14;
     hSp = 20;
     wSp = 5;
     pad = 15;
     pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20);
-
     typeDv = "pc";
-    f = 6;
-  } else {
-    fontlist = 15;
+    f = 1;
+    cTUM = "pc";
+    numtop = 20;
+    button = "pc";
+    rbut = 10;
+    lbut = 10;
+  } else if (Device.width >= 768 && Device.width <= 991) {
+    fontlist = 16; //md
+    nV = 15;
+    sizestar = 14;
+    hSp = 20;
+    wSp = 5;
+    pad = 15;
+    pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20);
+    typeDv = "pc";
+    f = 7;
+    cTUM = "mobile";
+    numtop = 20;
+    button = "mobile";
+    rbut = 10;
+    lbut = 10;
+  } else if (Device.width >= 576 && Device.width <= 767) {
+    fontlist = 16; //sm
     nV = 13;
     sizestar = 14;
     hSp = 5;
     wSp = 3;
     pad = 7;
-    pad1 = const EdgeInsets.only(top: 20, bottom: 20, left: 0, right: 0);
-
+    pad1 = const EdgeInsets.only(top: 15, bottom: 20, left: 0, right: 0);
     typeDv = "mobile";
-    f = 2;
+    f = 7;
+    cTUM = "mobile";
+    numtop = 20;
+    button = "mobile";
+    rbut = 10;
+    lbut = 10;
+  } else {
+    fontlist = 16; //xs
+    nV = 13;
+    sizestar = 14;
+    hSp = 5;
+    wSp = 3;
+    pad = 7;
+    pad1 = const EdgeInsets.only(top: 15, bottom: 20, left: 0, right: 0);
+    typeDv = "mobile";
+    f = 4;
+    cTUM = "mobile";
+    numtop = 15;
+    button = "mobile";
+    rbut = 5;
+    lbut = 5;
   }
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
       sizes: 'col-12',
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: numtop),
         child: Center(
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
-              //    color: const Color(0xfff3f3f3)
             ),
             child: Column(
               children: [
@@ -249,9 +295,13 @@ Widget dataright1(context) {
                           )
                         ],
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
+                      cTUM == "pc"
+                          ? const SizedBox(
+                              height: 30,
+                            )
+                          : const SizedBox(
+                              height: 20,
+                            ),
                       Row(
                         children: [
                           const SizedBox(
@@ -298,9 +348,13 @@ Widget dataright1(context) {
                           )
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      cTUM == "pc"
+                          ? const SizedBox(
+                              height: 20,
+                            )
+                          : const SizedBox(
+                              height: 15,
+                            ),
                       Row(
                         children: [
                           const SizedBox(
@@ -330,9 +384,13 @@ Widget dataright1(context) {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      cTUM == "pc"
+                          ? const SizedBox(
+                              height: 20,
+                            )
+                          : const SizedBox(
+                              height: 15,
+                            ),
                       // Row(
                       //   children: [
                       //     const SizedBox(
@@ -576,7 +634,7 @@ Widget dataright1(context) {
                             Row(
                               children: [
                                 const SizedBox(
-                                  width: 110,
+                                  width: 40,
                                   child: Text(
                                     "จำนวน",
                                     style: TextStyle(
@@ -665,10 +723,10 @@ Widget dataright1(context) {
                               child: Row(
                                 children: const [
                                   SizedBox(
-                                    width: 125,
+                                    width: 55,
                                   ),
                                   Text(
-                                    "มีสินค้าทั้งหมด 2835 ชิ้น",
+                                    "มีสินค้าทั้งหมด 10 ชิ้น",
                                     style: TextStyle(
                                         color: Colors.black87, fontSize: 12),
                                     textAlign: TextAlign.start,
@@ -681,76 +739,186 @@ Widget dataright1(context) {
                       const SizedBox(
                         height: 30,
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, right: 5),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.of(context).pushNamed("/shopcart");
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        255, 240, 213, 215),
-                                    borderRadius: BorderRadius.circular(2),
-                                    border: Border.all(
-                                        color: const Color(0xffed3023))),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 25, right: 25, top: 12, bottom: 12),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          margin:
-                                              const EdgeInsets.only(bottom: 3),
-                                          child: const Icon(
-                                            FontAwesomeIcons.bagShopping,
-                                            size: 16,
-                                            color: Color(0xffed3023),
-                                          )),
-                                      const SizedBox(
-                                        width: 5,
+                      //ปุ่ม //เฉพาะ xs โทรศัพท์
+                      button == "mobile"
+                          ? Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: rbut),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        minimumSize: Size.zero,
+                                        backgroundColor: Colors.orange,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
                                       ),
-                                      const Text(
-                                        "เพิ่มไปยังรถเข็น",
-                                        style:
-                                            TextStyle(color: Color(0xffed3023)),
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pushNamed("/shopcart");
+                                      },
+                                      child: SizedBox(
+                                        height: 45,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 3),
+                                                child: const Icon(
+                                                  FontAwesomeIcons.bagShopping,
+                                                  size: 16,
+                                                  color: Colors.white,
+                                                )),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Text(
+                                              "เพิ่มไปยังรถเข็น",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: const Color(0xffed3023),
-                                  borderRadius: BorderRadius.circular(2),
-                                  border: Border.all(
-                                      color: const Color(0xffed3023))),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 25, right: 25, top: 12, bottom: 12),
-                                child: Row(
-                                  children: const [
-                                    Text(
-                                      "ซื้อสินค้า",
-                                      style: TextStyle(color: Colors.white),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: lbut),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        minimumSize: Size.zero,
+                                        backgroundColor:
+                                            const Color(0xffed3023),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
+                                      ),
+                                      onPressed: () {},
+                                      child: SizedBox(
+                                        height: 45,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 3),
+                                                child: const Icon(
+                                                  FontAwesomeIcons.bagShopping,
+                                                  size: 16,
+                                                  color: Colors.white,
+                                                )),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            const Text(
+                                              "ซื้อสินค้า",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ],
+                                  ),
+                                )
+                              ],
+                            )
+                          : Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, right: 5),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .pushNamed("/shopcart");
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: cTUM == "pc"
+                                              ? const Color.fromARGB(
+                                                  255, 240, 213, 215)
+                                              : Colors.orange,
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                          border: cTUM == "pc"
+                                              ? Border.all(
+                                                  color:
+                                                      const Color(0xffed3023))
+                                              : null),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 25,
+                                            right: 25,
+                                            top: 12,
+                                            bottom: 12),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 3),
+                                                child: Icon(
+                                                  FontAwesomeIcons.bagShopping,
+                                                  size: 16,
+                                                  color: cTUM == "pc"
+                                                      ? const Color(0xffed3023)
+                                                      : Colors.white,
+                                                )),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              "เพิ่มไปยังรถเข็น",
+                                              style: TextStyle(
+                                                  color: cTUM == "pc"
+                                                      ? const Color(0xffed3023)
+                                                      : Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xffed3023),
+                                        borderRadius: BorderRadius.circular(7),
+                                        border: Border.all(
+                                            color: const Color(0xffed3023))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 25,
+                                          right: 25,
+                                          top: 12,
+                                          bottom: 12),
+                                      child: Row(
+                                        children: const [
+                                          Text(
+                                            "ซื้อสินค้า",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 )

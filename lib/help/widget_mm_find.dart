@@ -24,7 +24,7 @@ Widget mmFind() {
     pad = 20;
     pad1 = 15;
     fO = 23;
-    hE = 125;
+    hE = 150;
     hT = 8;
     hS = 0;
     ok = "mobile";

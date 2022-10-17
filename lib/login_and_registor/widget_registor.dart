@@ -6,7 +6,7 @@ bool _isObscure2 = true;
 bool _isObscure1 = true;
 final username = TextEditingController(text: "sssss");
 var color = Colors.transparent;
-Widget registor(setState) {
+Widget registor(setState,context) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
       sizes: 'col-6',
@@ -52,13 +52,20 @@ Widget registor(setState) {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: const Color(0xffaa1f2e),
-                          borderRadius: BorderRadius.circular(15)),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color(0xffaa1f2e),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ))),
+                      onPressed: () {Navigator.of(context).pushNamed("/login");},
                       child: const Padding(
                         padding: EdgeInsets.only(
-                            top: 8, bottom: 8, left: 53, right: 53),
+                            top: 8, bottom: 8, left: 48, right: 48),
                         child: Text(
                           "เข้าสู่ระบบ",
                           style: TextStyle(
@@ -68,6 +75,22 @@ Widget registor(setState) {
                         ),
                       ),
                     ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //       color: const Color(0xffaa1f2e),
+                    //       borderRadius: BorderRadius.circular(15)),
+                    //   child: const Padding(
+                    //     padding: EdgeInsets.only(
+                    //         top: 8, bottom: 8, left: 53, right: 53),
+                    //     child: Text(
+                    //       "เข้าสู่ระบบ",
+                    //       style: TextStyle(
+                    //         fontSize: 18,
+                    //         color: Colors.white,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -231,13 +254,20 @@ Widget registor(setState) {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: const Color(0xffaa1f2e),
-                          borderRadius: BorderRadius.circular(15)),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color(0xffaa1f2e),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ))),
+                      onPressed: () {},
                       child: const Padding(
                         padding: EdgeInsets.only(
-                            top: 8, bottom: 8, left: 40, right: 40),
+                            top: 8, bottom: 8, left: 35, right: 35),
                         child: Text(
                           "สมัครสมาชิก",
                           style: TextStyle(
@@ -247,6 +277,22 @@ Widget registor(setState) {
                         ),
                       ),
                     ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //       color: const Color(0xffaa1f2e),
+                    //       borderRadius: BorderRadius.circular(15)),
+                    //   child: const Padding(
+                    //     padding: EdgeInsets.only(
+                    //         top: 8, bottom: 8, left: 40, right: 40),
+                    //     child: Text(
+                    //       "สมัครสมาชิก",
+                    //       style: TextStyle(
+                    //         fontSize: 18,
+                    //         color: Colors.white,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

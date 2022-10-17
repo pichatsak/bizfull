@@ -58,14 +58,14 @@ Widget datashopcart1(character1, setState) {
   }
 
   return Padding(
-    padding: const EdgeInsets.only(top: 20),
+    padding: const EdgeInsets.only(top: 10),
     child: BootstrapRow(children: <BootstrapCol>[
       BootstrapCol(
           sizes: 'col-12',
           child: Center(
-            child: Container(
+            child: SizedBox(
               width: 800,
-              color: const Color(0xfff3f3f3),
+              //  color: const Color(0xfff3f3f3),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -78,7 +78,7 @@ Widget datashopcart1(character1, setState) {
                             Container(
                                 decoration: BoxDecoration(
                                     color: const Color(0xffed3023),
-                                    borderRadius: BorderRadius.circular(3)),
+                                    borderRadius: BorderRadius.circular(5)),
                                 child: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 7, right: 7, top: 1, bottom: 1),
@@ -120,7 +120,7 @@ Widget datashopcart1(character1, setState) {
                     child: Container(
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 240, 213, 215),
-                          borderRadius: BorderRadius.circular(3)),
+                          borderRadius: BorderRadius.circular(7)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -165,9 +165,12 @@ Widget datashopcart1(character1, setState) {
                                 child: SizedBox(
                                     width: sizepicture,
                                     height: sizepicture,
-                                    child: Image.asset("images/1b.jpg",
-                                        fit: BoxFit.cover,
-                                        filterQuality: FilterQuality.high))),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(7.0),
+                                      child: Image.asset("images/1b.jpg",
+                                          fit: BoxFit.cover,
+                                          filterQuality: FilterQuality.high),
+                                    ))),
                           ])),
                       BootstrapCol(
                           sizes: 'col-12 col-lg-10 col-sm-12',
@@ -308,7 +311,18 @@ Widget datashopcart1(character1, setState) {
                 ],
               ),
             ),
-          ))
+          )),
+      BootstrapCol(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15, top: 5, right: 15),
+          child: Center(
+              child: Container(
+            width: 765,
+            height: 1,
+            color: Colors.black12,
+          )),
+        ),
+      )
     ]),
   );
 }

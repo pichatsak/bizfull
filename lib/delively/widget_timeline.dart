@@ -7,22 +7,22 @@ Widget timeline() {
   double pad;
   double fO;
   double fO1;
-  String Typ;
+  String tYp;
   if (Device.width > 991) {
     pad = 50;
     fO = 14;
     fO1 = 13;
-    Typ = "pc";
+    tYp = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     pad = 50;
     fO = 14;
     fO1 = 13;
-    Typ = "pc";
+    tYp = "pc";
   } else {
     pad = 30;
     fO = 13;
     fO1 = 12;
-    Typ = "mobile";
+    tYp = "mobile";
   }
   return Column(
     children: [
@@ -67,7 +67,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -129,7 +129,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -191,7 +191,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -252,7 +252,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -314,7 +314,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -376,7 +376,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -438,7 +438,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,
@@ -496,7 +496,7 @@ Widget timeline() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Typ == "pc"
+                tYp == "pc"
                     ? Text('วันที่ 14 ก.ย. 2565',
                         style: TextStyle(
                             fontSize: fO1,

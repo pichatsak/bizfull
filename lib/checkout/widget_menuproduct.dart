@@ -22,29 +22,27 @@ Widget menuproduct() {
     hightfree = 0;
     hight1 = 10;
     fontsele = 15;
-    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 25);
     vs = "pc";
     padlg = 0;
-  } 
-  else if (Device.width >= 992 && Device.width <= 1240) {
+  } else if (Device.width >= 992 && Device.width <= 1240) {
     iconsize = 16;
     namelist = 15;
-    sizepicture = 95;
+    sizepicture = 93;
     hightfree = 0;
     hight1 = 10;
     fontsele = 15;
-    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 25);
     vs = "pc";
     padlg = 10;
-  }
-  else if (Device.width >= 768 && Device.width <= 991) {
+  } else if (Device.width >= 768 && Device.width <= 991) {
     iconsize = 16;
     namelist = 15;
     sizepicture = 95;
     hightfree = 0;
     hight1 = 10;
     fontsele = 15;
-    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 20);
     vs = "pc";
     padlg = 0;
   } else if (Device.width >= 576 && Device.width <= 767) {
@@ -54,7 +52,7 @@ Widget menuproduct() {
     hightfree = 10;
     hight1 = 10;
     fontsele = 15;
-    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 10);
+    rdShow1 = const EdgeInsets.only(top: 20, left: 20, right: 20);
     vs = "pc";
     padlg = 0;
   } else {
@@ -64,7 +62,7 @@ Widget menuproduct() {
     hightfree = 10;
     hight1 = 10;
     fontsele = 15;
-    rdShow1 = const EdgeInsets.only(top: 10, left: 10, right: 10);
+    rdShow1 = const EdgeInsets.only(top: 15, left: 20, right: 20);
     vs = "mobile";
     padlg = 0;
   }
@@ -74,7 +72,13 @@ Widget menuproduct() {
       BootstrapCol(
           sizes: 'col-12',
           child: Container(
-            color: const Color(0xfff3f3f3),
+            decoration: const BoxDecoration(
+                color: Color(0xfff3f3f3),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(7),
+                    topRight: Radius.circular(7),
+                    bottomLeft: Radius.circular(7),
+                    bottomRight: Radius.circular(7))),
             child: Column(
               children: <Widget>[
                 ListTile(
@@ -103,9 +107,12 @@ Widget menuproduct() {
                               child: SizedBox(
                                   width: sizepicture,
                                   height: sizepicture,
-                                  child: Image.asset("images/1b.jpg",
-                                      fit: BoxFit.cover,
-                                      filterQuality: FilterQuality.high))),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(7.0),
+                                    child: Image.asset("images/1b.jpg",
+                                        fit: BoxFit.cover,
+                                        filterQuality: FilterQuality.high),
+                                  ))),
                         ])),
                     BootstrapCol(
                         sizes: 'col-12 col-lg-10 col-sm-12',
@@ -167,7 +174,11 @@ Widget menuproduct() {
                 const SizedBox(height: 10),
                 Container(
                     height: 50,
-                    color: const Color.fromARGB(31, 168, 168, 168),
+                    decoration: const BoxDecoration(
+                        color: Color.fromARGB(31, 168, 168, 168),
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(7),
+                            bottomRight: Radius.circular(7))),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
                       child: vs == "pc"

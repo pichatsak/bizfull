@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/help/clickbabymm/widget_babymmleft.dart';
 import 'package:bizfull/help/clickbabymm/widget_babymmright.dart';
+import 'package:bizfull/help/clickbabymm/widget_bar_babymm_mobile.dart';
 import 'package:bizfull/help/clickbabymm/widget_bar_clickbabtmm.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
@@ -78,10 +79,12 @@ class _ClickbaymmState extends State<Clickbaymm> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        barclickbabymm(context),
+                        typeSc == "pc"
+                            ? barclickbabymm(context)
+                            : barbabymmmobile(context)
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [
                       BootstrapRow(children: <BootstrapCol>[

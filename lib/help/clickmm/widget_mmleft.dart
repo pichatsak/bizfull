@@ -18,8 +18,10 @@ Widget mmleft(context) {
   double pL;
   double pR;
   double pT;
+  String mM;
   if (Device.width > 991) {
     fM = 36;
+    mM = "pc";
     zC = 20;
     pA = 11;
     tC = 6;
@@ -35,6 +37,7 @@ Widget mmleft(context) {
     pT = 0;
   } else if (Device.width >= 768 && Device.width <= 991) {
     fM = 20;
+    mM = "mobile";
     zC = 14;
     pA = 9;
     tC = 0;
@@ -47,9 +50,10 @@ Widget mmleft(context) {
     hS1 = 15;
     pL = 20;
     pR = 20;
-    pT = 10;
+    pT = 0;
   } else {
     fM = 18;
+    mM = "mobile";
     zC = 14;
     pA = 8;
     tC = 0;
@@ -62,46 +66,51 @@ Widget mmleft(context) {
     hS1 = 10;
     pL = 20;
     pR = 20;
-    pT = 10;
+    pT = 0;
   }
   return Padding(
     padding: EdgeInsets.only(left: pL, right: pR, top: pT),
     child: Column(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: tC, bottom: bC),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(90),
-                  color: const Color.fromARGB(90, 240, 173, 181)),
-              child: Padding(
-                padding: EdgeInsets.all(pA),
-                child: Container(
-                  margin: const EdgeInsets.only(top: 0),
-                  child: Icon(
-                    FontAwesomeIcons.store,
-                    color: const Color(0xffa91f2e),
-                    size: zC,
+        mM == "pc"
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: tC, bottom: bC),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(90),
+                        color: const Color.fromARGB(90, 240, 173, 181)),
+                    child: Padding(
+                      padding: EdgeInsets.all(pA),
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 0),
+                        child: Icon(
+                          FontAwesomeIcons.store,
+                          color: const Color(0xffa91f2e),
+                          size: zC,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: wM,
-            ),
-            Flexible(
-              child: Text(
-                "บัญชีของฉัน",
-                style: TextStyle(fontSize: fM, fontFamily: "Prompt-Medium"),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
+                  SizedBox(
+                    width: wM,
+                  ),
+                  Flexible(
+                    child: Text(
+                      "บัญชีของฉัน",
+                      style:
+                          TextStyle(fontSize: fM, fontFamily: "Prompt-Medium"),
+                    ),
+                  ),
+                ],
+              )
+            : Container(),
+        mM == "pc"
+            ? const SizedBox(
+                height: 20,
+              )
+            : Container(),
         SizedBox(
           width: double.infinity,
           child: Text(
@@ -115,6 +124,7 @@ Widget mmleft(context) {
         SizedBox(
           width: double.infinity,
           child: InkWell(
+            borderRadius: BorderRadius.circular(5),
             onTap: () {
               Navigator.of(context).pushNamed("/clickbabymm");
             },

@@ -9,21 +9,33 @@ Widget bankprofile() {
   String add;
   double fM;
   double fM1;
+  double pad1;
+  double pad2;
+  String nB;
   if (Device.width > 991) {
     pAD = 0;
     add = "pc";
     fM = 16;
     fM1 = 14;
+    pad1 = 30;
+    pad2 = 10;//20
+    nB = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     pAD = 0;
-    add = "pc";
+    add = "mobile";
     fM = 16;
     fM1 = 14;
+    pad1 = 20;
+    pad2 = 10;
+    nB = "mobile";
   } else {
     pAD = 10;
     add = "mobile";
     fM = 15;
     fM1 = 13;
+    pad1 = 10;
+    pad2 = 10;
+    nB = "mobile";
   }
 
   return BootstrapRow(children: <BootstrapCol>[
@@ -33,36 +45,44 @@ Widget bankprofile() {
           padding: EdgeInsets.only(left: pAD, right: pAD),
           child: Container(
             decoration: BoxDecoration(
-                color: const Color(0xfff3f3f3),
+             //   color: nB == "pc" ? const Color(0xfff3f3f3) : null,
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 30, top: 20, bottom: 20, right: 30),
+              padding: EdgeInsets.only(
+                  left: pad1, top: pad2, bottom: pad2, right: pad1),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(children: [
-                            Text("บัญชีธนาคารของฉัน",
-                                style: TextStyle(
-                                    fontSize: fM, fontFamily: "Prompt-Medium"))
-                          ]),
-                          Row(children: [
-                            Text("จัดการและตั้งค่าบัญชีธนาคารของคุณ",
-                                style: TextStyle(
-                                    fontSize: fM1, color: Colors.black87))
-                          ]),
-                        ],
-                      ),
+                      nB == "pc"
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(children: [
+                                  Text("บัญชีธนาคารของฉัน",
+                                      style: TextStyle(
+                                          fontSize: fM,
+                                          fontFamily: "Prompt-Medium"))
+                                ]),
+                                Row(children: [
+                                  Text("จัดการและตั้งค่าบัญชีธนาคารของคุณ",
+                                      style: TextStyle(
+                                          fontSize: fM1, color: Colors.black87))
+                                ]),
+                              ],
+                            )
+                          : Row(children: [
+                              Text("เพิ่มบัญชีธนาคารของฉัน",
+                                  style: TextStyle(
+                                      fontSize: fM,
+                                      fontFamily: "Prompt-Medium"))
+                            ]),
                       add == "pc"
                           ? Container(
                               decoration: BoxDecoration(
                                 color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(2),
+                                borderRadius: BorderRadius.circular(7),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -109,16 +129,15 @@ Widget bankprofile() {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  Container(height: 1, color: Colors.black12),
-                  SizedBox(
+                  nB == "pc"
+                      ? Container(height: 1, color: Colors.black12)
+                      : Container(),
+                  Container(
                     height: 200,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 30),
-                      child: const Center(
-                          child: Text("คุณยังไม่มีบัญชีธนาคาร",
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.black87))),
-                    ),
+                    child: const Center(
+                        child: Text("คุณยังไม่มีบัญชีธนาคาร",
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.black87))),
                   ),
                   const SizedBox(height: 30)
                 ],

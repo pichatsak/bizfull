@@ -3,8 +3,8 @@ library pager;
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class PageProfile extends StatefulWidget {
-  PageProfile({
+class Pagecomment extends StatefulWidget {
+  Pagecomment({
     Key? key,
     required this.totalPages,
     required this.onPageChanged,
@@ -43,10 +43,10 @@ class PageProfile extends StatefulWidget {
   final Color pageChangeIconColor;
 
   @override
-  State<PageProfile> createState() => _PageProfileState();
+  State<Pagecomment> createState() => _PagecommentState();
 }
 
-class _PageProfileState extends State<PageProfile> {
+class _PagecommentState extends State<Pagecomment> {
   @override
   Widget build(BuildContext context) {
     pagesViewValidation();

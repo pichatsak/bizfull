@@ -215,7 +215,7 @@ Widget showdesktopshippingNew(context) {
                       height: h,
                       decoration: const BoxDecoration(color: Colors.white),
                       child: Padding(
-                        padding: EdgeInsets.all(allP),
+                        padding: EdgeInsets.only(left: allP,top: allP,bottom: allP,right: 0),
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[

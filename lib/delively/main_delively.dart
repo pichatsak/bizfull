@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 
 import 'package:bizfull/delively/widget_bar_delively.dart';
+import 'package:bizfull/delively/widget_bar_delively_mobile.dart';
 import 'package:bizfull/delively/widget_find.dart';
 import 'package:bizfull/delively/widget_list_address.dart';
 
@@ -43,22 +44,22 @@ class _DelivelyState extends State<Delively> {
       h = 55;
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 70;
-      pad = 10;
+      pad = 20;
       typeSc1 = "md";
       typeSc = "mobile";
-      h = 30;
+      h = 10;
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
-      pad = 10;
+      pad = 20;
       typeSc1 = "xm";
       typeSc = "mobile";
-      h = 30;
+      h = 10;
     } else {
       hbar = 70;
       pad = 10;
       typeSc1 = "xs";
       typeSc = "mobile";
-      h = 30;
+      h = 10;
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
@@ -75,10 +76,12 @@ class _DelivelyState extends State<Delively> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        bardelively(context),
+                        typeSc == "pc"
+                            ? bardelively(context)
+                            : bardelivelymobile(context),
                       ]),
                   BootstrapContainer(
-                    fluid: false,
+                    fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
                     children: [find(), listaddress()],
                   ),

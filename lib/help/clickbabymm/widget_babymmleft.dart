@@ -26,7 +26,7 @@ Widget babymmleft() {
     fM2 = 14;
     pL = 20;
     pR = 20;
-    pT = 10;
+    pT = 5;
   }
   return Padding(
     padding: EdgeInsets.only(left: pL, right: pR,top: pT),

@@ -90,11 +90,11 @@ Widget listhistorysuc(context, key) {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                        color: const Color(0xff2e3192),
-                        borderRadius: BorderRadius.circular(3)),
+                        color:const Color(0xff2e3192),
+                        borderRadius: BorderRadius.circular(7)),
                     child: const Padding(
                       padding: EdgeInsets.only(
-                          left: 10, right: 10, top: 5, bottom: 5),
+                          left: 10, right: 10, top: 8, bottom: 8),
                       child: Text(
                         "ดูรายละเอียด",
                         style: TextStyle(fontSize: 13, color: Colors.white),
@@ -111,7 +111,11 @@ Widget listhistorysuc(context, key) {
 
 Widget listhistorysuc1() {
   return Container(
-      color: const Color.fromARGB(71, 253, 195, 190),
+      decoration: BoxDecoration(
+          color:
+              //const Color.fromARGB(71, 253, 195, 190),
+              const Color(0xfff3f3f3),
+          borderRadius: BorderRadius.circular(7)),
       child: Padding(
         padding: const EdgeInsets.only(top: 15, bottom: 15),
         child: BootstrapRow(children: <BootstrapCol>[
@@ -193,11 +197,11 @@ Widget listhistorysuc1() {
                     const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
-                          color: const Color(0xff2e3192),
-                          borderRadius: BorderRadius.circular(3)),
+                        color:const Color(0xff2e3192),
+                        borderRadius: BorderRadius.circular(7)),
                       child: const Padding(
                         padding: EdgeInsets.only(
-                            left: 10, right: 10, top: 5, bottom: 5),
+                            left: 10, right: 10, top: 8, bottom: 8),
                         child: Text(
                           "ดูรายละเอียด",
                           style: TextStyle(fontSize: 13, color: Colors.white),
@@ -241,7 +245,7 @@ Widget listhistorysucmoblile(key) {
           Container(height: 1, color: Colors.black12),
           const SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Center(
                 child: Column(

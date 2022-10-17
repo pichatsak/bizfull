@@ -12,7 +12,7 @@ class Drawerproduct extends StatefulWidget {
 }
 
 class _DrawerproductState extends State<Drawerproduct> {
-  final padding = const EdgeInsets.symmetric(horizontal: 20);
+  final padding = const EdgeInsets.symmetric(horizontal: 0);
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,7 +33,7 @@ class _DrawerproductState extends State<Drawerproduct> {
               padding: padding,
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  // const SizedBox(height: 20),
                   datam(),
                   const SizedBox(height: 30),
                 ],

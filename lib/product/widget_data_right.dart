@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget dararight(setState,key) {
+Widget dararight(setState, key) {
   double b;
   double a;
 
@@ -21,7 +21,8 @@ Widget dararight(setState,key) {
   double fSd;
   double hSp3;
   double fSm;
-
+  double pM;
+  double pB;
   if (Device.width > 1240) {
     hSp2 = 5;
     fSd = 14;
@@ -34,6 +35,8 @@ Widget dararight(setState,key) {
     T = 5;
     R = 5;
     L = 5;
+    pM = 0;
+    pB = 0;
   } else if (Device.width >= 992 && Device.width <= 1240) {
     hSp2 = 5;
     fSd = 14;
@@ -46,6 +49,8 @@ Widget dararight(setState,key) {
     T = 5;
     R = 5;
     L = 5;
+    pM = 0;
+    pB = 0;
   } else if (Device.width >= 768 && Device.width <= 991) {
     hSp2 = 5;
     fSd = 13;
@@ -58,6 +63,8 @@ Widget dararight(setState,key) {
     R = 3.5;
     L = 3.5;
     bar = "tablet";
+    pM = 5;
+    pB = 10;
   } else if (Device.width >= 576 && Device.width <= 767) {
     hSp2 = 5;
     fSd = 12;
@@ -70,6 +77,8 @@ Widget dararight(setState,key) {
     T = 3.5;
     R = 3.5;
     L = 3.5;
+    pM = 2;
+    pB = 4;
   } else {
     hSp2 = 5;
     fSd = 12;
@@ -82,6 +91,8 @@ Widget dararight(setState,key) {
     T = 3.5;
     R = 3.5;
     L = 3.5;
+    pM = 2;
+    pB = 4;
   }
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
@@ -249,14 +260,16 @@ Widget dararight(setState,key) {
                 ),
               )
             : Padding(
-                padding: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
+                padding: const EdgeInsets.only(
+                    bottom: 10, left: 0, right: 0, top: 10), //5
                 child: Container(
-                  height: 60,
+                  //   height: 60,
+
                   decoration: BoxDecoration(
-                      color: const Color(0xfff3f3f3),
+                      //    color: const Color(0xfff3f3f3),
                       borderRadius: BorderRadius.circular(5)),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    padding: EdgeInsets.only(left: pB, right: pB),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -331,19 +344,24 @@ Widget dararight(setState,key) {
                                   //         FontAwesomeIcons.chevronDown,
                                   //         size: 14,
                                   //         color: Colors.black87)),
-                                   SizedBox(
-                                  width: 70,
-                                  height: 30,
-                                  child: dropdownsell(setState),
-                                )
+                                  SizedBox(
+                                    width: 70,
+                                    height: 30,
+                                    child: dropdownsell(setState),
+                                  )
                                 ],
                               ),
                             ),
                           ),
-                         
                         ]),
                         InkWell(
-                          onTap: () {key.currentState.openEndDrawer();},
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          onTap: () {
+                            key.currentState.openEndDrawer();
+                          },
                           child: Container(
                               margin: const EdgeInsets.only(top: 0),
                               child: const Icon(
@@ -358,69 +376,59 @@ Widget dararight(setState,key) {
               )),
     BootstrapCol(
         sizes: 'col-12',
-        child: Center(
+        child: Padding(
+          padding: EdgeInsets.only(left: pM, right: pM),
           child: Wrap(
             children: [
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
-              Card(
-                child: SizedBox(
-                    height: h,
-                    width: a,
-                    child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm)),
-              ),
+              // Card(
+              //     child: SizedBox(
+              //         height: h,
+              //         width: a,
+              //         child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
+
+              ...List.generate(10, (index) {
+                return Column(
+                  children: [
+                    if (bar == "pc") ...[
+                      Card(
+                          child: SizedBox(
+                              height: h,
+                              width: a,
+                              child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
+                    ] else if (bar == "tablet") ...[
+                      BootstrapCol(
+                        sizes: 'col-3',
+                        child: Card(
+                            margin: const EdgeInsets.all(5.0),
+                            child: SizedBox(
+                                height: h,
+                                // width: a,
+                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
+                      )
+                    ] else if (bar == "sm") ...[
+                      BootstrapCol(
+                        sizes: 'col-4',
+                        child: Card(
+                            margin: const EdgeInsets.all(2.0),
+                            child: SizedBox(
+                                height: h,
+                                // width: a,
+                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
+                      )
+                    ] else if (bar == "mobile") ...[
+                      BootstrapCol(
+                        sizes: 'col-6',
+                        child: Card(
+                            margin: const EdgeInsets.all(2.0),
+                            child: SizedBox(
+                                height: h,
+                                // width: a,
+                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
+                      )
+                    ],
+                  ],
+                );
+              })
             ],
           ),
         ))

@@ -15,6 +15,7 @@ Widget find() {
   double fM;
   String ok;
   String ok1;
+  double tR;
   if (Device.width > 991) {
     pad = 20;
     pad1 = 0;
@@ -26,17 +27,19 @@ Widget find() {
     fM = 15;
     ok = "pc";
     ok1 = "pc";
+    tR = 15;
   } else if (Device.width >= 768 && Device.width <= 991) {
     pad = 20;
     pad1 = 15;
     fO = 23;
-    hE = 125;
+    hE = 150;
     hT = 8;
     hT1 = 10;
     hS = 0;
     fM = 13;
     ok = "mobile";
-    ok1 = "pc";
+    ok1 = "mobile";
+    tR = 30;
   } else {
     pad = 10;
     pad1 = 15;
@@ -48,6 +51,7 @@ Widget find() {
     fM = 13;
     ok = "mobile";
     ok1 = "mobile";
+    tR = 15;
   }
   return Padding(
     padding: EdgeInsets.only(left: pad, right: pad),
@@ -56,7 +60,10 @@ Widget find() {
           sizes: 'col-12',
           child: Container(
             height: hE,
-            color: const Color(0xffef4137),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(0),
+              color: const Color(0xffef4137),
+            ),
             child: Padding(
               padding: EdgeInsets.all(pad1),
               child: Column(
@@ -173,7 +180,7 @@ Widget find() {
                   ),
                 )
               : Padding(
-                  padding: const EdgeInsets.only(top: 15),
+                  padding: EdgeInsets.only(top: tR),
                   child: Row(
                     children: const [
                       Text(
