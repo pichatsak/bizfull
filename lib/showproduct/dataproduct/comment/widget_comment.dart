@@ -121,90 +121,108 @@ Widget comment(context) {
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: const Color(0xffed3023)),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 30, right: 30, top: 5, bottom: 5),
-                                  child: Text("ทั้งหมด",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Color(0xffed3023))),
-                                ))),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0xffed3023)),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 30, right: 30, top: 5, bottom: 5),
+                                    child: Text("ทั้งหมด",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xffed3023))),
+                                  )),
+                            )),
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  child: Text("5 ดาว (1.8พัน)",
-                                      style: TextStyle(fontSize: 14)),
-                                ))),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, top: 5, bottom: 5),
+                                    child: Text("5 ดาว (1.8พัน)",
+                                        style: TextStyle(fontSize: 14)),
+                                  )),
+                            )),
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  child: Text("4 ดาว (11พัน)",
-                                      style: TextStyle(fontSize: 14)),
-                                ))),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, top: 5, bottom: 5),
+                                    child: Text("4 ดาว (11พัน)",
+                                        style: TextStyle(fontSize: 14)),
+                                  )),
+                            )),
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  child: Text("3 ดาว (159)",
-                                      style: TextStyle(fontSize: 14)),
-                                ))),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, top: 5, bottom: 5),
+                                    child: Text("3 ดาว (159)",
+                                        style: TextStyle(fontSize: 14)),
+                                  )),
+                            )),
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  child: Text("2 ดาว (111)",
-                                      style: TextStyle(fontSize: 14)),
-                                ))),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, top: 5, bottom: 5),
+                                    child: Text("2 ดาว (111)",
+                                        style: TextStyle(fontSize: 14)),
+                                  )),
+                            )),
                         Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 5, bottom: 5),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: Colors.white),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 5, bottom: 5),
-                                  child: Text("1 ดาว (99)",
-                                      style: TextStyle(fontSize: 14)),
-                                )))
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: Colors.white),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 15, right: 15, top: 5, bottom: 5),
+                                    child: Text("1 ดาว (99)",
+                                        style: TextStyle(fontSize: 14)),
+                                  )),
+                            ))
                       ]),
                     )
                   ],

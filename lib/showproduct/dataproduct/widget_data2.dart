@@ -70,29 +70,39 @@ Widget data2() {
         // ),
         const SizedBox(height: 25),
         Center(
-          child: Container(
-            width: 90,
-            decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xffed3023)),
-                borderRadius: BorderRadius.circular(5)),
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 12, right: 12, top: 5, bottom: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'ดูเพิ่ม',
-                    style: TextStyle(color: Color(0xffed3023)),
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              splashColor: const Color.fromARGB(255, 252, 223, 224),
+              hoverColor: const Color.fromARGB(255, 250, 234, 233),
+              highlightColor: Colors.white12,
+              borderRadius: BorderRadius.circular(5),
+              onTap: () {},
+              child: Container(
+                width: 90,
+                decoration: BoxDecoration(
+                    border: Border.all(color: const Color(0xffed3023)),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 12, right: 12, top: 5, bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'ดูเพิ่ม',
+                        style: TextStyle(color: Color(0xffed3023)),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(bottom: 3),
+                          child: const Icon(FontAwesomeIcons.chevronDown,
+                              size: 14, color: Color(0xffed3023))),
+                    ],
                   ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Container(
-                      margin: const EdgeInsets.only(bottom: 3),
-                      child: const Icon(FontAwesomeIcons.chevronDown,
-                          size: 14, color: Color(0xffed3023))),
-                ],
+                ),
               ),
             ),
           ),

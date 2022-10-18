@@ -70,7 +70,7 @@ Widget showlistmobile(context) {
                     child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black12),
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(7)),
                         width: a,
                         child: productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context)),
                   );

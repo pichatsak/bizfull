@@ -100,22 +100,28 @@ Widget productother() {
             "สินค้าที่คุณอาจจะชอบ",
             style: TextStyle(fontSize: 16, color: Colors.black87),
           ),
-          Row(
-            children: [
-              const Text("ดูเพิ่มเติม",
-                  style: TextStyle(
-                      fontFamily: "Prompt-Medium",
-                      fontSize: 14,
-                      color: Color(0xffed3023))),
-              const SizedBox(width: 5),
-              Container(
-                  margin: const EdgeInsets.only(bottom: 1),
-                  child: const Icon(
-                    FontAwesomeIcons.chevronRight,
-                    color: Color(0xffed3023),
-                    size: 14,
-                  ))
-            ],
+          InkWell(
+            splashColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () {},
+            child: Row(
+              children: [
+                const Text("ดูเพิ่มเติม",
+                    style: TextStyle(
+                        fontFamily: "Prompt-Medium",
+                        fontSize: 14,
+                        color: Color(0xffed3023))),
+                const SizedBox(width: 5),
+                Container(
+                    margin: const EdgeInsets.only(bottom: 1),
+                    child: const Icon(
+                      FontAwesomeIcons.chevronRight,
+                      color: Color(0xffed3023),
+                      size: 14,
+                    ))
+              ],
+            ),
           ),
         ],
       ),

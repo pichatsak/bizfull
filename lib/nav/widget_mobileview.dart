@@ -38,7 +38,9 @@ class _NavMobilesState extends State<NavMobiles> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     bootstrapGridParameters(gutterSize: 0);
     return Column(
       children: [

@@ -33,7 +33,6 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-
 void main() async {
   setUrlStrategy(PathUrlStrategy());
   await GetStorage.init();

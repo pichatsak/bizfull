@@ -77,293 +77,341 @@ class _AllcommentState extends State<Allcomment> {
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: const Color(
-                                                          0xffed3023)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: Colors.white),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: const [
-                                                    Text("ทั้งหมด",
-                                                        style: TextStyle(
-                                                            fontSize: 14,
-                                                            color: Color(
-                                                                0xffed3023))),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color(
+                                                            0xffed3023)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: Colors.white),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: const [
+                                                      Text("ทั้งหมด",
+                                                          style: TextStyle(
+                                                              fontSize: 14,
+                                                              color: Color(
+                                                                  0xffed3023))),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.only(
                                               right: 3,
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              width: 92,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              1, 75, 75, 75)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: const Color.fromARGB(
-                                                      31, 75, 75, 75)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: const <
-                                                            Widget>[
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                        ]),
-                                                    const Text("(1.8พัน)",
-                                                        style: TextStyle(
-                                                            fontSize: 12)),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                width: 92,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            1, 75, 75, 75)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: const Color.fromARGB(
+                                                        31, 75, 75, 75)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const <
+                                                              Widget>[
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                          ]),
+                                                      const Text("(1.8พัน)",
+                                                          style: TextStyle(
+                                                              fontSize: 12)),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.only(
                                               right: 3,
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              width: 85,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              1, 75, 75, 75)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: const Color.fromARGB(
-                                                      31, 75, 75, 75)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: const <
-                                                            Widget>[
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                        ]),
-                                                    const Text("(1.8พัน)",
-                                                        style: TextStyle(
-                                                            fontSize: 12)),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                width: 85,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            1, 75, 75, 75)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: const Color.fromARGB(
+                                                        31, 75, 75, 75)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const <
+                                                              Widget>[
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                          ]),
+                                                      const Text("(1.8พัน)",
+                                                          style: TextStyle(
+                                                              fontSize: 12)),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.only(
                                               right: 3,
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              width: 85,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              1, 75, 75, 75)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: const Color.fromARGB(
-                                                      31, 75, 75, 75)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: const <
-                                                            Widget>[
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                        ]),
-                                                    const Text("(1.8พัน)",
-                                                        style: TextStyle(
-                                                            fontSize: 12)),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                width: 85,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            1, 75, 75, 75)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: const Color.fromARGB(
+                                                        31, 75, 75, 75)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const <
+                                                              Widget>[
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                          ]),
+                                                      const Text("(1.8พัน)",
+                                                          style: TextStyle(
+                                                              fontSize: 12)),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.only(
                                               right: 3,
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              width: 85,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              1, 75, 75, 75)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: const Color.fromARGB(
-                                                      31, 75, 75, 75)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: const <
-                                                            Widget>[
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                        ]),
-                                                    const Text("(1.8พัน)",
-                                                        style: TextStyle(
-                                                            fontSize: 12)),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                width: 85,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            1, 75, 75, 75)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: const Color.fromARGB(
+                                                        31, 75, 75, 75)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const <
+                                                              Widget>[
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                          ]),
+                                                      const Text("(1.8พัน)",
+                                                          style: TextStyle(
+                                                              fontSize: 12)),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                       Padding(
                                           padding: const EdgeInsets.only(
                                               right: 3,
                                               left: 3,
                                               top: 3,
                                               bottom: 3),
-                                          child: Container(
-                                              height: 45,
-                                              width: 85,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              1, 75, 75, 75)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: const Color.fromARGB(
-                                                      31, 75, 75, 75)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    right: 15,
-                                                    top: 5,
-                                                    bottom: 5),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: const <
-                                                            Widget>[
-                                                          Icon(Icons.star,
-                                                              color: Color(
-                                                                  0xffed3023),
-                                                              size: 12),
-                                                        ]),
-                                                    const Text("(1.8พัน)",
-                                                        style: TextStyle(
-                                                            fontSize: 12)),
-                                                  ],
-                                                ),
-                                              ))),
+                                          child: InkWell(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            onTap: () {},
+                                            child: Container(
+                                                height: 45,
+                                                width: 85,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            1, 75, 75, 75)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: const Color.fromARGB(
+                                                        31, 75, 75, 75)),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15,
+                                                          right: 15,
+                                                          top: 5,
+                                                          bottom: 5),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const <
+                                                              Widget>[
+                                                            Icon(Icons.star,
+                                                                color: Color(
+                                                                    0xffed3023),
+                                                                size: 12),
+                                                          ]),
+                                                      const Text("(1.8พัน)",
+                                                          style: TextStyle(
+                                                              fontSize: 12)),
+                                                    ],
+                                                  ),
+                                                )),
+                                          )),
                                     ]),
                                   ),
                                 ],
@@ -398,7 +446,6 @@ class _AllcommentState extends State<Allcomment> {
                                           top: 20, bottom: 20),
                                       child: commentbyone(),
                                     ),
-                                    
                                   ],
                                 ),
                               )

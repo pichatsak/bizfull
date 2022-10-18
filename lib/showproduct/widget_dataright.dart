@@ -552,21 +552,24 @@ Widget dataright1(context) {
                             Flexible(
                               child: Row(
                                 children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        border: Border(
-                                            left: BorderSide(
-                                                color: Colors.black26),
-                                            top: BorderSide(
-                                                color: Colors.black26),
-                                            bottom: BorderSide(
-                                                color: Colors.black26))),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(3.0),
-                                      child: Icon(
-                                        Icons.remove,
-                                        size: 20,
-                                        color: Colors.black,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                              left: BorderSide(
+                                                  color: Colors.black26),
+                                              top: BorderSide(
+                                                  color: Colors.black26),
+                                              bottom: BorderSide(
+                                                  color: Colors.black26))),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(3.0),
+                                        child: Icon(
+                                          Icons.remove,
+                                          size: 20,
+                                          color: Colors.black,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -595,21 +598,24 @@ Widget dataright1(context) {
                                   ),
                                   Flexible(
                                     flex: f,
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          border: Border(
-                                              right: BorderSide(
-                                                  color: Colors.black26),
-                                              top: BorderSide(
-                                                  color: Colors.black26),
-                                              bottom: BorderSide(
-                                                  color: Colors.black26))),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(3.0),
-                                        child: Icon(
-                                          Icons.add_rounded,
-                                          size: 20,
-                                          color: Colors.black,
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            border: Border(
+                                                right: BorderSide(
+                                                    color: Colors.black26),
+                                                top: BorderSide(
+                                                    color: Colors.black26),
+                                                bottom: BorderSide(
+                                                    color: Colors.black26))),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(3.0),
+                                          child: Icon(
+                                            Icons.add_rounded,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -648,21 +654,24 @@ Widget dataright1(context) {
                                 Flexible(
                                   child: Row(
                                     children: [
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                            border: Border(
-                                                left: BorderSide(
-                                                    color: Colors.black26),
-                                                top: BorderSide(
-                                                    color: Colors.black26),
-                                                bottom: BorderSide(
-                                                    color: Colors.black26))),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(3.0),
-                                          child: Icon(
-                                            Icons.remove,
-                                            size: 20,
-                                            color: Colors.black,
+                                      InkWell(
+                                        onTap: () {},
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                              border: Border(
+                                                  left: BorderSide(
+                                                      color: Colors.black26),
+                                                  top: BorderSide(
+                                                      color: Colors.black26),
+                                                  bottom: BorderSide(
+                                                      color: Colors.black26))),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(3.0),
+                                            child: Icon(
+                                              Icons.remove,
+                                              size: 20,
+                                              color: Colors.black,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -694,21 +703,25 @@ Widget dataright1(context) {
                                       ),
                                       Flexible(
                                         flex: f,
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                              border: Border(
-                                                  right: BorderSide(
-                                                      color: Colors.black26),
-                                                  top: BorderSide(
-                                                      color: Colors.black26),
-                                                  bottom: BorderSide(
-                                                      color: Colors.black26))),
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(3.0),
-                                            child: Icon(
-                                              Icons.add_rounded,
-                                              size: 20,
-                                              color: Colors.black,
+                                        child: InkWell(
+                                          onTap: () {},
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                                border: Border(
+                                                    right: BorderSide(
+                                                        color: Colors.black26),
+                                                    top: BorderSide(
+                                                        color: Colors.black26),
+                                                    bottom: BorderSide(
+                                                        color:
+                                                            Colors.black26))),
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(3.0),
+                                              child: Icon(
+                                                Icons.add_rounded,
+                                                size: 20,
+                                                color: Colors.black,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -836,53 +849,63 @@ Widget dataright1(context) {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 5, bottom: 5, right: 5),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.of(context)
-                                          .pushNamed("/shopcart");
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: cTUM == "pc"
-                                              ? const Color.fromARGB(
-                                                  255, 240, 213, 215)
-                                              : Colors.orange,
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          border: cTUM == "pc"
-                                              ? Border.all(
-                                                  color:
-                                                      const Color(0xffed3023))
-                                              : null),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 25,
-                                            right: 25,
-                                            top: 12,
-                                            bottom: 12),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                margin: const EdgeInsets.only(
-                                                    bottom: 3),
-                                                child: Icon(
-                                                  FontAwesomeIcons.bagShopping,
-                                                  size: 16,
-                                                  color: cTUM == "pc"
-                                                      ? const Color(0xffed3023)
-                                                      : Colors.white,
-                                                )),
-                                            const SizedBox(
-                                              width: 5,
-                                            ),
-                                            Text(
-                                              "เพิ่มไปยังรถเข็น",
-                                              style: TextStyle(
-                                                  color: cTUM == "pc"
-                                                      ? const Color(0xffed3023)
-                                                      : Colors.white),
-                                            ),
-                                          ],
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: cTUM == "pc"
+                                            ? const Color.fromARGB(
+                                                255, 240, 213, 215)
+                                            : Colors.orange,
+                                        borderRadius: BorderRadius.circular(7),
+                                        border: cTUM == "pc"
+                                            ? Border.all(
+                                                color: const Color(0xffed3023))
+                                            : null),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        splashColor: const Color.fromARGB(
+                                            255, 253, 201, 204),
+                                        hoverColor: const Color.fromARGB(
+                                            255, 247, 219, 217),
+                                        highlightColor: Colors.white12,
+                                        borderRadius: BorderRadius.circular(7),
+                                        onTap: () {
+                                          Navigator.of(context)
+                                              .pushNamed("/shopcart");
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 25,
+                                              right: 25,
+                                              top: 12,
+                                              bottom: 12),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                  margin: const EdgeInsets.only(
+                                                      bottom: 3),
+                                                  child: Icon(
+                                                    FontAwesomeIcons
+                                                        .bagShopping,
+                                                    size: 16,
+                                                    color: cTUM == "pc"
+                                                        ? const Color(
+                                                            0xffed3023)
+                                                        : Colors.white,
+                                                  )),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                "เพิ่มไปยังรถเข็น",
+                                                style: TextStyle(
+                                                    color: cTUM == "pc"
+                                                        ? const Color(
+                                                            0xffed3023)
+                                                        : Colors.white),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -891,29 +914,32 @@ Widget dataright1(context) {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xffed3023),
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: const Color(0xffed3023))),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 25,
-                                          right: 25,
-                                          top: 12,
-                                          bottom: 12),
-                                      child: Row(
-                                        children: const [
-                                          Text(
-                                            "ซื้อสินค้า",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ],
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        const Color(0xffed3023),
                                       ),
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(7.0),
+                                      ))),
+                                  onPressed: () {},
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 12,
+                                        right: 12,
+                                        top: 13,
+                                        bottom: 13),
+                                    child: Row(
+                                      children: const [
+                                        Text(
+                                          "ซื้อสินค้า",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

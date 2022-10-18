@@ -77,7 +77,3 @@ Widget dataproduct(setState) {
     ),
   );
 }
-
-Widget data3() {
-  return const Center(child: Text('3'));
-}

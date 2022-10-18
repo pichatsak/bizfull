@@ -176,33 +176,37 @@ Widget showdesktopshippingNew() {
                         ]),
                         Container(
                           margin: EdgeInsets.only(top: cT),
-                          child: Row(
-                            children: [
-                              Text(
-                                "ดูเพิ่ม",
-                                style: TextStyle(
-                                    fontSize: fd, color: Colors.black),
-                              ),
-                              SizedBox(width: wSP),
-                              Stack(children: [
-                                Icon(Icons.arrow_forward_ios, size: sIcon),
-                                Container(
-                                  margin: EdgeInsets.only(left: mL1),
-                                  child: Icon(Icons.arrow_forward_ios,
-                                      size: sIcon),
+                          child: InkWell(onTap: () {
+                            
+                          },
+                            child: Row(
+                              children: [
+                                Text(
+                                  "ดูเพิ่ม",
+                                  style: TextStyle(
+                                      fontSize: fd, color: Colors.black),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: mL2),
-                                  child: Icon(Icons.arrow_forward_ios,
-                                      size: sIcon),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: mL3),
-                                  child: Icon(Icons.arrow_forward_ios,
-                                      size: sIcon),
-                                )
-                              ]),
-                            ],
+                                SizedBox(width: wSP),
+                                Stack(children: [
+                                  Icon(Icons.arrow_forward_ios, size: sIcon),
+                                  Container(
+                                    margin: EdgeInsets.only(left: mL1),
+                                    child: Icon(Icons.arrow_forward_ios,
+                                        size: sIcon),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: mL2),
+                                    child: Icon(Icons.arrow_forward_ios,
+                                        size: sIcon),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: mL3),
+                                    child: Icon(Icons.arrow_forward_ios,
+                                        size: sIcon),
+                                  )
+                                ]),
+                              ],
+                            ),
                           ),
                         )
                       ],

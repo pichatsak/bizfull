@@ -40,10 +40,13 @@ Widget showproduct(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "สินค้าน่าชิป",
-                          style:
-                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        InkWell(
+                          onTap: () {},
+                          child: const Text(
+                            "สินค้าน่าชิป",
+                            style: TextStyle(
+                                fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,
@@ -56,10 +59,13 @@ Widget showproduct(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "รองเท้า",
-                          style:
-                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        InkWell(
+                          onTap: () {},
+                          child: const Text(
+                            "รองเท้า",
+                            style: TextStyle(
+                                fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,
