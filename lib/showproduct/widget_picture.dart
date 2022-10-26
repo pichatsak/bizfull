@@ -1,4 +1,9 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/global.dart';
+import 'package:bizfull/models/pic_more_mobile.dart';
+import 'package:bizfull/models/product_pic_more_model.dart';
+import 'package:bizfull/models/product_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -9,7 +14,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 final CarouselController _controller1 = CarouselController();
 List<int> list = [1, 2, 3, 4];
 
-Widget picture() {
+Widget picture(
+    ProductViewModel pdModel,
+    String picMain,
+    List<ProductPicMoreModel> listpicrMore,
+    List<PicMoreMobile> listPiceMoreMobile) {
   String typeSc;
   double w;
   double rP;
@@ -54,19 +63,21 @@ Widget picture() {
                   if (typeSc == "pc") ...[
                     ClipRRect(
                       borderRadius: BorderRadius.circular(7.0),
-                      child: Image.asset(
-                        "images/a1.jpg",
+                      child: CachedNetworkImage(
+                        imageUrl: picMain,
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                         fit: BoxFit.cover,
                       ),
                     )
                   ] else if (typeSc == "tablet") ...[
                     ClipRRect(
                       borderRadius: BorderRadius.circular(4.0),
-                      child: Image.asset(
-                        "images/a1.jpg",
+                      child: CachedNetworkImage(
+                        imageUrl: picMain,
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                         fit: BoxFit.cover,
-                        // width: w,
-                        // height: h,
                       ),
                     ),
                   ] else if (typeSc == "mobile") ...[
@@ -88,7 +99,7 @@ Widget picture() {
                             viewportFraction: 1,
                             enlargeStrategy: CenterPageEnlargeStrategy.height,
                           ),
-                          items: list.map((item) {
+                          items: listPiceMoreMobile.map((item) {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Container(
@@ -98,12 +109,14 @@ Widget picture() {
                                   child: Center(
                                     child: SizedBox(
                                       width: double.infinity,
-                                      //  height: 400,
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(5.0),
-                                        child: Image.asset(
-                                          "images/a1.jpg",
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              "${Global.hostImgProduct}/${pdModel.pdId}/${item.picSrc}",
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(Icons.error),
                                           fit: BoxFit.contain,
                                         ),
                                       ),
@@ -113,6 +126,31 @@ Widget picture() {
                               },
                             );
                           }).toList(),
+                          // items: list.map((item) {
+                          //   return Builder(
+                          //     builder: (BuildContext context) {
+                          //       return Container(
+                          //         width: MediaQuery.of(context).size.width,
+                          //         padding:
+                          //             const EdgeInsets.only(right: 5, left: 5),
+                          //         child: Center(
+                          //           child: SizedBox(
+                          //             width: double.infinity,
+                          //             //  height: 400,
+                          //             child: ClipRRect(
+                          //               borderRadius:
+                          //                   BorderRadius.circular(5.0),
+                          //               child: Image.asset(
+                          //                 "images/a1.jpg",
+                          //                 fit: BoxFit.contain,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       );
+                          //     },
+                          //   );
+                          // }).toList(),
                         ),
                         Positioned.fill(
                           child: Align(
@@ -153,25 +191,25 @@ Widget picture() {
                             ),
                           ),
                         ),
-                        Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 15, bottom: 15),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    color: Colors.white54,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(left: 15, right: 15),
-                                  child: Text("1/4"),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                        // Positioned.fill(
+                        //   child: Align(
+                        //     alignment: Alignment.bottomRight,
+                        //     child: Padding(
+                        //       padding:
+                        //           const EdgeInsets.only(right: 15, bottom: 15),
+                        //       child: Container(
+                        //         decoration: BoxDecoration(
+                        //             border: Border.all(color: Colors.black12),
+                        //             color: Colors.white54,
+                        //             borderRadius: BorderRadius.circular(10)),
+                        //         child: const Padding(
+                        //           padding: EdgeInsets.only(left: 15, right: 15),
+                        //           child: Text("1/4"),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // )
                       ],
                     ),
                   ]
@@ -184,7 +222,8 @@ Widget picture() {
 }
 
 final CarouselController _controller = CarouselController();
-Widget smallunderpicture() {
+Widget smallunderpicture(List<ProductPicMoreModel> listpicrMore,
+    void Function(String picSrc) updatePicMainShow) {
   double n;
   double mP;
   double tP;
@@ -274,37 +313,73 @@ Widget smallunderpicture() {
                           viewportFraction: 0.2,
                           enlargeStrategy: CenterPageEnlargeStrategy.height,
                         ),
-                        items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                width: MediaQuery.of(context).size.width,
-                                margin: i == 1
-                                    ? EdgeInsets.only(right: mP)
-                                    : EdgeInsets.only(right: mP),
-                                //  decoration: const BoxDecoration(color: Colors.white),
-                                child:
-                                    // Text(
-                                    //   'text $i',
-                                    //   style: const TextStyle(fontSize: 16.0),
-                                    // )
-                                    Center(
-                                  child: SizedBox(
-                                    width: n,
-                                    //  height: n,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(4.0),
-                                      child: Image.asset(
-                                        "images/data.png",
-                                        fit: BoxFit.cover,
+                        items: listpicrMore
+                            .map((item) => Builder(
+                                  builder: (BuildContext context) {
+                                    return InkWell(
+                                      onTap: () {
+                                        updatePicMainShow(
+                                            "${Global.hostImgProduct}/${item.productId}/${item.ppmSrc}");
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        margin: listpicrMore.indexOf(item) == 1
+                                            ? EdgeInsets.only(right: mP)
+                                            : EdgeInsets.only(right: mP),
+                                        child: Center(
+                                          child: SizedBox(
+                                            width: n,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    "${Global.hostImgProduct}/${item.productId}/${item.ppmSrc}",
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        const Icon(Icons.error),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        }).toList(),
+                                    );
+                                  },
+                                ))
+                            .toList(),
+                        // items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) {
+                        //   return Builder(
+                        //     builder: (BuildContext context) {
+                        //       return Container(
+                        //         width: MediaQuery.of(context).size.width,
+                        //         margin: i == 1
+                        //             ? EdgeInsets.only(right: mP)
+                        //             : EdgeInsets.only(right: mP),
+                        //         //  decoration: const BoxDecoration(color: Colors.white),
+                        //         child:
+                        //             // Text(
+                        //             //   'text $i',
+                        //             //   style: const TextStyle(fontSize: 16.0),
+                        //             // )
+                        //             Center(
+                        //           child: SizedBox(
+                        //             width: n,
+                        //             //  height: n,
+                        //             child: ClipRRect(
+                        //               borderRadius: BorderRadius.circular(4.0),
+                        //               child: Image.asset(
+                        //                 "images/data.png",
+                        //                 fit: BoxFit.cover,
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       );
+                        //     },
+                        //   );
+                        // }).toList(),
                       ),
                       Positioned.fill(
                         child: Align(

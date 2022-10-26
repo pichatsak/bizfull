@@ -1,5 +1,8 @@
+import 'package:bizfull/global.dart';
 import 'package:bizfull/homepage/shipping/widget_show_product_shipping.dart';
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:bizfull/other/hover.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,7 @@ Widget menu(
   fSd,
   hSp3,
   fSm,
+  ProductViewModel itemPd,
 ) {
   return InkWell(
     onTap: () {},
@@ -49,8 +53,9 @@ Widget menu(
                             //  width: b,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                image: const DecorationImage(
-                                  image: AssetImage("images/menutest.jpg"),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                      "${Global.hostImgProduct}/${itemPd.pdId}/${itemPd.pdPic}"),
                                   filterQuality: FilterQuality.high,
                                   fit: BoxFit.cover,
                                 )),
@@ -71,9 +76,12 @@ Widget menu(
                           padding: const EdgeInsets.only(top: 5, right: 10),
                           child: Align(
                             alignment: Alignment.topRight,
-                            child: Image.asset(
-                              "images/china.png",
+                            child: CachedNetworkImage(
                               width: 25,
+                              imageUrl:
+                                  "${Global.hostImgGroupSubPd}/${itemPd.groupIcon}",
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
                           ),
                         ),
@@ -85,7 +93,8 @@ Widget menu(
                     Padding(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: Text(
-                        "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
+                        // "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
+                        itemPd.pdName,
                         style: TextStyle(fontSize: fSd, color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
@@ -99,13 +108,21 @@ Widget menu(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: SizedBox(
                         width: double.maxFinite,
-                        child: Text(
-                          "฿219.00",
-                          style: TextStyle(
-                            fontSize: fSm,
-                            color: const Color(0xffee602e),
-                          ),
-                        ),
+                        child: itemPd.pdType == "shop"
+                            ? Text(
+                                "${itemPd.currencySymbol}${itemPd.pdPrice}",
+                                style: TextStyle(
+                                  fontSize: fSm,
+                                  color: const Color(0xffee602e),
+                                ),
+                              )
+                            : Text(
+                                "${itemPd.currencySymbol}${itemPd.pdPrice}-${itemPd.currencySymbol}${itemPd.pdPriceEnd}",
+                                style: TextStyle(
+                                  fontSize: fSm,
+                                  color: const Color(0xffee602e),
+                                ),
+                              ),
                       ),
                     ),
                   ],

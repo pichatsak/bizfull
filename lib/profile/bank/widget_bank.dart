@@ -18,7 +18,7 @@ Widget bankprofile() {
     fM = 16;
     fM1 = 14;
     pad1 = 30;
-    pad2 = 10;//20
+    pad2 = 10; //20
     nB = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     pAD = 0;
@@ -45,7 +45,7 @@ Widget bankprofile() {
           padding: EdgeInsets.only(left: pAD, right: pAD),
           child: Container(
             decoration: BoxDecoration(
-             //   color: nB == "pc" ? const Color(0xfff3f3f3) : null,
+                //   color: nB == "pc" ? const Color(0xfff3f3f3) : null,
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
               padding: EdgeInsets.only(
@@ -132,9 +132,9 @@ Widget bankprofile() {
                   nB == "pc"
                       ? Container(height: 1, color: Colors.black12)
                       : Container(),
-                  Container(
+                  const SizedBox(
                     height: 200,
-                    child: const Center(
+                    child: Center(
                         child: Text("คุณยังไม่มีบัญชีธนาคาร",
                             style: TextStyle(
                                 fontSize: 16, color: Colors.black87))),

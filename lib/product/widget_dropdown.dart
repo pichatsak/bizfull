@@ -6,8 +6,8 @@ final List<String> items = [
   'ต่ำสุด',
   'สูงสุด',
 ];
-String? selectedValue;
-Widget dropdownsell(setState) {
+Widget dropdownsell(setState, String? selectedValuePrice,
+    void Function(String val) updateSelectPrice) {
   double fD;
   double wD;
   double pD;
@@ -58,11 +58,9 @@ Widget dropdownsell(setState) {
                   ),
                 ))
             .toList(),
-        value: selectedValue,
+        value: selectedValuePrice,
         onChanged: (value) {
-          setState(() {
-            selectedValue = value as String;
-          });
+          updateSelectPrice(value as String);
         },
         icon: const Icon(
           Icons.keyboard_arrow_down,

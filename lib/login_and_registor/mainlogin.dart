@@ -48,7 +48,7 @@ class _Login1State extends State<Login1> {
                       typeSc == "pc" ? barmainlogin(context) : Container()
                     ]),
                 BootstrapContainer(fluid: false, children: <Widget>[
-                  login(setState, context),
+                  LoginPages(),
                 ]),
                 BootstrapContainer(
                     fluid: true,
@@ -57,7 +57,8 @@ class _Login1State extends State<Login1> {
               ],
             ),
           ),
-          const Navmain(),
+          // ignore: prefer_const_constructors
+          Navmain(),
         ],
       ),
       floatingActionButton: typeSc == "pc"

@@ -1,11 +1,15 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/pic_more_mobile.dart';
+import 'package:bizfull/models/price_more_model.dart';
+import 'package:bizfull/models/product_pic_more_model.dart';
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:bizfull/showproduct/widget_dataright.dart';
 import 'package:bizfull/showproduct/widget_picture.dart';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget showproduct(context) {
+Widget showproduct(context, ProductViewModel pdModel) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
         sizes: 'col-12',
@@ -43,7 +47,7 @@ Widget showproduct(context) {
                         InkWell(
                           onTap: () {},
                           child: const Text(
-                            "สินค้าน่าชิป",
+                            "สินค้าทั้งหมด",
                             style: TextStyle(
                                 fontSize: 13, color: Color(0xffed3023)),
                           ),
@@ -61,9 +65,10 @@ Widget showproduct(context) {
                         ),
                         InkWell(
                           onTap: () {},
-                          child: const Text(
-                            "รองเท้า",
-                            style: TextStyle(
+                          child: Text(
+                            // "รองเท้า",
+                            pdModel.categoryName,
+                            style: const TextStyle(
                                 fontSize: 13, color: Color(0xffed3023)),
                           ),
                         ),
@@ -78,9 +83,11 @@ Widget showproduct(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "รองเท้าสไตล์มินิ",
-                          style: TextStyle(fontSize: 13, color: Colors.black87),
+                        Text(
+                          // "รองเท้าสไตล์มินิ",
+                          pdModel.pdName,
+                          style: const TextStyle(
+                              fontSize: 13, color: Colors.black87),
                         ),
                       ],
                     ),
@@ -91,7 +98,20 @@ Widget showproduct(context) {
   ]);
 }
 
-Widget datashowproduct(context, setState) {
+Widget datashowproduct(
+    context,
+    setState,
+    ProductViewModel pdModel,
+    TextEditingController numQuan,
+    List<ProductPicMoreModel> listpicrMore,
+    String picMain,
+    void Function(int count, String status)? updateNum,
+    void Function(String picSrc) updatePicMainShow,
+    String priceMainShow,
+    List<PriceMoreModel> listPriceMore,
+    int posPriceMoreChoose,
+    void Function(int pos) updateChoosePrice,
+    List<PicMoreMobile> listPiceMoreMobile) {
   double lP;
   double rP;
   double tP;
@@ -138,16 +158,24 @@ Widget datashowproduct(context, setState) {
           children: <BootstrapCol>[
             BootstrapCol(
                 sizes: 'col-md-12 col-12 col-lg-6 col-xl-5',
-                child: BootstrapContainer(
-                    //         decoration: const BoxDecoration(color: Colors.white),
-                    fluid: true,
-                    children: <Widget>[picture(), smallunderpicture()])),
+                child: BootstrapContainer(fluid: true, children: <Widget>[
+                  picture(pdModel, picMain, listpicrMore, listPiceMoreMobile),
+                  smallunderpicture(listpicrMore, updatePicMainShow)
+                ])),
             BootstrapCol(
                 sizes: 'col-md-12 col-12 col-lg-6 col-xl-7',
                 child: BootstrapContainer(fluid: true, children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(left: lP, right: rP),
-                    child: dataright1(context),
+                    child: dataright1(
+                        context,
+                        pdModel,
+                        numQuan,
+                        updateNum,
+                        priceMainShow,
+                        listPriceMore,
+                        posPriceMoreChoose,
+                        updateChoosePrice),
                   ),
                 ])),
           ],

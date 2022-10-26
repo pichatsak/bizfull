@@ -1,11 +1,28 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/price_more_model.dart';
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:bizfull/showproduct/opt_choose.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
-Widget dataright1(context) {
+Widget dataright1(
+    context,
+    ProductViewModel pdModel,
+    TextEditingController numQuan,
+    void Function(int count, String status)? updateNum,
+    String priceMainShow,
+    List<PriceMoreModel> listPriceMore,
+    int posPriceMoreChoose,
+    void Function(int pos) updateChoosePrice) {
+  // ignore: unused_local_variable
+  var formatNum = NumberFormat('#,###,###.00');
+  // ignore: unused_local_variable
+  var formatNumNoDc = NumberFormat('#,###,###');
   double fontlist;
   double nV;
   double sizestar;
@@ -111,7 +128,8 @@ Widget dataright1(context) {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    "🔥พร้อมส่งด่วน ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม หนานุ่ม ซับน้ำไว(สีเหลืองเทา) ผ้าเช็ดรถ ผ้าไมโครไฟเบ  ผ้าเช็ดรถ ผ้าเอนกประสงค์ ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม",
+                    // "พร้อมส่งด่วน ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม หนานุ่ม ซับน้ำไว(สีเหลืองเทา) ผ้าเช็ดรถ ผ้าไมโครไฟเบ  ผ้าเช็ดรถ ผ้าเอนกประสงค์ ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม",
+                    pdModel.pdName,
                     style: TextStyle(
                         fontSize: fontlist, fontFamily: "Prompt-Medium"),
                     maxLines: 2,
@@ -136,7 +154,8 @@ Widget dataright1(context) {
                             width: 1.0,
                           ))),
                           child: Text(
-                            "4.9",
+                            // "5",
+                            pdModel.pdStar.toString(),
                             style: TextStyle(
                                 color: const Color(0xffed3023), fontSize: nV),
                           ),
@@ -144,25 +163,36 @@ Widget dataright1(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        Icon(Icons.star,
-                            size: sizestar, color: const Color(0xffed3023)),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 1, right: 1),
-                          child: Icon(Icons.star,
-                              size: sizestar, color: const Color(0xffed3023)),
-                        ),
-                        Icon(Icons.star,
-                            size: sizestar, color: const Color(0xffed3023)),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 1, right: 1),
-                          child: Icon(Icons.star,
-                              size: sizestar, color: const Color(0xffed3023)),
-                        ),
-                        Icon(
-                          Icons.star,
-                          size: sizestar,
-                          color: const Color(0xff777777),
-                        )
+                        ...List.generate(5, (index) {
+                          return index < pdModel.pdStar
+                              ? Icon(Icons.star,
+                                  size: sizestar,
+                                  color: const Color(0xffed3023))
+                              : Icon(
+                                  Icons.star,
+                                  size: sizestar,
+                                  color: const Color(0xff777777),
+                                );
+                        }),
+                        // Icon(Icons.star,
+                        //     size: sizestar, color: const Color(0xffed3023)),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 1, right: 1),
+                        //   child: Icon(Icons.star,
+                        //       size: sizestar, color: const Color(0xffed3023)),
+                        // ),
+                        // Icon(Icons.star,
+                        //     size: sizestar, color: const Color(0xffed3023)),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 1, right: 1),
+                        //   child: Icon(Icons.star,
+                        //       size: sizestar, color: const Color(0xffed3023)),
+                        // ),
+                        // Icon(
+                        //   Icons.star,
+                        //   size: sizestar,
+                        //   color: const Color(0xff777777),
+                        // )
                       ],
                     ),
                     SizedBox(
@@ -194,7 +224,8 @@ Widget dataright1(context) {
                                 width: 1.0,
                               ))),
                               child: Text(
-                                "6.5พัน",
+                                // "6.5พัน",
+                                formatNumNoDc.format(pdModel.pdPoint),
                                 style: TextStyle(fontSize: nV),
                               ),
                             ),
@@ -214,7 +245,7 @@ Widget dataright1(context) {
                       width: hSp,
                     ),
                     Text(
-                      "17.4พัน",
+                      formatNumNoDc.format(pdModel.pdSelled),
                       style: TextStyle(color: Colors.black, fontSize: nV),
                     ),
                     SizedBox(
@@ -248,142 +279,150 @@ Widget dataright1(context) {
                     children: [
                       Row(
                         children: [
+                          // Row(
+                          //   children: const [
+                          //     Text(
+                          //       "฿5,400",
+                          //       style: TextStyle(
+                          //           fontSize: 13,
+                          //           color: Colors.black54,
+                          //           decoration: TextDecoration.lineThrough),
+                          //     ),
+                          //     SizedBox(
+                          //       width: 5,
+                          //     ),
+                          //   ],
+                          // ),
+                          // const SizedBox(
+                          //   width: 5,
+                          // ),
                           Row(
-                            children: const [
-                              Text(
-                                "฿5,400",
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.black54,
-                                    decoration: TextDecoration.lineThrough),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
+                            children: [
+                              pdModel.pdType == "shop"
+                                  ? Text(
+                                      priceMainShow,
+                                      style: const TextStyle(
+                                        fontSize: 23,
+                                        color: Color(0xffed3023),
+                                      ),
+                                    )
+                                  : Text(
+                                      priceMainShow,
+                                      style: const TextStyle(
+                                        fontSize: 23,
+                                        color: Color(0xffed3023),
+                                      ),
+                                    ),
                             ],
                           ),
                           const SizedBox(
-                            width: 5,
-                          ),
-                          Row(
-                            children: const [
-                              Text(
-                                "฿3,990",
-                                style: TextStyle(
-                                  fontSize: 23,
-                                  color: Color(0xffed3023),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
                             width: 15,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 3, right: 3, top: 1, bottom: 1),
-                              child: Text(
-                                "26% ส่วนลด",
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.white),
-                              ),
-                            ),
-                          )
+                          // Container(
+                          //   decoration: BoxDecoration(
+                          //       color: const Color(0xffed3023),
+                          //       borderRadius: BorderRadius.circular(3)),
+                          //   child: const Padding(
+                          //     padding: EdgeInsets.only(
+                          //         left: 3, right: 3, top: 1, bottom: 1),
+                          //     child: Text(
+                          //       "26% ส่วนลด",
+                          //       style: TextStyle(
+                          //           fontSize: 10, color: Colors.white),
+                          //     ),
+                          //   ),
+                          // )
                         ],
                       ),
-                      cTUM == "pc"
-                          ? const SizedBox(
-                              height: 30,
-                            )
-                          : const SizedBox(
-                              height: 20,
-                            ),
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 110,
-                            child: Text(
-                              "โค้ดส่วนลดจากร้านค้า",
-                              style: TextStyle(
-                                  color: Colors.black87, fontSize: 12),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 240, 213, 215),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 4, right: 4, top: 1, bottom: 1),
-                              child: Text(
-                                "ลด ฿100",
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xffed3023)),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 240, 213, 215),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 4, right: 4, top: 1, bottom: 1),
-                              child: Text(
-                                "ลด ฿150",
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xffed3023)),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      cTUM == "pc"
-                          ? const SizedBox(
-                              height: 20,
-                            )
-                          : const SizedBox(
-                              height: 15,
-                            ),
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 110,
-                            child: Text(
-                              "ช้อปเพิ่มคุ้มกว่า",
-                              style: TextStyle(
-                                  color: Colors.black87, fontSize: 12),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 240, 213, 215),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 4, right: 4, top: 1, bottom: 1),
-                              child: Text(
-                                "รับสินค้าฟรี",
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xffed3023)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      // cTUM == "pc"
+                      //     ? const SizedBox(
+                      //         height: 30,
+                      //       )
+                      //     : const SizedBox(
+                      //         height: 20,
+                      //       ),
+                      // Row(
+                      //   children: [
+                      //     const SizedBox(
+                      //       width: 110,
+                      //       child: Text(
+                      //         "โค้ดส่วนลดจากร้านค้า",
+                      //         style: TextStyle(
+                      //             color: Colors.black87, fontSize: 12),
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 15,
+                      //     ),
+                      //     Container(
+                      //       decoration: BoxDecoration(
+                      //           color: const Color.fromARGB(255, 240, 213, 215),
+                      //           borderRadius: BorderRadius.circular(3)),
+                      //       child: const Padding(
+                      //         padding: EdgeInsets.only(
+                      //             left: 4, right: 4, top: 1, bottom: 1),
+                      //         child: Text(
+                      //           "ลด ฿100",
+                      //           style: TextStyle(
+                      //               fontSize: 12, color: Color(0xffed3023)),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 15,
+                      //     ),
+                      //     Container(
+                      //       decoration: BoxDecoration(
+                      //           color: const Color.fromARGB(255, 240, 213, 215),
+                      //           borderRadius: BorderRadius.circular(3)),
+                      //       child: const Padding(
+                      //         padding: EdgeInsets.only(
+                      //             left: 4, right: 4, top: 1, bottom: 1),
+                      //         child: Text(
+                      //           "ลด ฿150",
+                      //           style: TextStyle(
+                      //               fontSize: 12, color: Color(0xffed3023)),
+                      //         ),
+                      //       ),
+                      //     )
+                      //   ],
+                      // ),
+                      // cTUM == "pc"
+                      //     ? const SizedBox(
+                      //         height: 20,
+                      //       )
+                      //     : const SizedBox(
+                      //         height: 15,
+                      //       ),
+                      // Row(
+                      //   children: [
+                      //     const SizedBox(
+                      //       width: 110,
+                      //       child: Text(
+                      //         "ช้อปเพิ่มคุ้มกว่า",
+                      //         style: TextStyle(
+                      //             color: Colors.black87, fontSize: 12),
+                      //       ),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 15,
+                      //     ),
+                      //     Container(
+                      //       decoration: BoxDecoration(
+                      //           color: const Color.fromARGB(255, 240, 213, 215),
+                      //           borderRadius: BorderRadius.circular(3)),
+                      //       child: const Padding(
+                      //         padding: EdgeInsets.only(
+                      //             left: 4, right: 4, top: 1, bottom: 1),
+                      //         child: Text(
+                      //           "รับสินค้าฟรี",
+                      //           style: TextStyle(
+                      //               fontSize: 12, color: Color(0xffed3023)),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       cTUM == "pc"
                           ? const SizedBox(
                               height: 20,
@@ -479,57 +518,75 @@ Widget dataright1(context) {
                       //   height: 20,
                       // ),
                       typeDv == "pc"
-                          ? Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  width: 110,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 5),
-                                    child: Text(
-                                      "GlassyX",
-                                      style: TextStyle(
-                                        color: Color.fromARGB(186, 0, 0, 0),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                optChoose()
-                              ],
-                            )
-                          : Column(
-                              children: [
-                                Row(
-                                  children: const [
-                                    SizedBox(
-                                      width: 110,
-                                      child: Text(
-                                        "GlassyX",
-                                        style: TextStyle(
-                                          color: Color.fromARGB(186, 0, 0, 0),
+                          ? pdModel.pdType == "shop"
+                              ? pdModel.pdTypePrice == "many"
+                                  ? Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const SizedBox(
+                                          width: 110,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              "ตัวเลือก",
+                                              style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    186, 0, 0, 0),
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Row(
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        optChoose(
+                                            listPriceMore,
+                                            posPriceMoreChoose,
+                                            updateChoosePrice)
+                                      ],
+                                    )
+                                  : const Center()
+                              : const Center()
+                          : pdModel.pdType == "shop"
+                              ? Column(
                                   children: [
-                                    Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 10),
-                                        child: optChoose2(),
-                                      ),
+                                    Row(
+                                      children: const [
+                                        SizedBox(
+                                          width: 110,
+                                          child: Text(
+                                            "ตัวเลือก",
+                                            style: TextStyle(
+                                              color:
+                                                  Color.fromARGB(186, 0, 0, 0),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 10),
+                                            child: optChoose2(
+                                                listPriceMore,
+                                                posPriceMoreChoose,
+                                                updateChoosePrice),
+                                          ),
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 )
-                              ],
-                            ),
+                              : const SizedBox(
+                                  height: 10,
+                                ),
 
                       const SizedBox(
                         height: 20,
@@ -553,7 +610,13 @@ Widget dataright1(context) {
                               child: Row(
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      int getCurNum = int.parse(numQuan.text);
+                                      if (getCurNum != 1) {
+                                        getCurNum--;
+                                        updateNum!(getCurNum, "del");
+                                      }
+                                    },
                                     child: Container(
                                       decoration: const BoxDecoration(
                                           border: Border(
@@ -582,7 +645,8 @@ Widget dataright1(context) {
                                         cursorColor: Colors.black,
                                         cursorWidth: 1,
                                         textAlign: TextAlign.center,
-                                        initialValue: '1',
+                                        keyboardType: TextInputType.number,
+                                        controller: numQuan,
                                         style: const TextStyle(
                                             color: Colors.black),
                                         decoration: const InputDecoration(
@@ -599,7 +663,11 @@ Widget dataright1(context) {
                                   Flexible(
                                     flex: f,
                                     child: InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        int getCurNum = int.parse(numQuan.text);
+                                        getCurNum++;
+                                        updateNum!(getCurNum, "plus");
+                                      },
                                       child: Container(
                                         decoration: const BoxDecoration(
                                             border: Border(
@@ -623,12 +691,12 @@ Widget dataright1(context) {
                                   const SizedBox(
                                     width: 15,
                                   ),
-                                  const Text(
-                                    "มีสินค้าทั้งหมด 2835 ชิ้น",
-                                    style: TextStyle(
-                                        color: Colors.black87, fontSize: 12),
-                                    textAlign: TextAlign.start,
-                                  ),
+                                  // const Text(
+                                  //   "มีสินค้าทั้งหมด 2835 ชิ้น",
+                                  //   style: TextStyle(
+                                  //       color: Colors.black87, fontSize: 12),
+                                  //   textAlign: TextAlign.start,
+                                  // ),
                                 ],
                               ),
                             ),
@@ -655,7 +723,14 @@ Widget dataright1(context) {
                                   child: Row(
                                     children: [
                                       InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          int getCurNum =
+                                              int.parse(numQuan.text);
+                                          if (getCurNum != 1) {
+                                            getCurNum--;
+                                            updateNum!(getCurNum, "del");
+                                          }
+                                        },
                                         child: Container(
                                           decoration: const BoxDecoration(
                                               border: Border(
@@ -684,7 +759,8 @@ Widget dataright1(context) {
                                             cursorColor: Colors.black,
                                             cursorWidth: 1,
                                             textAlign: TextAlign.center,
-                                            initialValue: '1',
+                                            keyboardType: TextInputType.number,
+                                            controller: numQuan,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             decoration: const InputDecoration(
@@ -704,7 +780,12 @@ Widget dataright1(context) {
                                       Flexible(
                                         flex: f,
                                         child: InkWell(
-                                          onTap: () {},
+                                          onTap: () {
+                                            int getCurNum =
+                                                int.parse(numQuan.text);
+                                            getCurNum++;
+                                            updateNum!(getCurNum, "plus");
+                                          },
                                           child: Container(
                                             decoration: const BoxDecoration(
                                                 border: Border(
@@ -731,22 +812,22 @@ Widget dataright1(context) {
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: Row(
-                                children: const [
-                                  SizedBox(
-                                    width: 55,
-                                  ),
-                                  Text(
-                                    "มีสินค้าทั้งหมด 10 ชิ้น",
-                                    style: TextStyle(
-                                        color: Colors.black87, fontSize: 12),
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 10),
+                            //   child: Row(
+                            //     children: const [
+                            //       SizedBox(
+                            //         width: 55,
+                            //       ),
+                            //       Text(
+                            //         "มีสินค้าทั้งหมด 10 ชิ้น",
+                            //         style: TextStyle(
+                            //             color: Colors.black87, fontSize: 12),
+                            //         textAlign: TextAlign.start,
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       const SizedBox(
@@ -813,7 +894,11 @@ Widget dataright1(context) {
                                             borderRadius:
                                                 BorderRadius.circular(7)),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        if (pdModel.pdType == "ship") {
+                                          openLinkShip(pdModel.productLink);
+                                        } else {}
+                                      },
                                       child: SizedBox(
                                         height: 45,
                                         child: Row(
@@ -831,11 +916,17 @@ Widget dataright1(context) {
                                             const SizedBox(
                                               width: 5,
                                             ),
-                                            const Text(
-                                              "ซื้อสินค้า",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
+                                            pdModel.pdType == "shop"
+                                                ? const Text(
+                                                    "ซื้อสินค้า",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  )
+                                                : const Text(
+                                                    "ไปยังลิงก์สินค้า",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
                                           ],
                                         ),
                                       ),
@@ -926,7 +1017,11 @@ Widget dataright1(context) {
                                         borderRadius:
                                             BorderRadius.circular(7.0),
                                       ))),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (pdModel.pdType == "ship") {
+                                      openLinkShip(pdModel.productLink);
+                                    } else {}
+                                  },
                                   child: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 12,
@@ -934,11 +1029,18 @@ Widget dataright1(context) {
                                         top: 13,
                                         bottom: 13),
                                     child: Row(
-                                      children: const [
-                                        Text(
-                                          "ซื้อสินค้า",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
+                                      children: [
+                                        pdModel.pdType == "shop"
+                                            ? const Text(
+                                                "ซื้อสินค้า",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              )
+                                            : const Text(
+                                                "ไปยังลิงก์สินค้า",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
                                       ],
                                     ),
                                   ),
@@ -955,4 +1057,8 @@ Widget dataright1(context) {
       ),
     )
   ]);
+}
+
+void openLinkShip(String productLink) {
+  js.context.callMethod('open', [productLink]);
 }

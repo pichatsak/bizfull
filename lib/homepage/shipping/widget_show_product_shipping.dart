@@ -1,12 +1,15 @@
+import 'package:bizfull/global.dart';
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:bizfull/other/hover.dart';
 import 'package:bizfull/other/hoverm.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context) {
+Widget productOld(
+    b, T, R, L, hSp2, fSd, hSp3, fSm, context, ProductViewModel item) {
   return InkWell(
     onTap: () {
-      Navigator.of(context).pushNamed("/showproduct");
+      Navigator.of(context).pushNamed("/products?id=${item.pdId}");
     },
     focusColor: color,
     hoverColor: color,
@@ -40,8 +43,9 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context) {
                         width: b,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            image: const DecorationImage(
-                              image: AssetImage("images/menutest.jpg"),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  "${Global.hostImgProduct}/${item.pdId}/${item.pdPic}"),
                               filterQuality: FilterQuality.high,
                               fit: BoxFit.cover,
                             )),
@@ -53,7 +57,8 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context) {
                     Padding(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: Text(
-                        "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
+                        // "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
+                        item.pdName,
                         style: TextStyle(fontSize: fSd, color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
@@ -67,13 +72,21 @@ Widget productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context) {
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: SizedBox(
                         width: double.maxFinite,
-                        child: Text(
-                          "฿219.00",
-                          style: TextStyle(
-                            fontSize: fSm,
-                            color: const Color(0xffee602e),
-                          ),
-                        ),
+                        child: item.pdType == "shop"
+                            ? Text(
+                                "${item.currencySymbol}${item.pdPrice}",
+                                style: TextStyle(
+                                  fontSize: fSm,
+                                  color: const Color(0xffee602e),
+                                ),
+                              )
+                            : Text(
+                                "${item.currencySymbol}${item.pdPrice}-${item.currencySymbol}${item.pdPriceEnd}",
+                                style: TextStyle(
+                                  fontSize: fSm,
+                                  color: const Color(0xffee602e),
+                                ),
+                              ),
                       ),
                     ),
                   ],

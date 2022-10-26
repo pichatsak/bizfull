@@ -1,10 +1,11 @@
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_data1.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_data2.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 String data = 'data1';
-Widget dataproduct(setState) {
+Widget dataproduct(setState, ProductViewModel pdModel) {
   double lP;
   double rP;
   double f1;
@@ -53,7 +54,7 @@ Widget dataproduct(setState) {
             ),
           ]),
         ),
-        data1(),
+        data1(pdModel),
         Container(
           decoration: BoxDecoration(
               color: const Color(0xfff3f3f3),
@@ -72,7 +73,7 @@ Widget dataproduct(setState) {
             ),
           ]),
         ),
-        data2()
+        data2(pdModel)
       ],
     ),
   );

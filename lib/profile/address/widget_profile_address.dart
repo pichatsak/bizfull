@@ -38,7 +38,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
     String typeSc1;
     double h;
     String typeSc;
-    String cA;
+    // String cA;
     String bM;
     if (Device.width > 991) {
       hbar = 119;
@@ -46,7 +46,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "pc";
       typeSc = "pc";
       h = 70;
-      cA = "pc";
+      // cA = "pc";
       bM = "pc";
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 70;
@@ -54,7 +54,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "md";
       typeSc = "mobile";
       h = 30;
-      cA = "pc";
+      // cA = "pc";
       bM = "mobile";
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
@@ -62,7 +62,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "xm";
       typeSc = "mobile";
       h = 30;
-      cA = "mobile";
+      // cA = "mobile";
       bM = "mobile";
     } else {
       hbar = 70;
@@ -70,7 +70,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "xs";
       typeSc = "mobile";
       h = 30;
-      cA = "mobile";
+      // cA = "mobile";
       bM = "mobile";
     }
     bootstrapGridParameters(gutterSize: 0);

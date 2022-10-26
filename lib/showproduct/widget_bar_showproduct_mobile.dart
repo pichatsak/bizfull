@@ -1,8 +1,9 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/product_view_model.dart';
 
 import 'package:flutter/material.dart';
 
-Widget barshowproductmobile(context) {
+Widget barshowproductmobile(context, ProductViewModel pdModel) {
   return BootstrapRow(children: <BootstrapCol>[
     BootstrapCol(
         sizes: 'col-12',
@@ -24,15 +25,16 @@ Widget barshowproductmobile(context) {
                 const SizedBox(
                   width: 10,
                 ),
-                const Flexible(
+                Flexible(
                   child: Text(
-                    "ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม หนานุ่ม ซับน้ำไว(สีเหลืองเทา) ผ้าเช็ดรถ ผ้าไมโครไฟเบ  ผ้าเช็ดรถ ผ้าเอนกประสงค์ ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม",
-                    style: TextStyle(
+                    // "ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม หนานุ่ม ซับน้ำไว(สีเหลืองเทา) ผ้าเช็ดรถ ผ้าไมโครไฟเบ  ผ้าเช็ดรถ ผ้าเอนกประสงค์ ผ้าไมโครไฟเบอร์ 3D เกรดพรีเมี่ยม",
+                    pdModel.pdName,
+                    style: const TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                         fontFamily: "Prompt-Medium"),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

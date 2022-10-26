@@ -1,10 +1,10 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
-import 'package:bizfull/product/widget_menu.dart';
+import 'package:bizfull/models/product_view_model.dart';
+import 'package:bizfull/product/widget_menu_other.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget productother() {
+Widget productother(List<ProductViewModel> listPdOther) {
   double pall;
   double bP;
 
@@ -95,34 +95,34 @@ Widget productother() {
       padding: EdgeInsets.only(left: pall, right: pall),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
+        children: const [
+          Text(
             "สินค้าที่คุณอาจจะชอบ",
             style: TextStyle(fontSize: 16, color: Colors.black87),
           ),
-          InkWell(
-            splashColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () {},
-            child: Row(
-              children: [
-                const Text("ดูเพิ่มเติม",
-                    style: TextStyle(
-                        fontFamily: "Prompt-Medium",
-                        fontSize: 14,
-                        color: Color(0xffed3023))),
-                const SizedBox(width: 5),
-                Container(
-                    margin: const EdgeInsets.only(bottom: 1),
-                    child: const Icon(
-                      FontAwesomeIcons.chevronRight,
-                      color: Color(0xffed3023),
-                      size: 14,
-                    ))
-              ],
-            ),
-          ),
+          // InkWell(
+          //   splashColor: Colors.transparent,
+          //   hoverColor: Colors.transparent,
+          //   highlightColor: Colors.transparent,
+          //   onTap: () {},
+          //   child: Row(
+          //     children: [
+          //       const Text("ดูเพิ่มเติม",
+          //           style: TextStyle(
+          //               fontFamily: "Prompt-Medium",
+          //               fontSize: 14,
+          //               color: Color(0xffed3023))),
+          //       const SizedBox(width: 5),
+          //       Container(
+          //           margin: const EdgeInsets.only(bottom: 1),
+          //           child: const Icon(
+          //             FontAwesomeIcons.chevronRight,
+          //             color: Color(0xffed3023),
+          //             size: 14,
+          //           ))
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     ),
@@ -133,53 +133,57 @@ Widget productother() {
           padding: EdgeInsets.only(left: pM, right: pM, bottom: bP),
           child: Wrap(
             children: [
-              ...List.generate(12, (index) {
-                return Column(
-                  children: [
-                    if (bar == "lg") ...[
-                      BootstrapCol(
-                        sizes: 'col-3',
-                        child: Card(
-                            margin: const EdgeInsets.all(2.0),
-                            child: SizedBox(
-                                height: h,
-                                // width: a,
-                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
-                      )
-                    ] else if (bar == "pc") ...[
-                      BootstrapCol(
-                        sizes: 'col-2',
-                        child: Card(
-                            margin: const EdgeInsets.all(2.0),
-                            child: SizedBox(
-                                height: h,
-                                // width: a,
-                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
-                      )
-                    ] else if (bar == "sm") ...[
-                      BootstrapCol(
-                        sizes: 'col-4',
-                        child: Card(
-                            margin: const EdgeInsets.all(2.0),
-                            child: SizedBox(
-                                height: h,
-                                // width: a,
-                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
-                      )
-                    ] else if (bar == "mobile") ...[
-                      BootstrapCol(
-                        sizes: 'col-6',
-                        child: Card(
-                            margin: const EdgeInsets.all(2.0),
-                            child: SizedBox(
-                                height: h,
-                                // width: a,
-                                child: menu(b, T, R, L, hSp2, fSd, hSp3, fSm))),
-                      )
-                    ],
-                  ],
-                );
-              })
+              ...listPdOther
+                  .map((item) => Column(
+                        children: [
+                          if (bar == "lg") ...[
+                            BootstrapCol(
+                              sizes: 'col-3',
+                              child: Card(
+                                  margin: const EdgeInsets.all(2.0),
+                                  child: SizedBox(
+                                      height: h,
+                                      // width: a,
+                                      child: menuOther(b, T, R, L, hSp2, fSd,
+                                          hSp3, fSm, item))),
+                            )
+                          ] else if (bar == "pc") ...[
+                            BootstrapCol(
+                              sizes: 'col-2',
+                              child: Card(
+                                  margin: const EdgeInsets.all(2.0),
+                                  child: SizedBox(
+                                      height: h,
+                                      // width: a,
+                                      child: menuOther(b, T, R, L, hSp2, fSd,
+                                          hSp3, fSm, item))),
+                            )
+                          ] else if (bar == "sm") ...[
+                            BootstrapCol(
+                              sizes: 'col-4',
+                              child: Card(
+                                  margin: const EdgeInsets.all(2.0),
+                                  child: SizedBox(
+                                      height: h,
+                                      // width: a,
+                                      child: menuOther(b, T, R, L, hSp2, fSd,
+                                          hSp3, fSm, item))),
+                            )
+                          ] else if (bar == "mobile") ...[
+                            BootstrapCol(
+                              sizes: 'col-6',
+                              child: Card(
+                                  margin: const EdgeInsets.all(2.0),
+                                  child: SizedBox(
+                                      height: h,
+                                      // width: a,
+                                      child: menuOther(b, T, R, L, hSp2, fSd,
+                                          hSp3, fSm, item))),
+                            )
+                          ],
+                        ],
+                      ))
+                  .toList(),
             ],
           ),
         ))
