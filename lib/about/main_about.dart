@@ -80,7 +80,7 @@ class _AboutState extends State<About> {
                     children: const [
                       Center(
                         child: Text(
-                          "เกี่ยวกับเรา",
+                          "เกี่ยวกับเรา1",
                           style: TextStyle(fontSize: 30),
                         ),
                       )
