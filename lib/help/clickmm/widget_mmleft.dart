@@ -139,9 +139,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "ฉันจะลงทะเบียนเพื่อสมัครบัญชีลาซาด้าได้อย่างไร",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "ฉันจะลงทะเบียนเพื่อสมัครบัญชีลาซาด้าได้อย่างไร",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -149,9 +153,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "วิธีการยืนยันตัวตนเมื่อเข้าสู่ระบบ",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "วิธีการยืนยันตัวตนเมื่อเข้าสู่ระบบ",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -159,9 +167,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "วิธีเปลี่ยนภาษา",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "วิธีเปลี่ยนภาษา",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -169,9 +181,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "คำแนะนำการใช้งาน CLEO (แชทบอทคลีโอ)",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "คำแนะนำการใช้งาน CLEO (แชทบอทคลีโอ)",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -179,20 +195,32 @@ Widget mmleft(context) {
         ),
         Row(
           children: [
-            Text(
-              "เพิ่มเติม",
-              style: TextStyle(fontSize: fM3, color: Colors.red),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Container(
-                margin: const EdgeInsets.only(bottom: 1),
-                child: const Icon(
-                  FontAwesomeIcons.chevronDown,
-                  size: 10,
-                  color: Colors.red,
-                ))
+            InkWell(
+              splashColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {},
+              child: SizedBox(
+                child: Row(
+                  children: [
+                    Text(
+                      "เพิ่มเติม",
+                      style: TextStyle(fontSize: fM3, color: Colors.red),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(bottom: 1),
+                        child: const Icon(
+                          FontAwesomeIcons.chevronDown,
+                          size: 10,
+                          color: Colors.red,
+                        ))
+                  ],
+                ),
+              ),
+            )
           ],
         ),
         SizedBox(
@@ -214,9 +242,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "LazRewards คืออะไร?",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "LazRewards คืออะไร?",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         SizedBox(
@@ -238,9 +270,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "ข้อกำหนดการใช้ลาซคอยน์",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "ข้อกำหนดการใช้ลาซคอยน์",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -248,9 +284,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "คำถามทั่วไปเกี่ยวกับเหรียญ",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "คำถามทั่วไปเกี่ยวกับเหรียญ",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -258,9 +298,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "เหรียญคืออะไร",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "เหรียญคืออะไร",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -268,9 +312,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "ขั้นตอนการแลกเหรียญ",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "ขั้นตอนการแลกเหรียญ",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -278,9 +326,13 @@ Widget mmleft(context) {
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            "ทำไมกดเก็บเหรียญไม่ได้",
-            style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {},
+            child: Text(
+              "ทำไมกดเก็บเหรียญไม่ได้",
+              style: TextStyle(fontSize: fM2, fontFamily: "Prompt-Medium"),
+            ),
           ),
         ),
         const SizedBox(
@@ -288,20 +340,32 @@ Widget mmleft(context) {
         ),
         Row(
           children: [
-            Text(
-              "เพิ่มเติม",
-              style: TextStyle(fontSize: fM3, color: Colors.red),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Container(
-                margin: const EdgeInsets.only(bottom: 1),
-                child: const Icon(
-                  FontAwesomeIcons.chevronDown,
-                  size: 10,
-                  color: Colors.red,
-                ))
+            InkWell(
+              splashColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {},
+              child: SizedBox(
+                child: Row(
+                  children: [
+                    Text(
+                      "เพิ่มเติม",
+                      style: TextStyle(fontSize: fM3, color: Colors.red),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(bottom: 1),
+                        child: const Icon(
+                          FontAwesomeIcons.chevronDown,
+                          size: 10,
+                          color: Colors.red,
+                        ))
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ],

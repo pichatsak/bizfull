@@ -215,10 +215,13 @@ Widget menuproduct() {
                                     ),
                                   ],
                                 ),
-                                const Text(
-                                  "แก้ไข",
-                                  style: TextStyle(
-                                      fontSize: 13, color: Color(0xffed3023)),
+                                InkWell(
+                                  onTap: () {},
+                                  child: const Text(
+                                    "แก้ไข",
+                                    style: TextStyle(
+                                        fontSize: 13, color: Color(0xffed3023)),
+                                  ),
                                 ),
                               ],
                             )
@@ -242,17 +245,20 @@ Widget menuproduct() {
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
+                                  children: [
+                                    const Text(
                                       "รับภายใน 31 ส.ค.-2 ก.ย.",
                                       style: TextStyle(
                                           fontSize: 12, color: Colors.black54),
                                     ),
-                                    Text(
-                                      "แก้ไข",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Color(0xffed3023)),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Text(
+                                        "แก้ไข",
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            color: Color(0xffed3023)),
+                                      ),
                                     ),
                                   ],
                                 ),

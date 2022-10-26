@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -41,7 +42,7 @@ class _RegistormobileState extends State<Registormobile> {
       h5 = 154;
       hbar = 70;
     }
-    return Scaffold(
+    return Scaffold(drawer: const Drawermenu(),
         body: SizedBox(
           height: MediaQuery.of(context).size.height + h5,
           child: Stack(

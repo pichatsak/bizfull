@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget babymmright() {
+Widget babymmright(context) {
   return Padding(
     padding: const EdgeInsets.only(right: 20),
     child: Column(
@@ -9,19 +9,25 @@ Widget babymmright() {
         TextFormField(
           cursorColor: Colors.black,
           style: const TextStyle(fontSize: 14, color: Colors.black),
-          decoration: const InputDecoration(
-              suffixIcon: Icon(
-                Icons.search,
-                color: Colors.black54,
+          decoration: InputDecoration(
+              suffixIcon: InkWell(
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () {},
+                child: const Icon(
+                  Icons.search,
+                  color: Colors.black54,
+                ),
               ),
               hintText: 'ค้นหา หัวข้อ,คำถาม...',
               isDense: true,
-              contentPadding: EdgeInsets.fromLTRB(10, 13, 10, 13),
-              enabledBorder: OutlineInputBorder(
+              contentPadding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
+              enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(3)),
                 borderSide: BorderSide(color: Colors.black54, width: 1.0),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(3)),
                 borderSide: BorderSide(color: Colors.black54, width: 1.0),
               )),
@@ -36,51 +42,81 @@ Widget babymmright() {
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
-          width: double.infinity,
-          child: Text(
-            "คำถามที่พบบ่อยเกี่ยวกับบัญชี",
-            style: TextStyle(fontSize: 14),
+        InkWell(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {},
+          child: const SizedBox(
+            width: double.infinity,
+            child: Text(
+              "คำถามที่พบบ่อยเกี่ยวกับบัญชี",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
-          width: double.infinity,
-          child: Text(
-            "ฉันจะลงทะเบียนเพื่อสมัครบัญชีลาซาด้าได้อย่างไร",
-            style: TextStyle(fontSize: 14),
+        InkWell(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {},
+          child: const SizedBox(
+            width: double.infinity,
+            child: Text(
+              "ฉันจะลงทะเบียนเพื่อสมัครบัญชีลาซาด้าได้อย่างไร",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
-          width: double.infinity,
-          child: Text(
-            "วิธีการยืนยันตัวตนเมื่อเข้าสู่ระบบ",
-            style: TextStyle(fontSize: 14),
+        InkWell(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {},
+          child: const SizedBox(
+            width: double.infinity,
+            child: Text(
+              "วิธีการยืนยันตัวตนเมื่อเข้าสู่ระบบ",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
-          width: double.infinity,
-          child: Text(
-            "วิธีเปลี่ยนภาษา",
-            style: TextStyle(fontSize: 14),
+        InkWell(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {},
+          child: const SizedBox(
+            width: double.infinity,
+            child: Text(
+              "วิธีเปลี่ยนภาษา",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
-          width: double.infinity,
-          child: Text(
-            "คำแนะนำการใช้งาน CLEO (แชทบอทคลีโอ)",
-            style: TextStyle(fontSize: 14),
+        InkWell(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () {},
+          child: const SizedBox(
+            width: double.infinity,
+            child: Text(
+              "คำแนะนำการใช้งาน CLEO (แชทบอทคลีโอ)",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
         ),
         const SizedBox(
@@ -88,20 +124,32 @@ Widget babymmright() {
         ),
         Row(
           children: [
-            const Text(
-              "เพิ่มเติม",
-              style: TextStyle(fontSize: 14, color: Colors.red),
+            InkWell(
+              splashColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {},
+              child: SizedBox(
+                child: Row(
+                  children: [
+                    const Text(
+                      "เพิ่มเติม",
+                      style: TextStyle(fontSize: 14, color: Colors.red),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(bottom: 1),
+                        child: const Icon(
+                          FontAwesomeIcons.chevronDown,
+                          size: 10,
+                          color: Colors.red,
+                        ))
+                  ],
+                ),
+              ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            Container(
-                margin: const EdgeInsets.only(bottom: 1),
-                child: const Icon(
-                  FontAwesomeIcons.chevronDown,
-                  size: 10,
-                  color: Colors.red,
-                ))
           ],
         ),
         const SizedBox(height: 30),
@@ -118,30 +166,38 @@ Widget babymmright() {
           decoration: BoxDecoration(
               color: const Color(0xfff3f3f3),
               borderRadius: BorderRadius.circular(5)),
-          child: ListTile(
-            leading: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(90),
-                  color: const Color.fromARGB(90, 240, 173, 181)),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  margin: const EdgeInsets.only(bottom: 0),
-                  child: const Icon(
-                    FontAwesomeIcons.envelope,
-                    color: Color(0xffa91f2e),
-                    size: 16,
+          child: Material(
+            color: Colors.transparent,
+            child: ListTile(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              onTap: () {
+                Navigator.of(context).pushNamed("/sendmail");
+              },
+              leading: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(90),
+                    color: const Color.fromARGB(90, 240, 173, 181)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 0),
+                    child: const Icon(
+                      FontAwesomeIcons.envelope,
+                      color: Color(0xffa91f2e),
+                      size: 16,
+                    ),
                   ),
                 ),
               ),
-            ),
-            title: const Text(
-              'Email',
-              style: TextStyle(fontSize: 14),
-            ),
-            subtitle: const Text(
-              'แจ้งปัญหาเพิ่มเติม',
-              style: TextStyle(fontSize: 14),
+              title: const Text(
+                'Email',
+                style: TextStyle(fontSize: 14),
+              ),
+              subtitle: const Text(
+                'แจ้งปัญหาเพิ่มเติม',
+                style: TextStyle(fontSize: 14),
+              ),
             ),
           ),
         ),

@@ -18,7 +18,7 @@ Widget bankprofile() {
     fM = 16;
     fM1 = 14;
     pad1 = 30;
-    pad2 = 10;//20
+    pad2 = 10; //20
     nB = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     pAD = 0;
@@ -45,7 +45,7 @@ Widget bankprofile() {
           padding: EdgeInsets.only(left: pAD, right: pAD),
           child: Container(
             decoration: BoxDecoration(
-             //   color: nB == "pc" ? const Color(0xfff3f3f3) : null,
+                //   color: nB == "pc" ? const Color(0xfff3f3f3) : null,
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
               padding: EdgeInsets.only(
@@ -79,14 +79,19 @@ Widget bankprofile() {
                                       fontFamily: "Prompt-Medium"))
                             ]),
                       add == "pc"
-                          ? Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(7),
-                              ),
+                          ? ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      const Color(0xffed3023)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7),
+                                  ))),
+                              onPressed: () {},
                               child: Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 8, bottom: 8),
+                                    left: 5, right: 5, top: 8, bottom: 8),
                                 child: Row(
                                   children: [
                                     Container(
@@ -108,14 +113,19 @@ Widget bankprofile() {
                                 ),
                               ),
                             )
-                          : Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                              child: Padding(
+                          : ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size.zero,
+                                backgroundColor: const Color(0xffed3023),
                                 padding: const EdgeInsets.only(
                                     left: 7, right: 7, top: 5, bottom: 5),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(2)),
+                              ),
+                              onPressed: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 0, right: 0, top: 5, bottom: 5),
                                 child: Container(
                                   margin: const EdgeInsets.only(bottom: 3),
                                   child: const Icon(
@@ -124,17 +134,16 @@ Widget bankprofile() {
                                     size: 16,
                                   ),
                                 ),
-                              ),
-                            ),
+                              )),
                     ],
                   ),
                   const SizedBox(height: 15),
                   nB == "pc"
                       ? Container(height: 1, color: Colors.black12)
                       : Container(),
-                  Container(
+                  const SizedBox(
                     height: 200,
-                    child: const Center(
+                    child: Center(
                         child: Text("คุณยังไม่มีบัญชีธนาคาร",
                             style: TextStyle(
                                 fontSize: 16, color: Colors.black87))),

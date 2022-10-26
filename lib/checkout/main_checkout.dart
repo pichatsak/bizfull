@@ -8,6 +8,7 @@ import 'package:bizfull/checkout/widget_bin.dart';
 import 'package:bizfull/checkout/widget_menuproduct.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -76,6 +77,7 @@ class _CheckOutState extends State<CheckOut> {
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -120,7 +122,7 @@ class _CheckOutState extends State<CheckOut> {
                                       // decoration: BoxDecoration(
                                       //     border: Border.all(color: Colors.black12),
                                       //     borderRadius: BorderRadius.circular(7)),
-                                      child: bin(character1, setState))))
+                                      child: bin(character1, setState,context))))
                         ])
                       ]),
                   SizedBox(height: h),

@@ -230,14 +230,20 @@ Widget dataprofile(setState) {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffed3023),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              const Color(0xffed3023)),
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                      ))),
+                                  onPressed: () {},
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 25, right: 25, top: 8, bottom: 8),
+                                        left: 10, right: 10, top: 8, bottom: 8),
                                     child: Row(
                                       children: const [
                                         Text(

@@ -1,5 +1,6 @@
 import 'package:bizfull/checkout/widget_adddress.dart';
-import 'package:bizfull/checkout/widget_dialog_address2.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_address2.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_edit_address2.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -224,8 +225,27 @@ Widget datadialogaddress1(context, addressradio, setState) {
                 const Text("0932430369",
                     style: TextStyle(fontSize: 13, color: Colors.black54))
               ]),
-              const Text("แก้ไข",
-                  style: TextStyle(fontSize: 13, color: Color(0xffed3023)))
+              InkWell(
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  showDialog<String>(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
+                      contentPadding: const EdgeInsets.only(top: 0.0),
+                      content: editdialog2(context, addressradio, setState),
+                    ),
+                  );
+                },
+                child: const Text("แก้ไข",
+                    style: TextStyle(fontSize: 13, color: Color(0xffed3023))),
+              )
             ],
           ),
           const SizedBox(
@@ -286,8 +306,27 @@ Widget datadialogaddress11(context, addressradio, setState) {
                 const Text("0932430369",
                     style: TextStyle(fontSize: 13, color: Colors.black54))
               ]),
-              const Text("แก้ไข",
-                  style: TextStyle(fontSize: 13, color: Color(0xffed3023)))
+              InkWell(
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  showDialog<String>(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
+                      contentPadding: const EdgeInsets.only(top: 0.0),
+                      content: editdialog2(context, addressradio, setState),
+                    ),
+                  );
+                },
+                child: const Text("แก้ไข",
+                    style: TextStyle(fontSize: 13, color: Color(0xffed3023))),
+              )
             ],
           ),
           const SizedBox(

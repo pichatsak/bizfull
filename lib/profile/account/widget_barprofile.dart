@@ -37,9 +37,13 @@ Widget barprofile(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "บัญชีของฉัน",
-                          style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        InkWell(onTap: () {
+                          Navigator.of(context).pushNamed("/profile");
+                        },
+                          child: const Text(
+                            "บัญชีของฉัน",
+                            style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
                          const SizedBox(
                           width: 5,

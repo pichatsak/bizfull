@@ -1,11 +1,11 @@
-import 'package:bizfull/checkout/widget_dialog_address1_mobile.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget dialog2mobile(context) {
+Widget editdialogaddress(context) {
   return SizedBox(
-    width: 400,
-    height: 500,
+    width: 500,
+    height: 552,
     child: Stack(
       children: [
         SingleChildScrollView(
@@ -13,9 +13,9 @@ Widget dialog2mobile(context) {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 50, right: 10, left: 10, bottom: 100),
+                    top: 50, right: 20, left: 20, bottom: 30),
                 child: Column(children: [
-                  datadialogaddress2mobile(),
+                  editdatadialogaddressweb(),
                 ]),
               ),
             ],
@@ -36,7 +36,7 @@ Widget dialog2mobile(context) {
                 children: const [
                   SizedBox(width: 20),
                   Text(
-                    "ที่อยู่ใหม่",
+                    "แก้ไขที่อยู่",
                     style:
                         TextStyle(fontSize: 16.0, fontFamily: "Prompt-Medium"),
                   ),
@@ -72,18 +72,6 @@ Widget dialog2mobile(context) {
                       borderRadius: BorderRadius.circular(7),
                       onTap: () {
                         Navigator.pop(context);
-                        showDialog<String>(
-                          barrierDismissible: false,
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                              insetPadding: const EdgeInsets.symmetric(
-                                  horizontal: 15.0, vertical: 24.0),
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0))),
-                              contentPadding: const EdgeInsets.only(top: 0.0),
-                              content: dialog1mobile(context)),
-                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -115,18 +103,6 @@ Widget dialog2mobile(context) {
                         ))),
                     onPressed: () {
                       Navigator.pop(context);
-                      showDialog<String>(
-                        barrierDismissible: false,
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                            insetPadding: const EdgeInsets.symmetric(
-                                horizontal: 15.0, vertical: 24.0),
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0))),
-                            contentPadding: const EdgeInsets.only(top: 0.0),
-                            content: dialog1mobile(context)),
-                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.only(
@@ -162,9 +138,9 @@ Widget dialog2mobile(context) {
   );
 }
 
-Widget datadialogaddress2mobile() {
+Widget editdatadialogaddressweb() {
   return Padding(
-    padding: const EdgeInsets.only(top: 15),
+    padding: const EdgeInsets.only(top: 20),
     child: Column(
       children: [
         SizedBox(
@@ -192,7 +168,7 @@ Widget datadialogaddress2mobile() {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         SizedBox(
           height: 40,
           child: Theme(
@@ -218,13 +194,13 @@ Widget datadialogaddress2mobile() {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Row(
           children: <Widget>[
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 7.5),
                 child: SizedBox(
                   height: 40,
                   child: Theme(
@@ -257,7 +233,7 @@ Widget datadialogaddress2mobile() {
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 7.5),
                 child: SizedBox(
                   height: 40,
                   child: Theme(
@@ -289,13 +265,13 @@ Widget datadialogaddress2mobile() {
             )
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         Row(
           children: <Widget>[
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 7.5),
                 child: SizedBox(
                   height: 40,
                   child: Theme(
@@ -328,7 +304,7 @@ Widget datadialogaddress2mobile() {
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 7.5),
                 child: SizedBox(
                   height: 40,
                   child: Theme(
@@ -360,7 +336,7 @@ Widget datadialogaddress2mobile() {
             )
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 15),
         SizedBox(
           child: Theme(
             data: ThemeData(primarySwatch: Colors.red, fontFamily: "Prompt"),
@@ -380,91 +356,127 @@ Widget datadialogaddress2mobile() {
                     borderRadius: BorderRadius.all(Radius.circular(7)),
                     borderSide: BorderSide(color: Colors.red, width: 1.0),
                   )),
-              maxLines: 4,
+              maxLines: 3,
             ),
           ),
         ),
-        const SizedBox(height: 20),
-        Column(
-          children: [
-            Row(children: const [
-              Text(
-                "ติดป้ายเป็น :",
-                style: TextStyle(fontSize: 14),
-              )
-            ]),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xffed3023)),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.only(left: 20, right: 20, bottom: 6, top: 6),
-                    child: Text(
-                      "บ้าน",
-                      style: TextStyle(fontSize: 14, color: Color(0xffed3023)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black12),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.only(left: 20, right: 20, bottom: 6, top: 6),
-                    child: Text(
-                      "ที่ทำงาน",
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
         const SizedBox(height: 25),
         Row(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xffed3023)),
-                      borderRadius: BorderRadius.circular(3),
-                      color: const Color(0xffed3023)),
-                ),
-                SizedBox(
-                    height: 20,
-                    width: 20,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 2, left: 1),
-                        child: const Icon(
-                          FontAwesomeIcons.check,
-                          color: Colors.white,
-                          size: 14,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 80,
+                child: Padding(
+                    padding: const EdgeInsets.only(right: 7.5),
+                    child: Column(
+                      children: [
+                        Row(children: const [
+                          Text(
+                            "ติดป้ายเป็น :",
+                            style: TextStyle(fontSize: 14),
+                          )
+                        ]),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            InkWell(
+                              borderRadius: BorderRadius.circular(5),
+                              onTap: () {},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xffed3023)),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 6, top: 6),
+                                  child: Text(
+                                    "บ้าน",
+                                    style: TextStyle(
+                                        fontSize: 14, color: Color(0xffed3023)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(5),
+                              onTap: () {},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black12),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 6, top: 6),
+                                  child: Text(
+                                    "ที่ทำงาน",
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 7.5, top: 5),
+                child: SizedBox(
+                  height: 80,
+                  child: Row(
+                    children: [
+                      InkWell(borderRadius: BorderRadius.circular(3),onTap: () {
+                        
+                      },
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: 20,
+                              width: 20,
+                              decoration: BoxDecoration(
+                                  border:
+                                      Border.all(color: const Color(0xffed3023)),
+                                  borderRadius: BorderRadius.circular(3),
+                                  color: const Color(0xffed3023)),
+                            ),
+                            SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(bottom: 2, left: 1),
+                                    child: const Icon(
+                                      FontAwesomeIcons.check,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
+                                  ),
+                                ))
+                          ],
                         ),
                       ),
-                    ))
-              ],
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            const Text(
-              "เลือกเป็นที่อยู่ตั้งต้น",
-              style: TextStyle(fontSize: 14),
-            ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      const Text(
+                        "เลือกเป็นที่อยู่ตั้งต้น",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ],

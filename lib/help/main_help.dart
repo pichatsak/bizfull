@@ -8,7 +8,7 @@ import 'package:bizfull/help/widget_mm_help.dart';
 import 'package:bizfull/help/widget_queist.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
-import 'package:bizfull/profile/historysuc/widget_drawer.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
@@ -28,7 +28,6 @@ class _HelpState extends State<Help> {
     box.write("curpage", "help");
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     double hbar;
@@ -62,10 +61,8 @@ class _HelpState extends State<Help> {
       h = 20;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(
-        endDrawer: const NavDrawer(),
-        drawerEdgeDragWidth: 0,
-        drawer: Container(width: 100),
+    return Scaffold(drawer: const Drawermenu(),
+       
         body: Stack(
           children: [
             SingleChildScrollView(

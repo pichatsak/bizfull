@@ -62,17 +62,31 @@ Widget datashopcart(character, setState) {
                   ListTile(
                     title: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 2),
-                          child: Icon(FontAwesomeIcons.store,
-                              color: const Color(0xffed3023), size: iconsize),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () {},
+                          child: SizedBox(
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 2),
+                                  child: Icon(FontAwesomeIcons.store,
+                                      color: const Color(0xffed3023),
+                                      size: iconsize),
+                                ),
+                                const SizedBox(width: 10),
+                                Text('สินค้าน่าชิป',
+                                    style: TextStyle(
+                                        fontFamily: "Prompt-Bold",
+                                        fontSize: namelist)),
+                                const SizedBox(width: 10),
+                                Icon(Icons.arrow_forward_ios, size: iconsize)
+                              ],
+                            ),
+                          ),
                         ),
-                        const SizedBox(width: 10),
-                        Text('สินค้าน่าชิป',
-                            style: TextStyle(
-                                fontFamily: "Prompt-Bold", fontSize: namelist)),
-                        const SizedBox(width: 10),
-                        Icon(Icons.arrow_forward_ios, size: iconsize)
                       ],
                     ),
                     leading: Radio<SingingCharacter>(
@@ -138,22 +152,30 @@ Widget datashopcart(character, setState) {
                                     Flexible(
                                       child: Row(
                                         children: [
-                                          Container(
-                                            decoration: const BoxDecoration(
-                                                border: Border(
-                                                    left: BorderSide(
-                                                        color: Colors.black26),
-                                                    top: BorderSide(
-                                                        color: Colors.black26),
-                                                    bottom: BorderSide(
-                                                        color:
-                                                            Colors.black26))),
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(3.0),
-                                              child: Icon(
-                                                Icons.remove,
-                                                size: 20,
-                                                color: Colors.black,
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () {},
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                  border: Border(
+                                                      left: BorderSide(
+                                                          color:
+                                                              Colors.black26),
+                                                      top: BorderSide(
+                                                          color:
+                                                              Colors.black26),
+                                                      bottom: BorderSide(
+                                                          color:
+                                                              Colors.black26))),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(3.0),
+                                                child: Icon(
+                                                  Icons.remove,
+                                                  size: 20,
+                                                  color: Colors.black,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -185,22 +207,30 @@ Widget datashopcart(character, setState) {
                                               ),
                                             ),
                                           ),
-                                          Container(
-                                            decoration: const BoxDecoration(
-                                                border: Border(
-                                                    right: BorderSide(
-                                                        color: Colors.black26),
-                                                    top: BorderSide(
-                                                        color: Colors.black26),
-                                                    bottom: BorderSide(
-                                                        color:
-                                                            Colors.black26))),
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(3.0),
-                                              child: Icon(
-                                                Icons.add_rounded,
-                                                size: 20,
-                                                color: Colors.black,
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () {},
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                  border: Border(
+                                                      right: BorderSide(
+                                                          color:
+                                                              Colors.black26),
+                                                      top: BorderSide(
+                                                          color:
+                                                              Colors.black26),
+                                                      bottom: BorderSide(
+                                                          color:
+                                                              Colors.black26))),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(3.0),
+                                                child: Icon(
+                                                  Icons.add_rounded,
+                                                  size: 20,
+                                                  color: Colors.black,
+                                                ),
                                               ),
                                             ),
                                           ),

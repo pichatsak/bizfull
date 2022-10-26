@@ -2,8 +2,9 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
-import 'package:bizfull/profile/address/widget_bar_address.dart';
-import 'package:bizfull/profile/address/widget_bar_address_mobile.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
+import 'package:bizfull/profile/address/bar/widget_bar_address.dart';
+import 'package:bizfull/profile/address/bar/widget_bar_address_mobile.dart';
 import 'package:bizfull/profile/address/widget_left_address.dart';
 import 'package:bizfull/profile/historysuc/widget_drawer.dart';
 import 'package:bizfull/profile/address/widget_address.dart';
@@ -38,7 +39,6 @@ class _ProfileAddressState extends State<ProfileAddress> {
     String typeSc1;
     double h;
     String typeSc;
-    String cA;
     String bM;
     if (Device.width > 991) {
       hbar = 119;
@@ -46,7 +46,6 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "pc";
       typeSc = "pc";
       h = 70;
-      cA = "pc";
       bM = "pc";
     } else if (Device.width >= 768 && Device.width <= 991) {
       hbar = 70;
@@ -54,7 +53,6 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "md";
       typeSc = "mobile";
       h = 30;
-      cA = "pc";
       bM = "mobile";
     } else if (Device.width >= 576 && Device.width <= 767) {
       hbar = 70;
@@ -62,7 +60,6 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "xm";
       typeSc = "mobile";
       h = 30;
-      cA = "mobile";
       bM = "mobile";
     } else {
       hbar = 70;
@@ -70,16 +67,15 @@ class _ProfileAddressState extends State<ProfileAddress> {
       typeSc1 = "xs";
       typeSc = "mobile";
       h = 30;
-      cA = "mobile";
       bM = "mobile";
     }
     bootstrapGridParameters(gutterSize: 0);
 
-    return Scaffold(
+    return Scaffold(drawer: const Drawermenu(),
         key: key,
         endDrawer: const NavDrawer(),
         drawerEdgeDragWidth: 0,
-        drawer: Container(width: 100),
+        // drawer: Container(width: 100),
         body: Stack(
           children: [
             SingleChildScrollView(

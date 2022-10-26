@@ -94,7 +94,7 @@ Widget data1() {
                   Text('ประเภทสินค้า',
                       style: TextStyle(fontSize: f1, color: Colors.black54)),
                   Text('ไมโครไฟเบอร์',
-                      style: TextStyle(fontSize: f1, color: Color(0xffed3023))),
+                      style: TextStyle(fontSize: f1, color: const Color(0xffed3023))),
                 ],
               ),
             )),

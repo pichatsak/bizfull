@@ -14,12 +14,11 @@ class _NavmainState extends State<Navmain> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 991) {
-        // ignore: prefer_const_constructors
-        return NavDeskTop();
+        return const NavDeskTop();
       } else if (constraints.maxWidth >= 768 && constraints.maxWidth <= 991) {
-        return  NavMobiles();
+        return NavMobiles();
       } else {
-        return  NavMobiles();
+        return NavMobiles();
       }
     });
   }

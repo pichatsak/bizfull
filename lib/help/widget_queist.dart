@@ -24,7 +24,7 @@ Widget queist() {
     mT = 7;
     fZ = 14;
     pL1 = 5;
-  }  else {
+  } else {
     fM = 15;
     pL = 5;
     tM = 10;
@@ -63,9 +63,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      '[การติดตามสถานะคำสั่งซื้อ] ฉันจะได้รับสินค้าที่สั่งซื้อเมื่อไหร่?',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        '[การติดตามสถานะคำสั่งซื้อ] ฉันจะได้รับสินค้าที่สั่งซื้อเมื่อไหร่?',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -89,9 +95,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      '[บัญชีของฉัน] ฉันจะเพิ่ม/แก้ไข/ลบที่อยู่ของฉันได้อย่างไร',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        '[บัญชีของฉัน] ฉันจะเพิ่ม/แก้ไข/ลบที่อยู่ของฉันได้อย่างไร',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -115,9 +127,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'รู้จักวิธีการใช้โค้ดรูปแบบใหม่',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'รู้จักวิธีการใช้โค้ดรูปแบบใหม่',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -141,9 +159,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'ทำไมฉันถึงไม่ได้รับรหัส OTP?',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'ทำไมฉันถึงไม่ได้รับรหัส OTP?',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -167,9 +191,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'ต้องทำอย่างไร หากไม่สามารถสั่งซื้อสินค้าได้',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'ต้องทำอย่างไร หากไม่สามารถสั่งซื้อสินค้าได้',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -193,9 +223,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'สินค้าของฉันอยู่ไหน',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'สินค้าของฉันอยู่ไหน',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -219,9 +255,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'ใช้คูปองอย่างไรให้คุ้มที่สุด',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'ใช้คูปองอย่างไรให้คุ้มที่สุด',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],
@@ -245,9 +287,15 @@ Widget queist() {
                     width: 10,
                   ),
                   Flexible(
-                    child: Text(
-                      'หากต้องการคืนสินค้าฉันต้องทำอย่างไร',
-                      style: TextStyle(fontSize: fZ),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Text(
+                        'หากต้องการคืนสินค้าฉันต้องทำอย่างไร',
+                        style: TextStyle(fontSize: fZ),
+                      ),
                     ),
                   ),
                 ],

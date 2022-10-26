@@ -37,10 +37,14 @@ Widget barclickbabymm(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "ศูนย์ช่วยเหลือ",
-                          style:
-                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        InkWell(onTap: () {
+                          Navigator.of(context).pushNamed("/help");
+                        },
+                          child: const Text(
+                            "ศูนย์ช่วยเหลือ",
+                            style:
+                                TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,
@@ -53,10 +57,14 @@ Widget barclickbabymm(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "บัญชีของฉัน",
-                          style:
-                              TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                        InkWell(onTap: () {
+                          Navigator.of(context).pushNamed("/clickmm");
+                        },
+                          child: const Text(
+                            "บัญชีของฉัน",
+                            style:
+                                TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,

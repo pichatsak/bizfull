@@ -35,32 +35,37 @@ Widget dataleft() {
                   const SizedBox(height: 20),
                   Row(
                     children: [
-                      Stack(
-                        children: [
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: const Color(0xffed3023)),
-                                borderRadius: BorderRadius.circular(3),
-                                color: const Color(0xffed3023)),
-                          ),
-                          SizedBox(
+                      InkWell(
+                        borderRadius: BorderRadius.circular(3),
+                        onTap: () {},
+                        child: Stack(
+                          children: [
+                            Container(
                               height: 20,
                               width: 20,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  margin: const EdgeInsets.only(bottom: 2,left: 1),
-                                  child: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                    size: 14,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xffed3023)),
+                                  borderRadius: BorderRadius.circular(3),
+                                  color: const Color(0xffed3023)),
+                            ),
+                            SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(
+                                        bottom: 2, left: 1),
+                                    child: const Icon(
+                                      FontAwesomeIcons.check,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
                                   ),
-                                ),
-                              ))
-                        ],
+                                ))
+                          ],
+                        ),
                       ),
                       const SizedBox(
                         width: 15,
@@ -74,12 +79,16 @@ Widget dataleft() {
                   const SizedBox(height: 15),
                   Row(
                     children: [
-                      Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12),
-                            borderRadius: BorderRadius.circular(3)),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(3),
+                        onTap: () {},
+                        child: Container(
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black12),
+                              borderRadius: BorderRadius.circular(3)),
+                        ),
                       ),
                       const SizedBox(
                         width: 15,
@@ -95,30 +104,37 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                         Stack(
-                        children: [
-                          Container(
-                            height: 15,
-                            width: 15,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: const Color(0xffed3023)),
-                                borderRadius: BorderRadius.circular(3), color: const Color(0xffed3023)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xffed3023)),
+                                    borderRadius: BorderRadius.circular(3),
+                                    color: const Color(0xffed3023)),
+                              ),
+                              SizedBox(
+                                  height: 15,
+                                  width: 15,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      margin: const EdgeInsets.only(left: 0.5),
+                                      child: const Icon(
+                                        FontAwesomeIcons.check,
+                                        color: Colors.white,
+                                        size: 11,
+                                      ),
+                                    ),
+                                  ))
+                            ],
                           ),
-                           SizedBox(
-                              height: 15,
-                              width: 15,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Container( margin: const EdgeInsets.only(left: 0.5),
-                                  child: const Icon(
-                                    FontAwesomeIcons.check,
-                                   color: Colors.white,
-                                    size: 11,
-                                  ),
-                                ),
-                              ))
-                        ],
-                      ),
+                        ),
                         const SizedBox(
                           width: 15,
                         ),
@@ -134,12 +150,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 15,
-                          width: 15,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 15,
+                            width: 15,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -156,12 +176,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 15,
-                          width: 15,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 15,
+                            width: 15,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -178,12 +202,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 15,
-                          width: 15,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 15,
+                            width: 15,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -226,12 +254,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -252,12 +284,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -278,12 +314,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -304,12 +344,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -330,12 +374,16 @@ Widget dataleft() {
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(3),
+                          onTap: () {},
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black12),
+                                borderRadius: BorderRadius.circular(3)),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -354,17 +402,31 @@ Widget dataleft() {
                   const SizedBox(height: 15),
                   Row(
                     children: [
-                      Container(
-                          margin: const EdgeInsets.only(bottom: 3),
-                          child: const Icon(FontAwesomeIcons.chevronDown,
-                              size: 18, color: Colors.black87)),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      const Text(
-                        "ดูเพิ่มเติม",
-                        style: TextStyle(
-                            fontSize: 14, fontFamily: "Prompt-Medium"),
+                      SizedBox(
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Container(
+                                  margin: const EdgeInsets.only(bottom: 3),
+                                  child: const Icon(
+                                      FontAwesomeIcons.chevronDown,
+                                      size: 18,
+                                      color: Colors.black87)),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              const Text(
+                                "ดูเพิ่มเติม",
+                                style: TextStyle(
+                                    fontSize: 14, fontFamily: "Prompt-Medium"),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -562,13 +624,19 @@ Widget dataleft() {
                     const SizedBox(height: 30),
                     Row(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: const Color(0xffed3023),
-                              borderRadius: BorderRadius.circular(3)),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color(0xffed3023)),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3),
+                              ))),
+                          onPressed: () {},
                           child: const Padding(
                             padding: EdgeInsets.only(
-                                top: 5, bottom: 5, left: 15, right: 15),
+                                top: 5, bottom: 5, left: 0, right: 0),
                             child: Text(
                               "ลบทั้งหมด",
                               style:

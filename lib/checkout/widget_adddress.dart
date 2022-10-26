@@ -1,5 +1,5 @@
-import 'package:bizfull/checkout/widget_dialog_address1.dart';
-import 'package:bizfull/checkout/widget_dialog_address1_mobile.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_address1.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_address1_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';

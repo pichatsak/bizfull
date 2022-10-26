@@ -84,21 +84,22 @@ Widget listload(context, key) {
                       fontFamily: "Prompt-Medium"),
                 ),
                 const SizedBox(height: 10),
-                InkWell(
-                  onTap: () {
-                    key.currentState.openEndDrawer();
-                  },
-                  child: Container(
-                   decoration: BoxDecoration(
-                        color:const Color(0xff2e3192),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size.zero,
+                    backgroundColor: const Color(0xff2e3192),
+                    padding: const EdgeInsets.only(
+                        left: 0, right: 0, top: 8, bottom: 8),
+                    shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7)),
-                    child: const Padding(
-                      padding: EdgeInsets.only(
-                          left: 10, right: 10, top: 8, bottom: 8),
-                      child: Text(
-                        "ดูรายละเอียด",
-                        style: TextStyle(fontSize: 13, color: Colors.white),
-                      ),
+                  ),
+                  onPressed: () {},
+                  child: const Padding(
+                    padding:
+                        EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
+                    child: Text(
+                      "ดูรายละเอียด",
+                      style: TextStyle(fontSize: 13, color: Colors.white),
                     ),
                   ),
                 ),
@@ -111,7 +112,7 @@ Widget listload(context, key) {
 
 Widget listload1() {
   return Container(
-        decoration: BoxDecoration(
+      decoration: BoxDecoration(
           color:
               //const Color.fromARGB(71, 253, 195, 190),
               const Color(0xfff3f3f3),
@@ -195,10 +196,16 @@ Widget listload1() {
                           fontFamily: "Prompt-Medium"),
                     ),
                     const SizedBox(height: 10),
-                    Container(
-                      decoration: BoxDecoration(
-                        color:const Color(0xff2e3192),
-                        borderRadius: BorderRadius.circular(7)),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size.zero,
+                        backgroundColor: const Color(0xff2e3192),
+                        padding: const EdgeInsets.only(
+                            left: 0, right: 0, top: 8, bottom: 8),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7)),
+                      ),
+                      onPressed: () {},
                       child: const Padding(
                         padding: EdgeInsets.only(
                             left: 10, right: 10, top: 8, bottom: 8),
@@ -346,29 +353,28 @@ Widget listloadmobile(key) {
                   ),
                 ],
               ),
-              InkWell(
-                onTap: () {
-                  key.currentState.openEndDrawer();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xffed3023),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 8, bottom: 8),
-                    child: Row(
-                      children: const [
-                        Text(
-                          "ดูรายละเอียด",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
+              ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(const Color(0xffed3023)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ))),
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 5, right: 5, top: 8, bottom: 8),
+                  child: Row(
+                    children: const [
+                      Text(
+                        "ดูรายละเอียด",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
-              )
+              ),
             ],
           )
         ],

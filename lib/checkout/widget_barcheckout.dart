@@ -37,9 +37,13 @@ Widget barcheckout(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        const Text(
-                          "ตะกร้าสินค้า",
-                          style: TextStyle(fontSize: 13, color:Color(0xffed3023)),
+                        InkWell(onTap: () {
+                          Navigator.of(context).pushNamed("/shopcart");
+                        },
+                          child: const Text(
+                            "ตะกร้าสินค้า",
+                            style: TextStyle(fontSize: 13, color:Color(0xffed3023)),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,

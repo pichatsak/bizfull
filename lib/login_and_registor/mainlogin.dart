@@ -35,6 +35,7 @@ class _Login1State extends State<Login1> {
       typeSc = "mobile";
     }
     return Scaffold(
+      
       body: Stack(
         children: [
           SingleChildScrollView(

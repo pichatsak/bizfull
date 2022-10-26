@@ -169,30 +169,38 @@ class _NavDrawerState extends State<NavDrawer> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              InkWell(
-                                                onTap: () {
-                                                  Navigator.of(context)
-                                                      .pushNamed("/delively");
-                                                },
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xff2e3192),
+                                              ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  minimumSize: Size.zero,
+                                                  backgroundColor:
+                                                      const Color(0xff2e3192),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 0,
+                                                          right: 0,
+                                                          top: 8,
+                                                          bottom: 8),
+                                                  shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               7)),
-                                                  child: const Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 10,
-                                                        right: 10,
-                                                        top: 8,
-                                                        bottom: 8),
-                                                    child: Text(
-                                                      "รายละเอียดการจัดส่ง",
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors.white),
-                                                    ),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  Navigator.of(context)
+                                                      .pushNamed("/delively");
+                                                },
+                                                child: const Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10,
+                                                      right: 10,
+                                                      top: 8,
+                                                      bottom: 8),
+                                                  child: Text(
+                                                    "รายละเอียดการจัดส่ง",
+                                                    style: TextStyle(
+                                                        fontSize: 13,
+                                                        color: Colors.white),
                                                   ),
                                                 ),
                                               ),

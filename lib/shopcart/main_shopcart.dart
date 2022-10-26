@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:bizfull/shopcart/widget_bar_mobile.dart';
 import 'package:bizfull/shopcart/widget_data_shopcart.dart';
 import 'package:bizfull/shopcart/widget_data_shopcart1.dart';
@@ -66,7 +67,7 @@ class _ShopCartState extends State<ShopCart> {
       mD = "mobile";
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(
+    return Scaffold(drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(

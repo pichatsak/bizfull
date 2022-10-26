@@ -30,7 +30,6 @@ Widget endmobile(character3, setState, context) {
                           // SizedBox(width: 2),
                           // Icon(Icons.keyboard_arrow_up,
                           //     size: 18, color: Color(0xffed3023)),
-                          
                         ]),
                       ],
                     ),
@@ -56,26 +55,28 @@ Widget endmobile(character3, setState, context) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: () {
+              ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      const Color(0xffed3023),
+                    ),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ))),
+                onPressed: () {
                   Navigator.of(context).pushNamed("/checkout");
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xffed3023),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 25, right: 25, top: 8, bottom: 8),
-                    child: Row(
-                      children: const [
-                        Text(
-                          "ชำระเงิน",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 11, right: 11, top: 9, bottom: 9),
+                  child: Row(
+                    children: const [
+                      Text(
+                        "ชำระเงิน",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
               ),

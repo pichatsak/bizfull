@@ -7,7 +7,7 @@ import 'package:bizfull/help/clickmm/widget_mmleft.dart';
 
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
-import 'package:bizfull/profile/historysuc/widget_drawer.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
@@ -66,10 +66,8 @@ class _ClickmmState extends State<Clickmm> {
       typeSc2 = "mobile";
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(
-        endDrawer: const NavDrawer(),
-        drawerEdgeDragWidth: 0,
-        drawer: Container(width: 100),
+    return Scaffold(drawer: const Drawermenu(),
+       
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -95,7 +93,7 @@ class _ClickmmState extends State<Clickmm> {
                             child: mmleft(context)),
                         BootstrapCol(
                             sizes: 'col-xl-3  col-12 col-lg-4',
-                            child: typeSc2 == "pc" ? mmright() : Container()),
+                            child: typeSc2 == "pc" ? mmright(context) : Container()),
                       ])
                     ],
                   ),

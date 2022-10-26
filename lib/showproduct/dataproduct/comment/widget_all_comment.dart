@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_bar_comment.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment_byone.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _AllcommentState extends State<Allcomment> {
       h = 15;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(
+    return Scaffold(drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(

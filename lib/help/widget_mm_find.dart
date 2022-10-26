@@ -28,7 +28,7 @@ Widget mmFind() {
     hT = 8;
     hS = 0;
     ok = "mobile";
-  }  else {
+  } else {
     pad = 10;
     pad1 = 15;
     fO = 20;
@@ -80,16 +80,19 @@ Widget mmFind() {
                                 fillColor: Colors.white,
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.only(right: 10),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xffa91f2e)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        FontAwesomeIcons.magnifyingGlass,
-                                        color: Colors.white,
-                                        size: 12,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xffa91f2e)),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          FontAwesomeIcons.magnifyingGlass,
+                                          color: Colors.white,
+                                          size: 12,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -106,7 +109,7 @@ Widget mmFind() {
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 14),
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
+                                contentPadding: EdgeInsets.only(
                                     left: 10, top: hT, bottom: hT, right: 10),
                                 hintText: 'ค้นหา หัวข้อ,คำถาม...',
                                 hintStyle: const TextStyle(
@@ -119,16 +122,19 @@ Widget mmFind() {
                                 fillColor: Colors.white,
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.only(right: 10),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xffa91f2e)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        FontAwesomeIcons.magnifyingGlass,
-                                        color: Colors.white,
-                                        size: 12,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xffa91f2e)),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          FontAwesomeIcons.magnifyingGlass,
+                                          color: Colors.white,
+                                          size: 12,
+                                        ),
                                       ),
                                     ),
                                   ),

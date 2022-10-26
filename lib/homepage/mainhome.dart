@@ -13,6 +13,7 @@ import 'package:bizfull/homepage/shopping/main_show_shopping.dart';
 import 'package:bizfull/homepage/widget_slidershow.dart';
 
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-     
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -91,12 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         fluid: typM == "pc" ? false : true,
                         padding: EdgeInsets.only(top: toppd),
                         children: <Widget>[
-                          // ignore: prefer_const_constructors
-                          SliderTop(),
+                          const SliderTop(),
                           nameshipping(),
-                          showproductshipping(
-                            context,
-                          ),
+                          showproductshipping(context),
                           const SliderBanner(),
                           nameshopping(),
                           showproductshopping(context),

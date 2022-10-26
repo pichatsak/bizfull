@@ -99,16 +99,19 @@ Widget find() {
                                 fillColor: Colors.white,
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.only(right: 10),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xffa91f2e)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        FontAwesomeIcons.magnifyingGlass,
-                                        color: Colors.white,
-                                        size: 12,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xffa91f2e)),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          FontAwesomeIcons.magnifyingGlass,
+                                          color: Colors.white,
+                                          size: 12,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -138,16 +141,22 @@ Widget find() {
                                 fillColor: Colors.white,
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.only(right: 10),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xffa91f2e)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Icon(
-                                        FontAwesomeIcons.magnifyingGlass,
-                                        color: Colors.white,
-                                        size: 12,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color(0xffa91f2e)),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Icon(
+                                            FontAwesomeIcons.magnifyingGlass,
+                                            color: Colors.white,
+                                            size: 12,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

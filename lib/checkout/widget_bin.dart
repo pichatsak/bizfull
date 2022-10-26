@@ -1,3 +1,4 @@
+import 'package:bizfull/checkout/dialog/widget_dialog_coupon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,12 +6,13 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 enum SingingCharacter1 { lafayette, jefferson }
 
-Widget bin(character1, setState) {
+Widget bin(character1, setState, context) {
   String typbin;
   double hy;
   double rP;
   double tP;
   double bP;
+  String tYP;
 
   if (Device.width > 1240) {
     typbin = "pc";
@@ -18,18 +20,21 @@ Widget bin(character1, setState) {
     rP = 0;
     tP = 0;
     bP = 0;
+    tYP = "pc";
   } else if (Device.width >= 992 && Device.width <= 1240) {
     typbin = "lg";
     hy = 10;
     rP = 0;
     tP = 0;
     bP = 0;
+    tYP = "pc";
   } else {
     typbin = "pc";
     hy = 20;
     rP = 10;
     tP = 20;
     bP = 20;
+    tYP = "mobile";
   }
   return Padding(
     padding: EdgeInsets.only(right: rP, top: tP, bottom: bP), //15
@@ -58,69 +63,12 @@ Widget bin(character1, setState) {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      const Text("ดูวิธีชำระทั้งหมด",
-                          style: TextStyle(
-                              fontSize: 13, color: Color(0xffed3023))),
-                      Container(
-                        margin: const EdgeInsets.only(top: 2.5),
-                        child: Stack(children: [
-                          Container(
-                            margin: const EdgeInsets.only(left: 3),
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 10,
-                              color: Color(0xffed3023),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 9),
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 10,
-                              color: Color(0xffed3023),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 15),
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 10,
-                              color: Color(0xffed3023),
-                            ),
-                          )
-                        ]),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            : Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.only(bottom: 2),
-                          child: const Icon(
-                            FontAwesomeIcons.receipt,
-                            size: 18,
-                            color: Color(0xffa91f2e),
-                          )),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        "เลือกวิธีการชำระเงิน",
-                        style: TextStyle(
-                            fontSize: 16, fontFamily: "Prompt-Medium"),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () {},
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const Text("ดูวิธีชำระทั้งหมด",
                             style: TextStyle(
@@ -155,6 +103,75 @@ Widget bin(character1, setState) {
                           ]),
                         ),
                       ],
+                    ),
+                  )
+                ],
+              )
+            : Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(bottom: 2),
+                          child: const Icon(
+                            FontAwesomeIcons.receipt,
+                            size: 18,
+                            color: Color(0xffa91f2e),
+                          )),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text(
+                        "เลือกวิธีการชำระเงิน",
+                        style: TextStyle(
+                            fontSize: 16, fontFamily: "Prompt-Medium"),
+                      ),
+                    ],
+                  ),
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("ดูวิธีชำระทั้งหมด",
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0xffed3023))),
+                          Container(
+                            margin: const EdgeInsets.only(top: 2.5),
+                            child: Stack(children: [
+                              Container(
+                                margin: const EdgeInsets.only(left: 3),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 10,
+                                  color: Color(0xffed3023),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 9),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 10,
+                                  color: Color(0xffed3023),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 15),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 10,
+                                  color: Color(0xffed3023),
+                                ),
+                              )
+                            ]),
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -325,18 +342,40 @@ Widget bin(character1, setState) {
               ),
             ),
             const SizedBox(width: 8),
-            Container(
-              height: 46.5,
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7),
-                color: const Color(0xff2e3192),
+            ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(const Color(0xff2e3192)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7),
+                  ))),
+              onPressed: () {
+                showDialog<String>(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    insetPadding: tYP == "pc"
+                        ? const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 24.0)
+                        : const EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 24.0),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    contentPadding: const EdgeInsets.only(top: 0.0),
+                    content: dialogcoupon(context),
+                  ),
+                );
+              },
+              child: const SizedBox(
+                height: 46.5,
+                width: 70,
+                child: Center(
+                    child: Text(
+                  "ยืนยัน",
+                  style: TextStyle(color: Colors.white),
+                )),
               ),
-              child: const Center(
-                  child: Text(
-                "ยืนยัน",
-                style: TextStyle(color: Colors.white),
-              )),
             ),
           ],
         ),
@@ -404,16 +443,25 @@ Widget bin(character1, setState) {
           ],
         ),
         const SizedBox(height: 20),
-        Container(
-            height: 45,
-            decoration: BoxDecoration(
-                color: const Color(0xffed3023),
-                borderRadius: BorderRadius.circular(7)),
-            child: const Center(
-                child: Text(
-              "สั่งซื้อ",
-              style: TextStyle(fontSize: 14, color: Colors.white),
-            )))
+        ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(const Color(0xffed3023)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7),
+                ))),
+            onPressed: () {
+              Navigator.of(context).pushNamed("/evidence");
+            },
+            child: const SizedBox(
+              height: 45,
+              child: Center(
+                  child: Text(
+                "สั่งซื้อ",
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              )),
+            )),
       ],
     ),
   );

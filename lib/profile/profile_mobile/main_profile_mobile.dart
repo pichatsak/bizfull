@@ -2,7 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
-import 'package:bizfull/profile/historysuc/widget_drawer.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:bizfull/profile/profile_mobile/widget_bar_homemenu.dart';
 import 'package:bizfull/profile/profile_mobile/widget_home_mm_mobile.dart';
 
@@ -68,11 +68,8 @@ class _ProfileMobileState extends State<ProfileMobile> {
     }
     bootstrapGridParameters(gutterSize: 0);
 
-    return Scaffold(
-        key: key,
-        endDrawer: const NavDrawer(),
-        drawerEdgeDragWidth: 0,
-        drawer: Container(width: 100),
+    return Scaffold(drawer: const Drawermenu(),
+       
         body: Stack(
           children: [
             SingleChildScrollView(

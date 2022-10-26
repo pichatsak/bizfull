@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_dataproduct.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_datasmallright.dart';
@@ -83,6 +84,7 @@ class _ShowProductState extends State<ShowProduct> {
     }
     bootstrapGridParameters(gutterSize: 0);
     return Scaffold(
+        drawer: const Drawermenu(),
         backgroundColor: const Color(0xfff3f3f3),
         body: Stack(
           children: [

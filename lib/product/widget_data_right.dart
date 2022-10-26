@@ -115,32 +115,40 @@ Widget dararight(setState, key) {
                           const SizedBox(
                             width: 20,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  top: 5, bottom: 5, left: 15, right: 15),
-                              child: Text(
-                                "ยอดนิยม",
-                                style: TextStyle(color: Colors.white),
+                          InkWell(
+                            onTap: () {},
+                            borderRadius: BorderRadius.circular(3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: const Color(0xffed3023),
+                                  borderRadius: BorderRadius.circular(3)),
+                              child: const Padding(
+                                padding: EdgeInsets.only(
+                                    top: 5, bottom: 5, left: 15, right: 15),
+                                child: Text(
+                                  "ยอดนิยม",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(
                             width: 10,
                           ),
-                          Card(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(3)),
-                              child: const Padding(
-                                padding: EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 15, right: 15),
-                                child: Text(
-                                  "ล่าสุด",
+                          InkWell(
+                            borderRadius: BorderRadius.circular(3),
+                            onTap: () {},
+                            child: Card(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 15, right: 15),
+                                  child: Text(
+                                    "ล่าสุด",
+                                  ),
                                 ),
                               ),
                             ),
@@ -148,16 +156,20 @@ Widget dararight(setState, key) {
                           const SizedBox(
                             width: 6,
                           ),
-                          Card(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(3)),
-                              child: const Padding(
-                                padding: EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 15, right: 15),
-                                child: Text(
-                                  "สินค้าขายดี",
+                          InkWell(
+                            borderRadius: BorderRadius.circular(3),
+                            onTap: () {},
+                            child: Card(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 15, right: 15),
+                                  child: Text(
+                                    "สินค้าขายดี",
+                                  ),
                                 ),
                               ),
                             ),
@@ -207,48 +219,64 @@ Widget dararight(setState, key) {
                               "10",
                             ),
                             const SizedBox(width: 30),
-                            Card(
-                              elevation: 0.9,
-                              margin: const EdgeInsets.all(0),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(3)),
-                              ),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Color(0xfff9f9f9),
+                            InkWell(
+                              onTap: () {},
+                              borderRadius: BorderRadius.circular(3),
+                              child: Card(
+                                elevation: 0.9,
+                                margin: const EdgeInsets.all(0),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(3)),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10, bottom: 10, left: 11, right: 11),
-                                  child: Container(
-                                      margin: const EdgeInsets.only(bottom: 1),
-                                      child: const Icon(
-                                          FontAwesomeIcons.chevronLeft,
-                                          size: 14,
-                                          color: Colors.black26)),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xfff9f9f9),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10,
+                                        bottom: 10,
+                                        left: 11,
+                                        right: 11),
+                                    child: Container(
+                                        margin:
+                                            const EdgeInsets.only(bottom: 1),
+                                        child: const Icon(
+                                            FontAwesomeIcons.chevronLeft,
+                                            size: 14,
+                                            color: Colors.black26)),
+                                  ),
                                 ),
                               ),
                             ),
-                            Card(
-                              margin: const EdgeInsets.all(0),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(3)),
-                              ),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                            InkWell(
+                              borderRadius: BorderRadius.circular(3),
+                              onTap: () {},
+                              child: Card(
+                                margin: const EdgeInsets.all(0),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(3)),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10, bottom: 10, left: 11, right: 11),
-                                  child: Container(
-                                      margin: const EdgeInsets.only(bottom: 1),
-                                      child: const Icon(
-                                          FontAwesomeIcons.chevronRight,
-                                          size: 14,
-                                          color: Colors.black87)),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10,
+                                        bottom: 10,
+                                        left: 11,
+                                        right: 11),
+                                    child: Container(
+                                        margin:
+                                            const EdgeInsets.only(bottom: 1),
+                                        child: const Icon(
+                                            FontAwesomeIcons.chevronRight,
+                                            size: 14,
+                                            color: Colors.black87)),
+                                  ),
                                 ),
                               ),
                             ),
@@ -274,50 +302,62 @@ Widget dararight(setState, key) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: const Color(0xffed3023),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: const Padding(
-                              padding: EdgeInsets.only(
-                                  top: 5, bottom: 5, left: 10, right: 10),
-                              child: Text(
-                                "ยอดนิยม",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 13),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Card(
-                            margin: const EdgeInsets.all(0),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(3),
+                            onTap: () {},
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: const Color(0xffed3023),
                                   borderRadius: BorderRadius.circular(3)),
                               child: const Padding(
                                 padding: EdgeInsets.only(
                                     top: 5, bottom: 5, left: 10, right: 10),
                                 child: Text(
-                                  "ล่าสุด",
-                                  style: TextStyle(fontSize: 13),
+                                  "ยอดนิยม",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 13),
                                 ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Card(
-                            margin: const EdgeInsets.all(0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(3)),
-                              child: const Padding(
-                                padding: EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 10, right: 10),
-                                child: Text(
-                                  "สินค้าขายดี",
-                                  style: TextStyle(fontSize: 13),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(3),
+                            onTap: () {},
+                            child: Card(
+                              margin: const EdgeInsets.all(0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 10, right: 10),
+                                  child: Text(
+                                    "ล่าสุด",
+                                    style: TextStyle(fontSize: 13),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(3),
+                            onTap: () {},
+                            child: Card(
+                              margin: const EdgeInsets.all(0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: const Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 10, right: 10),
+                                  child: Text(
+                                    "สินค้าขายดี",
+                                    style: TextStyle(fontSize: 13),
+                                  ),
                                 ),
                               ),
                             ),

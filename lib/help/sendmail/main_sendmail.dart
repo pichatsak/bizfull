@@ -6,7 +6,7 @@ import 'package:bizfull/help/sendmail/widget_sendmail.dart';
 
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
-import 'package:bizfull/profile/historysuc/widget_drawer.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
@@ -60,10 +60,8 @@ class _SendmailState extends State<Sendmail> {
       h = 0;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(
-        endDrawer: const NavDrawer(),
-        drawerEdgeDragWidth: 0,
-        drawer: Container(width: 100),
+    return Scaffold(drawer: const Drawermenu(),
+       
         body: Stack(
           children: [
             SingleChildScrollView(

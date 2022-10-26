@@ -95,8 +95,7 @@ class _PageloadState extends State<Pageload> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    primary: widget.currentPage == i
+                    shape: const CircleBorder(), backgroundColor: widget.currentPage == i
                         ? const Color(0xffa91f2e)
                         : null),
                 child: Text(

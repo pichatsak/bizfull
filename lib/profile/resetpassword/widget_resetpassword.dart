@@ -23,7 +23,7 @@ Widget resetpasswordprofile() {
     fM1 = 14;
     wS = 400;
     pad1 = 30;
-    pad2 = 10;//20
+    pad2 = 10; //20
     nB = "pc";
     h1 = 15;
     h2 = 10;
@@ -35,7 +35,7 @@ Widget resetpasswordprofile() {
     fM1 = 14;
     wS = 400;
     pad1 = 30;
-    pad2 = 10;//20
+    pad2 = 10; //20
     nB = "pc";
     h1 = 15;
     h2 = 10;
@@ -73,7 +73,7 @@ Widget resetpasswordprofile() {
           padding: EdgeInsets.only(left: pAD, right: pAD),
           child: Container(
             decoration: BoxDecoration(
-           //     color: nB == "pc" ? const Color(0xfff3f3f3) : null,
+                //     color: nB == "pc" ? const Color(0xfff3f3f3) : null,
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
               padding: EdgeInsets.only(
@@ -100,8 +100,7 @@ Widget resetpasswordprofile() {
                       : Container(),
                   SizedBox(height: h2),
                   Padding(
-                    padding:
-                         EdgeInsets.only(top: tS, left: 15, right: 15),
+                    padding: EdgeInsets.only(top: tS, left: 15, right: 15),
                     child: Column(
                       children: [
                         Row(children: [
@@ -230,18 +229,22 @@ Widget resetpasswordprofile() {
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(7),
-                                    color: const Color.fromARGB(
-                                        31, 180, 179, 179)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      top: 9, bottom: 9, left: 10, right: 10),
-                                  child: Text("ส่งรหัสการตรวจสอบ",
-                                      style: TextStyle(
-                                          fontSize: 13, color: Colors.black)),
+                              InkWell(
+                                onTap: () {},
+                                borderRadius: BorderRadius.circular(7),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black12),
+                                      borderRadius: BorderRadius.circular(7),
+                                      color: const Color.fromARGB(
+                                          31, 180, 179, 179)),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 9, bottom: 9, left: 10, right: 10),
+                                    child: Text("ส่งรหัสการตรวจสอบ",
+                                        style: TextStyle(
+                                            fontSize: 13, color: Colors.black)),
+                                  ),
                                 ),
                               ),
                             ],
@@ -255,14 +258,19 @@ Widget resetpasswordprofile() {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xffed3023),
-                            borderRadius: BorderRadius.circular(7),
-                          ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color(0xffed3023)),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7),
+                              ))),
+                          onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                left: 25, right: 25, top: 8, bottom: 8),
+                                left: 10, right: 10, top: 8, bottom: 8),
                             child: Row(
                               children: const [
                                 Text(

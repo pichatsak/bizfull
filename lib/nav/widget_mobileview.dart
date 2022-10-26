@@ -65,7 +65,9 @@ class _NavMobilesState extends State<NavMobiles> {
                                 children: [
                                   const SizedBox(width: 15),
                                   InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                       Scaffold.of(context).openDrawer();
+                                      },
                                       child: const Icon(Icons.menu,
                                           size: 24, color: Colors.white)),
                                   const SizedBox(width: 5),
@@ -105,20 +107,24 @@ class _NavMobilesState extends State<NavMobiles> {
                                                     right: 10,
                                                     top: 5,
                                                     bottom: 5),
-                                                child: Container(
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Color(0xffa91f2e),
-                                                  ),
-                                                  child: const Padding(
-                                                    padding:
-                                                        EdgeInsets.all(1.0),
-                                                    child: Icon(
-                                                      FontAwesomeIcons
-                                                          .magnifyingGlass,
-                                                      color: Colors.white,
-                                                      size: 12,
+                                                child: InkWell(onTap: () {
+                                                  
+                                                },
+                                                  child: Container(
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Color(0xffa91f2e),
+                                                    ),
+                                                    child: const Padding(
+                                                      padding:
+                                                          EdgeInsets.all(1.0),
+                                                      child: Icon(
+                                                        FontAwesomeIcons
+                                                            .magnifyingGlass,
+                                                        color: Colors.white,
+                                                        size: 12,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

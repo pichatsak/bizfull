@@ -1,4 +1,5 @@
-import 'package:bizfull/checkout/widget_dialog_address2_mobile.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_address2_mobile.dart';
+import 'package:bizfull/checkout/dialog/widget_dialog_edit_address2_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,10 +16,10 @@ Widget dialog1mobile(context) {
                 padding: const EdgeInsets.only(
                     top: 50, right: 10, left: 10, bottom: 100),
                 child: Column(children: [
-                  datadialogaddress1mobile(),
+                  datadialogaddress1mobile(context),
                   const SizedBox(height: 15),
                   const Divider(thickness: 1.0),
-                  datadialogaddress11mobile(),
+                  datadialogaddress11mobile(context),
                 ]),
               ),
             ],
@@ -172,7 +173,7 @@ Widget dialog1mobile(context) {
   );
 }
 
-Widget datadialogaddress1mobile() {
+Widget datadialogaddress1mobile(context) {
   return Padding(
     padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
     child: Column(
@@ -228,14 +229,32 @@ Widget datadialogaddress1mobile() {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.orange),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ))),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    showDialog<String>(
+                      barrierDismissible: false,
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        insetPadding: const EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 24.0),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
+                        contentPadding: const EdgeInsets.only(top: 0.0),
+                        content: editdialog2mobile(context),
+                      ),
+                    );
+                  },
                   child: const Padding(
                     padding:
-                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                        EdgeInsets.only(left: 0, right: 0, top: 5, bottom: 5),
                     child: Text("แก้ไข",
                         style: TextStyle(fontSize: 13, color: Colors.white)),
                   ),
@@ -249,7 +268,7 @@ Widget datadialogaddress1mobile() {
   );
 }
 
-Widget datadialogaddress11mobile() {
+Widget datadialogaddress11mobile(context) {
   return Padding(
     padding: const EdgeInsets.only(right: 10, left: 10),
     child: Column(
@@ -277,27 +296,49 @@ Widget datadialogaddress11mobile() {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xffed3023),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(const Color(0xffed3023)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ))),
+                  onPressed: () {},
                   child: const Padding(
                     padding:
-                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                        EdgeInsets.only(left: 0, right: 0, top: 5, bottom: 5),
                     child: Text("ใช้งาน",
                         style: TextStyle(fontSize: 13, color: Colors.white)),
                   ),
                 ),
                 const SizedBox(width: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.orange),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ))),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    showDialog<String>(
+                      barrierDismissible: false,
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        insetPadding: const EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 24.0),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
+                        contentPadding: const EdgeInsets.only(top: 0.0),
+                        content: editdialog2mobile(context),
+                      ),
+                    );
+                  },
                   child: const Padding(
                     padding:
-                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                        EdgeInsets.only(left: 0, right: 0, top: 5, bottom: 5),
                     child: Text("แก้ไข",
                         style: TextStyle(fontSize: 13, color: Colors.white)),
                   ),

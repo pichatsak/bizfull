@@ -55,7 +55,7 @@ setGoPage(int i,context) {
   }else if(i==1){
     Navigator.of(context).pushNamed("/shopcart");
   }else if(i==2){
-    
+     Navigator.of(context).pushNamed("/chatmobile");
   }else if(i==3){
     
   }else if(i==4){

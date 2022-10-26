@@ -2,6 +2,7 @@ import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/login_and_registor/forgetpassword/widget_bar_forget_mobile.dart';
 import 'package:bizfull/nav/mainnav.dart';
+import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
@@ -40,7 +41,7 @@ class _ForgetpasswordmobileState extends State<Forgetpasswordmobile> {
     } else {
       hbar = 70;
     }
-    return Scaffold(
+    return Scaffold(drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(

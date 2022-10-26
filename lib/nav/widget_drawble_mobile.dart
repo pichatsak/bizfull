@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
-import 'package:bizfull/profile/historysuc/widget_menushow.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Drawermenu extends StatefulWidget {
   const Drawermenu({Key? key}) : super(key: key);
@@ -20,196 +20,626 @@ class _DrawermenuState extends State<Drawermenu> {
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0),
           topLeft: Radius.circular(0),
-          // topRight: Radius.circular(10),
-          // bottomRight: Radius.circular(10),
         ),
         child: Drawer(
           child: Material(
-            //   color: const Color(0xfffafafa),
-
+            // color: const Color(0xfffafafa),
             child: ListView(
               children: <Widget>[
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 30),
-                //   child: Container(
-                //       child: Image.asset(
-                //     "images/logo1.png",
-                //     width: 80,
-                //     height: 60,
-                //   )),
-                // ),
-                Container(
-                  padding: padding,
-                  child: Column(
-                    children: [
-                      Card(
-                        // shape: const RoundedRectangleBorder(
-                        //   borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        // ),
-                        margin:
-                            const EdgeInsets.only(left: 0, right: 0, top: 0),
-                        elevation: 4,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("images/b_nav.png"),
-                                  fit: BoxFit.cover,
-                                  filterQuality: FilterQuality.high)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Column(
-                              children: [
-                                const SizedBox(height: 12),
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text("รายละเอียดสินค้า",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: "Prompt-Medium",
-                                              color: Colors.white))
-                                    ]),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(7)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: Column(
-                                        children: [
-                                          Row(children: const [
-                                            Text("หมายเลขสั่งซื้อ : ",
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.black,
-                                                )),
-                                            Text("000001",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    //  color: Color.fromARGB(165, 0, 0, 0)
-                                                    color: Color.fromARGB(
-                                                        165, 0, 0, 0)))
-                                          ]),
-                                          Row(children: const [
-                                            Text("เมื่อ : ",
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.black,
-                                                )),
-                                            Text("30/8/2565 เวลา 19.42 น.",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Color.fromARGB(
-                                                        165, 0, 0, 0)))
-                                          ]),
-                                          Row(children: const [
-                                            Text("ทั้งหมด : ",
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.black,
-                                                )),
-                                            Text("2 รายการ",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Color.fromARGB(
-                                                        165, 0, 0, 0)))
-                                          ]),
-                                          Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: const [
-                                                Text("ที่อยู่จัดส่ง : ",
-                                                    style: TextStyle(
-                                                      fontSize: 13,
-                                                      color: Colors.black,
-                                                    )),
-                                                Flexible(
-                                                  child: Text(
-                                                      "193 หมู่ 6 ตำบล ดงเจน อำเภอ ภูกามยาว จังหวัด พะยา 56000 อำเภอภูกามยาว, จังหวัดพะเยา, 56000",
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Color.fromARGB(
-                                                              165, 0, 0, 0))),
-                                                )
-                                              ]),
-                                          Row(children: const [
-                                            Text("ยอดรวม : ",
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.black,
-                                                )),
-                                            Text("฿3,900.00",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Color(0xffed3023)))
-                                          ]),
-                                          const SizedBox(height: 0),
-                                          Row(
-                                            children: const [
-                                              Text("สถานะสั่งซื้อ : ",
-                                                  style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Colors.black,
-                                                  )),
-                                              Text(
-                                                "ได้รับสินค้าแล้ว",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Color(0xff18baa5),
-                                                    // color: Colors.black,
-                                                    fontFamily:
-                                                        "Prompt-Medium"),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(height: 20),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              InkWell(
-                                                onTap: () {
-                                                  Navigator.of(context)
-                                                      .pushNamed("/delively");
-                                                },
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xff2e3192),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              7)),
-                                                  child: const Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 10,
-                                                        right: 10,
-                                                        top: 8,
-                                                        bottom: 8),
-                                                    child: Text(
-                                                      "รายละเอียดการจัดส่ง",
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors.white),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                const SizedBox(height: 15),
-                                //     Container(height: 1, color: Colors.black12),
-                              ],
+                Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("images/dr.png"),
+                              fit: BoxFit.cover,
+                              filterQuality: FilterQuality.high)),
+                      padding: padding,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 0, right: 0, top: 30, bottom: 30),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 15),
+                              width: 146.15,
+                              height: 46.73,
+                              child: Image.asset("images/loconew.png",
+                                  filterQuality: FilterQuality.high),
+                            ),
+                            const SizedBox(height: 20),
+                            const Text(
+                              "พิเชฐศักดิ์ ดุเหว่า",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const Text(
+                              "sookma28@gmail.com",
+                              style: TextStyle(color: Colors.white70),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 13, top: 13),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 3),
+                            child: const Icon(
+                              FontAwesomeIcons.xmark,
+                              size: 22,
+                              color: Colors.white,
                             ),
                           ),
                         ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 20, bottom: 20, left: 20, right: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        borderRadius: BorderRadius.circular(7),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.of(context).pushNamed("/");
+                        },
+                        child: SizedBox(
+                            height: 40,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(bottom: 3),
+                                    child: const Icon(
+                                      FontAwesomeIcons.house,
+                                      size: 16,
+                                      color: Color(0xffed3023),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  const Text(
+                                    "หน้าแรก",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontFamily: "Prompt-Medium"),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                      const SizedBox(height: 7),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(7),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.of(context).pushNamed("/delively");
+                        },
+                        child: SizedBox(
+                            height: 40,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(bottom: 3),
+                                    child: const Icon(
+                                      FontAwesomeIcons.truckFast,
+                                      size: 16,
+                                      color: Color(0xffed3023),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  const Text(
+                                    "ติดตามสถานะ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontFamily: "Prompt-Medium"),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                      const SizedBox(height: 2),
+                      Theme(
+                        data: ThemeData(
+                            primarySwatch: Colors.red,
+                            dividerColor: Colors.transparent,
+                            fontFamily: "Prompt"),
+                        child: ListTileTheme(
+                          contentPadding:
+                              const EdgeInsets.only(right: 5, left: 7),
+                          child: ExpansionTile(
+                            initiallyExpanded: false,
+                            iconColor: const Color(0xffed3023),
+                            backgroundColor: const Color(0xfffafafa),
+                            maintainState: true,
+                            title: Row(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xffed3023),
+                                      shape: BoxShape.circle),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Image.asset(
+                                      "images/Bizfull.png",
+                                      width: 8,color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 19,
+                                ),
+                                const Text(
+                                  'บิซฟูล',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Prompt-Medium"),
+                                ),
+                              ],
+                            ),
+                            collapsedIconColor: Colors.black87,
+                            collapsedBackgroundColor: const Color(0xfffafafa),
+                            children: <Widget>[
+                              ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14.0, vertical: 0.0),
+                                visualDensity: const VisualDensity(
+                                  horizontal: 0,
+                                  vertical: -4,
+                                ),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                       Navigator.of(context).pushNamed("/about");
+                                    },
+                                    child: const Text(
+                                      'เกี่ยวกับเรา',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Prompt-Medium"),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 0.0),
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -1),
+                                  title: Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        Navigator.of(context)
+                                            .pushNamed("/contack");
+                                      },
+                                      child: const Text(
+                                        'ติดต่อเรา',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Prompt-Medium"),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Theme(
+                        data: ThemeData(
+                            primarySwatch: Colors.red,
+                            dividerColor: Colors.transparent,
+                            fontFamily: "Prompt"),
+                        child: ListTileTheme(
+                          contentPadding:
+                              const EdgeInsets.only(right: 5, left: 7),
+                          child: ExpansionTile(
+                            initiallyExpanded: false,
+                            iconColor: const Color(0xffed3023),
+                            backgroundColor: const Color(0xfffafafa),
+                            maintainState: true,
+                            title: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 2),
+                                  child: const Icon(
+                                    FontAwesomeIcons.solidHandshake,
+                                    color: Color(0xffed3023),
+                                    size: 16,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 21,
+                                ),
+                                const Text(
+                                  'บริการ',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Prompt-Medium"),
+                                ),
+                              ],
+                            ),
+                            collapsedIconColor: Colors.black87,
+                            collapsedBackgroundColor: const Color(0xfffafafa),
+                            children: <Widget>[
+                              ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14.0, vertical: 0.0),
+                                visualDensity: const VisualDensity(
+                                  horizontal: 0,
+                                  vertical: -4,
+                                ),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pushNamed("/internationalshipping");
+                                    },
+                                    child: const Text(
+                                      'บริการของเรา',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Prompt-Medium"),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 0.0),
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -1),
+                                  title: Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                         Navigator.of(context).pushNamed("/terms");
+                                      },
+                                      child: const Text(
+                                        'เงื่อนไขการใช้งาน',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Prompt-Medium"),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Theme(
+                        data: ThemeData(
+                            primarySwatch: Colors.red,
+                            dividerColor: Colors.transparent,
+                            fontFamily: "Prompt"),
+                        child: ListTileTheme(
+                          contentPadding:
+                              const EdgeInsets.only(right: 5, left: 7),
+                          child: ExpansionTile(
+                            initiallyExpanded: false,
+                            iconColor: const Color(0xffed3023),
+                            backgroundColor: const Color(0xfffafafa),
+                            maintainState: true,
+                            title: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 0),
+                                  child: const Icon(
+                                    FontAwesomeIcons.rightLeft,
+                                    color: Color(0xffed3023),
+                                    size: 16,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 21,
+                                ),
+                                const Text(
+                                  'อัตราเเลกเปลี่ยน',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Prompt-Medium"),
+                                ),
+                              ],
+                            ),
+                            collapsedIconColor: Colors.black87,
+                            collapsedBackgroundColor: const Color(0xfffafafa),
+                            children: <Widget>[
+                              ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14.0, vertical: 0.0),
+                                visualDensity: const VisualDensity(
+                                  horizontal: 0,
+                                  vertical: -4,
+                                ),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pushNamed("/rate");
+                                    },
+                                    child: const Text(
+                                      'อัตราแลกเปลี่ยน',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Prompt-Medium"),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 0.0),
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -1),
+                                  title: Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        Navigator.of(context).pushNamed("/charge");
+                                      },
+                                      child: const Text(
+                                        'ค่าบริการ',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Prompt-Medium"),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Theme(
+                        data: ThemeData(
+                            primarySwatch: Colors.red,
+                            dividerColor: Colors.transparent,
+                            fontFamily: "Prompt"),
+                        child: ListTileTheme(
+                          contentPadding:
+                              const EdgeInsets.only(right: 5, left: 7),
+                          child: ExpansionTile(
+                            initiallyExpanded: false,
+                            iconColor: const Color(0xffed3023),
+                            backgroundColor: const Color(0xfffafafa),
+                            maintainState: true,
+                            title: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 2),
+                                  child: const Icon(
+                                    FontAwesomeIcons.bookOpen,
+                                    color: Color(0xffed3023),
+                                    size: 16,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 21,
+                                ),
+                                const Text(
+                                  'สาระน่ารู้',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Prompt-Medium"),
+                                ),
+                              ],
+                            ),
+                            collapsedIconColor: Colors.black87,
+                            collapsedBackgroundColor: const Color(0xfffafafa),
+                            children: <Widget>[
+                              ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14.0, vertical: 0.0),
+                                visualDensity: const VisualDensity(
+                                  horizontal: 0,
+                                  vertical: -4,
+                                ),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pushNamed("/article");
+                                    },
+                                    child: const Text(
+                                      'บทความ',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Prompt-Medium"),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 0.0),
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -1),
+                                  title: Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        Navigator.of(context).pushNamed("/introvideo");
+                                      },
+                                      child: const Text(
+                                        'วิดีโอแนะนำ',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Prompt-Medium"),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Theme(
+                        data: ThemeData(
+                            primarySwatch: Colors.red,
+                            dividerColor: Colors.transparent,
+                            fontFamily: "Prompt"),
+                        child: ListTileTheme(
+                          contentPadding:
+                              const EdgeInsets.only(right: 5, left: 7),
+                          child: ExpansionTile(
+                            initiallyExpanded: false,
+                            iconColor: const Color(0xffed3023),
+                            backgroundColor: const Color(0xfffafafa),
+                            maintainState: true,
+                            title: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 2),
+                                  child: const Icon(
+                                    FontAwesomeIcons.solidCircleQuestion,
+                                    color: Color(0xffed3023),
+                                    size: 18,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 21,
+                                ),
+                                const Text(
+                                  'ช่วยเหลือ',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Prompt-Medium"),
+                                ),
+                              ],
+                            ),
+                            collapsedIconColor: Colors.black87,
+                            collapsedBackgroundColor: const Color(0xfffafafa),
+                            children: <Widget>[
+                              ListTile(
+                                dense: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14.0, vertical: 0.0),
+                                visualDensity: const VisualDensity(
+                                  horizontal: 0,
+                                  vertical: -4,
+                                ),
+                                title: Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pushNamed("/help");
+                                    },
+                                    child: const Text(
+                                      'คำถามที่พบบ่อย',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Prompt-Medium"),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                  dense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14.0, vertical: 0.0),
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -1),
+                                  title: Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        Navigator.of(context)
+                                            .pushNamed("/sendmail");
+                                      },
+                                      child: const Text(
+                                        'แจ้งปัญหาการใช้งาน',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "Prompt-Medium"),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(7),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: SizedBox(
+                            height: 40,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(bottom: 3),
+                                    child: const Icon(
+                                      FontAwesomeIcons.rightFromBracket,
+                                      size: 16,
+                                      color: Color(0xffed3023),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  const Text(
+                                    "ออกจากระบบ",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontFamily: "Prompt-Medium"),
+                                  ),
+                                ],
+                              ),
+                            )),
                       ),
                     ],
                   ),
