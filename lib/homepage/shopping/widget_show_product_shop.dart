@@ -1,3 +1,5 @@
+// ignore: avoid_web_libraries_in_flutter
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/global.dart';
 import 'package:bizfull/homepage/shipping/product_show.dart';
@@ -7,11 +9,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget showproductshipping(BuildContext context, GroupSubModel item) {
-  return showdesktopshippingNew(context, item);
+Widget showProductShop(BuildContext context, GroupSubModel itemSub) {
+  return showdesktopshippingNewShop(itemSub, context);
 }
 
-Widget showdesktopshippingNew(context, GroupSubModel item) {
+Widget showdesktopshippingNewShop(GroupSubModel itemSub, BuildContext context) {
   double a;
   double b;
   double h;
@@ -66,7 +68,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
     hSp2 = 5;
     fSd = 14;
     hSp3 = 10;
-    fSm = 16;
+    fSm = 18;
     a = 198.4;
     b = 188;
     d = 110;
@@ -166,7 +168,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                         Row(children: [
                           CachedNetworkImage(
                             imageUrl:
-                                "${Global.hostImgGroupSubPd}/${item.groupIcon}",
+                                "${Global.hostImgGroupSubPd}/${itemSub.groupIcon}",
                             errorWidget: (context, url, error) =>
                                 const Icon(Icons.error),
                             width: wFlag,
@@ -175,8 +177,8 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                             width: hSp,
                           ),
                           Text(
-                            // "นำเข้า สะดวกง่าย โอนปลอดภัย ส่งถึงที่ ss",
-                            item.groupTitle,
+                            // "สินค้าประเทศไทย",
+                            itemSub.groupTitle,
                             style:
                                 TextStyle(fontSize: fPd, color: Colors.black),
                           )
@@ -184,9 +186,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                         Container(
                           margin: EdgeInsets.only(top: cT),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).pushNamed("/shop");
-                            },
+                            onTap: () {},
                             child: Row(
                               children: [
                                 Text(
@@ -224,12 +224,11 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                       height: h,
                       decoration: const BoxDecoration(color: Colors.white),
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            left: allP, top: allP, bottom: allP, right: 0),
+                        padding: EdgeInsets.all(allP),
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            ...item.productList
+                            ...itemSub.productList
                                 .map((itemPd) => SizedBox(
                                     width: a,
                                     child: productShowIndex(
@@ -243,7 +242,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                                         fSm,
                                         context,
                                         itemPd,
-                                        item.currencySymbol)))
+                                        itemSub.currencySymbol)))
                                 .toList(),
                           ],
                         ),
@@ -256,7 +255,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          ...item.cateList
+                          ...itemSub.cateList
                               .map((itemCate) => SizedBox(
                                   width: c,
                                   child: catePdShow(
@@ -264,7 +263,7 @@ Widget showdesktopshippingNew(context, GroupSubModel item) {
                                       hM,
                                       hM1,
                                       fM,
-                                      item.cateList.indexOf(itemCate),
+                                      itemSub.cateList.indexOf(itemCate),
                                       context,
                                       itemCate)))
                               .toList(),

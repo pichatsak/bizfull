@@ -47,8 +47,8 @@ class _RegistorState extends State<Registor> {
                     children: [
                       typeSc == "pc" ? barmainregistor(context) : Container()
                     ]),
-                BootstrapContainer(fluid: false, children: <Widget>[
-                  registor(setState,context),
+                BootstrapContainer(fluid: false, children: [
+                  RegisterPage(),
                 ]),
                 BootstrapContainer(
                     fluid: true,

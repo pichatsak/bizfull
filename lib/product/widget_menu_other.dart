@@ -6,7 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 
-Widget menu(
+Widget menuOther(
   b,
   T,
   R,
@@ -15,7 +15,7 @@ Widget menu(
   fSd,
   hSp3,
   fSm,
-  ProductViewModel itemPd,
+  ProductViewModel item,
 ) {
   return InkWell(
     onTap: () {},
@@ -50,40 +50,27 @@ Widget menu(
                         Center(
                           child: Container(
                             height: b,
-                            //  width: b,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      "${Global.hostImgProduct}/${itemPd.pdId}/${itemPd.pdPic}"),
+                                      "${Global.hostImgProduct}/${item.pdId}/${item.pdPic}"),
                                   filterQuality: FilterQuality.high,
                                   fit: BoxFit.cover,
                                 )),
                           ),
-                          //     SizedBox(
-                          //   width: double.infinity,
-                          //   height: b,
-                          //   child: ClipRRect(
-                          //     borderRadius: BorderRadius.circular(5.0),
-                          //     child: Image.asset(
-                          //       "images/menutest.jpg",
-                          //       fit: BoxFit.contain,
-                          //     ),
-                          //   ),
-                          // ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 5, right: 10),
                           child: Align(
-                            alignment: Alignment.topRight,
-                            child: CachedNetworkImage(
-                              width: 25,
-                              imageUrl:
-                                  "${Global.hostImgGroupSubPd}/${itemPd.groupIcon}",
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
-                            ),
-                          ),
+                              alignment: Alignment.topRight,
+                              child: CachedNetworkImage(
+                                width: 25,
+                                imageUrl:
+                                    "${Global.hostImgGroupSubPd}/${item.groupIcon}",
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              )),
                         ),
                       ],
                     ),
@@ -94,7 +81,7 @@ Widget menu(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: Text(
                         // "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
-                        itemPd.pdName,
+                        item.pdName,
                         style: TextStyle(fontSize: fSd, color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
@@ -108,16 +95,16 @@ Widget menu(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: SizedBox(
                         width: double.maxFinite,
-                        child: itemPd.pdType == "shop"
+                        child: item.pdType == "shop"
                             ? Text(
-                                "${itemPd.currencySymbol}${itemPd.pdPrice}",
+                                "${item.currencySymbol}${item.pdPrice}",
                                 style: TextStyle(
                                   fontSize: fSm,
                                   color: const Color(0xffee602e),
                                 ),
                               )
                             : Text(
-                                "${itemPd.currencySymbol}${itemPd.pdPrice}-${itemPd.currencySymbol}${itemPd.pdPriceEnd}",
+                                "${item.currencySymbol}${item.pdPrice}-${item.currencySymbol}${item.pdPriceEnd}",
                                 style: TextStyle(
                                   fontSize: fSm,
                                   color: const Color(0xffee602e),

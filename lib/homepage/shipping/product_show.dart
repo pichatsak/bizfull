@@ -1,15 +1,16 @@
 import 'package:bizfull/global.dart';
-import 'package:bizfull/models/product_view_model.dart';
+import 'package:bizfull/models/cate_model.dart';
+import 'package:bizfull/models/product_model.dart';
 import 'package:bizfull/other/hover.dart';
 import 'package:bizfull/other/hoverm.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget productOld(
-    b, T, R, L, hSp2, fSd, hSp3, fSm, context, ProductViewModel item) {
+Widget productShowIndex(b, T, R, L, hSp2, fSd, hSp3, fSm, context,
+    ProductModel itemPd, String currencySymbol) {
   return InkWell(
     onTap: () {
-      Navigator.of(context).pushNamed("/products?id=${item.pdId}");
+      Navigator.pushNamed(context, "/products?id=${itemPd.pdId}");
     },
     focusColor: color,
     hoverColor: color,
@@ -45,7 +46,7 @@ Widget productOld(
                             borderRadius: BorderRadius.circular(5),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "${Global.hostImgProduct}/${item.pdId}/${item.pdPic}"),
+                                  "${Global.hostImgProduct}/${itemPd.pdId}/${itemPd.pdPic}"),
                               filterQuality: FilterQuality.high,
                               fit: BoxFit.cover,
                             )),
@@ -58,7 +59,7 @@ Widget productOld(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: Text(
                         // "รองเท้าแตะ รองเท้าแตะผู้หญิง สไตล์เกาหลี รูปหมีน้อย 4 แบบ 3 ไซส์ให้เลือก ใส่สบาย ยืดหยุ่น",
-                        item.pdName,
+                        itemPd.pdName,
                         style: TextStyle(fontSize: fSd, color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
@@ -72,16 +73,16 @@ Widget productOld(
                       padding: const EdgeInsets.only(left: 3, right: 3),
                       child: SizedBox(
                         width: double.maxFinite,
-                        child: item.pdType == "shop"
+                        child: itemPd.pdType == "shop"
                             ? Text(
-                                "${item.currencySymbol}${item.pdPrice}",
+                                "$currencySymbol${itemPd.pdPrice}",
                                 style: TextStyle(
                                   fontSize: fSm,
                                   color: const Color(0xffee602e),
                                 ),
                               )
                             : Text(
-                                "${item.currencySymbol}${item.pdPrice}-${item.currencySymbol}${item.pdPriceEnd}",
+                                "$currencySymbol${itemPd.pdPrice}-$currencySymbol${itemPd.pdPriceEnd}",
                                 style: TextStyle(
                                   fontSize: fSm,
                                   color: const Color(0xffee602e),
@@ -97,7 +98,7 @@ Widget productOld(
 }
 
 var color = Colors.transparent;
-Widget product22(d, hM, hM1, fM, int index, context) {
+Widget catePdShow(d, hM, hM1, fM, int index, context, CategoryModel itemCate) {
   String typeSc;
   if (Device.width > 991) {
     typeSc = "profile";
@@ -147,9 +148,10 @@ Widget product22(d, hM, hM1, fM, int index, context) {
                     child: Container(
                       width: d,
                       height: d,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           image: DecorationImage(
-                        image: AssetImage("images/3.jpg"),
+                        image: NetworkImage(
+                            "${Global.hostImgCate}/${itemCate.categoryPic}"),
                         filterQuality: FilterQuality.high,
                         fit: BoxFit.cover,
                       )),
@@ -161,7 +163,8 @@ Widget product22(d, hM, hM1, fM, int index, context) {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Text(
-                      "อุปกรณ์ไฟฟ้า",
+                      // "อุปกรณ์ไฟฟ้า",
+                      itemCate.categoryName,
                       style: TextStyle(fontSize: fM, color: Colors.black),
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,

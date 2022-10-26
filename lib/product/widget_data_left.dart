@@ -1,9 +1,43 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/cate_model_cb.dart';
+import 'package:bizfull/models/group_sub_cb.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget dataleft() {
+Color getColor(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  const Set<MaterialState> interactiveStates2 = <MaterialState>{
+    MaterialState.selected,
+  };
+  if (states.any(interactiveStates.contains)) {
+    return const Color(0xffed3023);
+  }
+  if (states.any(interactiveStates2.contains)) {
+    return const Color(0xffed3023);
+  } else {
+    return Colors.black12;
+  }
+}
+
+Widget dataleft(
+  List<CategoryModelCb> listCate,
+  List multipleSelected,
+  void Function(VoidCallback fn) setState,
+  bool isCheckShip,
+  bool isCheckShop,
+  void Function(bool val) updateCbShip,
+  void Function(bool val) updateCbShop,
+  List<GroupSubCbModel> listGroupShop,
+  List multipleSelectedGroupSub,
+  List<GroupSubCbModel> listGroupShip,
+  List multipleSelectedGroupSubShip,
+  void Function() updateChooseCate,
+) {
   return BootstrapContainer(
       padding: const EdgeInsets.only(left: 20, top: 10),
       fluid: true,
@@ -35,63 +69,85 @@ Widget dataleft() {
                   const SizedBox(height: 20),
                   Row(
                     children: [
-                      InkWell(
-                        borderRadius: BorderRadius.circular(3),
-                        onTap: () {},
-                        child: Stack(
-                          children: [
-                            Container(
-                              height: 20,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: const Color(0xffed3023)),
-                                  borderRadius: BorderRadius.circular(3),
-                                  color: const Color(0xffed3023)),
-                            ),
-                            SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    margin: const EdgeInsets.only(
-                                        bottom: 2, left: 1),
-                                    child: const Icon(
-                                      FontAwesomeIcons.check,
-                                      color: Colors.white,
-                                      size: 14,
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        ),
+                      Checkbox(
+                        checkColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3)),
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isCheckShip,
+                        onChanged: (bool? value) {
+                          updateCbShip(value!);
+                        },
                       ),
                       const SizedBox(
-                        width: 15,
+                        width: 5,
                       ),
                       const Text(
                         "สินค้าน่าชิป",
-                        style: TextStyle(fontSize: 14),
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
                       ),
                     ],
+                  ),
+                  ...listGroupShip.map(
+                    (el) => Padding(
+                      padding: const EdgeInsets.only(left: 20, bottom: 5),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3)),
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: listGroupShip[listGroupShip.indexOf(el)]
+                                .isCheck,
+                            onChanged: (bool? value) {
+                              int index = listGroupShip.indexOf(el);
+                              listGroupShip[index].isCheck = value!;
+                              if (multipleSelectedGroupSubShip
+                                  .contains(listGroupShip[index])) {
+                                multipleSelectedGroupSubShip
+                                    .remove(listGroupShip[index]);
+                              } else {
+                                multipleSelectedGroupSubShip
+                                    .add(listGroupShip[index]);
+                              }
+                              setState(() {});
+                            },
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Flexible(
+                            child: Text(
+                              // "รองเท้า",
+                              el.groupTitle,
+                              style: const TextStyle(fontSize: 13),
+                              // overflow: TextOverflow.ellipsis,
+                              // maxLines: 1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 15),
                   Row(
                     children: [
-                      InkWell(
-                        borderRadius: BorderRadius.circular(3),
-                        onTap: () {},
-                        child: Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black12),
-                              borderRadius: BorderRadius.circular(3)),
-                        ),
+                      Checkbox(
+                        checkColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3)),
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isCheckShop,
+                        onChanged: (bool? value) {
+                          updateCbShop(value!);
+                        },
                       ),
                       const SizedBox(
-                        width: 15,
+                        width: 5,
                       ),
                       const Text(
                         "สินค้าน่าช้อป",
@@ -99,130 +155,136 @@ Widget dataleft() {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Stack(
-                            children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: const Color(0xffed3023)),
-                                    borderRadius: BorderRadius.circular(3),
-                                    color: const Color(0xffed3023)),
-                              ),
-                              SizedBox(
-                                  height: 15,
-                                  width: 15,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      margin: const EdgeInsets.only(left: 0.5),
-                                      child: const Icon(
-                                        FontAwesomeIcons.check,
-                                        color: Colors.white,
-                                        size: 11,
-                                      ),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Text(
-                          "ประเทศไทย",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 15,
-                            width: 15,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
+                  const SizedBox(height: 5),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Stack(
+                  //         children: [
+                  //           Container(
+                  //             height: 15,
+                  //             width: 15,
+                  //             decoration: BoxDecoration(
+                  //                 border: Border.all(
+                  //                     color: const Color(0xffed3023)),
+                  //                 borderRadius: BorderRadius.circular(3),
+                  //                 color: const Color(0xffed3023)),
+                  //           ),
+                  //           SizedBox(
+                  //               height: 15,
+                  //               width: 15,
+                  //               child: Align(
+                  //                 alignment: Alignment.center,
+                  //                 child: Container(
+                  //                   margin: const EdgeInsets.only(left: 0.5),
+                  //                   child: const Icon(
+                  //                     FontAwesomeIcons.check,
+                  //                     color: Colors.white,
+                  //                     size: 11,
+                  //                   ),
+                  //                 ),
+                  //               ))
+                  //         ],
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Text(
+                  //         "ประเทศไทย",
+                  //         style: TextStyle(fontSize: 13),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 10),
+                  ...listGroupShop.map(
+                    (el) => Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.white,
+                            shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(3)),
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: listGroupShop[listGroupShop.indexOf(el)]
+                                .isCheck,
+                            onChanged: (bool? value) {
+                              int index = listGroupShop.indexOf(el);
+                              listGroupShop[index].isCheck = value!;
+                              if (multipleSelectedGroupSub
+                                  .contains(listGroupShop[index])) {
+                                multipleSelectedGroupSub
+                                    .remove(listGroupShop[index]);
+                              } else {
+                                multipleSelectedGroupSub
+                                    .add(listGroupShop[index]);
+                              }
+                              setState(() {});
+                            },
                           ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Text(
-                          "ญี่ปุ่น",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Flexible(
+                            child: Text(
+                              // "รองเท้า",
+                              el.groupTitle,
+                              style: const TextStyle(fontSize: 13),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 15,
-                            width: 15,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Text(
-                          "อเมริกา",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 15,
-                            width: 15,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Text(
-                          "เกาหลี",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // const SizedBox(height: 10),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 15,
+                  //         width: 15,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Text(
+                  //         "อเมริกา",
+                  //         style: TextStyle(fontSize: 13),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 10),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 15,
+                  //         width: 15,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Text(
+                  //         "เกาหลี",
+                  //         style: TextStyle(fontSize: 13),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               )),
           BootstrapCol(
@@ -249,187 +311,174 @@ Widget dataleft() {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Flexible(
-                          child: Text(
-                            "รองเท้า",
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 10,
                   ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Flexible(
-                          child: Text(
-                            "กระเป๋า",
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Flexible(
-                          child: Text(
-                            "เสื้อผ้า",
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Flexible(
-                          child: Text(
-                            "เครื่องมือสื่อสาร",
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(3),
-                          onTap: () {},
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(3)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        const Flexible(
-                          child: Text(
-                            "อุปกรณ์ไฟฟ้า",
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    children: [
-                      SizedBox(
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () {},
+                  ...listCate
+                      .map(
+                        (e) => Padding(
+                          padding: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: [
-                              Container(
-                                  margin: const EdgeInsets.only(bottom: 3),
-                                  child: const Icon(
-                                      FontAwesomeIcons.chevronDown,
-                                      size: 18,
-                                      color: Colors.black87)),
-                              const SizedBox(
-                                width: 15,
+                              Checkbox(
+                                checkColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(3)),
+                                fillColor:
+                                    MaterialStateProperty.resolveWith(getColor),
+                                value: listCate[listCate.indexOf(e)].isCheck,
+                                onChanged: (bool? value) {
+                                  int index = listCate.indexOf(e);
+                                  listCate[index].isCheck = value!;
+                                  if (multipleSelected
+                                      .contains(listCate[index])) {
+                                    multipleSelected.remove(listCate[index]);
+                                  } else {
+                                    multipleSelected.add(listCate[index]);
+                                  }
+                                  setState(() {});
+                                  updateChooseCate();
+                                },
                               ),
-                              const Text(
-                                "ดูเพิ่มเติม",
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: "Prompt-Medium"),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Flexible(
+                                child: Text(
+                                  // "รองเท้า",
+                                  e.categoryName,
+                                  style: const TextStyle(fontSize: 14),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      )
+                      .toList(),
+
+                  // const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 20,
+                  //         width: 20,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Flexible(
+                  //         child: Text(
+                  //           "กระเป๋า",
+                  //           style: TextStyle(fontSize: 14),
+                  //           overflow: TextOverflow.ellipsis,
+                  //           maxLines: 1,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 20,
+                  //         width: 20,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Flexible(
+                  //         child: Text(
+                  //           "เสื้อผ้า",
+                  //           style: TextStyle(fontSize: 14),
+                  //           overflow: TextOverflow.ellipsis,
+                  //           maxLines: 1,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 20,
+                  //         width: 20,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Flexible(
+                  //         child: Text(
+                  //           "เครื่องมือสื่อสาร",
+                  //           style: TextStyle(fontSize: 14),
+                  //           overflow: TextOverflow.ellipsis,
+                  //           maxLines: 1,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 20),
+                  //   child: Row(
+                  //     children: [
+                  //       Container(
+                  //         height: 20,
+                  //         width: 20,
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.black12),
+                  //             borderRadius: BorderRadius.circular(3)),
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       const Flexible(
+                  //         child: Text(
+                  //           "อุปกรณ์ไฟฟ้า",
+                  //           style: TextStyle(fontSize: 14),
+                  //           overflow: TextOverflow.ellipsis,
+                  //           maxLines: 1,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Row(
+                  //   children: [
+                  //     Container(
+                  //         margin: const EdgeInsets.only(bottom: 3),
+                  //         child: const Icon(FontAwesomeIcons.chevronDown,
+                  //             size: 18, color: Colors.black87)),
+                  //     const SizedBox(
+                  //       width: 15,
+                  //     ),
+                  //     const Text(
+                  //       "ดูเพิ่มเติม",
+                  //       style: TextStyle(
+                  //           fontSize: 14, fontFamily: "Prompt-Medium"),
+                  //     ),
+                  //   ],
+                  // ),
 
                   // Theme(
                   //   data: ThemeData(

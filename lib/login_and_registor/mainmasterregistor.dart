@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:bizfull/login_and_registor/mainregistor.dart';
 import 'package:bizfull/login_and_registor/widget_mobile_registor.dart';
 
@@ -15,11 +17,11 @@ class _MainRegistorState extends State<MainRegistor> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 991) {
-        return const Registor();
+        return Registor();
       } else if (constraints.maxWidth >= 768 && constraints.maxWidth <= 991) {
-        return const Registormobile();
+        return Registormobile();
       } else {
-        return const Registormobile();
+        return Registormobile();
       }
     });
   }

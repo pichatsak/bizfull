@@ -95,7 +95,8 @@ class _PagerState extends State<Pager> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(), backgroundColor: widget.currentPage == i
+                    shape: const CircleBorder(),
+                    backgroundColor: widget.currentPage == i
                         ? const Color(0xffa91f2e)
                         : null),
                 child: Text(

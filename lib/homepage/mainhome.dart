@@ -1,16 +1,20 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
-import 'package:bizfull/homepage/shopping/main_show_shopping1.dart';
-import 'package:bizfull/homepage/shopping/main_show_shopping2.dart';
-import 'package:bizfull/homepage/shopping/main_show_shopping3.dart';
+import 'package:bizfull/global.dart';
+import 'package:bizfull/homepage/shipping/main_show_shipping.dart';
+import 'package:bizfull/homepage/shipping/main_title_show.dart';
+import 'package:bizfull/homepage/shopping/widget_show_product_shop.dart';
 import 'package:bizfull/homepage/widget_bar_footter.dart';
 import 'package:bizfull/homepage/widget_footter.dart';
-import 'package:bizfull/homepage/widget_name_shipping.dart';
-import 'package:bizfull/homepage/widget_nameshopping.dart';
 import 'package:bizfull/homepage/widget_promotion.dart';
-import 'package:bizfull/homepage/shipping/main_show_shipping.dart';
-import 'package:bizfull/homepage/shopping/main_show_shopping.dart';
+import 'package:bizfull/homepage/widget_show_group.dart';
 import 'package:bizfull/homepage/widget_slidershow.dart';
+import 'package:bizfull/models/cate_model.dart';
+import 'package:bizfull/models/group_data_model.dart';
+import 'package:bizfull/models/group_sub_model.dart';
+import 'package:bizfull/models/product_model.dart';
 
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
@@ -19,6 +23,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -29,7 +34,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final scrollController = ScrollController();
+  String imgIndexPd1 = "";
   final box = GetStorage();
+  // ignore: prefer_typing_uninitialized_variables
+  var dataGroup1;
+  List<GroupSubModel> groupSub1 = [];
+  List<GroupDataModel> groupDatas = [];
   int page = 0;
   void scrollListener() {
     if (scrollController.offset > 125) {
@@ -51,7 +61,64 @@ class _MyHomePageState extends State<MyHomePage> {
     box.write("curpage", "home");
     box.write("isShowNav", false);
     scrollController.addListener(scrollListener);
+    getProductIndex1();
+    getProductIndex2();
     super.initState();
+  }
+
+  Future<void> getProductIndex2() async {
+    var url = "${Global.hostName}/get_group_2_index.php";
+    var res = await http.get(Uri.parse(url));
+    var dataGroupMore = await json.decode(res.body)['data'];
+    dataGroupMore.map((data) {
+      GroupDataModel groupDataGet = GroupDataModel.fromJson(data["data_group"]);
+      var getSub = data['group_sub_all'];
+      List<GroupSubModel> groupSubMain = [];
+      getSub.map((data) {
+        GroupSubModel dateSubGet = GroupSubModel.fromJson(data["data_sub"]);
+        List<ProductModel> pdModelIn = [];
+        List<CategoryModel> cateModelIn = [];
+        data["data_pd"].map((data2) {
+          ProductModel pdGet = ProductModel.fromJson(data2);
+          pdModelIn.add(pdGet);
+        }).toList();
+        dateSubGet.productList = pdModelIn;
+        data["data_cate"].map((data3) {
+          CategoryModel cateGet = CategoryModel.fromJson(data3);
+          cateModelIn.add(cateGet);
+        }).toList();
+        dateSubGet.cateList = cateModelIn;
+        groupSubMain.add(dateSubGet);
+      }).toList();
+      groupDataGet.listGroupSub = groupSubMain;
+      groupDatas.add(groupDataGet);
+    }).toList();
+  }
+
+  Future<void> getProductIndex1() async {
+    var url = "${Global.hostName}/get_group_1_index.php";
+    var res = await http.get(Uri.parse(url));
+
+    dataGroup1 = await json.decode(res.body)['data_group'];
+    var getSub1 = await json.decode(res.body)['group_sub_all'];
+
+    getSub1.map((data) {
+      GroupSubModel dateSubGet = GroupSubModel.fromJson(data["data_sub"]);
+      List<ProductModel> pdModelIn = [];
+      List<CategoryModel> cateModelIn = [];
+      data["data_pd"].map((data2) {
+        ProductModel pdGet = ProductModel.fromJson(data2);
+        pdModelIn.add(pdGet);
+      }).toList();
+      dateSubGet.productList = pdModelIn;
+      data["data_cate"].map((data3) {
+        CategoryModel cateGet = CategoryModel.fromJson(data3);
+        cateModelIn.add(cateGet);
+      }).toList();
+      dateSubGet.cateList = cateModelIn;
+      groupSub1.add(dateSubGet);
+    }).toList();
+    setState(() {});
   }
 
   @override
@@ -92,21 +159,28 @@ class _MyHomePageState extends State<MyHomePage> {
                         fluid: typM == "pc" ? false : true,
                         padding: EdgeInsets.only(top: toppd),
                         children: <Widget>[
-                          const SliderTop(),
-                          nameshipping(),
-                          showproductshipping(context),
+                          // ignore: prefer_const_constructors
+                          SliderTop(),
+                          dataGroup1 != null
+                              ? showTitleIndex1(context, dataGroup1)
+                              : const SizedBox(
+                                  height: 0,
+                                ),
+                          ...groupSub1
+                              .map((item) => showproductshipping(context, item))
+                              .toList(),
                           const SliderBanner(),
-                          nameshopping(),
-                          showproductshopping(context),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20, bottom: 20),
-                            child: showproductshopping1(context),
-                          ),
-                          showproductshopping2(context),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: showproductshopping3(context),
-                          ),
+                          ...groupDatas
+                              .map((itemGroup) => Column(
+                                    children: [
+                                      showGroupMain(itemGroup),
+                                      ...itemGroup.listGroupSub
+                                          .map((itemSub) =>
+                                              showProductShop(context, itemSub))
+                                          .toList(),
+                                    ],
+                                  ))
+                              .toList(),
                           typM == "pc" ? footter() : Container()
                         ]),
                     BootstrapContainer(

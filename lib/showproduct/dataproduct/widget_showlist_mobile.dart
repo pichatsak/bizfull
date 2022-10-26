@@ -1,8 +1,9 @@
 import 'package:bizfull/homepage/shipping/widget_show_product_shipping.dart';
+import 'package:bizfull/models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget showlistmobile(context) {
+Widget showlistmobile(context, List<ProductViewModel> listPdOther) {
   double a;
   double b;
   double T;
@@ -51,7 +52,8 @@ Widget showlistmobile(context) {
     R = 3.5;
     L = 3.5;
   }
-  return Container(color: Colors.white,
+  return Container(
+    color: Colors.white,
     child: Padding(
       padding: const EdgeInsets.only(bottom: 4),
       child: Container(
@@ -60,21 +62,35 @@ Widget showlistmobile(context) {
         child: Padding(
           padding: const EdgeInsets.only(left: 2),
           child: Padding(
-            padding: EdgeInsets.only(top: allP, left: allP, bottom: allP, right: 0),
+            padding:
+                EdgeInsets.only(top: allP, left: allP, bottom: allP, right: 0),
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                ...List.generate(10, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 7),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12),
-                            borderRadius: BorderRadius.circular(7)),
-                        width: a,
-                        child: productOld(b, T, R, L, hSp2, fSd, hSp3, fSm, context)),
-                  );
-                })
+                ...listPdOther
+                    .map((item) => Padding(
+                          padding: const EdgeInsets.only(right: 7),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black12),
+                                  borderRadius: BorderRadius.circular(7)),
+                              width: a,
+                              child: productOld(b, T, R, L, hSp2, fSd, hSp3,
+                                  fSm, context, item)),
+                        ))
+                    .toList(),
+                // ...List.generate(10, (index) {
+                //   return Padding(
+                //     padding: const EdgeInsets.only(right: 7),
+                //     child: Container(
+                //         decoration: BoxDecoration(
+                //             border: Border.all(color: Colors.black12),
+                //             borderRadius: BorderRadius.circular(7)),
+                //         width: a,
+                //         child: productOld(
+                //             b, T, R, L, hSp2, fSd, hSp3, fSm, context)),
+                //   );
+                // })
               ],
             ),
           ),

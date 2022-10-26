@@ -1,10 +1,18 @@
+import 'package:bizfull/models/review_model.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment_byone.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_page_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget comment(context) {
+Widget comment(
+    context,
+    List<ReviewModel> listReviews,
+    int pageReviewCur,
+    int maxPageReview,
+    void Function(int page) updatePageReview,
+    double startAll,
+    double rateAll) {
   String typeSc1;
   double allpad;
   double fZ;
@@ -46,28 +54,28 @@ Widget comment(context) {
                       fontFamily: "Prompt-Medium",
                       fontSize: fZ,
                     )),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/allcomment");
-                  },
-                  child: Row(
-                    children: [
-                      const Text("ดูทั้งหมด",
-                          style: TextStyle(
-                              fontFamily: "Prompt-Medium",
-                              fontSize: 14,
-                              color: Color(0xffed3023))),
-                      const SizedBox(width: 5),
-                      Container(
-                          margin: const EdgeInsets.only(bottom: 1),
-                          child: const Icon(
-                            FontAwesomeIcons.chevronRight,
-                            color: Color(0xffed3023),
-                            size: 14,
-                          ))
-                    ],
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed("/allcomment");
+                //   },
+                //   child: Row(
+                //     children: [
+                //       const Text("ดูทั้งหมด",
+                //           style: TextStyle(
+                //               fontFamily: "Prompt-Medium",
+                //               fontSize: 14,
+                //               color: Color(0xffed3023))),
+                //       const SizedBox(width: 5),
+                //       Container(
+                //           margin: const EdgeInsets.only(bottom: 1),
+                //           child: const Icon(
+                //             FontAwesomeIcons.chevronRight,
+                //             color: Color(0xffed3023),
+                //             size: 14,
+                //           ))
+                //     ],
+                //   ),
+                // ),
               ],
             ),
       const SizedBox(height: 15),
@@ -82,15 +90,17 @@ Widget comment(context) {
                 padding: const EdgeInsets.all(25.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         margin: const EdgeInsets.only(bottom: 10),
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(children: [
-                                const Text("4",
-                                    style: TextStyle(
+                                Text("${startAll.round()}",
+                                    style: const TextStyle(
                                         fontSize: 30,
                                         color: Color(0xffed3023))),
                                 Container(
@@ -102,129 +112,128 @@ Widget comment(context) {
                               ]),
                               Row(
                                   mainAxisSize: MainAxisSize.min,
-                                  children: const <Widget>[
-                                    Icon(Icons.star,
-                                        color: Color(0xffed3023), size: 30.0),
-                                    Icon(Icons.star,
-                                        color: Color(0xffed3023), size: 30.0),
-                                    Icon(Icons.star,
-                                        color: Color(0xffed3023), size: 30.0),
-                                    Icon(Icons.star,
-                                        color: Color(0xffed3023), size: 30.0),
-                                    Icon(Icons.star_border,
-                                        color: Color(0xffed3023), size: 30.0),
+                                  children: <Widget>[
+                                    ...List.generate(5, (index) {
+                                      return index < startAll
+                                          ? const Icon(Icons.star,
+                                              color: Color(0xffed3023),
+                                              size: 30.0)
+                                          : const Icon(Icons.star_border,
+                                              color: Color(0xffed3023),
+                                              size: 30.0);
+                                    }),
                                   ])
                             ])),
-                    const SizedBox(width: 50),
-                    Flexible(
-                      child: Wrap(children: [
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: const Color(0xffed3023)),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 30, right: 30, top: 5, bottom: 5),
-                                    child: Text("ทั้งหมด",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xffed3023))),
-                                  )),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black12),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, right: 15, top: 5, bottom: 5),
-                                    child: Text("5 ดาว (1.8พัน)",
-                                        style: TextStyle(fontSize: 14)),
-                                  )),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black12),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, right: 15, top: 5, bottom: 5),
-                                    child: Text("4 ดาว (11พัน)",
-                                        style: TextStyle(fontSize: 14)),
-                                  )),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black12),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, right: 15, top: 5, bottom: 5),
-                                    child: Text("3 ดาว (159)",
-                                        style: TextStyle(fontSize: 14)),
-                                  )),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black12),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, right: 15, top: 5, bottom: 5),
-                                    child: Text("2 ดาว (111)",
-                                        style: TextStyle(fontSize: 14)),
-                                  )),
-                            )),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black12),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.white),
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 15, right: 15, top: 5, bottom: 5),
-                                    child: Text("1 ดาว (99)",
-                                        style: TextStyle(fontSize: 14)),
-                                  )),
-                            ))
-                      ]),
-                    )
+                    // const SizedBox(width: 50),
+                    // Flexible(
+                    //   child: Wrap(children: [
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(
+                    //                       color: const Color(0xffed3023)),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 30, right: 30, top: 5, bottom: 5),
+                    //                 child: Text("ทั้งหมด",
+                    //                     style: TextStyle(
+                    //                         fontSize: 14,
+                    //                         color: Color(0xffed3023))),
+                    //               )),
+                    //         )),
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black12),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 15, right: 15, top: 5, bottom: 5),
+                    //                 child: Text("5 ดาว (1.8พัน)",
+                    //                     style: TextStyle(fontSize: 14)),
+                    //               )),
+                    //         )),
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black12),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 15, right: 15, top: 5, bottom: 5),
+                    //                 child: Text("4 ดาว (11พัน)",
+                    //                     style: TextStyle(fontSize: 14)),
+                    //               )),
+                    //         )),
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black12),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 15, right: 15, top: 5, bottom: 5),
+                    //                 child: Text("3 ดาว (159)",
+                    //                     style: TextStyle(fontSize: 14)),
+                    //               )),
+                    //         )),
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black12),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 15, right: 15, top: 5, bottom: 5),
+                    //                 child: Text("2 ดาว (111)",
+                    //                     style: TextStyle(fontSize: 14)),
+                    //               )),
+                    //         )),
+                    //     Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             left: 10, top: 5, bottom: 5),
+                    //         child: InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //               decoration: BoxDecoration(
+                    //                   border: Border.all(color: Colors.black12),
+                    //                   borderRadius: BorderRadius.circular(4),
+                    //                   color: Colors.white),
+                    //               child: const Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                     left: 15, right: 15, top: 5, bottom: 5),
+                    //                 child: Text("1 ดาว (99)",
+                    //                     style: TextStyle(fontSize: 14)),
+                    //               )),
+                    //         ))
+                    //   ]),
+                    // )
                   ],
                 ),
               ),
@@ -244,25 +253,22 @@ Widget comment(context) {
                     Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(children: const [
-                            Text("4/5",
-                                style: TextStyle(
+                          Row(children: [
+                            Text("${startAll.round()}/5",
+                                style: const TextStyle(
                                     fontSize: 13, color: Color(0xffed3023))),
-                            Text(" (16.7 พันรีวิว)",
-                                style: TextStyle(
+                            Text(" (${rateAll.round()} รีวิว)",
+                                style: const TextStyle(
                                     fontSize: 13, color: Colors.black45))
                           ]),
-                          Row(children: const <Widget>[
-                            Icon(Icons.star,
-                                color: Color(0xffed3023), size: 20.0),
-                            Icon(Icons.star,
-                                color: Color(0xffed3023), size: 20.0),
-                            Icon(Icons.star,
-                                color: Color(0xffed3023), size: 20.0),
-                            Icon(Icons.star,
-                                color: Color(0xffed3023), size: 20.0),
-                            Icon(Icons.star_border,
-                                color: Color(0xffed3023), size: 20.0),
+                          Row(children: <Widget>[
+                            ...List.generate(5, (index) {
+                              return index < startAll
+                                  ? const Icon(Icons.star,
+                                      color: Color(0xffed3023), size: 20.0)
+                                  : const Icon(Icons.star_border,
+                                      color: Color(0xffed3023), size: 20.0);
+                            }),
                           ])
                         ]),
                   ],
@@ -270,20 +276,14 @@ Widget comment(context) {
               ),
             ),
       typeSc1 == "pc" ? const SizedBox(height: 10) : Container(),
-      Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
-        child: commentbyone(),
-      ),
-      Container(height: 1, color: Colors.black12),
-      Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
-        child: commentbyone(),
-      ),
-      Container(height: 1, color: Colors.black12),
-      Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
-        child: commentbyone(),
-      ),
+      ...listReviews
+          .map(
+            (item) => Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: commentsReview(item),
+            ),
+          )
+          .toList(),
       typeSc1 == "pc"
           ? Container(height: 1, color: Colors.black12)
           : Container(),
@@ -294,9 +294,11 @@ Widget comment(context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Pagecomment(
-                    currentPage: 1,
-                    totalPages: 3,
-                    onPageChanged: (page) {},
+                    currentPage: pageReviewCur,
+                    totalPages: maxPageReview,
+                    onPageChanged: (page) {
+                      updatePageReview(page);
+                    },
                   ),
                 ],
               ),
