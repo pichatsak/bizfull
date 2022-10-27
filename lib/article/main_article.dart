@@ -1,9 +1,8 @@
 import 'package:bizfull/article/widget_bar_article.dart';
 import 'package:bizfull/article/widget_bar_article_mobile.dart';
+import 'package:bizfull/article/widget_data_article.dart';
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
-import 'package:bizfull/charge/widget_bar_charge.dart';
-import 'package:bizfull/charge/widget_bar_charge_mobile.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
@@ -79,14 +78,7 @@ class _ArticleState extends State<Article> {
                   BootstrapContainer(
                     fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
-                    children: const [
-                      Center(
-                        child: Text(
-                          "บทความ",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      )
-                    ],
+                    children: [dataarticle()],
                   ),
                   SizedBox(height: h),
                   typeSc1 == "pc"
