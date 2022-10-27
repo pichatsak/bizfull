@@ -5,7 +5,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class SliderTop extends StatefulWidget {
   const SliderTop({Key? key}) : super(key: key);
@@ -41,21 +40,21 @@ class _SliderState extends State<SliderTop> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
   bool autoPlaySet = true;
-  final _controllerVdo = YoutubePlayerController(
-    params: const YoutubePlayerParams(
-      startAt: Duration(seconds: 30),
-    ),
-  );
+  // final _controllerVdo = YoutubePlayerController(
+  //   params: const YoutubePlayerParams(
+  //     startAt: Duration(seconds: 30),
+  //   ),
+  // );
 
   @override
   void initState() {
-    _controllerVdo.onInit = () {
-      if (autoPlaySet) {
-        _controllerVdo.loadVideoById(videoId: 'S-_sNpM9XOY', startSeconds: 30);
-      } else {
-        _controllerVdo.cueVideoById(videoId: 'S-_sNpM9XOY', startSeconds: 30);
-      }
-    };
+    // _controllerVdo.onInit = () {
+    //   if (autoPlaySet) {
+    //     _controllerVdo.loadVideoById(videoId: 'S-_sNpM9XOY', startSeconds: 30);
+    //   } else {
+    //     _controllerVdo.cueVideoById(videoId: 'S-_sNpM9XOY', startSeconds: 30);
+    //   }
+    // };
   }
 
   void setNewColor(index) {
@@ -199,13 +198,12 @@ class _SliderState extends State<SliderTop> {
               child: Padding(
                 padding: rdShow,
                 child: Center(
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: YoutubePlayerIFrame(
-                      controller: _controllerVdo,
-                      aspectRatio: 5 / 3.04,
-                    ),
-                  ),
+                  child: SizedBox(width: double.infinity, child: Center()
+                      // YoutubePlayerIFrame(
+                      //   controller: _controllerVdo,
+                      //   aspectRatio: 5 / 3.04,
+                      // ),
+                      ),
                 ),
               )),
         ],

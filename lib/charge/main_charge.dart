@@ -5,8 +5,6 @@ import 'package:bizfull/charge/widget_bar_charge_mobile.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
-import 'package:bizfull/rate/widget_bar_rate.dart';
-import 'package:bizfull/rate/widget_bar_rate_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';

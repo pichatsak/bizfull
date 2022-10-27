@@ -3,7 +3,6 @@ import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/evidence/widget_bar_evidence.dart';
 import 'package:bizfull/evidence/widget_bar_evidence_mobile.dart';
 import 'package:bizfull/evidence/widget_data_evidence.dart';
-import 'package:bizfull/intro_video/widget_bar_intro_video_mobile.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
@@ -79,7 +78,7 @@ class _EvidenceState extends State<Evidence> {
                   BootstrapContainer(
                     fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
-                    children:  [dataevidence(setState)],
+                    children: [dataevidence(setState)],
                   ),
                   SizedBox(height: h),
                   typeSc1 == "pc"

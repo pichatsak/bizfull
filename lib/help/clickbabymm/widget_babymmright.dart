@@ -172,7 +172,7 @@ Widget babymmright(context) {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
               onTap: () {
-                Navigator.of(context).pushNamed("/sendmail");
+                Navigator.of(context).pushNamed("/send_report");
               },
               leading: Container(
                 decoration: BoxDecoration(

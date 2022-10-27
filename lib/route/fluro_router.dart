@@ -1,3 +1,5 @@
+import 'package:bizfull/article/main_article.dart';
+import 'package:bizfull/article/main_view_article.dart';
 import 'package:bizfull/checkout/main_checkout.dart';
 import 'package:bizfull/contack/main_contack.dart';
 import 'package:bizfull/delively/main_delively.dart';
@@ -7,6 +9,7 @@ import 'package:bizfull/help/main_help.dart';
 import 'package:bizfull/help/search/main_search.dart';
 import 'package:bizfull/help/sendmail/main_sendmail.dart';
 import 'package:bizfull/homepage/mainhome.dart';
+import 'package:bizfull/intro_video/main_intro_video.dart';
 import 'package:bizfull/login_and_registor/forgetpassword/mainmaster_forgetpassword.dart';
 import 'package:bizfull/login_and_registor/mainMasterLogin.dart';
 import 'package:bizfull/login_and_registor/mainmasterregistor.dart';
@@ -24,6 +27,8 @@ import 'package:bizfull/profile/resetpassword/widget_profile_reset.dart';
 import 'package:bizfull/shopcart/main_shopcart.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_all_comment.dart';
 import 'package:bizfull/showproduct/main_showproduct.dart';
+import 'package:bizfull/vdo/main_vdo.dart';
+import 'package:bizfull/vdo/main_view_vdo.dart';
 import 'package:fluro/fluro.dart';
 
 class FluroRouters {
@@ -62,9 +67,6 @@ class FluroRouters {
 
   static Handler helpHandler = Handler(
       handlerFunc: (context, Map<String, dynamic> params) => const Help());
-
-  static Handler clickMmHandler = Handler(
-      handlerFunc: (context, Map<String, dynamic> params) => const Clickmm());
 
   static Handler clickBabyMmHandler = Handler(
       handlerFunc: (context, Map<String, dynamic> params) =>
@@ -127,6 +129,41 @@ class FluroRouters {
       handlerFunc: (context, Map<String, dynamic> params) =>
           const Allcomment());
 
+  static Handler articleHandler = Handler(
+      handlerFunc: (context, Map<String, dynamic> params) => const Article());
+
+  static Handler viewArticleHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    var id = params['id']?.first;
+    return ArticleView(
+      idGet: id,
+    );
+  });
+
+  static Handler clickMmHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    var id = params['id']?.first;
+    return Clickmm(
+      idGet: id,
+    );
+  });
+
+  static Handler vdoHandler = Handler(
+      handlerFunc: (context, Map<String, dynamic> params) =>
+          const VdoListPage());
+
+  static Handler intoVdoHandler = Handler(
+      handlerFunc: (context, Map<String, dynamic> params) =>
+          const Introvideo());
+
+  static Handler viewVdoHandler =
+      Handler(handlerFunc: (context, Map<String, dynamic> params) {
+    var id = params['id']?.first;
+    return VdoViewPage(
+      idGet: id,
+    );
+  });
+
   static void setupRouter() {
     router.define('/',
         handler: homeHandler, transitionType: TransitionType.native);
@@ -155,7 +192,7 @@ class FluroRouters {
     router.define('/help',
         handler: helpHandler, transitionType: TransitionType.native);
 
-    router.define('/clickmm',
+    router.define('/help_view',
         handler: clickMmHandler, transitionType: TransitionType.native);
 
     router.define('/clickbabymm',
@@ -164,7 +201,7 @@ class FluroRouters {
     router.define('/clicksearch',
         handler: clickSearchHandler, transitionType: TransitionType.native);
 
-    router.define('/sendmail',
+    router.define('/send_report',
         handler: sendMailHandler, transitionType: TransitionType.native);
 
     router.define('/contack',
@@ -205,5 +242,17 @@ class FluroRouters {
 
     router.define('/allcomment',
         handler: allCommentHandler, transitionType: TransitionType.native);
+
+    router.define('/article',
+        handler: articleHandler, transitionType: TransitionType.native);
+
+    router.define('/view_article',
+        handler: viewArticleHandler, transitionType: TransitionType.native);
+
+    router.define('/video',
+        handler: vdoHandler, transitionType: TransitionType.native);
+
+    router.define('/video_view',
+        handler: viewVdoHandler, transitionType: TransitionType.native);
   }
 }

@@ -1,18 +1,22 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/global.dart';
 import 'package:bizfull/help/widget_bar_help.dart';
 import 'package:bizfull/help/widget_bar_help_mobile.dart';
 import 'package:bizfull/help/widget_help2.dart';
 import 'package:bizfull/help/widget_mm_find.dart';
-import 'package:bizfull/help/widget_mm_help.dart';
 import 'package:bizfull/help/widget_queist.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
+import 'package:bizfull/models/help_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
 class Help extends StatefulWidget {
   const Help({Key? key}) : super(key: key);
@@ -22,12 +26,33 @@ class Help extends StatefulWidget {
 }
 
 class _HelpState extends State<Help> {
+  List<HelpModel> listData = [];
   final box = GetStorage();
+  bool isLoad = false;
   @override
   void initState() {
     box.write("curpage", "help");
     super.initState();
+
+    getHelps();
   }
+
+  Future<void> getHelps() async {
+    listData = [];
+    var url = "${Global.hostName}/help_all.php";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      getData["data"].map((data) {
+        HelpModel getRow = HelpModel.fromJson(data);
+        listData.add(getRow);
+      }).toList();
+      setState(() {
+        isLoad = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double hbar;
@@ -61,8 +86,8 @@ class _HelpState extends State<Help> {
       h = 20;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(drawer: const Drawermenu(),
-       
+    return Scaffold(
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -82,8 +107,8 @@ class _HelpState extends State<Help> {
                     padding: EdgeInsets.only(top: pad),
                     children: [
                       mmFind(),
-                      mmHelp(context),
-                      queist(),
+                      // mmHelp(context),
+                      queist(listData, context),
                       help2(context)
                     ],
                   ),

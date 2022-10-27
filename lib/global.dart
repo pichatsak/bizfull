@@ -12,4 +12,7 @@ class Global {
   static String hostImgProduct =
       "http://localhost/bizful/admin/img_upload/products";
   static String hostImgCate = "http://localhost/bizful/admin/img_upload/cate";
+  static String hostImgColums =
+      "http://localhost/bizful/admin/img_upload/columns";
+  static String hostVdo = "http://localhost/bizful/admin/vdo_upload/vdo_recom";
 }

@@ -1,11 +1,11 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/global.dart';
-import 'package:bizfull/models/colums_model.dart';
+import 'package:bizfull/models/vdo_recom_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget dataarticle(List<ColumsModel> listColums, context) {
+Widget dataVdo(List<VdoRecomModel> listColums, context) {
   return Padding(
     padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
     child: BootstrapRow(children: <BootstrapCol>[
@@ -19,7 +19,7 @@ Widget dataarticle(List<ColumsModel> listColums, context) {
                 Container(
                   margin: const EdgeInsets.only(top: 11),
                   child: const Icon(
-                    FontAwesomeIcons.solidNewspaper,
+                    FontAwesomeIcons.video,
                     color: Color(0xffa91f2e),
                     size: 25,
                   ),
@@ -29,7 +29,7 @@ Widget dataarticle(List<ColumsModel> listColums, context) {
                 ),
                 const Flexible(
                   child: Text(
-                    "บทความ",
+                    "วิดีโอ",
                     style: TextStyle(fontSize: 32, fontFamily: "Prompt-Medium"),
                   ),
                 ),
@@ -37,7 +37,7 @@ Widget dataarticle(List<ColumsModel> listColums, context) {
             ),
           )),
       ...listColums.map((item) =>
-          BootstrapCol(sizes: 'col-12', child: dataarticlenum0(item, context)))
+          BootstrapCol(sizes: 'col-12', child: dataShowList(item, context)))
       // BootstrapCol(sizes: 'col-12', child: dataarticlenum0()),
       // BootstrapCol(sizes: 'col-12', child: dataarticlenum0()),
       // BootstrapCol(sizes: 'col-12', child: dataarticlenum0()),
@@ -46,7 +46,7 @@ Widget dataarticle(List<ColumsModel> listColums, context) {
   );
 }
 
-Widget dataarticlenum0(ColumsModel item, context) {
+Widget dataShowList(VdoRecomModel item, context) {
   double zP;
   if (Device.width > 1240) {
     zP = 250;
@@ -70,8 +70,7 @@ Widget dataarticlenum0(ColumsModel item, context) {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                    image:
-                        NetworkImage("${Global.hostImgColums}/${item.colPic}"),
+                    image: NetworkImage("${Global.hostVdo}/${item.vdorPic}"),
                     filterQuality: FilterQuality.high,
                     fit: BoxFit.cover,
                   )),
@@ -85,25 +84,17 @@ Widget dataarticlenum0(ColumsModel item, context) {
               children: [
                 Text(
                   // "เราในเวอร์ชั่นที่ดีที่สุด",
-                  item.colTitle,
+                  item.vdorTitle,
                   style: const TextStyle(
                       fontSize: 28, fontFamily: "Prompt-Medium"),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   // "October 24, 2022 by Sirichaiwatt",
-                  item.colCreate,
+                  item.vdorCreate,
                   style: const TextStyle(fontSize: 14, color: Colors.black54),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  // "ในช่วงเวลาที่ย่ำแย่ใครจะไปนึกถึงเรื่องดีๆออกในเมื่อปัญหาล้วนเข้ามารุมเร้าแต่บางครั้งมันเพียงเพราะหลงลืมตัวเราในเวอร์ชั่นที่ดีที่สุดไปแล้วจึงทำให้อะไรหลายอย่างไม่ดีขึ้นเลย #บทความสั้น #เปลี่ยนทัศนคติ",
-                  item.colYor,
-                  style: const TextStyle(fontSize: 16),
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -118,7 +109,7 @@ Widget dataarticlenum0(ColumsModel item, context) {
                           ))),
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed("/view_article?id=${item.colId}");
+                            .pushNamed("/video_view?id=${item.vdorId}");
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(
@@ -126,7 +117,7 @@ Widget dataarticlenum0(ColumsModel item, context) {
                         child: Row(
                           children: const [
                             Text(
-                              "อ่านบทความนี้",
+                              "ดูวิดีโอนี้",
                               style: TextStyle(color: Colors.white),
                             ),
                           ],

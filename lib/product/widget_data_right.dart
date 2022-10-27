@@ -252,7 +252,7 @@ Widget dararight(
                           children: [
                             Text(
                               pageCur.toString(),
-                              style: TextStyle(color: Color(0xffed3023)),
+                              style: const TextStyle(color: Color(0xffed3023)),
                             ),
                             const Text(
                               "/",

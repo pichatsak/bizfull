@@ -180,7 +180,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                     padding: const EdgeInsets.all(5.0),
                                     child: Image.asset(
                                       "images/Bizfull.png",
-                                      width: 8,color: Colors.white,
+                                      width: 8,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
@@ -212,7 +213,7 @@ class _DrawermenuState extends State<Drawermenu> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                       Navigator.of(context).pushNamed("/about");
+                                      Navigator.of(context).pushNamed("/about");
                                     },
                                     child: const Text(
                                       'เกี่ยวกับเรา',
@@ -302,7 +303,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      Navigator.of(context).pushNamed("/internationalshipping");
+                                      Navigator.of(context)
+                                          .pushNamed("/internationalshipping");
                                     },
                                     child: const Text(
                                       'บริการของเรา',
@@ -325,7 +327,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.pop(context);
-                                         Navigator.of(context).pushNamed("/terms");
+                                        Navigator.of(context)
+                                            .pushNamed("/terms");
                                       },
                                       child: const Text(
                                         'เงื่อนไขการใช้งาน',
@@ -414,7 +417,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.pop(context);
-                                        Navigator.of(context).pushNamed("/charge");
+                                        Navigator.of(context)
+                                            .pushNamed("/charge");
                                       },
                                       child: const Text(
                                         'ค่าบริการ',
@@ -480,7 +484,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      Navigator.of(context).pushNamed("/article");
+                                      Navigator.of(context)
+                                          .pushNamed("/article");
                                     },
                                     child: const Text(
                                       'บทความ',
@@ -503,7 +508,8 @@ class _DrawermenuState extends State<Drawermenu> {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.pop(context);
-                                        Navigator.of(context).pushNamed("/introvideo");
+                                        Navigator.of(context)
+                                            .pushNamed("/introvideo");
                                       },
                                       child: const Text(
                                         'วิดีโอแนะนำ',
@@ -593,7 +599,7 @@ class _DrawermenuState extends State<Drawermenu> {
                                       onTap: () {
                                         Navigator.pop(context);
                                         Navigator.of(context)
-                                            .pushNamed("/sendmail");
+                                            .pushNamed("/send_report");
                                       },
                                       child: const Text(
                                         'แจ้งปัญหาการใช้งาน',

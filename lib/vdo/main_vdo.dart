@@ -1,28 +1,53 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
-import 'package:bizfull/intro_video/widget_bar_intro_video.dart';
-import 'package:bizfull/intro_video/widget_bar_intro_video_mobile.dart';
+import 'package:bizfull/global.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
+import 'package:bizfull/models/vdo_recom_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
+import 'package:bizfull/vdo/widget_bar_vdo.dart';
+import 'package:bizfull/vdo/widget_bar_vdo_mobile.dart';
+import 'package:bizfull/vdo/widget_data_vdo.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
-class Introvideo extends StatefulWidget {
-  const Introvideo({Key? key}) : super(key: key);
+class VdoListPage extends StatefulWidget {
+  const VdoListPage({Key? key}) : super(key: key);
 
   @override
-  State<Introvideo> createState() => _IntrovideoState();
+  State<VdoListPage> createState() => _VdoListPageState();
 }
 
-class _IntrovideoState extends State<Introvideo> {
+class _VdoListPageState extends State<VdoListPage> {
   final box = GetStorage();
+  List<VdoRecomModel> listColums = [];
+  bool isLoad = false;
   @override
   void initState() {
     box.write("curpage", "internationalshipping");
     super.initState();
+    getColums();
+  }
+
+  Future<void> getColums() async {
+    listColums = [];
+    var url = "${Global.hostName}/vdo_recom_all.php";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      getData["data"].map((data) {
+        VdoRecomModel getRow = VdoRecomModel.fromJson(data);
+        listColums.add(getRow);
+      }).toList();
+      setState(() {
+        isLoad = true;
+      });
+    }
   }
 
   @override
@@ -70,20 +95,13 @@ class _IntrovideoState extends State<Introvideo> {
                       fluid: true,
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
-                        typeSc == "pc"
-                            ? barintrovideo(context)
-                            : barintrovideomobile(context)
+                        typeSc == "pc" ? barVdo(context) : barVdoMobile(context)
                       ]),
                   BootstrapContainer(
                     fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
-                    children: const [
-                      Center(
-                        child: Text(
-                          "วิดีโอแนะนำ",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      )
+                    children: [
+                      isLoad ? dataVdo(listColums, context) : const Center()
                     ],
                   ),
                   SizedBox(height: h),

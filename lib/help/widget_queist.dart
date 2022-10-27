@@ -1,9 +1,10 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/help_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget queist() {
+Widget queist(List<HelpModel> listData, context) {
   double fM;
   double pL;
   double tM;
@@ -40,266 +41,274 @@ Widget queist() {
           child: Padding(
             padding: EdgeInsets.only(top: tM, bottom: 15, right: 5, left: 5),
             child: Text(
-              "คำถามที่พบบ่อย",
+              "รายการช่วยเหลือ",
               style: TextStyle(fontSize: fM, fontFamily: "Prompt-Medium"),
             ),
           )),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        '[การติดตามสถานะคำสั่งซื้อ] ฉันจะได้รับสินค้าที่สั่งซื้อเมื่อไหร่?',
-                        style: TextStyle(fontSize: fZ),
+
+      ...listData.map(
+        (item) => BootstrapCol(
+            sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+            child: Padding(
+                padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: mT),
+                      height: 8,
+                      width: 8,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(90),
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Flexible(
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed("/help_view?id=${item.helpId}");
+                        },
+                        child: Text(
+                          // '[การติดตามสถานะคำสั่งซื้อ] ฉันจะได้รับสินค้าที่สั่งซื้อเมื่อไหร่?',
+                          item.helpTitle,
+                          style: TextStyle(fontSize: fZ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        '[บัญชีของฉัน] ฉันจะเพิ่ม/แก้ไข/ลบที่อยู่ของฉันได้อย่างไร',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'รู้จักวิธีการใช้โค้ดรูปแบบใหม่',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'ทำไมฉันถึงไม่ได้รับรหัส OTP?',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'ต้องทำอย่างไร หากไม่สามารถสั่งซื้อสินค้าได้',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'สินค้าของฉันอยู่ไหน',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'ใช้คูปองอย่างไรให้คุ้มที่สุด',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
-      BootstrapCol(
-          sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
-          child: Padding(
-              padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: mT),
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () {},
-                      child: Text(
-                        'หากต้องการคืนสินค้าฉันต้องทำอย่างไร',
-                        style: TextStyle(fontSize: fZ),
-                      ),
-                    ),
-                  ),
-                ],
-              ))),
+                  ],
+                ))),
+      )
+
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   '[บัญชีของฉัน] ฉันจะเพิ่ม/แก้ไข/ลบที่อยู่ของฉันได้อย่างไร',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'รู้จักวิธีการใช้โค้ดรูปแบบใหม่',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'ทำไมฉันถึงไม่ได้รับรหัส OTP?',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'ต้องทำอย่างไร หากไม่สามารถสั่งซื้อสินค้าได้',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'สินค้าของฉันอยู่ไหน',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'ใช้คูปองอย่างไรให้คุ้มที่สุด',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
+      // BootstrapCol(
+      //     sizes: 'col-xl-6 col-12 col-sm-12 col-md-6',
+      //     child: Padding(
+      //         padding: EdgeInsets.only(left: pL1, right: 20, bottom: 15),
+      //         child: Row(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Container(
+      //               margin: EdgeInsets.only(top: mT),
+      //               height: 8,
+      //               width: 8,
+      //               decoration: BoxDecoration(
+      //                   borderRadius: BorderRadius.circular(90),
+      //                   color: Colors.black),
+      //             ),
+      //             const SizedBox(
+      //               width: 10,
+      //             ),
+      //             Flexible(
+      //               child: InkWell(
+      //                 splashColor: Colors.transparent,
+      //                 hoverColor: Colors.transparent,
+      //                 highlightColor: Colors.transparent,
+      //                 onTap: () {},
+      //                 child: Text(
+      //                   'หากต้องการคืนสินค้าฉันต้องทำอย่างไร',
+      //                   style: TextStyle(fontSize: fZ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ))),
     ]),
   );
 }

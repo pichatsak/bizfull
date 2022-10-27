@@ -16,7 +16,6 @@ import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_dataproduct.dart';
 import 'package:bizfull/showproduct/dataproduct/widget_product_other.dart';
-import 'package:bizfull/showproduct/dataproduct/widget_showlist_mobile.dart';
 import 'package:bizfull/showproduct/widget_bar_showproduct_mobile.dart';
 import 'package:bizfull/showproduct/widget_showproduct.dart';
 import 'package:flutter/material.dart';

@@ -2,7 +2,6 @@ import 'package:bizfull/models/review_model.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_comment_byone.dart';
 import 'package:bizfull/showproduct/dataproduct/comment/widget_page_comment.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 Widget comment(

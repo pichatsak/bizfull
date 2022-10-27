@@ -1,5 +1,6 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/dialog/dialog_alert.dart';
 import 'package:bizfull/help/sendmail/widget_bar_sendmail.dart';
 import 'package:bizfull/help/sendmail/widget_bar_sendmail_mobile.dart';
 import 'package:bizfull/help/sendmail/widget_sendmail.dart';
@@ -21,10 +22,32 @@ class Sendmail extends StatefulWidget {
 
 class _SendmailState extends State<Sendmail> {
   final box = GetStorage();
+  bool isLogin = false;
+  bool isLoad = false;
   @override
   void initState() {
     box.write("curpage", "showproduct");
     super.initState();
+    checkLogin();
+  }
+
+  showDialogLoginNeed() async {
+    await Future.delayed(const Duration(milliseconds: 50));
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) => dialogNeedLogin(context));
+  }
+
+  void checkLogin() {
+    bool loginGet = box.read("login") ?? false;
+    isLogin = loginGet;
+    setState(() {
+      isLoad = true;
+    });
+    if (!isLogin) {
+      showDialogLoginNeed();
+    }
   }
 
   @override
@@ -60,8 +83,8 @@ class _SendmailState extends State<Sendmail> {
       h = 0;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(drawer: const Drawermenu(),
-       
+    return Scaffold(
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -92,7 +115,8 @@ class _SendmailState extends State<Sendmail> {
                 ],
               ),
             ),
-            const Navmain(),
+            // ignore: prefer_const_constructors
+            Navmain(),
           ],
         ),
         floatingActionButton: typeSc == "pc"

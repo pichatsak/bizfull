@@ -1,20 +1,26 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/global.dart';
 import 'package:bizfull/help/clickmm/widget_bar_clickmm.dart';
 import 'package:bizfull/help/clickmm/widget_bar_clickmm_mobile.dart';
 import 'package:bizfull/help/clickmm/widget_mmright.dart';
 import 'package:bizfull/help/clickmm/widget_mmleft.dart';
 
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
+import 'package:bizfull/models/help_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
 class Clickmm extends StatefulWidget {
-  const Clickmm({Key? key}) : super(key: key);
+  final String idGet;
+  const Clickmm({Key? key, required this.idGet}) : super(key: key);
 
   @override
   State<Clickmm> createState() => _ClickmmState();
@@ -22,10 +28,27 @@ class Clickmm extends StatefulWidget {
 
 class _ClickmmState extends State<Clickmm> {
   final box = GetStorage();
+  late HelpModel itemData;
+  bool isLoad = false;
+  String id = "";
   @override
   void initState() {
     box.write("curpage", "clickmm");
     super.initState();
+    id = widget.idGet;
+    getDattaHelp();
+  }
+
+  Future<void> getDattaHelp() async {
+    var url = "${Global.hostName}/help_get.php?id=$id";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      itemData = HelpModel.fromJson(getData["data"]);
+      setState(() {
+        isLoad = true;
+      });
+    }
   }
 
   @override
@@ -66,47 +89,54 @@ class _ClickmmState extends State<Clickmm> {
       typeSc2 = "mobile";
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(drawer: const Drawermenu(),
-       
+    return Scaffold(
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: hbar),
-                  BootstrapContainer(
-                      fluid: true,
-                      decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
+              child: isLoad
+                  ? Column(
                       children: [
-                        typeSc == "pc"
-                            ? barclickmm(context)
-                            : barclickmmmobile(context)
-                      ]),
-                  BootstrapContainer(
-                    fluid: typeSc == "pc" ? false : true,
-                    padding: EdgeInsets.only(top: pad),
-                    children: [
-                      BootstrapRow(children: <BootstrapCol>[
-                        BootstrapCol(
-                            sizes:
-                                'col-xl-9 col-12 col-sm-12 col-md-12 col-lg-8',
-                            child: mmleft(context)),
-                        BootstrapCol(
-                            sizes: 'col-xl-3  col-12 col-lg-4',
-                            child: typeSc2 == "pc" ? mmright(context) : Container()),
-                      ])
-                    ],
-                  ),
-                  SizedBox(height: h),
-                  typeSc1 == "pc"
-                      ? BootstrapContainer(
-                          fluid: true,
-                          decoration:
-                              const BoxDecoration(color: Color(0xfff3f3f3)),
-                          children: <Widget>[barfootterlogin()])
-                      : Container(),
-                ],
-              ),
+                        SizedBox(height: hbar),
+                        BootstrapContainer(
+                            fluid: true,
+                            decoration:
+                                const BoxDecoration(color: Color(0xfff3f3f3)),
+                            children: [
+                              typeSc == "pc"
+                                  ? barclickmm(context)
+                                  : barclickmmmobile(context)
+                            ]),
+                        BootstrapContainer(
+                          fluid: typeSc == "pc" ? false : true,
+                          padding: EdgeInsets.only(top: pad),
+                          children: [
+                            BootstrapRow(children: <BootstrapCol>[
+                              BootstrapCol(
+                                  sizes:
+                                      'col-xl-9 col-12 col-sm-12 col-md-12 col-lg-8',
+                                  child: mmleft(context, itemData)),
+                              BootstrapCol(
+                                  sizes: 'col-xl-3  col-12 col-lg-4',
+                                  child: typeSc2 == "pc"
+                                      ? mmright(context)
+                                      : Container()),
+                            ])
+                          ],
+                        ),
+                        SizedBox(height: h),
+                        typeSc1 == "pc"
+                            ? BootstrapContainer(
+                                fluid: true,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xfff3f3f3)),
+                                children: <Widget>[barfootterlogin()])
+                            : Container(),
+                      ],
+                    )
+                  : const SizedBox(
+                      height: 0,
+                    ),
             ),
             const Navmain(),
           ],
