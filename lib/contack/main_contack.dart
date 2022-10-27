@@ -1,16 +1,21 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
 import 'package:bizfull/contack/widget_bar_contack.dart';
 import 'package:bizfull/contack/widget_bar_contack_mobile.dart';
 import 'package:bizfull/contack/widget_contack.dart';
+import 'package:bizfull/global.dart';
 
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
+import 'package:bizfull/models/contact_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
 class Contack extends StatefulWidget {
   const Contack({Key? key}) : super(key: key);
@@ -21,10 +26,25 @@ class Contack extends StatefulWidget {
 
 class _ContackState extends State<Contack> {
   final box = GetStorage();
+  late ContactModel itemData;
+  bool isLoad = false;
   @override
   void initState() {
     box.write("curpage", "contack");
     super.initState();
+    getDataContact();
+  }
+
+  Future<void> getDataContact() async {
+    var url = "${Global.hostName}/contact_get.php";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      itemData = ContactModel.fromJson(getData["data"]);
+      setState(() {
+        isLoad = true;
+      });
+    }
   }
 
   @override
@@ -60,8 +80,8 @@ class _ContackState extends State<Contack> {
       h = 40;
     }
     bootstrapGridParameters(gutterSize: 0);
-    return Scaffold(drawer: const Drawermenu(),
-       
+    return Scaffold(
+        drawer: const Drawermenu(),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -79,7 +99,7 @@ class _ContackState extends State<Contack> {
                   BootstrapContainer(
                     fluid: typeSc == "pc" ? false : true,
                     padding: EdgeInsets.only(top: pad),
-                    children: [contack()],
+                    children: [isLoad ? contack(itemData) : const Center()],
                   ),
                   SizedBox(height: h),
                   typeSc1 == "pc"

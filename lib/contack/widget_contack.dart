@@ -1,57 +1,50 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/contack/form_contact.dart';
+import 'package:bizfull/models/contact_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
-Widget contack() {
+Widget contack(ContactModel itemData) {
   double fM1;
   double fM2;
   double fM3;
-  double fM4;
   double pL;
   double pR;
   double pT;
   double pB;
-  double hS;
-  double hS1;
   String hT;
   if (Device.width > 991) {
     fM1 = 24;
     fM2 = 18;
     fM3 = 16;
-    fM4 = 14;
     pL = 20;
     pR = 20;
     pT = 0;
     pB = 20;
-    hS = 0;
-    hS1 = 20;
     hT = "pc";
   } else if (Device.width >= 768 && Device.width <= 991) {
     fM1 = 23;
     fM2 = 18;
     fM3 = 16;
-    fM4 = 14;
     pL = 20;
     pR = 20;
     pT = 0;
     pB = 10;
-    hS = 20;
-    hS1 = 10;
     hT = "mobile";
   } else {
     fM1 = 20;
     fM2 = 16;
     fM3 = 14;
-    fM4 = 13;
     pL = 20;
     pR = 20;
     pT = 0;
     pB = 10;
-    hS = 20;
-    hS1 = 10;
     hT = "mobile";
   }
   return BootstrapRow(children: <BootstrapCol>[
@@ -68,9 +61,9 @@ Widget contack() {
                       Container(
                         margin: const EdgeInsets.only(top: 9),
                         child: const Icon(
-                          FontAwesomeIcons.users,
+                          LineAwesomeIcons.phone_volume,
                           color: Color(0xffa91f2e),
-                          size: 16,
+                          size: 22,
                         ),
                       ),
                       const SizedBox(
@@ -119,14 +112,21 @@ Widget contack() {
                     SizedBox(
                       width: double.infinity,
                       child: Text(
-                        '8 ซอย 48 แยก 13 ถนนเพชรเกษม แขวงบางด้วน เขตภาษีเจริญ กรุงเทพมหานคร 10160',
+                        '${itemData.ctAdr} ${itemData.dict} ${itemData.amp} ${itemData.prov} ${itemData.ctPost}',
                         style: TextStyle(fontSize: fM3),
                       ),
                     ),
                     SizedBox(
                       width: double.infinity,
                       child: Text(
-                        'เบอร์โทรศัพท์ : 099-999-9999',
+                        'เบอร์โทรศัพท์ : ${itemData.ctPhone}',
+                        style: TextStyle(fontSize: fM3),
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'อีเมล : ${itemData.ctEmail}',
                         style: TextStyle(fontSize: fM3),
                       ),
                     ),
@@ -144,7 +144,9 @@ Widget contack() {
                     Row(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            js.context.callMethod('open', [itemData.ctLine]);
+                          },
                           child: SvgPicture.asset(
                             "images/line.svg",
                             width: 30,
@@ -153,7 +155,10 @@ Widget contack() {
                         Padding(
                           padding: const EdgeInsets.only(left: 12, right: 12),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              js.context
+                                  .callMethod('open', [itemData.ctFacebook]);
+                            },
                             child: SvgPicture.asset(
                               "images/facebook.svg",
                               width: 30,
@@ -161,22 +166,14 @@ Widget contack() {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            js.context.callMethod('open', [itemData.ctInsta]);
+                          },
                           child: SvgPicture.asset(
                             "images/instagram.svg",
                             width: 30,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: InkWell(
-                            onTap: () {},
-                            child: SvgPicture.asset(
-                              "images/twitter.svg",
-                              width: 30,
-                            ),
-                          ),
-                        )
                       ],
                     ),
                   ],
@@ -190,230 +187,7 @@ Widget contack() {
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Column(
-            children: [
-              SizedBox(
-                width: 600,
-                child: Column(
-                  children: [
-                    SizedBox(height: hS),
-                    Row(
-                      children: [
-                        Text(
-                          'ติดต่อเจ้าหน้าที่',
-                          style: TextStyle(
-                              fontSize: fM2, fontFamily: "Prompt-Medium"),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: hS1),
-                    Column(
-                      children: [
-                        Row(children: [
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 1),
-                            child: const Icon(
-                              FontAwesomeIcons.solidUser,
-                              color: Color(0xffa91f2e),
-                              size: 14,
-                            ),
-                          ),
-                          const SizedBox(width: 7),
-                          Text("ชื่อ-นามสกุล", style: TextStyle(fontSize: fM4))
-                        ]),
-                        const SizedBox(height: 5),
-                        TextFormField(
-                          cursorColor: Colors.red,
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.black),
-                          decoration: const InputDecoration(
-                              hintText: 'Input',
-                              hintStyle: TextStyle(color: Colors.black38),
-                              isDense: true,
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(10, 13, 10, 13),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide: BorderSide(
-                                    color: Colors.black12, width: 1.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide:
-                                    BorderSide(color: Colors.red, width: 1.0),
-                              )),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Column(
-                      children: [
-                        Row(children: [
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 1),
-                            child: const Icon(
-                              FontAwesomeIcons.solidEnvelope,
-                              color: Color(0xffa91f2e),
-                              size: 14,
-                            ),
-                          ),
-                          const SizedBox(width: 7),
-                          Text("อีเมลของคุณ", style: TextStyle(fontSize: fM4))
-                        ]),
-                        const SizedBox(height: 5),
-                        TextFormField(
-                          cursorColor: Colors.red,
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.black),
-                          decoration: const InputDecoration(
-                              hintText: 'Input',
-                              hintStyle: TextStyle(color: Colors.black38),
-                              isDense: true,
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(10, 13, 10, 13),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide: BorderSide(
-                                    color: Colors.black12, width: 1.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide:
-                                    BorderSide(color: Colors.red, width: 1.0),
-                              )),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Column(
-                      children: [
-                        Row(children: [
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 3),
-                            child: const Icon(
-                              FontAwesomeIcons.mobileButton,
-                              color: Color(0xffa91f2e),
-                              size: 14,
-                            ),
-                          ),
-                          const SizedBox(width: 7),
-                          Text("หมายเลขโทรศัพท์",
-                              style: TextStyle(fontSize: fM4))
-                        ]),
-                        const SizedBox(height: 5),
-                        TextFormField(
-                          cursorColor: Colors.red,
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.black),
-                          decoration: const InputDecoration(
-                              hintText: 'Input',
-                              hintStyle: TextStyle(color: Colors.black38),
-                              isDense: true,
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(10, 13, 10, 13),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide: BorderSide(
-                                    color: Colors.black12, width: 1.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(7)),
-                                borderSide:
-                                    BorderSide(color: Colors.red, width: 1.0),
-                              )),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Text("รายละเอียด",
-                            style: TextStyle(
-                                fontSize: fM3, fontFamily: "Prompt-Medium")),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("กรอกข้อมูลรายละเอียดที่ต้องการติดต่อ",
-                            style: TextStyle(fontSize: fM4)),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    const TextField(
-                      cursorColor: Colors.red,
-                      style: TextStyle(fontSize: 14, color: Colors.black),
-                      decoration: InputDecoration(
-                          hintText: "Input",
-                          hintStyle: TextStyle(color: Colors.black38),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(7)),
-                            borderSide:
-                                BorderSide(color: Colors.black12, width: 1.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(7)),
-                            borderSide:
-                                BorderSide(color: Colors.red, width: 1.0),
-                          )),
-                      maxLines: 3,
-                    ),
-                    // TextFormField(
-                    //   cursorColor: Colors.red,
-                    //   style: const TextStyle(fontSize: 14, color: Colors.black),
-                    //   decoration: const InputDecoration(
-                    //       hintText: 'Input',
-                    //       hintStyle: TextStyle(color: Colors.black38),
-                    //       isDense: true,
-                    //       contentPadding: EdgeInsets.fromLTRB(10, 40, 10, 40),
-                    //       enabledBorder: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.all(Radius.circular(7)),
-                    //         borderSide:
-                    //             BorderSide(color: Colors.black12, width: 1.0),
-                    //       ),
-                    //       focusedBorder: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.all(Radius.circular(7)),
-                    //         borderSide:
-                    //             BorderSide(color: Colors.red, width: 1.0),
-                    //       )),
-                    // ),
-                    const SizedBox(height: 40),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xffed3023)),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(7.0),
-                              ))),
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, right: 10, top: 8, bottom: 8),
-                            child: Row(
-                              children: const [
-                                Text(
-                                  "ติดต่อ",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ],
+            children: [FormContactPage()],
           ),
         ))
   ]);

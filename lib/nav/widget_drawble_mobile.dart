@@ -304,7 +304,7 @@ class _DrawermenuState extends State<Drawermenu> {
                                     onTap: () {
                                       Navigator.pop(context);
                                       Navigator.of(context)
-                                          .pushNamed("/internationalshipping");
+                                          .pushNamed("/service");
                                     },
                                     child: const Text(
                                       'บริการของเรา',

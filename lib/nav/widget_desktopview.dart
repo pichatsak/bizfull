@@ -374,7 +374,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                                     : const Color.fromARGB(255, 90, 90, 90);
                                 return ListTile(
                                   onTap: () {
-                                    Navigator.of(context).pushNamed("/contack");
+                                    Navigator.of(context).pushNamed("/contact");
                                   },
                                   mouseCursor: SystemMouseCursors.click,
                                   hoverColor:
@@ -448,8 +448,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
                                     : const Color.fromARGB(255, 90, 90, 90);
                                 return ListTile(
                                   onTap: () {
-                                    Navigator.of(context)
-                                        .pushNamed("/internationalshipping");
+                                    Navigator.of(context).pushNamed("/service");
                                   },
                                   mouseCursor: SystemMouseCursors.click,
                                   hoverColor:

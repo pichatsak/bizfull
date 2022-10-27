@@ -259,7 +259,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               validator: (val) {
                                 if (val!.isEmpty) {
                                   return "กรุณากรอกเบอร์โทรศัพท์";
-                                } else if (!isLength(val, 8, 32)) {
+                                } else if (!isLength(val, 9, 32)) {
                                   return "กรุณากรอกเบอร์โทรศัพท์ให้ครบ";
                                 } else {
                                   return null;

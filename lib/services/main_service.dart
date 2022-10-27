@@ -6,24 +6,24 @@ import 'package:bizfull/global.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
-import 'package:bizfull/rate/widget_bar_rate.dart';
-import 'package:bizfull/rate/widget_bar_rate_mobile.dart';
+import 'package:bizfull/services/widget_bar_service.dart';
+import 'package:bizfull/services/widget_bar_service_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:http/http.dart' as http;
 
-class Rate extends StatefulWidget {
-  const Rate({Key? key}) : super(key: key);
+class ServicePage extends StatefulWidget {
+  const ServicePage({Key? key}) : super(key: key);
 
   @override
-  State<Rate> createState() => _RateState();
+  State<ServicePage> createState() => _ServicePageState();
 }
 
-class _RateState extends State<Rate> {
+class _ServicePageState extends State<ServicePage> {
   final box = GetStorage();
   bool isLoad = false;
   String htmlCont = "";
@@ -35,7 +35,7 @@ class _RateState extends State<Rate> {
   }
 
   Future<void> getContPage() async {
-    var url = "${Global.hostName}/contpage_get.php?page=rate";
+    var url = "${Global.hostName}/contpage_get.php?page=service";
     var res = await http.get(Uri.parse(url));
     var getData = await json.decode(res.body);
     if (getData['status'] == "ok") {
@@ -120,8 +120,8 @@ class _RateState extends State<Rate> {
                       decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
                       children: [
                         typeSc == "pc"
-                            ? barrate(context)
-                            : barratemobile(context)
+                            ? barService(context)
+                            : barServicemobile(context)
                       ]),
                   BootstrapContainer(
                       fluid: typeSc == "pc" ? false : true,
@@ -145,8 +145,7 @@ class _RateState extends State<Rate> {
                                                 margin: const EdgeInsets.only(
                                                     top: 9),
                                                 child: const Icon(
-                                                  LineAwesomeIcons
-                                                      .alternate_exchange,
+                                                  Ionicons.ribbon_outline,
                                                   color: Color(0xffa91f2e),
                                                   size: 22,
                                                 ),
@@ -156,7 +155,7 @@ class _RateState extends State<Rate> {
                                               ),
                                               Flexible(
                                                 child: Text(
-                                                  "อัตราแลกเปลี่ยน",
+                                                  "บริการของเรา",
                                                   style: TextStyle(
                                                       fontSize: fM1,
                                                       fontFamily:

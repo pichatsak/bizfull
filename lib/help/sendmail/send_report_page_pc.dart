@@ -22,10 +22,8 @@ class SendReportPcPage extends StatefulWidget {
 class _SendReportPcPageState extends State<SendReportPcPage> {
   final box = GetStorage();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController titleInp =
-      TextEditingController(text: "แจ้งปัญหาการซื้อ");
-  TextEditingController msgInp =
-      TextEditingController(text: "ซื้อแล้วไม่ลดราคาให้เลย");
+  TextEditingController titleInp = TextEditingController();
+  TextEditingController msgInp = TextEditingController();
   List<int>? selectImg;
   Uint8List? _byteData;
   bool isSelectImg = false;
