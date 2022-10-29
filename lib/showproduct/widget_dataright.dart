@@ -18,7 +18,9 @@ Widget dataright1(
     String priceMainShow,
     List<PriceMoreModel> listPriceMore,
     int posPriceMoreChoose,
-    void Function(int pos) updateChoosePrice) {
+    void Function(int pos) updateChoosePrice,
+    void Function() addCart,
+    void Function() addCartAndGo) {
   // ignore: unused_local_variable
   var formatNum = NumberFormat('#,###,###.00');
   // ignore: unused_local_variable
@@ -850,8 +852,9 @@ Widget dataright1(
                                                 BorderRadius.circular(7)),
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context)
-                                            .pushNamed("/shopcart");
+                                        // Navigator.of(context)
+                                        //     .pushNamed("/shopcart");
+                                        addCart();
                                       },
                                       child: SizedBox(
                                         height: 45,
@@ -897,7 +900,9 @@ Widget dataright1(
                                       onPressed: () {
                                         if (pdModel.pdType == "ship") {
                                           openLinkShip(pdModel.productLink);
-                                        } else {}
+                                        } else {
+                                          addCartAndGo();
+                                        }
                                       },
                                       child: SizedBox(
                                         height: 45,
@@ -961,8 +966,9 @@ Widget dataright1(
                                         highlightColor: Colors.white12,
                                         borderRadius: BorderRadius.circular(7),
                                         onTap: () {
-                                          Navigator.of(context)
-                                              .pushNamed("/shopcart");
+                                          // Navigator.of(context)
+                                          //     .pushNamed("/shopcart");
+                                          addCart();
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.only(
@@ -1020,7 +1026,9 @@ Widget dataright1(
                                   onPressed: () {
                                     if (pdModel.pdType == "ship") {
                                       openLinkShip(pdModel.productLink);
-                                    } else {}
+                                    } else {
+                                      addCartAndGo();
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(

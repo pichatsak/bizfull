@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/dialog/dialog_alert.dart';
 import 'package:bizfull/global.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/models/pic_more_mobile.dart';
@@ -53,6 +54,7 @@ class _ShowProductState extends State<ShowProduct> {
   double rateAll = 0;
   String priceMainShow = "";
   int posPriceMoreChoose = 0;
+  bool isManyPrice = false;
 
   var formatNum = NumberFormat('#,###,###.00');
   var formatNumNoDc = NumberFormat('#,###,###');
@@ -62,6 +64,85 @@ class _ShowProductState extends State<ShowProduct> {
     super.initState();
     pdId = widget.idGet;
     getDetailProduct();
+  }
+
+  void addCart() async {
+    bool loginGet = box.read("login") ?? false;
+    if (loginGet) {
+      var pmmid = "";
+      if (isManyPrice) {
+        pmmid = listPriceMore[posPriceMoreChoose].pdmId.toString();
+      }
+      var dataForm = {
+        "product_id": pdId,
+        "num": numQuan.text,
+        "user_id": "${box.read("user_id")}",
+        "price_id_more": pmmid
+      };
+      var url = "${Global.hostName}/add_cart.php";
+      var res = await http.post(Uri.parse(url), body: dataForm);
+      var getData = json.decode(res.body);
+      if (getData["status"] == "ok") {
+        // ignore: use_build_context_synchronously
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => dialogSuccessCart(context));
+      } else if (getData["status"] == "no") {
+        // ignore: use_build_context_synchronously
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                dialogErrAll(context, "เกิดข้อมูลผิดผลาดกรุณาลองใหม่อีกครั้ง"));
+      } else if (getData["status"] == "replete") {
+        // ignore: use_build_context_synchronously
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                dialogErrAll(context, "เนื่องจากมีสินค้าอยู่ในตะกร้าแล้ว"));
+      }
+    } else {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => dialogNeedLogin(context));
+    }
+  }
+
+  void addCartAndGo() async {
+    bool loginGet = box.read("login") ?? false;
+    if (loginGet) {
+      var pmmid = "";
+      if (isManyPrice) {
+        pmmid = listPriceMore[posPriceMoreChoose].pdmId.toString();
+      }
+      var dataForm = {
+        "product_id": pdId,
+        "num": numQuan.text,
+        "user_id": "${box.read("user_id")}",
+        "price_id_more": pmmid
+      };
+      var url = "${Global.hostName}/add_cart.php";
+      var res = await http.post(Uri.parse(url), body: dataForm);
+      var getData = json.decode(res.body);
+      if (getData["status"] == "ok") {
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).pushNamed("/shopcart");
+      } else if (getData["status"] == "no") {
+        // ignore: use_build_context_synchronously
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                dialogErrAll(context, "เกิดข้อมูลผิดผลาดกรุณาลองใหม่อีกครั้ง"));
+      } else if (getData["status"] == "replete") {
+        // ignore: use_build_context_synchronously
+        showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                dialogErrAll(context, "เนื่องจากมีสินค้าอยู่ในตะกร้าแล้ว"));
+      }
+    } else {
+      Navigator.of(context).pushNamed("/shopcart");
+    }
   }
 
   Future<void> getDetailProduct() async {
@@ -77,6 +158,7 @@ class _ShowProductState extends State<ShowProduct> {
           priceMainShow =
               "${pdModel.currencySymbol}${formatNum.format(pdModel.pdPrice)}";
         } else {
+          isManyPrice = true;
           getData["price_more"].map((dataPrice) {
             PriceMoreModel prGet = PriceMoreModel.fromJson(dataPrice);
             listPriceMore.add(prGet);
@@ -255,7 +337,9 @@ class _ShowProductState extends State<ShowProduct> {
                                     listPriceMore,
                                     posPriceMoreChoose,
                                     updateChoosePrice,
-                                    listPiceMoreMobile),
+                                    listPiceMoreMobile,
+                                    addCart,
+                                    addCartAndGo),
                               )
                             ]),
                         BootstrapContainer(

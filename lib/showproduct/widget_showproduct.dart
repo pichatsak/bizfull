@@ -111,7 +111,9 @@ Widget datashowproduct(
     List<PriceMoreModel> listPriceMore,
     int posPriceMoreChoose,
     void Function(int pos) updateChoosePrice,
-    List<PicMoreMobile> listPiceMoreMobile) {
+    List<PicMoreMobile> listPiceMoreMobile,
+    void Function() addCart,
+    void Function() addCartAndGo) {
   double lP;
   double rP;
   double tP;
@@ -175,7 +177,9 @@ Widget datashowproduct(
                         priceMainShow,
                         listPriceMore,
                         posPriceMoreChoose,
-                        updateChoosePrice),
+                        updateChoosePrice,
+                        addCart,
+                        addCartAndGo),
                   ),
                 ])),
           ],

@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/global.dart';
+import 'package:bizfull/models/contact_model.dart';
 import 'package:bizfull/nav/box_shap_menu.dart';
 import 'package:bizfull/nav/hover_menu.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:joy_dropdowns/joy_dropdowns.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -11,6 +16,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:show_up_animation/show_up_animation.dart';
+import 'package:http/http.dart' as http;
+import 'dart:js' as js;
 
 @immutable
 class NavDeskTop extends StatefulWidget {
@@ -22,6 +29,38 @@ class NavDeskTop extends StatefulWidget {
 
 class _NavDeskTopState extends State<NavDeskTop> {
   bool isHoverMenu1 = false;
+  late ContactModel itemData;
+  bool isLoad = false;
+  final box = GetStorage();
+  bool isLogin = false;
+  @override
+  void initState() {
+    super.initState();
+    getDataContact();
+    checkLogin();
+  }
+
+  void checkLogin() {
+    bool loginGet = box.read("login") ?? false;
+    isLogin = loginGet;
+    if (isLogin) {
+      setState(() {
+        isLogin = true;
+      });
+    }
+  }
+
+  Future<void> getDataContact() async {
+    var url = "${Global.hostName}/contact_get.php";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      itemData = ContactModel.fromJson(getData["data"]);
+      setState(() {
+        isLoad = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,30 +137,45 @@ class _NavDeskTopState extends State<NavDeskTop> {
                 style: TextStyle(color: Colors.white, fontSize: 13),
               ),
               const SizedBox(width: 20),
-              Container(
-                margin: const EdgeInsets.only(bottom: 0),
-                child: const Icon(
-                  FontAwesomeIcons.facebook,
-                  size: 14,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  js.context.callMethod('open', [itemData.ctFacebook]);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 0),
+                  child: const Icon(
+                    FontAwesomeIcons.facebook,
+                    size: 14,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(width: 9),
-              Container(
-                margin: const EdgeInsets.only(bottom: 0),
-                child: const Icon(
-                  FontAwesomeIcons.instagram,
-                  size: 15,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  js.context.callMethod('open', [itemData.ctInsta]);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 0),
+                  child: const Icon(
+                    FontAwesomeIcons.instagram,
+                    size: 15,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(width: 9),
-              Container(
-                margin: const EdgeInsets.only(bottom: 0),
-                child: const Icon(
-                  FontAwesomeIcons.line,
-                  size: 15,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  js.context.callMethod('open', [itemData.ctLine]);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 0),
+                  child: const Icon(
+                    FontAwesomeIcons.line,
+                    size: 15,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ]),
@@ -203,28 +257,42 @@ class _NavDeskTopState extends State<NavDeskTop> {
               const SizedBox(
                 width: 5,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed("/login");
-                },
-                child: const Text(
-                  "เข้าสู่ระบบ",
-                  style: TextStyle(color: Colors.white, fontSize: 13),
-                ),
-              ),
-              const Text(
-                " / ",
-                style: TextStyle(color: Colors.white, fontSize: 15),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed("/registor");
-                },
-                child: const Text(
-                  "สมัครสมาชิก",
-                  style: TextStyle(color: Colors.white, fontSize: 13),
-                ),
-              ),
+              isLogin
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed("/login");
+                      },
+                      child: const Text(
+                        "บัญชีของฉัน",
+                        style: TextStyle(color: Colors.white, fontSize: 13),
+                      ),
+                    )
+                  : Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/login");
+                          },
+                          child: const Text(
+                            "เข้าสู่ระบบ",
+                            style: TextStyle(color: Colors.white, fontSize: 13),
+                          ),
+                        ),
+                        const Text(
+                          " / ",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/registor");
+                          },
+                          child: const Text(
+                            "สมัครสมาชิก",
+                            style: TextStyle(color: Colors.white, fontSize: 13),
+                          ),
+                        ),
+                      ],
+                    )
             ],
           )
         ],

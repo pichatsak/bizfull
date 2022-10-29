@@ -10,10 +10,10 @@ import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 var formatNum = NumberFormat('#,###,###.00');
-Widget menuproductShip(
-    List<CartViewModel> listShip,
-    List<DeliViewModel> listDeliShip,
-    int chooseDeliShip,
+Widget menuproductShop(
+    List<CartViewModel> listShop,
+    List<DeliViewModel> listDeliShop,
+    int chooseDeliShop,
     void Function(String type, String typeDvs) opendChangeDl) {
   double iconsize;
   double namelist;
@@ -96,11 +96,11 @@ Widget menuproductShip(
                     children: [
                       Container(
                         margin: const EdgeInsets.only(bottom: 5),
-                        child: Icon(FontAwesomeIcons.truck,
+                        child: Icon(FontAwesomeIcons.store,
                             color: const Color(0xffed3023), size: iconsize),
                       ),
                       const SizedBox(width: 10),
-                      Text('สินค้าน่าชิป',
+                      Text('สินค้าน่าชอป',
                           style: TextStyle(
                               fontFamily: "Prompt-Bold", fontSize: namelist)),
                       // const SizedBox(width: 10),
@@ -108,7 +108,7 @@ Widget menuproductShip(
                     ],
                   ),
                 ),
-                ...listShip.map(
+                ...listShop.map(
                   (item) => ListTile(
                     title: BootstrapRow(children: <BootstrapCol>[
                       BootstrapCol(
@@ -140,17 +140,20 @@ Widget menuproductShip(
                                   Text(
                                       // "หมวกกันน็อครถจักรยานยนต์ helmet motorcycle helmet rally male personality fresh locomotive road safety helmet full helmet",
                                       item.pdName,
-                                      style: const TextStyle(fontSize: 13),
+                                      style: TextStyle(fontSize: 13),
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis),
                                   SizedBox(height: hight1),
-                                  // Row(children: const [
-                                  //   Text("No Band,สี:black76*38*38 ",
-                                  //       style: TextStyle(
-                                  //           fontSize: 12,
-                                  //           color: Colors.black54)),
-                                  //   Icon(Icons.keyboard_arrow_down, size: 18)
-                                  // ]),
+                                  item.cartPdPriceMore == "yes"
+                                      ? Row(children: [
+                                          Text(item.cartPdNameMore,
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black54)),
+                                        ])
+                                      : const SizedBox(
+                                          height: 0,
+                                        ),
                                   SizedBox(height: hight1),
                                   Row(
                                     mainAxisAlignment:
@@ -158,7 +161,7 @@ Widget menuproductShip(
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          "${item.currencySymbol}${formatNum.format(item.pdPrice)} - ${formatNum.format(item.pdPriceEnd)}",
+                                          "${item.currencySymbol}${formatNum.format(item.cartPrice)}",
                                           style: TextStyle(
                                             fontSize: fontsele,
                                             color: const Color(0xffed3023),
@@ -174,7 +177,7 @@ Widget menuproductShip(
                                             ),
                                           ),
                                           Text(
-                                            "${item.cartNum}",
+                                            item.cartNum.toString(),
                                             style: TextStyle(
                                               fontSize: fontsele,
                                             ),
@@ -211,10 +214,10 @@ Widget menuproductShip(
                                         fontSize: 12,
                                       ),
                                     ),
-                                    listDeliShip.isNotEmpty
+                                    listDeliShop.isNotEmpty
                                         ? Text(
                                             // "฿41.00 (ส่งแบบธรรมดา)",
-                                            listDeliShip[chooseDeliShip]
+                                            listDeliShop[chooseDeliShop]
                                                 .deliName,
                                             style: const TextStyle(
                                                 fontSize: 12,
@@ -241,7 +244,7 @@ Widget menuproductShip(
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    opendChangeDl("ship", vs);
+                                    opendChangeDl("shop", vs);
                                   },
                                   child: const Text(
                                     "แก้ไข",
@@ -256,16 +259,16 @@ Widget menuproductShip(
                               children: [
                                 Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       "ตัวเลือกในการจัดส่ง : ",
                                       style: TextStyle(
                                         fontSize: 12,
                                       ),
                                     ),
-                                    listDeliShip.isNotEmpty
+                                    listDeliShop.isNotEmpty
                                         ? Text(
                                             // "฿41.00 (ส่งแบบธรรมดา)",
-                                            listDeliShip[chooseDeliShip]
+                                            listDeliShop[chooseDeliShop]
                                                 .deliName,
                                             style: const TextStyle(
                                                 fontSize: 12,
@@ -285,7 +288,7 @@ Widget menuproductShip(
                                     // ),
                                     InkWell(
                                       onTap: () {
-                                        opendChangeDl("ship", vs);
+                                        opendChangeDl("shop", vs);
                                       },
                                       child: const Text(
                                         "แก้ไข",

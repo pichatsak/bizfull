@@ -1,12 +1,25 @@
 import 'package:bizfull/checkout/dialog/widget_dialog_coupon.dart';
+import 'package:bizfull/global.dart';
+import 'package:bizfull/models/payment_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 enum SingingCharacter1 { lafayette, jefferson }
 
-Widget bin(character1, setState, context) {
+var formatNum = NumberFormat('#,###,##0.00');
+Widget bin(
+    character1,
+    setState,
+    context,
+    double totalAll,
+    double totalDisc,
+    double totalFinal,
+    int numAllpd,
+    List<PaymentModel> listPayment,
+    String pmId,
+    void Function(String value) updatePay) {
   String typbin;
   double hy;
   double rP;
@@ -63,48 +76,48 @@ Widget bin(character1, setState, context) {
                       ),
                     ],
                   ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        const Text("ดูวิธีชำระทั้งหมด",
-                            style: TextStyle(
-                                fontSize: 13, color: Color(0xffed3023))),
-                        Container(
-                          margin: const EdgeInsets.only(top: 2.5),
-                          child: Stack(children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 3),
-                              child: const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 10,
-                                color: Color(0xffed3023),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 9),
-                              child: const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 10,
-                                color: Color(0xffed3023),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 15),
-                              child: const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 10,
-                                color: Color(0xffed3023),
-                              ),
-                            )
-                          ]),
-                        ),
-                      ],
-                    ),
-                  )
+                  // InkWell(
+                  //   splashColor: Colors.transparent,
+                  //   hoverColor: Colors.transparent,
+                  //   highlightColor: Colors.transparent,
+                  //   onTap: () {},
+                  //   child: Row(
+                  //     children: [
+                  //       const Text("ดูวิธีชำระทั้งหมด",
+                  //           style: TextStyle(
+                  //               fontSize: 13, color: Color(0xffed3023))),
+                  //       Container(
+                  //         margin: const EdgeInsets.only(top: 2.5),
+                  //         child: Stack(children: [
+                  //           Container(
+                  //             margin: const EdgeInsets.only(left: 3),
+                  //             child: const Icon(
+                  //               Icons.arrow_forward_ios,
+                  //               size: 10,
+                  //               color: Color(0xffed3023),
+                  //             ),
+                  //           ),
+                  //           Container(
+                  //             margin: const EdgeInsets.only(left: 9),
+                  //             child: const Icon(
+                  //               Icons.arrow_forward_ios,
+                  //               size: 10,
+                  //               color: Color(0xffed3023),
+                  //             ),
+                  //           ),
+                  //           Container(
+                  //             margin: const EdgeInsets.only(left: 15),
+                  //             child: const Icon(
+                  //               Icons.arrow_forward_ios,
+                  //               size: 10,
+                  //               color: Color(0xffed3023),
+                  //             ),
+                  //           )
+                  //         ]),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               )
             : Column(
@@ -128,173 +141,210 @@ Widget bin(character1, setState, context) {
                       ),
                     ],
                   ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const Text("ดูวิธีชำระทั้งหมด",
-                              style: TextStyle(
-                                  fontSize: 13, color: Color(0xffed3023))),
-                          Container(
-                            margin: const EdgeInsets.only(top: 2.5),
-                            child: Stack(children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 3),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 10,
-                                  color: Color(0xffed3023),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 9),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 10,
-                                  color: Color(0xffed3023),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 15),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 10,
-                                  color: Color(0xffed3023),
-                                ),
-                              )
-                            ]),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
+                  // InkWell(
+                  //   splashColor: Colors.transparent,
+                  //   hoverColor: Colors.transparent,
+                  //   highlightColor: Colors.transparent,
+                  //   onTap: () {},
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(top: 10),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.end,
+                  //       children: [
+                  //         const Text("ดูวิธีชำระทั้งหมด",
+                  //             style: TextStyle(
+                  //                 fontSize: 13, color: Color(0xffed3023))),
+                  //         Container(
+                  //           margin: const EdgeInsets.only(top: 2.5),
+                  //           child: Stack(children: [
+                  //             Container(
+                  //               margin: const EdgeInsets.only(left: 3),
+                  //               child: const Icon(
+                  //                 Icons.arrow_forward_ios,
+                  //                 size: 10,
+                  //                 color: Color(0xffed3023),
+                  //               ),
+                  //             ),
+                  //             Container(
+                  //               margin: const EdgeInsets.only(left: 9),
+                  //               child: const Icon(
+                  //                 Icons.arrow_forward_ios,
+                  //                 size: 10,
+                  //                 color: Color(0xffed3023),
+                  //               ),
+                  //             ),
+                  //             Container(
+                  //               margin: const EdgeInsets.only(left: 15),
+                  //               child: const Icon(
+                  //                 Icons.arrow_forward_ios,
+                  //                 size: 10,
+                  //                 color: Color(0xffed3023),
+                  //               ),
+                  //             )
+                  //           ]),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
         SizedBox(height: hy),
-        Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xffa91f2e)),
-              borderRadius: BorderRadius.circular(7),
-              color: const Color.fromARGB(19, 241, 167, 160)),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8, top: 8),
-            child: ListTile(
-              title: const Text(
-                'พร้อมเพย์',
-                style: TextStyle(fontSize: 15),
-              ),
-              // subtitle: const Text(
-              //   'ชำระเงินเมื่อได้รับสินค้า',
-              //   style: TextStyle(fontSize: 12),
-              // ),
-              trailing: SvgPicture.asset(
-                "images/qrcode.svg",
-                width: 25,
-                height: 25,
-              ),
-              leading: Radio<SingingCharacter1>(
-                activeColor: const Color(0xffa91f2e),
-                value: SingingCharacter1.lafayette,
-                groupValue: character1,
-                onChanged: (SingingCharacter1? value) {
-                  setState(() {
-                    character1 = value;
-                  });
-                },
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black12),
-            borderRadius: BorderRadius.circular(7),
-            // gradient: const LinearGradient(
-            //   begin: Alignment.topLeft,
-            //   end: Alignment.bottomLeft,
-            //   stops: [0.0, 1.0],
-            //   colors: [
-            //     Color(0xfff8d20f),
-            //     Color(0xfff2890c),
-            //   ],
-            // ),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8, top: 8),
-                child: ListTile(
-                  title: const Text(
-                    'Truemoney Wallet',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  trailing: Image.asset(
-                    'images/true.png',
-                    height: 60.0,
-                    width: 60.0,
-                  ),
-                  leading: Radio<SingingCharacter1>(
-                    activeColor: const Color(0xffa91f2e),
-                    value: SingingCharacter1.jefferson,
-                    groupValue: character1,
-                    onChanged: (SingingCharacter1? value) {
-                      setState(() {
-                        character1 = value;
-                      });
-                    },
+        ...listPayment.map((itempm) => Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xffa91f2e)),
+                      borderRadius: BorderRadius.circular(7),
+                      color: const Color.fromARGB(19, 241, 167, 160)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8, top: 8),
+                    child: ListTile(
+                      title: Text(
+                        itempm.payName,
+                        style: const TextStyle(fontSize: 15),
+                      ),
+                      // subtitle: const Text(
+                      //   'ชำระเงินเมื่อได้รับสินค้า',
+                      //   style: TextStyle(fontSize: 12),
+                      // ),
+                      trailing: Image.network(
+                        "${Global.hostImgPayment}/${itempm.payImg}",
+                        width: 60,
+                        height: 60,
+                      ),
+                      leading: Radio<String>(
+                        activeColor: const Color(0xffa91f2e),
+                        value: itempm.payId.toString(),
+                        groupValue: pmId,
+                        onChanged: (String? value) {
+                          updatePay(value!);
+                        },
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              // Container(
-              //   height: 1,
-              //   color: Colors.black12,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       const Text(
-              //         'กดเพื่อเพิ่มบัตรเครดิต',
-              //         style: TextStyle(fontSize: 12),
-              //       ),
-              //       Row(
-              //         children: [
-              //           SvgPicture.asset(
-              //             'images/master.svg',
-              //             height: 20.0,
-              //             width: 20.0,
-              //             allowDrawingOutsideViewBox: true,
-              //           ),
-              //           const SizedBox(width: 5),
-              //           SvgPicture.asset(
-              //             'images/jcb.svg',
-              //             height: 20.0,
-              //             width: 20.0,
-              //             allowDrawingOutsideViewBox: true,
-              //           ),
-              //           const SizedBox(width: 5),
-              //           SvgPicture.asset(
-              //             'images/visa.svg',
-              //             height: 20.0,
-              //             width: 20.0,
-              //             allowDrawingOutsideViewBox: true,
-              //           ),
-              //         ],
-              //       )
-              //     ],
-              //   ),
-              // ),
-            ],
-          ),
-        ),
+                const SizedBox(height: 10),
+              ],
+            )),
+        // Container(
+        //   decoration: BoxDecoration(
+        //       border: Border.all(color: const Color(0xffa91f2e)),
+        //       borderRadius: BorderRadius.circular(7),
+        //       color: const Color.fromARGB(19, 241, 167, 160)),
+        //   child: Padding(
+        //     padding: const EdgeInsets.only(bottom: 8, top: 8),
+        //     child: ListTile(
+        //       title: const Text(
+        //         'พร้อมเพย์',
+        //         style: TextStyle(fontSize: 15),
+        //       ),
+        //       // subtitle: const Text(
+        //       //   'ชำระเงินเมื่อได้รับสินค้า',
+        //       //   style: TextStyle(fontSize: 12),
+        //       // ),
+        //       trailing: SvgPicture.asset(
+        //         "images/qrcode.svg",
+        //         width: 25,
+        //         height: 25,
+        //       ),
+        //       leading: Radio<SingingCharacter1>(
+        //         activeColor: const Color(0xffa91f2e),
+        //         value: SingingCharacter1.lafayette,
+        //         groupValue: character1,
+        //         onChanged: (SingingCharacter1? value) {
+        //           setState(() {
+        //             character1 = value;
+        //           });
+        //         },
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        // const SizedBox(height: 10),
+        // Container(
+        //   decoration: BoxDecoration(
+        //     border: Border.all(color: Colors.black12),
+        //     borderRadius: BorderRadius.circular(7),
+        //     // gradient: const LinearGradient(
+        //     //   begin: Alignment.topLeft,
+        //     //   end: Alignment.bottomLeft,
+        //     //   stops: [0.0, 1.0],
+        //     //   colors: [
+        //     //     Color(0xfff8d20f),
+        //     //     Color(0xfff2890c),
+        //     //   ],
+        //     // ),
+        //   ),
+        //   child: Column(
+        //     children: [
+        //       Padding(
+        //         padding: const EdgeInsets.only(bottom: 8, top: 8),
+        //         child: ListTile(
+        //           title: const Text(
+        //             'Truemoney Wallet',
+        //             style: TextStyle(fontSize: 15),
+        //           ),
+        //           trailing: Image.asset(
+        //             'images/true.png',
+        //             height: 60.0,
+        //             width: 60.0,
+        //           ),
+        //           leading: Radio<SingingCharacter1>(
+        //             activeColor: const Color(0xffa91f2e),
+        //             value: SingingCharacter1.jefferson,
+        //             groupValue: character1,
+        //             onChanged: (SingingCharacter1? value) {
+        //               setState(() {
+        //                 character1 = value;
+        //               });
+        //             },
+        //           ),
+        //         ),
+        //       ),
+        //       // Container(
+        //       //   height: 1,
+        //       //   color: Colors.black12,
+        //       // ),
+        //       // Padding(
+        //       //   padding: const EdgeInsets.all(8.0),
+        //       //   child: Row(
+        //       //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //       //     children: [
+        //       //       const Text(
+        //       //         'กดเพื่อเพิ่มบัตรเครดิต',
+        //       //         style: TextStyle(fontSize: 12),
+        //       //       ),
+        //       //       Row(
+        //       //         children: [
+        //       //           SvgPicture.asset(
+        //       //             'images/master.svg',
+        //       //             height: 20.0,
+        //       //             width: 20.0,
+        //       //             allowDrawingOutsideViewBox: true,
+        //       //           ),
+        //       //           const SizedBox(width: 5),
+        //       //           SvgPicture.asset(
+        //       //             'images/jcb.svg',
+        //       //             height: 20.0,
+        //       //             width: 20.0,
+        //       //             allowDrawingOutsideViewBox: true,
+        //       //           ),
+        //       //           const SizedBox(width: 5),
+        //       //           SvgPicture.asset(
+        //       //             'images/visa.svg',
+        //       //             height: 20.0,
+        //       //             width: 20.0,
+        //       //             allowDrawingOutsideViewBox: true,
+        //       //           ),
+        //       //         ],
+        //       //       )
+        //       //     ],
+        //       //   ),
+        //       // ),
+        //     ],
+        //   ),
+        // ),
         const SizedBox(height: 30),
         Row(
           children: [
@@ -320,9 +370,10 @@ Widget bin(character1, setState, context) {
           children: [
             Flexible(
               child: TextFormField(
+                enabled: false,
                 cursorColor: Colors.red,
                 decoration: const InputDecoration(
-                    hintText: "กรุณาระบุคูปองส่วนลด",
+                    hintText: "คูปองส่วนลด",
                     hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
                     isDense: true,
                     contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
@@ -372,7 +423,7 @@ Widget bin(character1, setState, context) {
                 width: 70,
                 child: Center(
                     child: Text(
-                  "ยืนยัน",
+                  "เลือก",
                   style: TextStyle(color: Colors.white),
                 )),
               ),
@@ -401,28 +452,28 @@ Widget bin(character1, setState, context) {
         const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
-              "ยอดรวม (2)",
-              style: TextStyle(fontSize: 14, color: Colors.black54),
+              "ยอดรวม ($numAllpd)",
+              style: const TextStyle(fontSize: 14, color: Colors.black54),
             ),
             Text(
-              "฿1,995.00",
-              style: TextStyle(fontSize: 14),
+              "฿${formatNum.format(totalAll)}",
+              style: const TextStyle(fontSize: 14),
             ),
           ],
         ),
         const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text(
-              "ค่าจัดส่ง",
+          children: [
+            const Text(
+              "ส่วนลด",
               style: TextStyle(fontSize: 14, color: Colors.black54),
             ),
             Text(
-              "฿81.00",
-              style: TextStyle(fontSize: 14),
+              "฿${formatNum.format(totalDisc)}",
+              style: const TextStyle(fontSize: 14),
             ),
           ],
         ),
@@ -431,14 +482,14 @@ Widget bin(character1, setState, context) {
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text(
+          children: [
+            const Text(
               "ยอดรวมทั้งสิ้น",
               style: TextStyle(fontSize: 14),
             ),
             Text(
-              "฿2,076.00",
-              style: TextStyle(fontSize: 16, color: Color(0xffed3023)),
+              "฿${formatNum.format(totalFinal)}",
+              style: const TextStyle(fontSize: 16, color: Color(0xffed3023)),
             ),
           ],
         ),
