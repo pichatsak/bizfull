@@ -1,11 +1,19 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/order_view_model.dart';
 import 'package:bizfull/profile/addbuy/widget_listaddbuy.dart';
-import 'package:bizfull/profile/addbuy/widget_page_addbuy.dart';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget datarightaddbuy(context, key, setState, verticalList, scrollController) {
+Widget datarightaddbuy(
+    context,
+    key,
+    setState,
+    verticalList,
+    scrollController,
+    List<OrderViewModel> listColums,
+    void Function(String value, int pos) updateViewOrder,
+    Future<void> Function(String odId) downloadPdf) {
   double pAD;
   double fM;
   double fM1;
@@ -26,7 +34,7 @@ Widget datarightaddbuy(context, key, setState, verticalList, scrollController) {
     bB = 20;
     hB1 = 30;
     pad1 = 30;
-    pad2 = 10;//20
+    pad2 = 10; //20
     nB = "pc";
     h1 = 15;
   } else if (Device.width >= 768 && Device.width <= 991) {
@@ -62,7 +70,7 @@ Widget datarightaddbuy(context, key, setState, verticalList, scrollController) {
           padding: EdgeInsets.only(left: pAD, right: pAD),
           child: Container(
             decoration: BoxDecoration(
-            //    color: nB == "pc" ? const Color(0xfff3f3f3) : null,
+                //    color: nB == "pc" ? const Color(0xfff3f3f3) : null,
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
               padding: EdgeInsets.only(
@@ -176,8 +184,23 @@ Widget datarightaddbuy(context, key, setState, verticalList, scrollController) {
                                     ))
                               ]),
                             ),
-                            listaddbuy(context, key),
-                            listaddbuy1(),
+                            listColums.isNotEmpty
+                                ? Column(
+                                    children: [
+                                      ...listColums
+                                          .map((item) => listaddbuy(
+                                              context,
+                                              key,
+                                              item,
+                                              updateViewOrder,
+                                              listColums.indexOf(item),
+                                              downloadPdf))
+                                          .toList()
+                                    ],
+                                  )
+                                : const Center()
+                            // listaddbuy(context, key),
+                            // listaddbuy1(),
                           ],
                         )
                       : Column(
@@ -187,21 +210,24 @@ Widget datarightaddbuy(context, key, setState, verticalList, scrollController) {
                             listaddbuymobile(key),
                           ],
                         ),
-                  nB == "pc"
-                      ? Container(
-                          margin: EdgeInsets.fromLTRB(0, hB, 0, bB),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Pageaddbuy(
-                                currentPage: 1,
-                                totalPages: 2,
-                                onPageChanged: (page) {},
-                              ),
-                            ],
-                          ),
-                        )
-                      : Container(),
+                  const SizedBox(
+                    height: 250,
+                  )
+                  // nB == "pc"
+                  //     ? Container(
+                  //         margin: EdgeInsets.fromLTRB(0, hB, 0, bB),
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Pageaddbuy(
+                  //               currentPage: 1,
+                  //               totalPages: 2,
+                  //               onPageChanged: (page) {},
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )
+                  //     : Container(),
                 ],
               ),
             ),

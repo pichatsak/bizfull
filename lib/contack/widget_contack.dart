@@ -4,7 +4,6 @@ import 'package:bizfull/models/contact_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 // ignore: avoid_web_libraries_in_flutter

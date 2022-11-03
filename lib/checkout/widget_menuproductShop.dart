@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/global.dart';
 import 'package:bizfull/models/cart_view_model.dart';
@@ -140,7 +142,7 @@ Widget menuproductShop(
                                   Text(
                                       // "หมวกกันน็อครถจักรยานยนต์ helmet motorcycle helmet rally male personality fresh locomotive road safety helmet full helmet",
                                       item.pdName,
-                                      style: TextStyle(fontSize: 13),
+                                      style: const TextStyle(fontSize: 13),
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis),
                                   SizedBox(height: hight1),
@@ -259,7 +261,7 @@ Widget menuproductShop(
                               children: [
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "ตัวเลือกในการจัดส่ง : ",
                                       style: TextStyle(
                                         fontSize: 12,

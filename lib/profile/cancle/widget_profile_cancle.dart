@@ -1,32 +1,65 @@
+import 'dart:convert';
+
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/buttonbar/widget_bottom.dart';
+import 'package:bizfull/global.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
+import 'package:bizfull/models/order_view_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
+import 'package:bizfull/profile/cancle/nav_right_wait_offer.dart';
 import 'package:bizfull/profile/cancle/widget_bar_cancle.dart';
 import 'package:bizfull/profile/cancle/widget_bar_cancle_mobile.dart';
 import 'package:bizfull/profile/cancle/widget_dataright_cancle.dart';
-import 'package:bizfull/profile/cancle/widget_left_cancle.dart';
-import 'package:bizfull/profile/historysuc/widget_drawer.dart';
+import 'package:bizfull/profile/main_menu_left.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:http/http.dart' as http;
 
-class ProfileCancle extends StatefulWidget {
-  const ProfileCancle({Key? key}) : super(key: key);
+class ProfileWaitOffer extends StatefulWidget {
+  const ProfileWaitOffer({Key? key}) : super(key: key);
 
   @override
-  State<ProfileCancle> createState() => _ProfileCancleState();
+  State<ProfileWaitOffer> createState() => _ProfileWaitOfferState();
 }
 
-class _ProfileCancleState extends State<ProfileCancle> {
+class _ProfileWaitOfferState extends State<ProfileWaitOffer> {
   final box = GetStorage();
+  List<OrderViewModel> listColums = [];
+  late OrderViewModel curOrderView;
+  bool isLoad = false;
+  String odIdChoose = "";
   @override
   void initState() {
     box.write("curpage", "profile");
     super.initState();
+    getOrders();
+  }
+
+  Future<void> getOrders() async {
+    listColums = [];
+    var url = "${Global.hostName}/order_get.php";
+    var res = await http.get(Uri.parse(url));
+    var getData = await json.decode(res.body);
+    if (getData['status'] == "ok") {
+      getData["data"].map((data) {
+        OrderViewModel getRow = OrderViewModel.fromJson(data);
+        listColums.add(getRow);
+      }).toList();
+      setState(() {
+        isLoad = true;
+      });
+    }
+  }
+
+  void updateViewOrder(String value, int pos) {
+    setState(() {
+      odIdChoose = value;
+      curOrderView = listColums[pos];
+    });
   }
 
   final GlobalKey<ScaffoldState> key = GlobalKey();
@@ -71,9 +104,10 @@ class _ProfileCancleState extends State<ProfileCancle> {
     }
     bootstrapGridParameters(gutterSize: 0);
 
-    return Scaffold(drawer: const Drawermenu(),
+    return Scaffold(
+        drawer: const Drawermenu(),
         key: key,
-        endDrawer: const NavDrawer(),
+        endDrawer: NavDrawerWaitOffer(odIdChoose: odIdChoose),
         drawerEdgeDragWidth: 0,
         // drawer: Container(width: 100),
         body: Stack(
@@ -98,13 +132,21 @@ class _ProfileCancleState extends State<ProfileCancle> {
                         BootstrapCol(
                             sizes: 'col-lg-2',
                             invisibleForSizes: 'xs sm md',
-                            child: leftcancle(context)),
+                            child: MainLeftMenuProfile(
+                              pageCurChoose: "wait_offer",
+                            )),
                         BootstrapCol(
                             sizes: 'col-lg-10 col-12 col-sm-12 col-md-12',
                             child: Column(
                               children: [
-                                datarightcancle(context, key, setState,
-                                    verticalList, scrollController)
+                                datarightcancle(
+                                    context,
+                                    key,
+                                    setState,
+                                    verticalList,
+                                    scrollController,
+                                    listColums,
+                                    updateViewOrder)
                               ],
                             ))
                       ])

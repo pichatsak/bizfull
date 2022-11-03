@@ -1,11 +1,18 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/order_view_model.dart';
 import 'package:bizfull/profile/cancle/widget_list_cancle.dart';
-import 'package:bizfull/profile/cancle/widget_page_cancle.dart';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget datarightcancle(context, key, setState, verticalList, scrollController) {
+Widget datarightcancle(
+    context,
+    key,
+    setState,
+    verticalList,
+    scrollController,
+    List<OrderViewModel> listColums,
+    void Function(String value, int pos) updateViewOrder) {
   double pAD;
   double fM;
   double fM1;
@@ -71,14 +78,14 @@ Widget datarightcancle(context, key, setState, verticalList, scrollController) {
                 children: [
                   nB == "pc"
                       ? Row(children: [
-                          Text("ยกเลิกสินค้า",
+                          Text("รอใบเสนอราคา",
                               style: TextStyle(
                                   fontSize: fM, fontFamily: "Prompt-Medium"))
                         ])
                       : Container(),
                   nB == "pc"
                       ? Row(children: [
-                          Text("แสดงรายการสินค้าที่ถูกยกเลิก",
+                          Text("แสดงรายการคำสั่งซื้อที่รอใบเสนอราคา",
                               style: TextStyle(
                                   fontSize: fM1, color: Colors.black87))
                         ])
@@ -92,7 +99,7 @@ Widget datarightcancle(context, key, setState, verticalList, scrollController) {
                       ? Column(
                           children: [
                             Container(
-                             decoration: BoxDecoration(
+                              decoration: BoxDecoration(
                                   color: const Color(0xffed3023),
                                   borderRadius: BorderRadius.circular(7)),
                               child: BootstrapRow(children: <BootstrapCol>[
@@ -147,7 +154,8 @@ Widget datarightcancle(context, key, setState, verticalList, scrollController) {
                                       height: 50,
                                       child: Center(
                                           child: Text(
-                                        "ยอดรวม",
+                                        "ยอดรวม\nโดยประมาณ",
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 13, color: Colors.white),
                                       )),
@@ -176,8 +184,20 @@ Widget datarightcancle(context, key, setState, verticalList, scrollController) {
                                     ))
                               ]),
                             ),
-                            listcancle(context, key),
-                            listcancle1(),
+                            listColums.isNotEmpty
+                                ? Column(
+                                    children: [
+                                      ...listColums
+                                          .map((item) => listcancle(
+                                              context,
+                                              key,
+                                              item,
+                                              updateViewOrder,
+                                              listColums.indexOf(item)))
+                                          .toList()
+                                    ],
+                                  )
+                                : const Center()
                           ],
                         )
                       : Column(
@@ -187,21 +207,24 @@ Widget datarightcancle(context, key, setState, verticalList, scrollController) {
                             listcanclemobile(key),
                           ],
                         ),
-                  nB == "pc"
-                      ? Container(
-                          margin: EdgeInsets.fromLTRB(0, hB, 0, bB),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Pagecancle(
-                                currentPage: 1,
-                                totalPages: 2,
-                                onPageChanged: (page) {},
-                              ),
-                            ],
-                          ),
-                        )
-                      : Container(),
+                  const SizedBox(
+                    height: 250,
+                  )
+                  // nB == "pc"
+                  //     ? Container(
+                  //         margin: EdgeInsets.fromLTRB(0, hB, 0, bB),
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Pagecancle(
+                  //               currentPage: 1,
+                  //               totalPages: 2,
+                  //               onPageChanged: (page) {},
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )
+                  //     : Container(),
                 ],
               ),
             ),

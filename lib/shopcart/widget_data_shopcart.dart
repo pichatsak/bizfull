@@ -1,6 +1,7 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
 import 'package:bizfull/global.dart';
 import 'package:bizfull/models/cart_view_model.dart';
+import 'package:bizfull/shopcart/cont_cart_empty.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ Widget datashopcart(
                         ),
                       ],
                     ),
-                    leading: listShip.length > 0
+                    leading: listShip.isNotEmpty
                         ? Checkbox(
                             checkColor: Colors.white,
                             fillColor:
@@ -113,191 +114,228 @@ Widget datashopcart(
                               updateCheckAllShip(value!);
                             },
                           )
-                        : Text(""),
+                        : const Text(""),
                   ),
-                  ...listShip.map(
-                    (item) => ListTile(
-                      title: BootstrapRow(children: <BootstrapCol>[
-                        BootstrapCol(
-                            sizes: 'col-12 col-lg-2 col-sm-12',
-                            child: Row(children: [
-                              Center(
-                                  child: SizedBox(
-                                      width: sizepicture,
-                                      height: sizepicture,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(7.0),
-                                        child: CachedNetworkImage(
-                                          width: 25,
-                                          imageUrl:
-                                              "${Global.hostImgProduct}/${item.pdId}/${item.pdPic}",
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(Icons.error),
-                                        ),
-                                      ))),
-                            ])),
-                        BootstrapCol(
-                            sizes: 'col-12 col-lg-10 col-sm-12',
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: hightfree),
-                                  Text(item.pdName,
-                                      style: const TextStyle(fontSize: 13),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis),
-                                  SizedBox(height: hight1),
-                                  // Row(children: const [
-                                  //   Text("No Band,สี:black76*38*38 ",
-                                  //       style: TextStyle(
-                                  //           fontSize: 12,
-                                  //           color: Colors.black54)),
-                                  //   Icon(Icons.keyboard_arrow_down, size: 18)
-                                  // ]),
-                                  SizedBox(height: hight1),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Flexible(
-                                        flex: flexnum,
-                                        child: Text(
-                                          "${item.currencySymbol}${formatNum.format(item.pdPrice)} - ${formatNum.format(item.pdPriceEnd)}",
-                                          style: TextStyle(
-                                            fontSize: fontsele,
-                                            color: const Color(0xffed3023),
-                                          ),
-                                        ),
-                                      ),
-                                      Flexible(
-                                        child: Row(
+                  listShip.isNotEmpty
+                      ? Column(
+                          children: [
+                            ...listShip.map(
+                              (item) => ListTile(
+                                title: BootstrapRow(children: <BootstrapCol>[
+                                  BootstrapCol(
+                                      sizes: 'col-12 col-lg-2 col-sm-12',
+                                      child: Row(children: [
+                                        Center(
+                                            child: SizedBox(
+                                                width: sizepicture,
+                                                height: sizepicture,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          7.0),
+                                                  child: CachedNetworkImage(
+                                                    width: 25,
+                                                    imageUrl:
+                                                        "${Global.hostImgProduct}/${item.pdId}/${item.pdPic}",
+                                                    errorWidget: (context, url,
+                                                            error) =>
+                                                        const Icon(Icons.error),
+                                                  ),
+                                                ))),
+                                      ])),
+                                  BootstrapCol(
+                                      sizes: 'col-12 col-lg-10 col-sm-12',
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            InkWell(
-                                              onTap: () {
-                                                delCart(item.cartId);
-                                              },
-                                              child: const Icon(
-                                                Icons.delete,
-                                                color: Color(0xffed3023),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () {
-                                                delNumsShip(
-                                                    listShip.indexOf(item),
-                                                    item.cartId.toString());
-                                              },
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                    border: Border(
-                                                        left: BorderSide(
-                                                            color:
-                                                                Colors.black26),
-                                                        top: BorderSide(
-                                                            color:
-                                                                Colors.black26),
-                                                        bottom: BorderSide(
-                                                            color: Colors
-                                                                .black26))),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(3.0),
-                                                  child: Icon(
-                                                    Icons.remove,
-                                                    size: 20,
-                                                    color: Colors.black,
+                                            SizedBox(height: hightfree),
+                                            Text(item.pdName,
+                                                style: const TextStyle(
+                                                    fontSize: 13),
+                                                maxLines: 2,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                            SizedBox(height: hight1),
+                                            // Row(children: const [
+                                            //   Text("No Band,สี:black76*38*38 ",
+                                            //       style: TextStyle(
+                                            //           fontSize: 12,
+                                            //           color: Colors.black54)),
+                                            //   Icon(Icons.keyboard_arrow_down, size: 18)
+                                            // ]),
+                                            SizedBox(height: hight1),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Flexible(
+                                                  flex: flexnum,
+                                                  child: Text(
+                                                    "${item.currencySymbol}${formatNum.format(item.pdPrice)} - ${formatNum.format(item.pdPriceEnd)}",
+                                                    style: TextStyle(
+                                                      fontSize: fontsele,
+                                                      color: const Color(
+                                                          0xffed3023),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Theme(
-                                                data: ThemeData(
-                                                    primarySwatch: Colors.red,
-                                                    fontFamily: "Prompt"),
-                                                child: TextFormField(
-                                                  cursorColor: Colors.black,
-                                                  cursorWidth: 1,
-                                                  enabled: false,
-                                                  textAlign: TextAlign.center,
-                                                  initialValue: '1',
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16),
-                                                  decoration:
-                                                      const InputDecoration(
-                                                    isDense: true,
-                                                    contentPadding:
-                                                        EdgeInsets.fromLTRB(
-                                                            4, 12, 4, 0),
-                                                    border: OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    0.0))),
+                                                Flexible(
+                                                  child: Row(
+                                                    children: [
+                                                      InkWell(
+                                                        onTap: () {
+                                                          delCart(item.cartId);
+                                                        },
+                                                        child: const Icon(
+                                                          Icons.delete,
+                                                          color:
+                                                              Color(0xffed3023),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () {
+                                                          delNumsShip(
+                                                              listShip.indexOf(
+                                                                  item),
+                                                              item.cartId
+                                                                  .toString());
+                                                        },
+                                                        child: Container(
+                                                          decoration: const BoxDecoration(
+                                                              border: Border(
+                                                                  left: BorderSide(
+                                                                      color: Colors
+                                                                          .black26),
+                                                                  top: BorderSide(
+                                                                      color: Colors
+                                                                          .black26),
+                                                                  bottom: BorderSide(
+                                                                      color: Colors
+                                                                          .black26))),
+                                                          child: const Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    3.0),
+                                                            child: Icon(
+                                                              Icons.remove,
+                                                              size: 20,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Flexible(
+                                                        child: Theme(
+                                                          data: ThemeData(
+                                                              primarySwatch:
+                                                                  Colors.red,
+                                                              fontFamily:
+                                                                  "Prompt"),
+                                                          child: TextFormField(
+                                                            cursorColor:
+                                                                Colors.black,
+                                                            cursorWidth: 1,
+                                                            enabled: false,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            initialValue: '1',
+                                                            style: const TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 16),
+                                                            decoration:
+                                                                const InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding:
+                                                                  EdgeInsets
+                                                                      .fromLTRB(
+                                                                          4,
+                                                                          12,
+                                                                          4,
+                                                                          0),
+                                                              border: OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius.all(
+                                                                          Radius.circular(
+                                                                              0.0))),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () {
+                                                          plusNums(item.cartId);
+                                                        },
+                                                        child: Container(
+                                                          decoration: const BoxDecoration(
+                                                              border: Border(
+                                                                  right: BorderSide(
+                                                                      color: Colors
+                                                                          .black26),
+                                                                  top: BorderSide(
+                                                                      color: Colors
+                                                                          .black26),
+                                                                  bottom: BorderSide(
+                                                                      color: Colors
+                                                                          .black26))),
+                                                          child: const Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    3.0),
+                                                            child: Icon(
+                                                              Icons.add_rounded,
+                                                              size: 20,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () {
-                                                plusNums(item.cartId);
-                                              },
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                    border: Border(
-                                                        right: BorderSide(
-                                                            color:
-                                                                Colors.black26),
-                                                        top: BorderSide(
-                                                            color:
-                                                                Colors.black26),
-                                                        bottom: BorderSide(
-                                                            color: Colors
-                                                                .black26))),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(3.0),
-                                                  child: Icon(
-                                                    Icons.add_rounded,
-                                                    size: 20,
-                                                    color: Colors.black,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                ])),
-                      ]),
-                      leading: Checkbox(
-                        checkColor: Colors.white,
-                        fillColor: MaterialStateProperty.resolveWith(getColor),
-                        value: listShip[listShip.indexOf(item)].isCheck,
-                        onChanged: (bool? value) {
-                          int index = listShip.indexOf(item);
-                          listShip[index].isCheck = value!;
-                          setState(() {});
-                          setNewTotal();
-                          // updateCheckAll(value!);
-                        },
-                      ),
-                    ),
-                  )
+                                            const SizedBox(height: 10),
+                                          ])),
+                                ]),
+                                leading: Checkbox(
+                                  checkColor: Colors.white,
+                                  fillColor: MaterialStateProperty.resolveWith(
+                                      getColor),
+                                  value:
+                                      listShip[listShip.indexOf(item)].isCheck,
+                                  onChanged: (bool? value) {
+                                    int index = listShip.indexOf(item);
+                                    listShip[index].isCheck = value!;
+                                    setState(() {});
+                                    setNewTotal();
+                                    // updateCheckAll(value!);
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      : contCartEmpy(),
                 ],
               ),
             ),

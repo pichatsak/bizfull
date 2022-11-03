@@ -12,12 +12,14 @@ import 'package:bizfull/checkout/widget_bin.dart';
 import 'package:bizfull/checkout/widget_menuproduct.dart';
 import 'package:bizfull/checkout/widget_menuproductShop.dart';
 import 'package:bizfull/dialog/dialog_alert.dart';
+import 'package:bizfull/dialog/dialog_pay.dart';
 import 'package:bizfull/global.dart';
 import 'package:bizfull/login_and_registor/widget_barfotter.dart';
 import 'package:bizfull/models/adr_db_view_model.dart';
 import 'package:bizfull/models/adr_view_model.dart';
 import 'package:bizfull/models/cart_view_model.dart';
 import 'package:bizfull/models/deli_view_model.dart';
+import 'package:bizfull/models/discount_view_model.dart';
 import 'package:bizfull/models/payment_model.dart';
 import 'package:bizfull/nav/mainnav.dart';
 import 'package:bizfull/nav/widget_drawble_mobile.dart';
@@ -58,6 +60,8 @@ class _CheckOutState extends State<CheckOut> {
   bool isLoad = false;
   bool isLoadAdr = false;
   int numAllpd = 0;
+  int numAllpdShop = 0;
+  int numAllFinal = 0;
   String userId = "";
   String pmId = "";
 
@@ -79,6 +83,13 @@ class _CheckOutState extends State<CheckOut> {
   List<DeliViewModel> listDeliShop = [];
   List<DeliViewModel> listDeliShip = [];
   List<DeliViewModel> listDeliAll = [];
+
+  ///// Discount /////
+  bool isUseDiscount = false;
+  String discountUseId = "";
+  String discTxt = "";
+
+  String typePdAll = "";
 
   @override
   void initState() {
@@ -107,6 +118,56 @@ class _CheckOutState extends State<CheckOut> {
       getPaymentAll();
       getAdrFirst();
       getDeliAll();
+    }
+  }
+
+  Future<void> setConfirmBuy() async {
+    var dataForm = {
+      "total_all": totalFinal.toString(),
+      "total": totalAll.toString(),
+      "total_shop": totalShop.toString(),
+      "total_ship": totalShip.toString(),
+      "total_disc": totalDisc.toString(),
+      "disc_id": discountUseId,
+      "type_od": typePdAll,
+      "delis_shop": listDeliShop[chooseDeliShop].deliId.toString(),
+      "delis_ship": listDeliShip[chooseDeliShip].deliId.toString(),
+      "delis_name": adrName,
+      "delis_phone": adrPhone,
+      "delis_home": adrHome,
+      "delis_prov": adrProv.toString(),
+      "delis_amp": adrAmp.toString(),
+      "delis_dict": adrDict.toString(),
+      "delis_post": adrPost,
+      "user_id": box.read("user_id").toString(),
+      "type_pays_ship": pmId,
+      "full_adr": adrFull,
+      "type_pays_shop": pmId,
+      "od_status": "wait_offer",
+    };
+
+    var url = "${Global.hostName}/order_add.php";
+    var res = await http.post(Uri.parse(url), body: dataForm);
+    var getData = json.decode(res.body);
+    if (getData["status"] == "ok") {
+      if (typePdAll == "all" || typePdAll == "ship") {
+        showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (BuildContext context) =>
+                dialogSuccessBuyHaveShip(context));
+      } else {
+        showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (BuildContext context) =>
+                dialogSuccessBuyHaveShop(context));
+      }
+    } else if (getData["status"] == "no") {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) =>
+              dialogErrAll(context, "เกิดข้อมูลผิดผลาดกรุณาลองใหม่อีกครั้ง"));
     }
   }
 
@@ -178,10 +239,8 @@ class _CheckOutState extends State<CheckOut> {
   }
 
   Future<void> getChooseAdr(String idAdr) async {
-    print("adr : $idAdr");
     var url = "${Global.hostName}/adr_get.php?id=$idAdr";
     var res = await http.get(Uri.parse(url));
-    print(res.body);
     var getData = await json.decode(res.body);
     AdrDbViewModel adrDbViewModel = AdrDbViewModel.fromJson(getData["data"]);
     adrName = adrDbViewModel.adrsName;
@@ -235,6 +294,8 @@ class _CheckOutState extends State<CheckOut> {
     listShip = [];
     totalShop = 0;
     totalShip = 0;
+    int numChkShip = 0;
+    int numChkShop = 0;
     var url = "${Global.hostName}/cart_all_check.php?user_id=$userId";
     var res = await http.get(Uri.parse(url));
     var getData = await json.decode(res.body);
@@ -244,15 +305,26 @@ class _CheckOutState extends State<CheckOut> {
           CartViewModel pdGet = CartViewModel.fromJson(dataPd);
           listShop.add(pdGet);
           totalShop += pdGet.cartTotal;
+          numChkShop++;
         } else {
           CartViewModel pdGet = CartViewModel.fromJson(dataPd);
           listShip.add(pdGet);
           totalShip += pdGet.cartTotal * pdGet.currencyRate;
+          numChkShip++;
         }
       }).toList();
-      numAllpd = listShip.length + listShop.length;
+      numAllpd = listShip.length;
+      numAllpdShop = listShop.length;
+      numAllFinal = numAllpd + numAllpdShop;
       totalAll = totalShip + totalShop;
       totalFinal = totalAll - totalDisc;
+      if (numChkShip > 0 && numAllpdShop > 0) {
+        typePdAll = "all";
+      } else if (numChkShip > 0) {
+        typePdAll = "ship";
+      } else if (numChkShop > 0) {
+        typePdAll = "shop";
+      }
       setState(() {});
     }
   }
@@ -316,20 +388,53 @@ class _CheckOutState extends State<CheckOut> {
     );
   }
 
+  void setNewTotal() {
+    numAllpdShop = listShop.length;
+    numAllFinal = numAllpd + numAllpdShop;
+    totalAll = totalShip + totalShop;
+    totalFinal = totalAll - totalDisc;
+    setState(() {});
+  }
+
+  void setDiscount(DiscoutViewModel disModel) {
+    isUseDiscount = true;
+    discountUseId = disModel.discountId.toString();
+
+    if (disModel.discountType == "price") {
+      totalDisc = disModel.discountNum;
+      discTxt = "ลด ${disModel.discountNum}.-";
+    } else {
+      totalDisc = (disModel.discountNum / 100) * totalShop;
+      discTxt = "ลด ${disModel.discountNum}%";
+    }
+    setNewTotal();
+  }
+
   void openCouPong(String typ) {
-    showDialog<String>(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        insetPadding: typ == "pc"
-            ? const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0)
-            : const EdgeInsets.symmetric(horizontal: 30.0, vertical: 24.0),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        contentPadding: const EdgeInsets.only(top: 0.0),
-        content: DialogChooseCoupon(),
-      ),
-    );
+    if (listShop.isEmpty) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => dialogErrCoupun(context));
+    } else {
+      showDialog<String>(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          insetPadding: typ == "pc"
+              ? const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0)
+              : const EdgeInsets.symmetric(horizontal: 30.0, vertical: 24.0),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          contentPadding: const EdgeInsets.only(top: 0.0),
+          content: DialogChooseCoupon(
+            onValChange: (value) {
+              setDiscount(value);
+            },
+            totals: totalShop,
+          ),
+        ),
+      );
+    }
   }
 
   final Addressradio addressradio = Addressradio.lafayette;
@@ -428,17 +533,7 @@ class _CheckOutState extends State<CheckOut> {
                                       // decoration: BoxDecoration(
                                       //     border: Border.all(color: Colors.black12),
                                       //     borderRadius: BorderRadius.circular(7)),
-                                      child: bin(
-                                          character1,
-                                          setState,
-                                          context,
-                                          totalAll,
-                                          totalDisc,
-                                          totalFinal,
-                                          numAllpd,
-                                          listPayment,
-                                          pmId,
-                                          updatePay))))
+                                      child: binRight())))
                         ])
                       ]),
                   SizedBox(height: h),
@@ -743,6 +838,7 @@ class _CheckOutState extends State<CheckOut> {
             children: [
               Flexible(
                 child: TextFormField(
+                  controller: TextEditingController(text: discTxt),
                   enabled: false,
                   cursorColor: Colors.red,
                   decoration: const InputDecoration(
@@ -789,6 +885,19 @@ class _CheckOutState extends State<CheckOut> {
               ),
             ],
           ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              Text(
+                "*คูปองส่วนลดใช้ได้แค่กับรายการสินค้าน่าชอปเท่านั้น",
+                style: TextStyle(
+                    fontSize: 13,
+                    color: Color(0xffed3023),
+                    fontFamily: "Prompt-Medium"),
+              ),
+            ],
+          ),
           const SizedBox(height: 30),
           Row(
             children: [
@@ -813,11 +922,25 @@ class _CheckOutState extends State<CheckOut> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ยอดรวม ($numAllpd)",
+                "ยอดรวม สินค้าน่าชิป ($numAllpd)",
                 style: const TextStyle(fontSize: 14, color: Colors.black54),
               ),
               Text(
-                "฿${formatNum.format(totalAll)}",
+                "฿${formatNum.format(totalShip)}",
+                style: const TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ยอดรวม สินค้าน่าชอป ($numAllpdShop)",
+                style: const TextStyle(fontSize: 14, color: Colors.black54),
+              ),
+              Text(
+                "฿${formatNum.format(totalShop)}",
                 style: const TextStyle(fontSize: 14),
               ),
             ],
@@ -842,9 +965,9 @@ class _CheckOutState extends State<CheckOut> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "ยอดรวมทั้งสิ้น",
-                style: TextStyle(fontSize: 14),
+              Text(
+                "ยอดรวมทั้งสิ้น ($numAllFinal)",
+                style: const TextStyle(fontSize: 14),
               ),
               Text(
                 "฿${formatNum.format(totalFinal)}",
@@ -862,7 +985,8 @@ class _CheckOutState extends State<CheckOut> {
                     borderRadius: BorderRadius.circular(7),
                   ))),
               onPressed: () {
-                Navigator.of(context).pushNamed("/evidence");
+                // Navigator.of(context).pushNamed("/evidence");
+                setConfirmBuy();
               },
               child: const SizedBox(
                 height: 45,

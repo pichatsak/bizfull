@@ -11,7 +11,6 @@ import 'package:bizfull/help/main_help.dart';
 import 'package:bizfull/help/search/main_search.dart';
 import 'package:bizfull/help/sendmail/main_sendmail.dart';
 import 'package:bizfull/homepage/mainhome.dart';
-import 'package:bizfull/international%20shipping/main_international_shipping.dart';
 import 'package:bizfull/intro_video/main_intro_video.dart';
 import 'package:bizfull/login_and_registor/forgetpassword/mainmaster_forgetpassword.dart';
 import 'package:bizfull/login_and_registor/mainMasterLogin.dart';
@@ -123,9 +122,9 @@ class FluroRouters {
       handlerFunc: (context, Map<String, dynamic> params) =>
           const ProfileAddBuy());
 
-  static Handler profileCancelHandler = Handler(
+  static Handler profileWaitOfferlHandler = Handler(
       handlerFunc: (context, Map<String, dynamic> params) =>
-          const ProfileCancle());
+          const ProfileWaitOffer());
 
   static Handler resetPassHandler = Handler(
       handlerFunc: (context, Map<String, dynamic> params) =>
@@ -252,11 +251,12 @@ class FluroRouters {
     router.define('/profile_adddelivery',
         handler: profileAddDeliHandler, transitionType: TransitionType.native);
 
-    router.define('/profile_addbuy',
+    router.define('/wait_pay',
         handler: profileAddBuyHandler, transitionType: TransitionType.native);
 
-    router.define('/profile_cancle',
-        handler: profileCancelHandler, transitionType: TransitionType.native);
+    router.define('/wait_offer',
+        handler: profileWaitOfferlHandler,
+        transitionType: TransitionType.native);
 
     router.define('/forgetpassword',
         handler: resetPassHandler, transitionType: TransitionType.native);

@@ -13,6 +13,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 class SliderTop extends StatefulWidget {

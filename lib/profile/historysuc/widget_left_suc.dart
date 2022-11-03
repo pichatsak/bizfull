@@ -194,7 +194,7 @@ Widget lefsuc(context) {
                               width: wM,
                             ),
                             const Text(
-                              'ประวัติการซื้อ',
+                              'คำสั่งซื้อ',
                               style: TextStyle(
                                   fontSize: 14, fontFamily: "Prompt-Medium"),
                             ),
@@ -303,7 +303,7 @@ Widget lefsuc(context) {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context)
-                                        .pushNamed("/profile_cancle");
+                                        .pushNamed("/wait_offer");
                                   },
                                   child: const Text(
                                     'ยกเลิกสินค้า',

@@ -255,6 +255,7 @@ class _ShopCartState extends State<ShopCart> {
     var dataForm = {"user_id": userId, "data": chooseAll};
     var url = "${Global.hostName}/go_check_cart.php";
     await http.post(Uri.parse(url), body: dataForm);
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pushNamed("/checkout");
   }
 

@@ -37,15 +37,18 @@ Widget baraddbuy(context) {
                         const SizedBox(
                           width: 5,
                         ),
-                        InkWell(onTap: () {
-                          Navigator.of(context).pushNamed("/profile_historysuc");
-                        },
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed("/profile_historysuc");
+                          },
                           child: const Text(
-                            "ประวัติการซื้อ",
-                            style: TextStyle(fontSize: 13, color: Color(0xffed3023)),
+                            "คำสั่งซื้อ",
+                            style: TextStyle(
+                                fontSize: 13, color: Color(0xffed3023)),
                           ),
                         ),
-                         const SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         const Icon(

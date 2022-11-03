@@ -210,6 +210,75 @@ Widget dialogErrAll(context, String txtShow) {
   );
 }
 
+Widget dialogErrCoupun(context) {
+  return AlertDialog(
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+    content: Builder(
+      builder: (context) {
+        return SizedBox(
+          height: 260,
+          width: 350,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "images/cross.png",
+                      width: 90,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                        'ไม่สามารถรับคูปองได้',
+                        style: TextStyle(
+                            fontSize: 19,
+                            fontFamily: "Prompt",
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Text(
+                      "เนื่องจากคูปองส่วนลดใช้ได้แค่กับรายการสินค้าน่าชอปเท่านั้น",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: "Prompt",
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  height: 60,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        backgroundColor: const Color(0xffaa1f2e),
+                        textStyle: const TextStyle(
+                            fontSize: 18, fontFamily: "Prompt")),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('ตกลง'),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
+}
+
 Widget dialogSuccessCart(context) {
   return AlertDialog(
     shape: const RoundedRectangleBorder(
@@ -267,7 +336,8 @@ Widget dialogSuccessCart(context) {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
-                                backgroundColor: Color.fromARGB(255, 3, 58, 85),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 3, 58, 85),
                                 textStyle: const TextStyle(
                                     fontSize: 18, fontFamily: "Prompt")),
                             onPressed: () {

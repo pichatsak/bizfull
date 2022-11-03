@@ -199,7 +199,7 @@ Widget homemmmobile(context) {
         child: const Padding(
           padding: EdgeInsets.only(left: 20, right: 20, top: 5),
           child: Text(
-            "ประวัติการซื้อ",
+            "คำสั่งซื้อ",
             style: TextStyle(fontSize: 15, fontFamily: "Prompt-Medium"),
           ),
         )),
@@ -377,7 +377,7 @@ Widget homemmmobile(context) {
                   focusColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    Navigator.of(context).pushNamed("/profile_cancle");
+                    Navigator.of(context).pushNamed("/wait_offer");
                   },
                   child: Column(
                     children: [

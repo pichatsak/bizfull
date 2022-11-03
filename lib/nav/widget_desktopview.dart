@@ -17,6 +17,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:http/http.dart' as http;
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 @immutable
@@ -260,7 +261,7 @@ class _NavDeskTopState extends State<NavDeskTop> {
               isLogin
                   ? InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed("/login");
+                        Navigator.of(context).pushNamed("/profile");
                       },
                       child: const Text(
                         "บัญชีของฉัน",

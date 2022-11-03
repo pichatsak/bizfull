@@ -5,34 +5,46 @@ import 'package:bizfull/global.dart';
 import 'package:bizfull/models/discount_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class DialogChooseCoupon extends StatefulWidget {
-  DialogChooseCoupon({Key? key}) : super(key: key);
+  final ValueChanged<DiscoutViewModel> onValChange;
+  double totals = 0.00;
+  DialogChooseCoupon(
+      {Key? key, required this.totals, required this.onValChange})
+      : super(key: key);
 
   @override
   State<DialogChooseCoupon> createState() => _DialogChooseCouponState();
 }
 
 class _DialogChooseCouponState extends State<DialogChooseCoupon> {
+  final box = GetStorage();
   List<DiscoutViewModel> listDiscAll = [];
   bool isLoad = false;
+  double totalGet = 0.00;
   @override
   void initState() {
     super.initState();
-
+    totalGet = widget.totals;
     getCouponShow();
   }
 
   Future<void> getCouponShow() async {
     listDiscAll = [];
-    var url = "${Global.hostName}/discount_all.php";
+    var url =
+        "${Global.hostName}/discount_all.php?user_id=${box.read('user_id')}";
     var res = await http.get(Uri.parse(url));
     var getData = await json.decode(res.body);
     if (getData['status'] == "ok") {
       getData["data"].map((data) {
         DiscoutViewModel getRow = DiscoutViewModel.fromJson(data);
+        if (totalGet >= getRow.discountFirst) {
+          getRow.isEnableUse = true;
+        }
         listDiscAll.add(getRow);
       }).toList();
       setState(() {
@@ -73,27 +85,6 @@ class _DialogChooseCouponState extends State<DialogChooseCoupon> {
                   ...listDiscAll.map((item) => BootstrapCol(
                       sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
                       child: couponnum(item))),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum()),
-                  // BootstrapCol(
-                  //     sizes: 'col-xl-6 col-lg-6 col-md-6 col-12',
-                  //     child: couponnum())
                 ],
               ),
             ),
@@ -115,7 +106,7 @@ class _DialogChooseCouponState extends State<DialogChooseCoupon> {
                     const Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "คูปองส่วนลดsss",
+                        "คูปองส่วนลด",
                         style: TextStyle(
                             fontSize: 16.0, fontFamily: "Prompt-Medium"),
                       ),
@@ -196,53 +187,77 @@ class _DialogChooseCouponState extends State<DialogChooseCoupon> {
                         decoration: BoxDecoration(
                             color: const Color(0xffee602e),
                             borderRadius: BorderRadius.circular(4)),
-                        child: const Padding(
-                          padding: EdgeInsets.only(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
                               left: 15, right: 15, top: 2, bottom: 2),
-                          child: Text(
-                            "100.-",
-                            style: TextStyle(
-                                fontSize: 35,
-                                color: Colors.white,
-                                fontFamily: "Prompt-Bold",
-                                height: 1),
-                          ),
+                          child: item.discountType == "price"
+                              ? Text(
+                                  "${item.discountNum}.-",
+                                  style: const TextStyle(
+                                      fontSize: 35,
+                                      color: Colors.white,
+                                      fontFamily: "Prompt-Bold",
+                                      height: 1),
+                                )
+                              : Text(
+                                  "${item.discountNum}%",
+                                  style: const TextStyle(
+                                      fontSize: 35,
+                                      color: Colors.white,
+                                      fontFamily: "Prompt-Bold",
+                                      height: 1),
+                                ),
                         ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 0),
-                const Text("เมื่อซื้อขั้นต่ำ 1000"),
+                Text("เมื่อซื้อขั้นต่ำ ${item.discountFirst}"),
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                const Color(0xffed3023)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ))),
-                        onPressed: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 0, right: 0, top: 0, bottom: 0),
-                          child: Row(
-                            children: const [
-                              Text(
-                                "ใช้ส่วนลด",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 13),
+                      item.isEnableUse
+                          ? ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      const Color(0xffed3023)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ))),
+                              onPressed: () {
+                                widget.onValChange(
+                                    listDiscAll[listDiscAll.indexOf(item)]);
+
+                                Navigator.pop(context);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 0, right: 0, top: 0, bottom: 0),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      "ใช้ส่วนลด",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 13),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
+                            )
+                          : const Padding(
+                              padding: EdgeInsets.only(right: 5),
+                              child: Text(
+                                "ไม่สามารถใช้ส่วนลดนี้ได้",
+                                style: TextStyle(
+                                    color: Color(0xffed3023), fontSize: 12),
+                              ),
+                            ),
                     ],
                   ),
                 ),

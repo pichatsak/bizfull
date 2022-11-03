@@ -21,30 +21,32 @@ class DiscoutViewModel {
     required this.discountNum,
     required this.discountFirst,
     required this.discountCreate,
+    required this.isEnableUse,
   });
 
   int discountId;
-  int discountPrice;
-  DateTime discountStart;
-  DateTime discountEnd;
+  double discountPrice;
+  dynamic discountStart;
+  dynamic discountEnd;
   String active;
   String discountType;
-  int discountNum;
-  int discountFirst;
-  DateTime discountCreate;
+  double discountNum;
+  double discountFirst;
+  dynamic discountCreate;
+  bool isEnableUse;
 
   factory DiscoutViewModel.fromJson(Map<String, dynamic> json) =>
       DiscoutViewModel(
-        discountId: json["discount_id"],
-        discountPrice: json["discount_price"],
-        discountStart: json["discount_start"],
-        discountEnd: json["discount_end"],
-        active: json["active"],
-        discountType: json["discount_type"],
-        discountNum: json["discount_num"],
-        discountFirst: json["discount_first"],
-        discountCreate: json["discount_create"],
-      );
+          discountId: json["discount_id"],
+          discountPrice: json["discount_price"],
+          discountStart: json["discount_start"],
+          discountEnd: json["discount_end"],
+          active: json["active"],
+          discountType: json["discount_type"],
+          discountNum: json["discount_num"],
+          discountFirst: json["discount_first"],
+          discountCreate: json["discount_create"],
+          isEnableUse: false);
 
   Map<String, dynamic> toJson() => {
         "discount_id": discountId,

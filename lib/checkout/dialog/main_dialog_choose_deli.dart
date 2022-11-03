@@ -3,6 +3,7 @@ import 'package:bizfull/models/choose_deli_model.dart';
 import 'package:bizfull/models/deli_view_model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class DialogChooseDelis extends StatefulWidget {
   String typePd = "";
   String typeDvs = "";
@@ -231,7 +232,8 @@ class _DialogChooseDelisState extends State<DialogChooseDelis> {
                   Text(
                       // "พิเชฐศักดิ์ ดุเหว่า",
                       item.deliName,
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
+                      style:
+                          const TextStyle(fontSize: 16, color: Colors.black)),
                   // Padding(
                   //     padding: const EdgeInsets.all(8.0),
                   //     child: Container(

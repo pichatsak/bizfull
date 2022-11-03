@@ -10,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class DialogShowAdr extends StatefulWidget {
   final ValueChanged<AdrDbViewModel> onValChange;
   final ValueChanged<String> onChoose;
@@ -95,13 +96,17 @@ class _DialogShowAdrState extends State<DialogShowAdr> {
                   child: Column(children: [
                     ...listAdr
                         .map(
-                          (item) => datadialogaddress1(item),
+                          (item) => Column(
+                            children: [
+                              datadialogaddress1(item),
+                              const Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 25, right: 5, top: 20),
+                                  child: Divider(thickness: 1.0)),
+                            ],
+                          ),
                         )
                         .toList()
-                    // const Padding(
-                    //     padding: EdgeInsets.only(left: 25, right: 5, top: 20),
-                    //     child: Divider(thickness: 1.0)),
-                    // datadialogaddress11(context, addressradio, setState),
                   ]),
                 ),
               ],
@@ -131,29 +136,19 @@ class _DialogShowAdrState extends State<DialogShowAdr> {
                     ),
                     const Spacer(),
                     Padding(
-                      padding: const EdgeInsets.only(right: 5),
-                      child: Material(
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(7),
-                          onTap: () => Navigator.pop(context),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(7),
-                                color: const Color.fromARGB(31, 143, 143, 143)),
-                            padding: const EdgeInsets.only(
-                                top: 10.0, bottom: 10.0, left: 30, right: 30),
-                            child: const Text(
-                              "ยกเลิก",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                              textAlign: TextAlign.center,
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Container(
+                          margin: const EdgeInsets.only(bottom: 3),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Icon(
+                              FontAwesomeIcons.xmark,
+                              color: Color(0xffed3023),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
+                          )),
+                    )
                   ],
                 ),
               )),
@@ -227,38 +222,6 @@ class _DialogShowAdrState extends State<DialogShowAdr> {
                         ),
                         Row(
                           children: [
-                            widget.typeDvs == "pc"
-                                ? Material(
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(7),
-                                      onTap: () => Navigator.pop(context),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black12),
-                                            borderRadius:
-                                                BorderRadius.circular(7),
-                                            color: const Color.fromARGB(
-                                                31, 143, 143, 143)),
-                                        padding: const EdgeInsets.only(
-                                            top: 10.0,
-                                            bottom: 10.0,
-                                            left: 30,
-                                            right: 30),
-                                        child: const Text(
-                                          "ยกเลิก",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : const SizedBox(
-                                    height: 0,
-                                    width: 0,
-                                  ),
                             const SizedBox(width: 10),
                             ElevatedButton(
                               style: ButtonStyle(

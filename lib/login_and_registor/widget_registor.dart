@@ -581,6 +581,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 if (value == null) {
                                   return 'กรุณาเลือกอำเภอ';
                                 }
+                                return null;
                               },
                               onChanged: (value) {
                                 setState(() {
@@ -634,6 +635,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 if (value == null) {
                                   return 'กรุณาเลือกตำบล';
                                 }
+                                return null;
                               },
                               onChanged: (value) {
                                 selectedValueDict = value.toString();

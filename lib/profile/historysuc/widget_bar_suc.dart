@@ -43,7 +43,7 @@ Widget barsuc(context) {
                                 .pushNamed("/profile_historysuc");
                           },
                           child: const Text(
-                            "ประวัติการซื้อ",
+                            "คำสั่งซื้อ",
                             style: TextStyle(
                                 fontSize: 13, color: Color(0xffed3023)),
                           ),

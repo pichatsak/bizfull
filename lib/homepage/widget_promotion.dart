@@ -8,6 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:http/http.dart' as http;
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 class SliderBanner extends StatefulWidget {

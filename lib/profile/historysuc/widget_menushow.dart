@@ -1,3 +1,4 @@
+import 'package:bizfull/models/order_detail_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -73,7 +74,8 @@ Widget menushowhissuc() {
                 child: SizedBox(
                     width: sizepicture,
                     height: sizepicture,
-                    child: ClipRRect( borderRadius: BorderRadius.circular(7.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(7.0),
                       child: Image.asset("images/1b.jpg",
                           fit: BoxFit.cover, filterQuality: FilterQuality.high),
                     ))),

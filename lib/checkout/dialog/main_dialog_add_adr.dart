@@ -29,6 +29,7 @@ InputDecoration selectDecoration(String hitTxt, IconData iconData) {
 
 class DialogAddAdrMain extends StatefulWidget {
   final ValueChanged<ValChangeModel> onValChange;
+  // ignore: prefer_const_constructors_in_immutables
   DialogAddAdrMain({Key? key, required this.onValChange}) : super(key: key);
 
   @override
@@ -123,15 +124,9 @@ class _DialogAddAdrMainState extends State<DialogAddAdrMain> {
 
   @override
   Widget build(BuildContext context) {
-    String tYP;
-
     if (Device.width > 991) {
-      tYP = "pc";
     } else if (Device.width >= 768 && Device.width <= 991) {
-      tYP = "mobile";
-    } else {
-      tYP = "mobile";
-    }
+    } else {}
     return SizedBox(
       width: 500,
       height: 552,
@@ -433,6 +428,7 @@ class _DialogAddAdrMainState extends State<DialogAddAdrMain> {
                   if (value == null) {
                     return 'กรุณาเลือกอำเภอ';
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   setState(() {
@@ -489,6 +485,7 @@ class _DialogAddAdrMainState extends State<DialogAddAdrMain> {
                           if (value == null) {
                             return 'กรุณาเลือกตำบล';
                           }
+                          return null;
                         },
                         onChanged: (value) {
                           selectedValueDict = value.toString();

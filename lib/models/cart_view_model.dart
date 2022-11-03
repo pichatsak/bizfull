@@ -67,8 +67,8 @@ class CartViewModel {
   int productId;
   String cartType;
   int cartNum;
-  int cartTotal;
-  int cartPrice;
+  double cartTotal;
+  double cartPrice;
   String cartPdName;
   String cartPdNameMore;
   String cartPdPriceMore;

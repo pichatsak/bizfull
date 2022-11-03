@@ -20,4 +20,5 @@ class Global {
   static String hostImgPayment =
       "http://localhost/bizful/admin/img_upload/payment";
   static String hostImgDeli = "http://localhost/bizful/admin/img_upload/deli";
+  static String hostDocOffer = "http://localhost/bizful/admin/docs/offer";
 }

@@ -1,112 +1,126 @@
 import 'package:bizfull/boostrap/boostrap_tool.dart';
+import 'package:bizfull/models/order_view_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget listcancle(context, key) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 15, bottom: 15),
-    child: BootstrapRow(children: <BootstrapCol>[
-      BootstrapCol(
-          sizes: 'col-2',
-          child: const SizedBox(
-            child: Center(
-                child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              child: Text(
-                "000001",
-                style: TextStyle(fontSize: 13, color: Colors.black),
-              ),
-            )),
-          )),
-      BootstrapCol(
-          sizes: 'col-2',
-          child: SizedBox(
-            child: Center(
-                child: Column(
-              children: const [
-                Text(
-                  "30/8/2565",
-                  style: TextStyle(fontSize: 13, color: Colors.black),
-                ),
-                Text(
-                  "เวลา 19.42 น.",
-                  style: TextStyle(fontSize: 13, color: Colors.black),
-                ),
-              ],
-            )),
-          )),
-      BootstrapCol(
-          sizes: 'col-1',
-          child: const SizedBox(
-            child: Center(
-                child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              child: Text(
-                "x1",
-                style: TextStyle(fontSize: 13, color: Colors.black),
-              ),
-            )),
-          )),
-      BootstrapCol(
-          sizes: 'col-2',
-          child: const SizedBox(
-            child: Center(
+var formatNum = NumberFormat('#,###,###.00');
+NumberFormat formatterCode = NumberFormat("00000");
+Widget listcancle(context, key, OrderViewModel item,
+    void Function(String value, int pos) updateViewOrder, int posItem) {
+  return Container(
+    decoration: BoxDecoration(
+        color: posItem % 2 == 0 ? Colors.white : const Color(0xfff3f3f3),
+        borderRadius: BorderRadius.circular(7)),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 15, bottom: 15),
+      child: BootstrapRow(children: <BootstrapCol>[
+        BootstrapCol(
+            sizes: 'col-2',
+            child: SizedBox(
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Text(
-              "3,900.00",
-              style: TextStyle(fontSize: 13, color: Colors.black),
+                  "#${formatterCode.format(item.odId)}",
+                  style: const TextStyle(fontSize: 13, color: Colors.black),
+                ),
+              )),
             )),
-          )),
-      BootstrapCol(
-          sizes: 'col-3',
-          child: const SizedBox(
-            child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15),
+        BootstrapCol(
+            sizes: 'col-2',
+            child: SizedBox(
+              child: Center(
+                  child: Column(
+                children: [
+                  Text(
+                    item.odCreate,
+                    style: const TextStyle(fontSize: 13, color: Colors.black),
+                  ),
+                  // Text(
+                  //   "เวลา 19.42 น.",
+                  //   style: TextStyle(fontSize: 13, color: Colors.black),
+                  // ),
+                ],
+              )),
+            )),
+        BootstrapCol(
+            sizes: 'col-1',
+            child: SizedBox(
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Text(
+                  "x${item.numAll}",
+                  style: const TextStyle(fontSize: 13, color: Colors.black),
+                ),
+              )),
+            )),
+        BootstrapCol(
+            sizes: 'col-2',
+            child: SizedBox(
               child: Center(
                   child: Text(
-                "193 หมู่ 6 ตำบล ดงเจน อำเภอ ภูกามยาว จังหวัด พะยา 56000 อำเภอภูกามยาว, จังหวัดพะเยา, 56000",
-                style: TextStyle(fontSize: 13, color: Colors.black),
+                "฿${formatNum.format(item.totalAll)}",
+                style: const TextStyle(fontSize: 13, color: Colors.black),
               )),
-            ),
-          )),
-      BootstrapCol(
-          sizes: 'col-2',
-          child: SizedBox(
-            child: Center(
-                child: Column(
-              children: [
-                const Text(
-                  "ยกเลิกสินค้า",
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: Color(0xffef4137),
-                      fontFamily: "Prompt-Medium"),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size.zero,
-                    backgroundColor: const Color(0xff2e3192),
-                    padding: const EdgeInsets.only(
-                        left: 0, right: 0, top: 8, bottom: 8),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7)),
-                  ),
-                  onPressed: () {},
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
+            )),
+        BootstrapCol(
+            sizes: 'col-3',
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Center(
                     child: Text(
-                      "ดูรายละเอียด",
-                      style: TextStyle(fontSize: 13, color: Colors.white),
+                  // "193 หมู่ 6 ตำบล ดงเจน อำเภอ ภูกามยาว จังหวัด พะยา 56000 อำเภอภูกามยาว, จังหวัดพะเยา, 56000",
+                  "${item.delisName}\n${item.delisPhone}\n${item.fullAdr}",
+                  style: const TextStyle(fontSize: 13, color: Colors.black),
+                )),
+              ),
+            )),
+        BootstrapCol(
+            sizes: 'col-2',
+            child: SizedBox(
+              child: Center(
+                  child: Column(
+                children: [
+                  const Text(
+                    "รอใบเสนอราคา",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Color(0xffef4137),
+                        fontFamily: "Prompt-Medium"),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.zero,
+                      backgroundColor: const Color(0xff2e3192),
+                      padding: const EdgeInsets.only(
+                          left: 0, right: 0, top: 8, bottom: 8),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7)),
+                    ),
+                    onPressed: () {
+                      updateViewOrder(item.odId.toString(), posItem);
+                      key.currentState.openEndDrawer();
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 8, bottom: 8),
+                      child: Text(
+                        "ดูรายละเอียด",
+                        style: TextStyle(fontSize: 13, color: Colors.white),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )),
-          ))
-    ]),
+                ],
+              )),
+            ))
+      ]),
+    ),
   );
 }
 
@@ -166,7 +180,7 @@ Widget listcancle1() {
               child: const SizedBox(
                 child: Center(
                     child: Text(
-                  "3,900.00",
+                  "฿3,900.00",
                   style: TextStyle(fontSize: 13, color: Colors.black),
                 )),
               )),
